@@ -4,16 +4,6 @@ import cors from "cors";
 
 // Importações dos arquivos de rotas
 import authRoutes from "./routes/authRoutes.js";
-import assetRoutes from "./routes/assetRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
-import mqttRoutes from "./routes/mqttRoutes.js";
-import placeRoutes from "./routes/placeRoutes.js";
-import deviceRoutes from "./routes/deviceRoutes.js";
-import transferRoutes from "./routes/transferRoutes.js";
-import dashboardRoutes from "./routes/dashboardRoutes.js";
-
-// Importação do controller para iniciar a configuração dos tópicos MQTT
-import { setupMqttListeners } from "./controllers/mqttController.js";
 
 dotenv.config();
 
@@ -32,16 +22,6 @@ app.use(express.json());
 
 // Rotas
 app.use("/auth", authRoutes);
-app.use("/users", userRoutes);
-app.use("/assets", assetRoutes);
-app.use("/places", placeRoutes);
-app.use("/devices", deviceRoutes);
-app.use("/transfers", transferRoutes);
-app.use("/mqtt", mqttRoutes);
-app.use("/api/dashboard", dashboardRoutes);
-
-// Configuração do MQTT
-setupMqttListeners();
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
