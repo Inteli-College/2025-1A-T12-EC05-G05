@@ -18,7 +18,8 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "parser": "@babel/eslint-parser"
   },
   "browserslist": {
     "production": [
@@ -33,6 +34,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.26.8"
+    "@babel/eslint-parser": "^7.26.8",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
