@@ -1,9 +1,10 @@
 import React from "react";
+import "../src/styles/App.css";
 
 function App() {
   return (
     <div>
-      <h1>Prescript</h1>
+      <img src="logoCompleta.jpg" alt="logo prescript"></img>
     </div>
   );
 }
