@@ -1,0 +1,18 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #87CEEB;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
