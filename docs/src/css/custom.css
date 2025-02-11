@@ -15,6 +15,7 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --details-background: #f0f0f0;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -27,6 +28,7 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --details-background: #252728;
 }
 .hero {
   background: url('/img/Prescription_Branding_Video.gif') no-repeat center center;
@@ -36,25 +38,13 @@
 }
 
 details[open] {
-  background-color: #252728;
+  background-color: var(--details-background);
   transition: 1s;
-  border: black;
+  border: none;
 }
 
 details:not([open]) {
-  background-color: #252728;
+  background-color: var(--details-background);
   transition: 1s;
-  border: black;
+  border: none;
 }
-
-/* collapsibleContent_i85q {
-  border-top: white;
-  background-color: white;
-  border: white;
-  color: black;
-}
-
-summary::before {
-  color: black;
-  background-color: black;
-} */
