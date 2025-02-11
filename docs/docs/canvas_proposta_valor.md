@@ -24,4 +24,8 @@ sidebar_position: 3
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div><br/>
 
+&emsp;Este Canvas Proposta de Valor serve como um guia para o Prescript, garantindo que ele esteja sempre alinhado com as necessidades dos profissionais de saúde. Ele destaca de maneira objetiva e direta as funcionalidades essenciais do sistema, como a automação inteligente da prescrição de medicamentos, a rastreabilidade dos medicamentos e a redução dos custos operacionais.
 
+&emsp;Além disso, a solução combate problemas críticos enfrentados no processo manual, como o risco de administração incorreta e a inconsistência na dispensação, proporcionando padronização e conformidade das fitas de medicamento e uma redução significativa de erros humanos. O sistema também oferece diferentes modos de separação e montagem automática, garantindo flexibilidade no fluxo de trabalho. Além disso, a integração de um sistema de devolução de medicamentos permite uma gestão mais eficiente dos insumos hospitalares.
+
+&emsp;O Canvas atua como uma ferramenta de comunicação eficaz, permitindo apresentar a proposta de valor do sistema para as partes interessadas e orientar decisões importantes sobre o desenvolvimento e a alocação de recursos. Em suma, ele garante que o projeto entregue valor real ao cliente e atenda às suas necessidades específicas, mantendo o foco no que realmente importa.
