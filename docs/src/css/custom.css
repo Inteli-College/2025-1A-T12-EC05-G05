@@ -35,4 +35,26 @@
   width: 100%;
 }
 
+details[open] {
+  background-color: #252728;
+  transition: 1s;
+  border: black;
+}
 
+details:not([open]) {
+  background-color: #252728;
+  transition: 1s;
+  border: black;
+}
+
+/* collapsibleContent_i85q {
+  border-top: white;
+  background-color: white;
+  border: white;
+  color: black;
+}
+
+summary::before {
+  color: black;
+  background-color: black;
+} */
