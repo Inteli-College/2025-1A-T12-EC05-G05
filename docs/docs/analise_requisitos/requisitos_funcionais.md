@@ -39,6 +39,6 @@ sidebar_position: 1
 
 ## ✅ Conclusão
 
-A definição clara dos requisitos funcionais garante que o sistema tenha **todas as funcionalidades necessárias** para atender aos usuários.  
+&emsp; A definição clara dos requisitos funcionais garante que o sistema tenha **todas as funcionalidades necessárias** para atender aos usuários.  
 
-A correta implementação dos requisitos funcionais reduz falhas e melhora a experiência geral com o sistema. Eles devem ser continuamente revisados para garantir que estejam alinhados com os objetivos do projeto.
+&emsp; A correta implementação dos requisitos funcionais reduz falhas e melhora a experiência geral com o sistema. Eles devem ser continuamente revisados para garantir que estejam alinhados com os objetivos do projeto.
