@@ -10,4 +10,3 @@ function App() {
 }
 
 export default App;
-//tentando commitar na dev
