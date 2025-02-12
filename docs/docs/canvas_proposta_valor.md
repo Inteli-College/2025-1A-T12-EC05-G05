@@ -6,7 +6,7 @@ sidebar_position: 3
 
 
 
-&emsp;O **Canvas Proposta de Valor** é uma ferramenta visual que auxilia na compreensão da relação entre a proposta de valor de uma empresa e as necessidades e desejos de seus clientes (Osterwalder _et al._, 2014). Ele divide essa relação em dois blocos principais: o **Perfil do Cliente** e o &&.
+&emsp;O **Canvas Proposta de Valor** é uma ferramenta visual que auxilia na compreensão da relação entre a proposta de valor de uma empresa e as necessidades e desejos de seus clientes (Osterwalder _et al._, 2014). Ele divide essa relação em dois blocos principais: o **Perfil do Cliente** e o **Mapa de Valor**.
 
 :::info
 <ul>
