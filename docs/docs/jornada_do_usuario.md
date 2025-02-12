@@ -35,7 +35,7 @@ title: "🚶‍♀️‍➡️Jornada do usuário"
 
   <sub>Figura X - Jornada do Usuário da Elisabeth </sub>
 
-  <img src="/img/jornada-1.png"/>
+  <img src="/img/jornada-2.png"/>
 
   <sup>Fonte: Material produzido pelos autores (2025).</sup>
 
