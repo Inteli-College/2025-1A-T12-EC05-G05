@@ -94,11 +94,6 @@ const config = {
             label: 'Sobre os Autores'
           },
           {
-            to: '/personas',
-            position: 'left',
-            label: 'personas'
-          },
-          {
             href: 'https://github.com/Inteli-College/2025-1A-T12-EC05-G05',
             label: 'GitHub',
             position: 'right',
