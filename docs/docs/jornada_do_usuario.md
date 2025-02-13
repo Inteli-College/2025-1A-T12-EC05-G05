@@ -1,5 +1,5 @@
 ---
-title: "🚶‍♀️‍➡️Jornada do usuário"
+title: "🚶‍♀️‍➡️Jornada do Usuário"
 ---
 
 &emsp;Segundo Gerry McGovern, o mapeamento da jornada do usuário é essencial para compreender os pontos de contato entre o usuário e o produto, permitindo a identificação de suas necessidades, expectativas e pensamentos ao longo de cada fase de interação. Esse processo é fundamental para orientar no desenvolvimento do projeto, garantindo que a solução atenda as demandas do usuário e proporcione uma boa experiência.  
@@ -44,7 +44,7 @@ title: "🚶‍♀️‍➡️Jornada do usuário"
 
 &emsp;Após o mapeamento das jornadas de Márcio e Elisabeth, foi possível identificar pontos para otimizar suas rotinas e aprimorar a experiência com a solução. Márcio, que lida diretamente com a separação e validação dos medicamentos, tem como necessidade a otimização do controle de estoque e da separação automatizada, permitindo que ele direcione mais tempo para outras atividades. Já Elisabeth, que administra os medicamentos e monitora os pacientes, busca reduzir o tempo gasto na conferência dos remédios, garantindo mais atenção ao cuidado direto com os internados.    
 &emsp;Além das necessidades, também foram identificadas oportunidades para melhorar a interação com a solução. Para Márcio, uma interface simples e fácil, para que seja acessível para profissionais de diferentes idades, junto a um sistema de notificações para alertar sobre a falta de medicamentos no estoque, pode tornar sua experiência mais eficiente. No caso de Elisabeth, a precisão do braço robótico na separação dos medicamentos reduz a necessidade de conferências demoradas, agilizando seu trabalho e garantindo mais segurança na administração das doses.   
-&emsp;Com essas percepções, a jornada do usuário se torna um recurso valioso para guiar melhorias no projeto, garantindo que a solução atenda de forma prática e eficiente às demandas do ambiente hospitalar.
+&emsp;Com essas percepções, a jornada do usuário se torna um recurso que pode auxiliar na orientação demelhorias no projeto, garantindo que a solução atenda de forma prática e eficiente às demandas do ambiente hospitalar.
 
 
 
