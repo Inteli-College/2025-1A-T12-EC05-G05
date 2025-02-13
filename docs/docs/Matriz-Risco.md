@@ -49,7 +49,7 @@ Impacto: Médio / Risco: Raro
 
 **Falha na devolução do medicamento**
 
-&emsp;Quando o medicamento retornar, ele pode não conseguir identificar o bin no qual aqueles medicamentos pertencem, fazendo com que nãoregistre qual paciente devolveu qual insumo.
+&emsp;Quando o medicamento retornar, o sistema pode não conseguir identificar o bin no qual aqueles medicamentos pertencem, fazendo com que não registre qual paciente devolveu qual insumo.
 
 Para mitigar esse risco realizar confirmação manual pode ser uma posibilidade para garantir a devolução correta dos insumos.
 
