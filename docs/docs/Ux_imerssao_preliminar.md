@@ -17,6 +17,12 @@ sidebar_position: 2
 | Quais as funcionalidades das APIs que vocês já possuem? | Nenhuma, mas eles podem criar novas APIs caso seja necessário. |
 | Vamos ter acesso aos dados como tabelas e pedidos? | Sim. Podemos trabalhar com alguns dados, mas os dados sensíveis obviamente serão ocultados. |
 | Como é feito o pedido e/ou registro de pedidos hoje em dia? | A prescrição é feita através de uma ‘telinha’ no sistema, que fica conectada direto na farmácia. Esses pedidos são analisados pelo farmacêutico e aprovados ou não. |
+
+<details class="ver-mais">
+  <summary>🔍 Ver mais requisitos</summary>
+  
+| **Pergunta** | **Resposta** |
+|-------------|-------------|
 | Existe um diagrama de como funciona o sistema de vocês? | Sim, eles irão mandar em outro momento (até o momento atual eles não enviaram). |
 | Já existe uma fiscalização de psicotrópicos dos pedidos? | Existe uma contagem manual diária. A preocupação é maior quando o item sai da farmácia, pois eles não têm como ter certeza de que o produto de fato foi utilizado no paciente. Querem criar uma forma de rastreabilidade que intitulam como ‘rastreabilidade à beira do leito’, onde a enfermeira ‘biparia’ o paciente e ‘biparia’ novamente o remédio ao utilizá-lo. |
 | Os remédios do mesmo bin possuem a mesma data de validade? | Idealmente sim, mas às vezes tem um saquinho fechado dentro do bin com remédios de outra validade. |
@@ -37,6 +43,9 @@ sidebar_position: 2
 | Quais seriam informações que não poderiam faltar para construirmos nosso banco de dados? | CHC (código de produto). Lembrando que o mesmo remédio com doses diferentes possuem códigos diferentes. Informações do Paciente: nome, leito (MUITO IMPORTANTE), HC. |
 | Seria interessante para vocês se incluíssemos um histórico de alergias ou doenças ligadas a cada paciente? | O sistema deles possui essa ferramenta, mas dependem do médico ou do enfermeiro para fazer o registro de alergias do paciente. |
 | Como é registrada essa “dose unitária” de remédios? Tem alguma logística específica com marcas diferentes dos mesmos remédios? | Os remédios são registrados sempre pelo nome do princípio ativo, sem distinção de marca. |
+
+</details>
+
 
 &emsp; A fase de pesquisa exploratória permitiu identificar os principais desafios enfrentados na separação e montagem das fitas de medicação. O processo atual demanda tempo e atenção dos farmacêuticos, tornando evidente a necessidade de uma solução automatizada. Além disso, a falta de rastreabilidade e controle de estoque são pontos críticos que podem ser melhorados. Com essas informações, podemos direcionar o desenvolvimento do robô para otimizar a separação dos medicamentos, reduzir erros e aumentar a eficiência do atendimento.
 
