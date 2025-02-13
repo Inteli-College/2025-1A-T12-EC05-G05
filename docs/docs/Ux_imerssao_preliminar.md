@@ -5,7 +5,7 @@ sidebar_position: 2
 
 &emsp; Para direcionar um projeto de maneira eficiente, é essencial, antes de tudo, compreender de forma integral o problema, o cenário e o usuário. Por isso, iniciamos com uma pesquisa exploratória e uma pesquisa desk, etapa que chamamos de **Imersão Preliminar**.
 
-### Pesquisa Exploratória:
+### 📝Pesquisa Exploratória:
 
 &emsp; Para a pesquisa exploratória após o recebimento do Tapi, marcamos uma conversa por vídeo com o nosso parceiro de projeto onde junto aos outros grupos pudemos esclarecer algumas dúvidas.
 
@@ -42,7 +42,7 @@ sidebar_position: 2
 
 &emsp; Após entendermos as necessidades dos stakeholders e como o HC funciona, buscamos descobrir formas de tornar esse projeto viável da melhor maneira. Por esse motivo, realizamos outra etapa de pesquisa conhecida como **Desk Research**, onde coletamos e analisamos informações já existentes sobre soluções e necessidades similares.
 
-### Desk Researsh:
+### 🖥️Desk Researsh:
 
 &emsp;  Nessa fase, pesquisamos farmácias automatizadas, hospitais que operam com sistemas semelhantes e empresas que produzem essas soluções. Conseguimos levantar algumas informações muito relevantes:
 
