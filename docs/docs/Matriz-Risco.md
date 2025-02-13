@@ -25,7 +25,7 @@ Impacto: Muito alto / Risco: Médio
  &emsp;O QRCode inserido nos insumos pode acabar ficando virado, o que vai impedir o robô de realizar o registro dos medicamentos.
 Para conter esse risco é necessário sempre realizar uma checagem para verificar a posição dos insumos.
 
-Impacto: Rédio / Risco: Alto
+Impacto: Médio / Risco: Alto
 
 **Erro na autenticação de usuários**
 
@@ -51,7 +51,7 @@ Impacto: Médio / Risco: Raro
 
 &emsp;Quando o medicamento retornar, o sistema pode não conseguir identificar o bin no qual aqueles medicamentos pertencem, fazendo com que não registre qual paciente devolveu qual insumo.
 
-Para mitigar esse risco realizar confirmação manual pode ser uma posibilidade para garantir a devolução correta dos insumos.
+Para mitigar esse risco realizar confirmação manual pode ser uma possibilidade para garantir a devolução correta dos insumos.
 
 Impacto: Baixo / Risco: Baixo
 
