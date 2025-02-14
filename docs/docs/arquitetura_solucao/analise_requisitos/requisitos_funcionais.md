@@ -23,7 +23,7 @@ sidebar_position: 1
 | RF#  | Descrição | Regra de Negócio |
 |------|-----------|------------------|
 | RF04 | A relação entre o QR Code e a fita de medicação correspondente deve ser registrada. | O vínculo do QR Code com a fita possibilita a rastreabilidade dos medicamentos, facilitando o controle e o processo de devolução. |
-| RF05 | O sistema precisa interpretar o QR Code para orientar onde o medicamento deve ser armazenado ou devolvido. | A leitura do QR Code direciona o armazenamento ou devolução para o local adequado, otimizando a organização do estoque. |
+| RF05 | O sistema precisa interpretar o QR Code do medicamento para orientar onde ele deve ser armazenado. | A leitura do QR Code direciona o medicamento para o local adequado, otimizando a organização do estoque. |
 | RF06 | Deve existir um processo para permitir a devolução controlada da fita médica. | A devolução deve ser registrada, identificando quais medicamentos foram utilizados e quais permanecem disponíveis, permitindo um controle eficiente do estoque. |
 | RF07 | O histórico de uso das fitas deve ser armazenado com informações sobre criação e devoluções realizadas. | O histórico deve estar acessível para auditoria e rastreamento, garantindo maior controle e transparência no processo. |
 | RF08 | O sistema deve emitir alertas quando o estoque atingir um nível crítico. | A notificação deve ser gerada automaticamente ao atingir um limite mínimo, permitindo a reposição antecipada de medicamentos. |

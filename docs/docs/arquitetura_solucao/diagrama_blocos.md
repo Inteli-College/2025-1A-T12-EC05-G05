@@ -4,7 +4,7 @@ sidebar_label: Diagrama de Blocos
 sidebar_position: 1
 ---
 
-# 🖥️ Diagrama de Blocos  
+# 🖥️ Diagrama de Blocos
 
 &emsp;O **diagrama de blocos** é uma representação visual essencial para entender a arquitetura do sistema. Ele ilustra como os diferentes componentes interagem entre si, facilitando no desenvolvimento do sistema.  
 
@@ -53,8 +53,10 @@ A API de comunicação permite a integração com o sistema hospitalar existente
 ### 🖥️ Frontend
 O sistema conta com **duas interfaces distintas**, cada uma projetada para um perfil específico:  
 
-**Interface do Enfermeiro**  
-- Exibe as informações da fita para que o enfermeiro possa **validar se a fita foi feita corretamente**.  
+### **Interface do Enfermeiro**  
+- Funciona como um **dashboard** que fornece uma visão geral do processo de produção das fitas.  
+- Exibe informações como **quantas fitas já foram produzidas no dia**, **quantas ainda precisam ser feitas** e **quantas o enfermeiro já retirou**.  
+- Permite que o enfermeiro acompanhe o fluxo de produção em tempo real e tome decisões com base nos dados apresentados.
 
 **Interface do Farmacêutico**  
 - Possui funcionalidades completas, permitindo, por exemplo:  
@@ -63,7 +65,7 @@ O sistema conta com **duas interfaces distintas**, cada uma projetada para um pe
 
 O frontend se comunica diretamente com o **backend**, garantindo que todas as ações dos usuários sejam processadas e registradas corretamente.  
 
-### 📡 Leitor de QR Code  
+### 📡 Leitor de QR Code
 O **leitor de QR Code** tem um papel fundamental na captura das informações das prescrições médicas. O fluxo de comunicação ocorre da seguinte forma:  
 1. O leitor envia os dados para o **backend**.  
 2. O backend processa as informações.  
