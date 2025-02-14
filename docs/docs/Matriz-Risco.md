@@ -20,12 +20,6 @@ Para sanar esse risco, recomenda-se sempre manter o estoque na mesma posição, 
 
 Impacto: Muito alto / Risco: Médio 
 
-**QrCode virado**
-
- &emsp;O QRCode inserido nos insumos pode acabar ficando virado, o que vai impedir o robô de realizar o registro dos medicamentos.
-Para conter esse risco é necessário sempre realizar uma checagem para verificar a posição dos insumos.
-
-Impacto: Médio / Risco: Alto
 
 **Erro na autenticação de usuários**
 
@@ -55,9 +49,9 @@ Para mitigar esse risco realizar confirmação manual pode ser uma possibilidade
 
 Impacto: Baixo / Risco: Baixo
 
-**Aumento do escopo do projeto**
+**Não cumprir o escopo do projeto**
 
-&emsp; O projeto pode ter seu escopo aumentado além da capacidade de produção dos membros, o que pode gerar queda na qualidade da entrega e frustração dos membros, para mitigar isso, deve-se ter um escopo bem definido levando em conta a capacidade produtiva dos membros.
+&emsp; O projeto pode ter seu escopo aumentado além da capacidade de produção dos membros, o que pode gerar queda na qualidade da entrega,frustração dos membros e ,no pior dos casos, não atendimento do escopo. Para mitigar isso, deve-se ter um escopo bem definido levando em conta a capacidade produtiva dos membros.
 
 Impacto: Médio / Risco: Médio
 
