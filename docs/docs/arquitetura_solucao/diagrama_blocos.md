@@ -33,7 +33,7 @@ O diagrama acima ilustra a estrutura do sistema, detalhando as interações entr
 ### 🔹 Backend 
 O **backend** é responsável por gerenciar e controlar todas as operações do sistema, garantindo a comunicação entre os módulos. Ele:  
 - Troca informações com o **banco de dados**, garantindo o armazenamento e a recuperação dos dados.  
-- Se conecta à **API do Hospital das Clínicas**, permitindo integração com o sistema hospitalar.  
+- Se conecta à **API de comunicação**, permitindo integração com o sistema hospitalar existente.  
 - Envia comandos para o **robô**, controlando a produção automatizada.  
 - Recebe dados do **leitor de QR Code** e processa as informações para determinar a próxima ação.  
 - Envia informações para o **frontend**, garantindo que os usuários tenham acesso atualizado aos dados necessários para validação e aprovação das prescrições.
@@ -46,8 +46,8 @@ O **banco de dados (SQL)** armazena as informações essenciais do sistema, incl
 
 O backend se comunica constantemente com o **banco de dados**, garantindo que todas as informações estejam atualizadas.  
 
-### 🔗 API do Hospital das Clínicas
-A API do Hospital das Clínicas permite a integração com o sistema hospitalar existente, possibilitando o envio e recebimento de informações relacionadas às prescrições médicas. Essa comunicação garante que o sistema esteja sempre atualizado e alinhado com os registros hospitalares.
+### 🔗 API de comunicação
+A API de comunicação permite a integração com o sistema hospitalar existente, possibilitando o envio e recebimento de informações relacionadas às prescrições médicas. Essa comunicação auxilia o sistema a estar sempre atualizado e alinhado com os registros hospitalares.
 
 ### 🖥️ Frontend
 O sistema conta com **duas interfaces distintas**, cada uma projetada para um perfil específico:  
@@ -78,6 +78,6 @@ O **robô** é responsável pela produção das fitas, seguindo rigorosamente os
 
 ## ✅ Conclusão  
 
-Essa arquitetura foi desenvolvida para garantir **segurança, escalabilidade e integração** com o ambiente hospitalar. A separação entre backend, banco de dados, API externa, frontend e dispositivos auxiliares permite um fluxo operacional **eficiente e confiável**.  
+Essa arquitetura foi desenvolvida para garantir **segurança, modularidade e integração** com o ambiente hospitalar. A separação entre backend, banco de dados, API externa, frontend e dispositivos auxiliares permite um fluxo operacional **eficiente e confiável**.  
 
 Com esse sistema, asseguramos que as **prescrições médicas sejam validadas corretamente** e que **as fitas sejam produzidas com precisão**, otimizando o tempo dos profissionais de saúde e garantindo a segurança dos pacientes.
