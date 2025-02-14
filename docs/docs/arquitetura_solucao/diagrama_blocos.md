@@ -1,6 +1,7 @@
 ---  
 title: Diagrama de Blocos  
 sidebar_label: Diagrama de Blocos  
+sidebar_position: 1
 ---
 
 # 🖥️ Diagrama de Blocos  
