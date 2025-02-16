@@ -1,5 +1,5 @@
 ---
-title: Requisitos funcionais
+title: Requisitos Funcionais
 sidebar_position: 1
 ---
 
@@ -34,7 +34,8 @@ sidebar_position: 1
 | RF13 | Deve haver um meio para que prescrições aprovadas sejam encaminhadas para produção. | Após a aprovação, o farmacêutico deve poder solicitar a produção da fita médica correspondente. |
 | RF14 | Um mecanismo de login deve ser implementado para garantir a identificação dos usuários. | O login precisa assegurar a rastreabilidade das ações dentro do sistema, associando cada atividade a um usuário específico. |
 | RF15 | O sistema precisa emitir notificações quando a data de validade dos bins estiver próxima do vencimento. | O alerta deve ser emitido automaticamente para permitir ações preventivas e evitar o uso de medicamentos vencidos. |
-
+| RF16 | A interface do usuário deve ser responsiva. | A interface deve se adaptar automaticamente a diferentes dispositivos e tamanhos de tela. Todos os elementos devem funcionar corretamente, garantindo usabilidade e compatibilidade com navegadores modernos. | 
+| RF17 | Deve-se implementar o método hash nas senhas ao armazená-las no banco de dados. | As senhas devem ser armazenadas de forma segura utilizando um algoritmo de hash forte. O sistema nunca deve armazenar senhas em texto plano, garantindo a proteção contra acessos não autorizados. | 
 
 </details>
 
