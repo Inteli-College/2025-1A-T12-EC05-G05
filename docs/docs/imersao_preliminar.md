@@ -46,7 +46,6 @@ sidebar_position: 2
 
 </details>
 
-
 &emsp; A fase de pesquisa exploratória permitiu identificar os principais desafios enfrentados na separação e montagem das fitas de medicação. O processo atual demanda tempo e atenção dos farmacêuticos, tornando evidente a necessidade de uma solução automatizada. Além disso, a falta de rastreabilidade e controle de estoque são pontos críticos que podem ser melhorados. Com essas informações, podemos direcionar o desenvolvimento do robô para otimizar a separação dos medicamentos, reduzir erros e aumentar a eficiência do atendimento.
 
 &emsp; Após entendermos as necessidades dos stakeholders e como o HC funciona, buscamos descobrir formas de tornar esse projeto viável da melhor maneira. Por esse motivo, realizamos outra etapa de pesquisa conhecida como **Desk Research**, onde coletamos e analisamos informações já existentes sobre soluções e necessidades similares.
@@ -65,17 +64,16 @@ sidebar_position: 2
 
 &emsp; Com a conclusão da fase de **Imersão Preliminar**, conseguimos identificar os desafios, necessidades, oportunidades e pessoas mais afetadas no processo de separação e montagem das fitas de medicação. Essa pesquisa nos permitiu validar que a automação pode trazer melhorias significativas, garantindo maior eficiência e segurança. Agora, com todas essas informações, podemos avançar para as próximas etapas e demandas do desenvolvimento deste projeto.
 
-## ⛲Fontes e Referências
-https://www.youtube.com/watch?v=Azu1uGIJiwE
-https://panoramafarmaceutico.com.br/robo-na-farmacia-amplia-faturamento/
-https://rowa.de/br/
-https://sisnacmed.com.br/robo-para-farmacia-hospitalar/
-https://engeclinic.com/pillpick/
-https://www.omnicell.com/resources/video/central-med-automation-service/
-https://www.willach-pharmacy-solutions.com/EN/
 
+<details>
+  <summary>⛲Fontes e Referências</summary>
 
+* https://www.youtube.com/watch?v=Azu1uGIJiwE 
+* https://panoramafarmaceutico.com.br/robo-na-farmacia-amplia-faturamento/ 
+* https://rowa.de/br/ 
+* https://sisnacmed.com.br/robo-para-farmacia-hospitalar/ 
+* https://engeclinic.com/pillpick/ 
+* https://www.omnicell.com/resources/video/central-med-automation-service/ 
+* https://www.willach-pharmacy-solutions.com/EN/ 
 
-
-
-
+</details>
