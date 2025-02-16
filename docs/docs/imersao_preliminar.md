@@ -1,7 +1,9 @@
 ---
-title: "Imersão Preliminar"
+title: "🔎 Imersão Preliminar"
+sidebar_label: "Imersão Preliminar"
 sidebar_position: 2
 ---
+ 
 
 &emsp; Para direcionar um projeto de maneira eficiente, é essencial, antes de tudo, compreender de forma integral o problema, o cenário e o usuário. Por isso, iniciamos com uma pesquisa exploratória e uma pesquisa desk, etapa que chamamos de **Imersão Preliminar**.
 

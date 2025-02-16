@@ -1,7 +1,7 @@
 ---
-id: arquitetura-da-solucao
 title: Arquitetura da solução
 sidebar_label: Arquitetura da solução
+sidebar_position: 6
 ---
 
 # 📐 Arquitetura da solução

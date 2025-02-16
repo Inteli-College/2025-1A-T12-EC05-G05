@@ -35,6 +35,7 @@ sidebar_position: 1
 | RF14 | Um mecanismo de login deve ser implementado para garantir a identificação dos usuários. | O login precisa assegurar a rastreabilidade das ações dentro do sistema, associando cada atividade a um usuário específico. |
 | RF15 | O sistema precisa emitir notificações quando a data de validade dos bins estiver próxima do vencimento. | O alerta deve ser emitido automaticamente para permitir ações preventivas e evitar o uso de medicamentos vencidos. |
 
+
 </details>
 
 ## ✅ Conclusão
