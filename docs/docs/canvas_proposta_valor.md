@@ -1,7 +1,7 @@
 ---
 title: "💡 Canvas Proposta de Valor"
 sidebar_label: "Canvas Proposta de Valor"
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 
