@@ -1,5 +1,5 @@
 ---
-title: "🔎 Imersão Preliminar"
+title: "Imersão Preliminar"
 sidebar_position: 2
 ---
 
@@ -18,8 +18,8 @@ sidebar_position: 2
 | Vamos ter acesso aos dados como tabelas e pedidos? | Sim. Podemos trabalhar com alguns dados, mas os dados sensíveis obviamente serão ocultados. |
 | Como é feito o pedido e/ou registro de pedidos hoje em dia? | A prescrição é feita através de uma tela no sistema, que fica conectada direto na farmácia. Esses pedidos são analisados pelo farmacêutico e aprovados ou não. |
 
-<details class="ver-mais">
-  <summary>🔍 Ver mais requisitos</summary>
+<details>
+  <summary>🔍 Ver mais...</summary>
   
 | **Pergunta** | **Resposta** |
 |-------------|-------------|
@@ -51,7 +51,7 @@ sidebar_position: 2
 
 &emsp; Após entendermos as necessidades dos stakeholders e como o HC funciona, buscamos descobrir formas de tornar esse projeto viável da melhor maneira. Por esse motivo, realizamos outra etapa de pesquisa conhecida como **Desk Research**, onde coletamos e analisamos informações já existentes sobre soluções e necessidades similares.
 
-## 🖥️ Desk Researsh
+## 🖥️ Desk Research
 
 &emsp;  Nessa fase, pesquisamos farmácias automatizadas, hospitais que operam com sistemas semelhantes e empresas que produzem essas soluções. Conseguimos levantar algumas informações muito relevantes:
 
@@ -64,6 +64,15 @@ sidebar_position: 2
 * **Preocupações:** As principais preocupações eram em relação a demissões e custos. A primeira preocupação foi descartada, pois os farmacêuticos continuam com um extenso trabalho e não houve redução significativa de funcionários. Em relação aos custos, o investimento inicial é alto, mas os benefícios a longo prazo são significativos, principalmente devido à redução de erros na separação.
 
 &emsp; Com a conclusão da fase de **Imersão Preliminar**, conseguimos identificar os desafios, necessidades, oportunidades e pessoas mais afetadas no processo de separação e montagem das fitas de medicação. Essa pesquisa nos permitiu validar que a automação pode trazer melhorias significativas, garantindo maior eficiência e segurança. Agora, com todas essas informações, podemos avançar para as próximas etapas e demandas do desenvolvimento deste projeto.
+
+## ⛲Fontes e Referências
+https://www.youtube.com/watch?v=Azu1uGIJiwE
+https://panoramafarmaceutico.com.br/robo-na-farmacia-amplia-faturamento/
+https://rowa.de/br/
+https://sisnacmed.com.br/robo-para-farmacia-hospitalar/
+https://engeclinic.com/pillpick/
+https://www.omnicell.com/resources/video/central-med-automation-service/
+https://www.willach-pharmacy-solutions.com/EN/
 
 
 
