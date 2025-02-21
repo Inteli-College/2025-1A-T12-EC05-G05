@@ -3,10 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "cra-template": "1.2.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "axios": "^1.7.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-scripts": "5.0.1"
+    "react-router-dom": "^7.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^5.7.3",
+    "web-vitals": "^4.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -18,8 +28,7 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ],
-    "parser": "@babel/eslint-parser"
+    ]
   },
   "browserslist": {
     "production": [
@@ -35,6 +44,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.26.8",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/react-router-dom": "^5.3.3"
   }
 }
