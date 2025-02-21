@@ -1,0 +1,55 @@
+/* registerPage.css */
+
+.registerContainer {
+    padding: 2rem;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .registerContainer h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Estilo para os grupos do formulário */
+  .formGroup {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .formGroup input[type="text"],
+  .formGroup input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Estilo para o botão de envio */
+  .submitButton {
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submitButton:hover {
+    background-color: #2e7d32;
+  }
+  
+  /* Links sem sublinhado */
+  a {
+    text-decoration: none;
+  }
+  
