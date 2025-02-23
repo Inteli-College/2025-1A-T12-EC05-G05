@@ -10,7 +10,7 @@ const LoginPage = () => {
     console.log(email, password);
 
     try {
-      const resp = await httpClient.post("http://localhost:5000/login", {
+      await httpClient.post("http://localhost:5000/login", {
         email,
         password,
       });
@@ -49,7 +49,7 @@ const LoginPage = () => {
           />
         </div>
         <button type="button" onClick={logInUser}>
-          Submit
+          Login
         </button>
       </form>
     </div>

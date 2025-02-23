@@ -23,7 +23,7 @@ const LandingPage = () => {
 
   return (
     <div className="container">
-      <h1>Welcome to this React Application</h1>
+      <h1>Landing page - Prescript</h1>
       {user != null ? (
         <div className="loggedIn">
           <h2>Logged in</h2>
@@ -33,15 +33,9 @@ const LandingPage = () => {
         </div>
       ) : (
         <div className="loggedOut">
-          <p>You are not logged in</p>
-          <div>
             <a href="/login">
               <button>Login</button>
             </a>
-            <a href="/register">
-              <button>Register</button>
-            </a>
-          </div>
         </div>
       )}
     </div>
