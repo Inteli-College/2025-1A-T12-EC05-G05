@@ -77,7 +77,6 @@ const LoginPage = () => {
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
-              type="email"
               id="email"
               value={formData.email}
               onChange={handleChange}
