@@ -23,21 +23,35 @@ const LandingPage = () => {
 
   return (
     <div className="container">
-      <h1>Landing page - Prescript</h1>
-      {user != null ? (
-        <div className="loggedIn">
-          <h2>Logged in</h2>
-          <h3>ID: {user.id}</h3>
-          <h3>Email: {user.email}</h3>
-          <button onClick={logoutUser}>Logout</button>
-        </div>
-      ) : (
-        <div className="loggedOut">
-            <a href="/login">
-              <button>Login</button>
+      <div className="content-wrapper">
+        <h1 className="main-title">Welcome to Prescript</h1>
+        {user != null ? (
+          <div className="card logged-in">
+            <h2 className="card-title">Welcome Back!</h2>
+            <div className="user-info">
+              <div className="info-item">
+                <span className="label">ID:</span>
+                <span className="value">{user.id}</span>
+              </div>
+              <div className="info-item">
+                <span className="label">Email:</span>
+                <span className="value">{user.email}</span>
+              </div>
+            </div>
+            <button className="btn btn-logout" onClick={logoutUser}>
+              Sign Out
+            </button>
+          </div>
+        ) : (
+          <div className="card logged-out">
+            <h2 className="card-title">Get Started</h2>
+            <p className="welcome-text">Sign in to access your account</p>
+            <a href="/login" className="btn-link">
+              <button className="btn btn-login">Login</button>
             </a>
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

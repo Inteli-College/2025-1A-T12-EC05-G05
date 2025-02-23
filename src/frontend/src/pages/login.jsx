@@ -3,55 +3,112 @@ import httpClient from "../httpClient";
 import "../styles/login.css";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  });
+  const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
-  const logInUser = async () => {
-    console.log(email, password);
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+    // Clear error when user starts typing
+    if (errors[id]) {
+      setErrors(prev => ({
+        ...prev,
+        [id]: ""
+      }));
+    }
+  };
 
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email";
+    }
+    
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const logInUser = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+
+    setIsLoading(true);
     try {
       await httpClient.post("http://localhost:5000/login", {
-        email,
-        password,
+        email: formData.email,
+        password: formData.password,
       });
-
       window.location.href = "/";
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        alert("Invalid credentials");
+      if (error.response?.status === 401) {
+        setErrors({ submit: "Invalid email or password" });
       } else {
-        console.error("An error occurred:", error);
-        alert("An unexpected error occurred. Please try again later.");
+        setErrors({ submit: "An unexpected error occurred. Please try again later." });
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="loginContainer">
-      <h1>Log Into Your Account</h1>
-      <form>
-        <div className="formGroup">
-          <label htmlFor="email">Email: </label>
-          <input
-            type="text"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="formGroup">
-          <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="button" onClick={logInUser}>
-          Login
-        </button>
-      </form>
+    <div className="login-container">
+      <div className="login-card">
+        <h1>Welcome Back</h1>
+        <p className="subtitle">Sign in to your account</p>
+        
+        {errors.submit && <div className="error-message">{errors.submit}</div>}
+        
+        <form onSubmit={logInUser} className="login-form">
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={errors.email ? "error" : ""}
+              placeholder="Enter your email"
+            />
+            {errors.email && <span className="error-text">{errors.email}</span>}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={formData.password}
+              onChange={handleChange}
+              className={errors.password ? "error" : ""}
+              placeholder="Enter your password"
+            />
+            {errors.password && <span className="error-text">{errors.password}</span>}
+          </div>
+
+          <button
+            type="submit"
+            className="submit-button"
+            disabled={isLoading}
+          >
+            {isLoading ? "Signing in..." : "Sign In"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
