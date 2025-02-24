@@ -3,11 +3,11 @@ name: Backend and Frontend CI
 on:
   push:
     branches:
-      - developer
+      - develop
       - main
   pull_request:
     branches:
-      - developer
+      - develop
       - main
 
 jobs:
