@@ -83,10 +83,10 @@ def collect_list(
         take_medicine(file_path, f'bin_{bin_num}')
 
 def main():
-    # available_ports = list_ports.comports()
-    # print(f'available ports: {[x.device for x in available_ports]} \n')
-    # port_input = input("Desired port number: ")
-    port = "/dev/ttyACM0"#available_ports[int(port_input)].device
+    available_ports = list_ports.comports()
+    print(f'available ports: {[x.device for x in available_ports]} \n')
+    port_input = input("Desired port number: ")
+    port = available_ports[int(port_input)].device
     spinner = yaspin(text=f"Connecting with port {port}...")
     spinner.start()
     dobot.connect(port)
