@@ -51,12 +51,12 @@ jobs:
           kill $SERVER_PID
 
       # Frontend steps (React)
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20.11.0'
-        cache: 'npm'
-        cache-dependency-path: src/frontend/package-lock.json
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.11.0'
+          cache: 'npm'
+          cache-dependency-path: src/frontend/package-lock.json
 
 
       - name: Install frontend dependencies
