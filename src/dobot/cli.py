@@ -4,6 +4,7 @@ import json
 from serial.tools import list_ports
 
 from typing_extensions import Annotated
+from typing_extensions import List
 from controller.dobotController import DobotController
 from controller.position import Position
 
@@ -74,15 +75,18 @@ def collect_bin(
 
 @cli.command()
 def collect_list(
-
+    file_path: Annotated[str, typer.Argument(help="Path to the file with positions")],
+    input_list: Annotated[List[str], typer.Argument(help="List of bins to collect")],
 ):
-    print("(:")
+    ordered_list = sorted(input_list)
+    for bin_num in ordered_list:
+        take_medicine(file_path, f'bin_{bin_num}')
 
 def main():
-    available_ports = list_ports.comports()
-    print(f'available ports: {[x.device for x in available_ports]} \n')
-    port_input = input("Desired port number: ")
-    port = available_ports[int(port_input)].device
+    # available_ports = list_ports.comports()
+    # print(f'available ports: {[x.device for x in available_ports]} \n')
+    # port_input = input("Desired port number: ")
+    port = "/dev/ttyACM0"#available_ports[int(port_input)].device
     spinner = yaspin(text=f"Connecting with port {port}...")
     spinner.start()
     dobot.connect(port)
