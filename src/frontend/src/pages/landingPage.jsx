@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import httpClient from "../httpClient";
-import "../styles/landingPage.css";
+import "../styles/LandingPage.css";
 
 const LandingPage = () => {
   const [user, setUser] = useState(null);
