@@ -31,7 +31,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Check backend server
-        working-directory: src/backend
+        working-directory: src/backend/app
         run: |
           # Inicia o servidor em segundo plano
           nohup python app.py &
