@@ -12,6 +12,8 @@ cli = typer.Typer()
 
 dobot = DobotController()
     
+file_path = "config.json"
+
 def check_suction(
     position: Annotated[Position, typer.Argument(help="Position data to check if suction should be enabled or disabled.")]
 ):
@@ -36,7 +38,6 @@ def execute_movement(
     spinner.stop()
 
 def take_medicine(
-    file_path: Annotated[str, typer.Argument(help="Path to the JSON file containing position data.")],
     bin: Annotated[str, typer.Argument(help="Name of the bin from which medicine should be taken.")]
 ):
     with open(file_path, "r") as file:
@@ -50,7 +51,6 @@ def take_medicine(
 
 @cli.command()
 def collect_bin(
-    file_path: Annotated[str, typer.Argument(help="Path to the file with positions")],
     bin_1: Annotated[int, typer.Argument(help="Quantity of medicine to collect from bin 1")] = 0,
     bin_2: Annotated[int, typer.Argument(help="Quantity of medicine to collect from bin 2")] = 0,
     bin_3: Annotated[int, typer.Argument(help="Quantity of medicine to collect from bin 3")] = 0,
@@ -67,20 +67,15 @@ def collect_bin(
     
     for bin_num in range(1, 6):
         for i in range(bin_counts[bin_num]):
-            print(f'pegando bin_{bin_num}\n')
-            take_medicine(file_path, f"bin_{bin_num}")
-            print(f'pegou bin_{bin_num}\n')
-    
-    
+            take_medicine(f"bin_{bin_num}")
 
 @cli.command()
 def collect_list(
-    file_path: Annotated[str, typer.Argument(help="Path to the file with positions")],
     input_list: Annotated[List[str], typer.Argument(help="List of bins to collect")],
 ):
     ordered_list = sorted(input_list)
     for bin_num in ordered_list:
-        take_medicine(file_path, f'bin_{bin_num}')
+        take_medicine(f'bin_{bin_num}')
 
 def main():
     available_ports = list_ports.comports()
@@ -90,6 +85,7 @@ def main():
     spinner = yaspin(text=f"Connecting with port {port}...")
     spinner.start()
     dobot.connect(port)
+    dobot.set_speed(150, 150)
     spinner.stop()
     cli()
 
