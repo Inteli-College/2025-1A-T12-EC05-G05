@@ -1,4 +1,3 @@
-// landing page for the application
 import React, { useState, useEffect } from "react";
 import httpClient from "../httpClient";
 import "../styles/landingPage.css";
