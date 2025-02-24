@@ -25,7 +25,7 @@ jobs:
           cache: 'pip'
 
       - name: Install backend dependencies
-        working-directory: src/backend
+        working-directory: src/backend/app
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
