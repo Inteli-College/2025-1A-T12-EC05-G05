@@ -33,7 +33,7 @@ jobs:
       - name: Check backend server
         working-directory: src/backend/app
         run: |
-          # Inicia o servidor em segundo plano
+          # Inicia o servidor
           nohup python app.py &
           SERVER_PID=$!
           # Aguarda 5 segundos para o servidor subir
