@@ -14,6 +14,12 @@ dobot = DobotController()
     
 file_path = "config.json"
 
+with open(file_path, "r") as file:
+        data = json.load(file)
+
+deliver_value = 1
+add_height = 0
+
 def check_suction(
     position: Annotated[Position, typer.Argument(help="Position data to check if suction should be enabled or disabled.")]
 ):
@@ -23,13 +29,15 @@ def check_suction(
         dobot.disable_tool(100)
     
 def execute_movement(
-    position: Annotated[Position, typer.Argument(help="Position data to determine and execute the appropriate movement.")]
-    
+    position: Annotated[Position, typer.Argument(help="Position data to determine and execute the appropriate movement.")],
+    add_height: Annotated[int, typer.Argument(help="Additional height to be added to Z if it is the last position of the delivery.")] = 0
 ):
     spinner = yaspin(text=f"Moving to {position}...")
     current_position = Position()
     current_position.load_from_dict(position)
 
+    current_position.z += add_height;
+    
     if position.get("move") == "move_l":
         dobot.move_l_to(current_position, wait=True)
     else:
@@ -37,17 +45,32 @@ def execute_movement(
         
     spinner.stop()
 
+def deliver(
+    unique: Annotated[bool, typer.Argument(help="is a unique deliver?")] = False
+):
+    global deliver_value
+    global add_height
+    
+    if deliver_value == 7:
+        deliver_value = 1;
+        add_height += 20;
+            
+    for index, position in enumerate(data[f"delivery_{deliver_value}"]):
+        check_suction(position)
+        
+        if index != 1:
+            execute_movement(position)
+        else:
+            execute_movement(position, add_height)
+    deliver_value += 1;
+
 def take_medicine(
     bin: Annotated[str, typer.Argument(help="Name of the bin from which medicine should be taken.")]
 ):
-    with open(file_path, "r") as file:
-        data = json.load(file)
     for position in data[bin]:
         check_suction(position)
         execute_movement(position)
-    for position in data["delivery"]:
-        check_suction(position)
-        execute_movement(position)
+    deliver()
 
 @cli.command()
 def collect_bin(
