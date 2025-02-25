@@ -16,7 +16,7 @@ sidebar_position: 1
 
   <sub>Figura - Persona Márcio</sub>
 
-  <img src="/img/persona_marcio.png" alt="Persona Márcio"></img>
+  <img src="../img/persona_marcio.png" alt="Persona Márcio"></img>
 
   <sup>Fonte: Material produzido pelos autores (2025).</sup>
 
@@ -32,7 +32,7 @@ sidebar_position: 1
 
   <sub>Figura X - Jornada do Usuário do Márcio </sub>
 
-  <img src="/img/jornada-1.png"/>
+  <img src="../img/jornada-1.png"/>
 
   <sup>Fonte: Material produzido pelos autores (2025).</sup>
 
