@@ -18,19 +18,14 @@ const config = {
   url: 'https://your-docusaurus-site.example.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/2025-1A-T12-EC05-G05/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'YYYYYY', // Usually your repo name.
+  organizationName: 'inteli',
+  projectName: 'Prescript', 
+  deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -88,11 +83,11 @@ const config = {
             position: 'left',
             label: 'Documentação',
           },
-          {
-            to: '/autores',
-            position: 'left',
-            label: 'Sobre os Autores'
-          },
+          // {
+          //   to: '/autores',
+          //   position: 'left',
+          //   label: 'Sobre os Autores'
+          // },
           {
             href: 'https://github.com/Inteli-College/2025-1A-T12-EC05-G05',
             label: 'GitHub',
@@ -108,7 +103,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/intro',
+                to: '/',
               },
             ],
           },
@@ -116,10 +111,10 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
+              // {
+              //   label: 'Blog',
+              //   to: '/blog',
+              // },
               {
                 label: 'GitHub',
                 href: 'https://github.com/Inteli-College/2025-1A-T12-EC05-G05',

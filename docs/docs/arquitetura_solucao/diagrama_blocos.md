@@ -21,7 +21,7 @@ sidebar_position: 1
 
   <sub>Figura 1 - Diagrama de Blocos </sub>
 
-  <img src="/img/diagrama_blocos.png"/>
+  <img src="../../../img/diagrama_blocos.png"/>
 
   <sup>Fonte: Material produzido pelos autores (2025).</sup>
 
