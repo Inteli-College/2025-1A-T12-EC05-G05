@@ -16,7 +16,7 @@ sidebar_position: 2
 
   <sub>Figura - Persona Elisabeth</sub>
 
-  <img src="../img/persona_elisabeth.png" alt="Persona Elisabeth"></img>
+  <img src="../../img/persona_elisabeth.png" alt="Persona Elisabeth"></img>
 
   <sup>Fonte: Material produzido pelos autores (2025).</sup>
 
@@ -32,7 +32,7 @@ sidebar_position: 2
 
   <sub>Figura X - Jornada do Usuário da Elisabeth </sub>
 
-  <img src="../img/jornada-2.png"/>
+  <img src="../../img/jornada-2.png"/>
 
   <sup>Fonte: Material produzido pelos autores (2025).</sup>
 
