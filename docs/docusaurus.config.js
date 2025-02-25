@@ -18,7 +18,7 @@ const config = {
   url: 'https://your-docusaurus-site.example.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/prescript-documentation/',
+  baseUrl: '/2025-1A-T12-EC05-G05/',
 
   organizationName: 'inteli',
   projectName: 'Prescript', 
@@ -83,11 +83,11 @@ const config = {
             position: 'left',
             label: 'Documentação',
           },
-          {
-            to: '/autores',
-            position: 'left',
-            label: 'Sobre os Autores'
-          },
+          // {
+          //   to: '/autores',
+          //   position: 'left',
+          //   label: 'Sobre os Autores'
+          // },
           {
             href: 'https://github.com/Inteli-College/2025-1A-T12-EC05-G05',
             label: 'GitHub',
@@ -103,7 +103,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/intro',
+                to: '/',
               },
             ],
           },
@@ -111,10 +111,10 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
+              // {
+              //   label: 'Blog',
+              //   to: '/blog',
+              // },
               {
                 label: 'GitHub',
                 href: 'https://github.com/Inteli-College/2025-1A-T12-EC05-G05',
