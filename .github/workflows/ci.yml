@@ -1,0 +1,68 @@
+name: Backend and Frontend CI
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    env:
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Backend steps (Python)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install backend dependencies
+        working-directory: src/backend/app
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Check backend server
+        working-directory: src/backend/app
+        run: |
+          # Inicia o servidor em segundo plano
+          nohup python app.py &
+          SERVER_PID=$!
+          # Aguarda 5 segundos para o servidor subir
+          sleep 5
+          # Obtém o código de status da rota /@me
+          status_code=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:5000/@me)
+          echo "Status code: $status_code"
+          # Aceita 401 como resposta válida (pois indica que o servidor está funcionando sem usuário logado)
+          if [ "$status_code" -ne 401 ]; then
+            kill $SERVER_PID
+            exit 1
+          fi
+          kill $SERVER_PID
+
+      # Frontend steps (React)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.11.0'
+          cache: 'npm'
+          cache-dependency-path: src/frontend/package-lock.json
+
+
+      - name: Install frontend dependencies
+        working-directory: src/frontend
+        run: npm install
+
+      - name: Build Frontend
+        working-directory: src/frontend
+        run: npm run build
