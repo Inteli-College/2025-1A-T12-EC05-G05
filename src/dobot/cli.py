@@ -36,7 +36,7 @@ def execute_movement(
     current_position = Position()
     current_position.load_from_dict(position)
 
-    current_position.z += add_height;
+    current_position.z += add_height
     
     if position.get("move") == "move_l":
         dobot.move_l_to(current_position, wait=True)
@@ -52,8 +52,8 @@ def deliver(
     global add_height
     
     if deliver_value == 7:
-        deliver_value = 1;
-        add_height += 20;
+        deliver_value = 1
+        add_height += 20
             
     for index, position in enumerate(data[f"delivery_{deliver_value}"]):
         check_suction(position)
@@ -62,7 +62,7 @@ def deliver(
             execute_movement(position)
         else:
             execute_movement(position, add_height)
-    deliver_value += 1;
+    deliver_value += 1
 
 def take_medicine(
     bin: Annotated[str, typer.Argument(help="Name of the bin from which medicine should be taken.")]
