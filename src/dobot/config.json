@@ -10,15 +10,28 @@
             "j3": 41,
             "j4": 0,
             "grip": false,
-            "suction": true,
+            "suction": false,
             "move": "move_l"
         }
     ],
-    "bin_1":[
+    "bin_1": [
         {
             "x": 260,
             "y": 162,
             "z": 150,
+            "r": 32,
+            "j1": 32,
+            "j2": 42,
+            "j3": 41,
+            "j4": 0,
+            "grip": false,
+            "suction": false,
+            "move": "move_j"
+        },
+        {
+            "x": 260,
+            "y": 162,
+            "z": 10,
             "r": 32,
             "j1": 32,
             "j2": 42,
@@ -31,19 +44,6 @@
         {
             "x": 260,
             "y": 162,
-            "z": 10,
-            "r": 32,
-            "j1": 32,
-            "j2": 42,
-            "j3": 41,
-            "j4": 0,
-            "grip": false,
-            "suction": true,
-            "move": "move_l"
-        },
-        {
-            "x": 260,
-            "y": 162,
             "z": 150,
             "r": 32,
             "j1": 32,
@@ -55,12 +55,24 @@
             "move": "move_l"
         }
     ],
-
-    "bin_2":[
+    "bin_2": [
         {
             "x": 256,
             "y": 81,
             "z": 150,
+            "r": 17,
+            "j1": 17,
+            "j2": 32,
+            "j3": 50,
+            "j4": 0,
+            "grip": false,
+            "suction": false,
+            "move": "move_j"
+        },
+        {
+            "x": 256,
+            "y": 81,
+            "z": 10,
             "r": 17,
             "j1": 17,
             "j2": 32,
@@ -73,19 +85,6 @@
         {
             "x": 256,
             "y": 81,
-            "z": 10,
-            "r": 17,
-            "j1": 17,
-            "j2": 32,
-            "j3": 50,
-            "j4": 0,
-            "grip": false,
-            "suction": true,
-            "move": "move_l"
-        },
-        {
-            "x": 256,
-            "y": 81,
             "z": 150,
             "r": 17,
             "j1": 17,
@@ -97,8 +96,7 @@
             "move": "move_l"
         }
     ],
-    
-    "bin_3":[
+    "bin_3": [
         {
             "x": 260,
             "y": 4,
@@ -110,7 +108,7 @@
             "j4": 0,
             "grip": false,
             "suction": false,
-            "move": "move_l"
+            "move": "move_j"
         },
         {
             "x": 260,
@@ -120,145 +118,142 @@
             "j1": 1,
             "j2": 30,
             "j3": 52,
-            "j4": 0,
-            "grip": false,
-            "suction": false,
-            "move": "move_l"
-        },
-        {
-            "x": 260,
-            "y": 4,
-            "z": 150,
-            "r": 1,
-            "j1": 1,
-            "j2": 30,
-            "j3": 52,
-            "j4": 0,
-            "grip": false,
-            "suction": false,
-            "move": "move_l"
-        }
-    ],
-    
-    "bin_4":[
-        {
-            "x": 257,
-            "y": -71,
-            "z": 150,
-            "r": -15,
-            "j1": -15,
-            "j2": 32,
-            "j3": 51,
-            "j4": 0,
-            "grip": false,
-            "suction": false,
-            "move": "move_l"
-        },
-        {
-            "x": 257,
-            "y": -71,
-            "z": 10,
-            "r": -15,
-            "j1": -15,
-            "j2": 32,
-            "j3": 51,
-            "j4": 0,
-            "grip": false,
-            "suction": false,
-            "move": "move_l"
-        },
-        {
-            "x": 257,
-            "y": -71,
-            "z": 150,
-            "r": -15,
-            "j1": -15,
-            "j2": 32,
-            "j3": 51,
-            "j4": 0,
-            "grip": false,
-            "suction": false,
-            "move": "move_l"
-        }
-    ],
-    
-    "bin_5":[
-        {
-            "x": 260,
-            "y": -149,
-            "z": 150,
-            "r": -29,
-            "j1": -29,
-            "j2": 40,
-            "j3": 43,
-            "j4": 0,
-            "grip": false,
-            "suction": false,
-            "move": "move_l"
-        },
-        {
-            "x": 260,
-            "y": -149,
-            "z": 10,
-            "r": -29,
-            "j1": -29,
-            "j2": 40,
-            "j3": 43,
-            "j4": 0,
-            "grip": false,
-            "suction": false,
-            "move": "move_l"
-        },
-        {
-            "x": 260,
-            "y": -149,
-            "z": 150,
-            "r": -29,
-            "j1": -29,
-            "j2": 40,
-            "j3": 43,
-            "j4": 0,
-            "grip": false,
-            "suction": false,
-            "move": "move_l"
-        }
-    ],
-    
-    "delivery":[
-        {
-            "x": 6,
-            "y": 359,
-            "z": 80,
-            "r": 88,
-            "j1": 88,
-            "j2": 51,
-            "j3": 5,
             "j4": 0,
             "grip": false,
             "suction": true,
-            "move": "move_j" 
+            "move": "move_l"
         },
         {
-            "x": -6,
+            "x": 260,
+            "y": 4,
+            "z": 150,
+            "r": 1,
+            "j1": 1,
+            "j2": 30,
+            "j3": 52,
+            "j4": 0,
+            "grip": false,
+            "suction": true,
+            "move": "move_l"
+        }
+    ],
+    "bin_4": [
+        {
+            "x": 257,
+            "y": -71,
+            "z": 150,
+            "r": -15,
+            "j1": -15,
+            "j2": 32,
+            "j3": 51,
+            "j4": 0,
+            "grip": false,
+            "suction": false,
+            "move": "move_j"
+        },
+        {
+            "x": 257,
+            "y": -71,
+            "z": 10,
+            "r": -15,
+            "j1": -15,
+            "j2": 32,
+            "j3": 51,
+            "j4": 0,
+            "grip": false,
+            "suction": true,
+            "move": "move_l"
+        },
+        {
+            "x": 257,
+            "y": -71,
+            "z": 150,
+            "r": -15,
+            "j1": -15,
+            "j2": 32,
+            "j3": 51,
+            "j4": 0,
+            "grip": false,
+            "suction": true,
+            "move": "move_l"
+        }
+    ],
+    "bin_5": [
+        {
+            "x": 261,
+            "y": -149,
+            "z": 150,
+            "r": -29,
+            "j1": -29,
+            "j2": 40,
+            "j3": 43,
+            "j4": 0,
+            "grip": false,
+            "suction": false,
+            "move": "move_j"
+        },
+        {
+            "x": 261,
+            "y": -149,
+            "z": 10,
+            "r": -29,
+            "j1": -29,
+            "j2": 40,
+            "j3": 43,
+            "j4": 0,
+            "grip": false,
+            "suction": true,
+            "move": "move_l"
+        },
+        {
+            "x": 261,
+            "y": -149,
+            "z": 150,
+            "r": -29,
+            "j1": -29,
+            "j2": 40,
+            "j3": 43,
+            "j4": 0,
+            "grip": false,
+            "suction": true,
+            "move": "move_l"
+        }
+    ],
+    "delivery": [
+        {
+            "x": -5,
             "y": 339,
-            "z": -40,
-            "r": 91,
-            "j1": 91,
+            "z": 150,
+            "r": 90,
+            "j1": 90,
             "j2": 65,
             "j3": 43,
             "j4": 0,
             "grip": false,
-            "suction": false,
+            "suction": true,
+            "move": "move_j"
+        },
+        {
+            "x": -5,
+            "y": 339,
+            "z": -35,
+            "r": 90,
+            "j1": 90,
+            "j2": 65,
+            "j3": 43,
+            "j4": 0,
+            "grip": false,
+            "suction": true,
             "move": "move_l"
         },
         {
-            "x": 6,
+            "x": -5,
             "y": 359,
-            "z": 80,
-            "r": 88,
-            "j1": 88,
-            "j2": 51,
-            "j3": 5,
+            "z": 150,
+            "r": 90,
+            "j1": 90,
+            "j2": 65,
+            "j3": 43,
             "j4": 0,
             "grip": false,
             "suction": false,
