@@ -45,13 +45,11 @@ def execute_movement(
         
     spinner.stop()
 
-def deliver(
-    unique: Annotated[bool, typer.Argument(help="is a unique deliver?")] = False
-):
+def deliver():
     global deliver_value
     global add_height
     
-    if deliver_value == 7:
+    if deliver_value > 6:
         deliver_value = 1
         add_height += 20
             
