@@ -48,7 +48,7 @@ Para visualizar **todas as telas da aplicação** e os **fluxos mapeados em deta
 <sub>Figura 1 - Tela de Login do Prescript</sub>
 </div>
 
-<img src="/img/login_wireframe.png"/>
+<img src="../img/login_wireframe.png"/>
 
 <div align ='center'>
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
@@ -65,7 +65,7 @@ Para visualizar **todas as telas da aplicação** e os **fluxos mapeados em deta
 <sub>Figura 2 - Tela Geral de Prescrições</sub>
 </div>
 
-<img src="/img/homepage_wireframe.png"/>
+<img src="../img/homepage_wireframe.png"/>
 
 <div align ='center'>
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
@@ -84,7 +84,7 @@ Para visualizar **todas as telas da aplicação** e os **fluxos mapeados em deta
 <sub>Figura 3 - Tela de Histórico do Wireframe</sub>
 </div>
 
-<img src="/img/historico_wireframe.png"/>
+<img src="../img/historico_wireframe.png"/>
 
 <div align ='center'>
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
@@ -100,7 +100,7 @@ Para visualizar **todas as telas da aplicação** e os **fluxos mapeados em deta
 <sub>Figura 4 - Card da Fita de Medicamentos</sub>
 </div>
 
-<img src="/img/card_fita_medicamentos.png"/>
+<img src="../img/card_fita_medicamentos.png"/>
 
 <div align ='center'>
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
@@ -126,7 +126,7 @@ Para visualizar **todas as telas da aplicação** e os **fluxos mapeados em deta
 <sub>Figura 5 - Fluxo de Login na Plataforma</sub>
 </div>
 
-<img src="/img/login_wireflow.png"/>
+<img src="../img/login_wireflow.png"/>
 
 <div align ='center'>
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
@@ -146,7 +146,7 @@ Para visualizar **todas as telas da aplicação** e os **fluxos mapeados em deta
 <sub>Figura 6 - Fluxo de Visualizar o Card da Fita na Plataforma</sub>
 </div>
 
-<img src="/img/card_wireflow.png"/>
+<img src="../img/card_wireflow.png"/>
 
 <div align ='center'>
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
@@ -167,11 +167,13 @@ Para visualizar **todas as telas da aplicação** e os **fluxos mapeados em deta
 <sub>Figura 7 - Fluxo de Colocar uma Fita em Progresso</sub>
 </div>
 
-<img src="/img/separacao_wireflow.png"/>
+<img src="../img/separacao_wireflow.png"/>
 
 <div align ='center'>
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
+
+&emsp;*Recomenda-se visualizar essa imagem através do [link da produção no Figma](https://www.figma.com/design/mTmSbriLSMBXScYLQt8FNS/Wireframe-Prescript?node-id=81-1874&t=ek58XkjD6Rbm9391-1), para conseguir observar os detalhes, por conta do dimensionamento da largura aqui no Docusaurus.*
 
 📌 **Passos do fluxo:**  
 1. Usuário acessa a **Tela Geral de Prescrições**.  
@@ -188,11 +190,13 @@ Para visualizar **todas as telas da aplicação** e os **fluxos mapeados em deta
 <sub>Figura 8 - Fluxo de Exportar Relatório das Fitas</sub>
 </div>
 
-<img src="/img/historico_wireflow.png"/>
+<img src="../img/historico_wireflow.png"/>
 
 <div align ='center'>
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
+
+&emsp;*Recomenda-se visualizar essa imagem através do [link da produção no Figma](https://www.figma.com/design/mTmSbriLSMBXScYLQt8FNS/Wireframe-Prescript?node-id=81-1874&t=ek58XkjD6Rbm9391-1), para conseguir observar os detalhes, por conta do dimensionamento da largura aqui no Docusaurus.*
 
 📌 **Passos do fluxo:**  
 1. Usuário acessa a **Tela de Histórico de Fitas**.  
@@ -209,7 +213,7 @@ Para visualizar **todas as telas da aplicação** e os **fluxos mapeados em deta
 <sub>Vídeo 1 - Prototipagem dos Principais Fluxos</sub>
 </div>
 
-<img src="/img/prototipagem_video.gif"/>
+<img src="../img/prototipagem_video.gif"/>
 
 <div align ='center'>
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
