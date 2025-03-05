@@ -34,14 +34,14 @@ Para executar a interface de linha de comando (CLI) de nossa aplicação, siga a
 
 
 
-### **Pré-requisitos 🔧**
+### Pré-requisitos 🔧
 
 - **Python:** Certifique-se de que o Python (versão 3.7 ou superior é recomendado) esteja instalado em sua máquina. Caso não esteja, acesse [python.org](https://www.python.org/downloads/).
 - **Terminal:** Utilize um terminal (Prompt de Comando ou PowerShell no Windows, Terminal no Linux/macOS) para executar os comandos a seguir.
 
 
 
-### **Passo 1: Navegue até o Diretório da CLI 📂**
+### Passo 1: Navegue até o Diretório da CLI 📂
 
 Abra o terminal e acesse a pasta `dobot` do repositório, onde se encontram o arquivo `cli.py` e o arquivo `requirements.txt`.
 
@@ -51,7 +51,7 @@ Utilize o seguinte comando para navegar até esse diretório:
 ```
 
 
-### **Passo 2: Crie e Ative o Ambiente Virtual 🛠️**
+### Passo 2: Crie e Ative o Ambiente Virtual 🛠️
 
 Crie um ambiente virtual para isolar as dependências do projeto com o comando:
 ```bash
@@ -72,7 +72,7 @@ Em seguida, ative o ambiente virtual:
 ```
 
 
-### **Passo 3: Instale as Dependências do Projeto 📦**
+### Passo 3: Instale as Dependências do Projeto 📦
 
 Com o ambiente virtual ativado, instale todas as bibliotecas necessárias executando:
 ```bash
@@ -82,7 +82,7 @@ Este comando fará o download e a instalação de todas as dependências listada
 
 
 
-### **Passo 4: Execute a CLI e Confira as Funcionalidades 🔄**
+### Passo 4: Execute a CLI e Confira as Funcionalidades 🔄
 
 Após configurar o ambiente, execute o comando abaixo para visualizar as opções disponíveis na CLI:
 ```bash
@@ -98,12 +98,12 @@ Caso encontre algum problema, verifique se todas as dependências foram instalad
 
 Para executar o front-end de nossa aplicação localmente, siga as instruções detalhadas a seguir. Este procedimento permitirá que você configure e inicie o ambiente de desenvolvimento de forma adequada, garantindo que todas as dependências sejam corretamente instaladas e que a aplicação seja executada sem contratempos.
 
-### **Pré-requisitos 🔧**
+### Pré-requisitos 🔧
 
 - **Node.js e npm:** Certifique-se de que o Node.js (versão 14 ou superior é recomendado) e o npm estão instalados em sua máquina, caso contrário instale [nesse link](https://nodejs.org/en).
 - **Editor de Código:** Recomenda-se utilizar um editor de código, como o [Visual Studio Code](https://code.visualstudio.com/download), que facilita a edição, depuração e manutenção do código.
 
-### **Passo 1: Navegue até o Diretório do Front-end 📂**
+### Passo 1: Navegue até o Diretório do Front-end 📂
 
 Abra o terminal e acesse o diretório que contém o arquivo `package.json` do front-end.
 
@@ -112,7 +112,7 @@ Utilize o seguinte comando para navegar até esse diretório:
     cd 2025-1A-T12-EC05-G05/src/frontend/src
 ```
 
-### **Passo 2: Instale as Dependências do Projeto 📦**
+### Passo 2: Instale as Dependências do Projeto 📦
 
 Com o terminal posicionado no diretório correto, execute:
 ```bash
@@ -120,7 +120,7 @@ Com o terminal posicionado no diretório correto, execute:
 ```
 Este comando fará o download e a instalação de todas as dependências listadas no arquivo `package.json`, as quais são indispensáveis para o funcionamento correto da aplicação.
 
-### **Passo 3: Inicie o Servidor de Desenvolvimento 🔄**
+### Passo 3: Inicie o Servidor de Desenvolvimento 🔄
 
 Após a instalação das dependências, inicie o servidor de desenvolvimento com o comando:
 ```bash
@@ -128,7 +128,7 @@ Após a instalação das dependências, inicie o servidor de desenvolvimento com
 ```
 Este comando compilará o projeto e iniciará um servidor de desenvolvimento. Normalmente, a aplicação ficará disponível na URL `http://localhost:3000` (ou em outra porta configurada no projeto).
 
-### **Passo 4: Acesse a Aplicação no Navegador 🌐**
+### Passo 4: Acesse a Aplicação no Navegador 🌐
 
 Abra o seu navegador de preferência e acesse:
 
@@ -145,14 +145,14 @@ Caso haja qualquer problema durante o processo, verifique se todas as dependênc
 Para executar o back-end de nossa aplicação localmente, siga as instruções detalhadas a seguir. Este procedimento garantirá que o ambiente esteja devidamente configurado, que todas as dependências sejam instaladas e que as variáveis de ambiente essenciais estejam definidas, assegurando o funcionamento correto do sistema.
 
 
-### **Pré-requisitos 📋**
+### Pré-requisitos 📋
 
 - **Python:** Certifique-se de que o Python (versão 3.7 ou superior é recomendado) esteja instalado em sua máquina.
 - **Redis:** Baixe e instale o Redis. Para instruções de instalação, consulte [redis.io/download](https://redis.io/download). Certifique-se de que o Redis esteja em execução na URL padrão `redis://127.0.0.1:6379`.
 - **Virtual Environment:** É recomendável utilizar um ambiente virtual para isolar as dependências do projeto.
 
 
-### **Passo 1: Navegue até o Diretório do Back-end 📂**
+### Passo 1: Navegue até o Diretório do Back-end 📂
 
 Abra o terminal (ou prompt de comando) e acesse o diretório que contém o back-end da aplicação.
 
@@ -161,7 +161,7 @@ Utilize o seguinte comando para navegar até esse diretório:
     cd C:\Users\gabri\Documents\GitHub\2025-1A-T12-EC05-G05\src\backend
 ```
 
-### **Passo 2: Crie e Ative o Ambiente Virtual 🛠️**
+### Passo 2: Crie e Ative o Ambiente Virtual 🛠️
 
 Crie um ambiente virtual no diretório atual executando:
 ```bash
@@ -178,14 +178,14 @@ Em seguida, ative o ambiente virtual:
       source venv/bin/activate
 ```
 
-### **Passo 3: Instale as Dependências do Projeto 📦**
+### Passo 3: Instale as Dependências do Projeto 📦
 
 Com o ambiente virtual ativado, instale as dependências listadas no arquivo `requirements.txt` (que se encontra no mesmo nível da pasta `app`) com o seguinte comando:
 ```bash
     pip install -r requirements.txt
 ```
 
-### **Passo 4: Configure as Variáveis de Ambiente 🔑**
+### Passo 4: Configure as Variáveis de Ambiente 🔑
 
 É necessário definir uma variável de ambiente `SECRET_KEY` para proteger a aplicação. Crie um arquivo chamado **.env** no diretório do back-end (ao lado do arquivo `requirements.txt`) com o seguinte conteúdo:
 
@@ -200,7 +200,7 @@ Com o ambiente virtual ativado, instale as dependências listadas no arquivo `re
 O arquivo **.env** será carregado pela aplicação (através do `load_dotenv`) para configurar a variável `SECRET_KEY` e outras configurações necessárias.
 
 
-### **Passo 5: Execute a Aplicação Back-end 🚀**
+### Passo 5: Execute a Aplicação Back-end 🚀
 
 Após concluir a configuração, navegue até a pasta **app** e inicie a aplicação.
 ```bash
