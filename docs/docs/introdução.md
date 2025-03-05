@@ -1,3 +1,8 @@
+---
+title: Introdução
+sidebar_label: Introdução
+sidebar_position: 1
+---
 # 🏥 Introdução
 
 &emsp;O Hospital de Clínicas da Unicamp, uma referência em saúde pública no estado de São Paulo, enfrenta um desafio crítico no setor farmacêutico: a separação manual de medicamentos para pacientes internados. Esse processo, conhecido como montagem da “Fita de medicamentos”, é essencial para garantir que cada paciente receba os remédios corretos no momento adequado. No entanto, a alta demanda e a complexidade desse procedimento resulta em riscos como erros de separação, duplicidade e desperdício, além de consumir um tempo valioso da equipe hospitalar.  
