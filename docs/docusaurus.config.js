@@ -83,11 +83,12 @@ const config = {
             position: 'left',
             label: 'Documentação',
           },
-          // {
-          //   to: '/autores',
-          //   position: 'left',
-          //   label: 'Sobre os Autores'
-          // },
+          {
+            type: 'doc',
+            docId: 'Inicialização',
+            position: 'left',
+            label: 'Como Executar a Aplicação'
+          },
           {
             href: 'https://github.com/Inteli-College/2025-1A-T12-EC05-G05',
             label: 'GitHub',
@@ -130,6 +131,5 @@ const config = {
       },
     }),
 };
-
 
 export default config;
