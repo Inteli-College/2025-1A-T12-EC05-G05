@@ -167,7 +167,7 @@ Para visualizar **todas as telas da aplicação** e os **fluxos mapeados em deta
 <sub>Figura 7 - Fluxo de Colocar uma Fita em Progresso</sub>
 </div>
 
-<img src="/img/historico_wireflow.png"/>
+<img src="/img/separacao_wireflow.png"/>
 
 <div align ='center'>
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
