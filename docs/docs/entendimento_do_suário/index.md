@@ -1,7 +1,7 @@
 ---
 title: "🔎 Entendimento do Usuário"
 sidebar_label: "Entendimento do Usuário"
-sidebar_position: 3
+sidebar_position: 5
 ---
 
 &emsp;No desenvolvimento de qualquer projeto, compreender o usuário é essencial para garantir que a solução atenda às suas necessidades. Esse entendimento permite identificar suas dores, expectativas e rotina, assegurando que a solução seja útil e se integre ao seu dia a dia. Para isso, foram desenvolvidas personas e a jornada do usuário, permitindo uma visão mais clara de quem usará o sistema.
@@ -14,7 +14,7 @@ sidebar_position: 3
 
 &emsp;Para garantir um alinhamento metodológico, realizou-se uma reunião inaugural de *kickoff*, ocasião em que foram promovidas interações diretas com os *stakeholders*-chave do projeto. Nesse encontro, os representantes da entidade partilharam informações, detalhando os desafios operacionais enfrentados e validando premissas anteriormente levantadas. O contato com os stakeholders permitiu à equipe aprimorar a compreensão sobre o domínio do problema e consolidar um alinhamento estratégico essencial para a condução das fases subsequentes.
 
-&emsp;A partir desse dessas informações, a equipe conduziu uma análise aprofundada do ambiente organizacional, realizando pesquisas complementares que subsidiaram a construção de personas alinhadas às particularidades dos usuários finais. Em especial, foram levantadas informações acerca do perfil de profissionais da área farmacêutica que, atualmente, desempenham atividades operacionais associadas à triagem, separação e dispensação de medicamentos, funções que, em um contexto de inovação e automação, passarão a ser desempenhadas por sistemas robóticos avançados.
+&emsp;A partir dessas informações, a equipe conduziu uma análise aprofundada do ambiente organizacional, realizando pesquisas complementares que subsidiaram a construção de personas alinhadas às particularidades dos usuários finais. Em especial, foram levantadas informações acerca do perfil de profissionais da área farmacêutica que, atualmente, desempenham atividades operacionais associadas à triagem, separação e dispensação de medicamentos, funções que, em um contexto de inovação e automação, passarão a ser desempenhadas por sistemas robóticos avançados.
 
 ## ✅ Conclusão
 

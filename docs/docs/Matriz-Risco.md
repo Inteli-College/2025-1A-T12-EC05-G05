@@ -1,6 +1,6 @@
 ---
 title: Matriz de risco
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 # ⚠️ Matriz de risco 

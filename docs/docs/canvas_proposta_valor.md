@@ -1,7 +1,7 @@
 ---
 title: "💡 Canvas Proposta de Valor"
 sidebar_label: "Canvas Proposta de Valor"
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 
@@ -26,7 +26,7 @@ sidebar_position: 3
 <sub>Figura 1 - Canvas Proposta de Valor</sub>
 </div>
 
-<img src="/img/canvas_proposta_valor.png"/>
+<img src="../img/canvas_proposta_valor.png"/>
 
 <div align ='center'>
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
