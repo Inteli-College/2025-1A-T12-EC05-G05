@@ -6,7 +6,6 @@ sidebar_position: 6
 
 # 👨‍⚕️ User flow Farmacêutico
 
-
 <div align="center">
 
   <sub>Figura X - User flow farmacêutico </sub>
@@ -27,7 +26,7 @@ sidebar_position: 6
 2. **Fitas em produção**;
 3. **Fitas a serem produzidas**.
 
-&emsp;Essa página visa permitir ao farmacêutico um melhor controle de quais medicamentos serão necessários para a montagem das fitas,e também em relação a quantidade de fitas produzidas. Essa visualização permitirá que ele possa ter uma melhor noção do que entra e sai da farmárcia, podendo ser utilizado para checar disponibilidade de medicamentos com o sistema de controle de estoque.
+&emsp;Nessa página, ele terá o opção de selecionar quais fitas serão produzidas naquele momento, então se houverem 15 fitas aprovadas ele pode escolher, se necessário, 10 que serão produzidas a primeiro momento. Essa função permite que o farmacêutico possua um melhor controle da produção das fitas, o que é útil para situações adversas que podem ocorrer na farmácia.
 
 &emsp;Na página do histórico, ele pode acessá-las para checar quais medicamentos foram enviados ou devolvidos de cada paciente, isso possibilitará um melhor controle da rastreabilidade dos insumos. Além do mais, ele pode exportar o histórico de fitas como um arquivo csv caso seja necessário.
 
