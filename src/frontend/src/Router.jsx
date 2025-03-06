@@ -11,11 +11,12 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+
 
         
         {/* Rotas protegidas */}
         <Route element={<PrivateRoute />}>
-          <Route path="/register" element={<RegisterPage />} />
         </Route>
 
         {/* Rota para não encontrado */}
