@@ -26,7 +26,7 @@ sidebar_position: 6
 2. **Fitas em produção**;
 3. **Fitas a serem produzidas**.
 
-&emsp;Nessa página, ele terá o opção de selecionar quais fitas serão produzidas naquele momento, então se houverem 15 fitas aprovadas ele pode escolher, se necessário, 10 que serão produzidas a primeiro momento. Essa função permite que o farmacêutico possua um melhor controle da produção das fitas, o que é útil para situações adversas que podem ocorrer na farmácia.
+&emsp;Também na tela principa, ele terá o opção de selecionar quais fitas serão produzidas naquele momento, então se houverem 15 fitas aprovadas ele pode escolher, se necessário, 10 que serão produzidas a primeiro momento. Essa função permite que o farmacêutico possua um melhor controle da produção das fitas, o que é útil para situações adversas que podem ocorrer na farmácia.
 
 &emsp;Na página do histórico, ele pode acessá-las para checar quais medicamentos foram enviados ou devolvidos de cada paciente, isso possibilitará um melhor controle da rastreabilidade dos insumos. Além do mais, ele pode exportar o histórico de fitas como um arquivo csv caso seja necessário.
 
