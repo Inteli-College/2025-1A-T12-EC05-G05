@@ -19,8 +19,8 @@ class authService:
 
 
     def register_user(self, req):
-        email = req.json["email"]
-        password = req.json["password"]
+        email = req["email"]
+        password = req["password"]
 
         user_exists = User.query.filter_by(email=email).first() is not None
 
@@ -58,6 +58,6 @@ class authService:
             "email": user.email
         })
 
-    def logout_user():
+    def logout_user(self):
         session.pop("user_id")
         return "200"

@@ -9,7 +9,7 @@ const PrivateRoute = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        await httpClient.get("http://localhost:5000/@me");
+        await httpClient.get("http://localhost:5000/auth/@me");
         setIsAuthenticated(true);
       } catch (error) {
         setIsAuthenticated(false);
