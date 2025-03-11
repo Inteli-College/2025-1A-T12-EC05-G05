@@ -5,7 +5,7 @@ from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from config import ApplicationConfig
 
-from controllers.login_controller import auth_blueprint
+import controllers.login_controller as auth_blueprint
 
 app = Flask(__name__)
 app.config.from_object(ApplicationConfig)
@@ -16,7 +16,7 @@ server_session = Session(app)
 
 db = SQLAlchemy(app)
 
-app.register_blueprint(auth_blueprint, url_prefix="/auth")
+app.register_blueprint(auth_blueprint.auth_blueprint, url_prefix="/auth")
 
 with app.app_context():
     db.create_all()

@@ -1,11 +1,11 @@
-from flask import request, jsonify, session
+from flask import jsonify, session
 from flask_bcrypt import Bcrypt
 from models import db, User
 
 bcrypt = Bcrypt()
 
 class authService:
-    def get_current_user():
+    def get_current_user(self):
         user_id = session.get("user_id")
 
         if not user_id:
@@ -18,9 +18,9 @@ class authService:
         }) 
 
 
-    def register_user():
-        email = request.json["email"]
-        password = request.json["password"]
+    def register_user(self, req):
+        email = req.json["email"]
+        password = req.json["password"]
 
         user_exists = User.query.filter_by(email=email).first() is not None
 
@@ -39,9 +39,9 @@ class authService:
             "email": new_user.email
         })
 
-    def login_user():
-        email = request.json["email"]
-        password = request.json["password"]
+    def login_user(self, req):
+        email = req["email"]
+        password = req["password"]
 
         user = User.query.filter_by(email=email).first()
 

@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from services.login_service import authService
 
 auth_blueprint = Blueprint("auth", __name__)
@@ -10,12 +10,12 @@ def me():
 
 @auth_blueprint.route("/register", methods=["POST"])
 def register():
-    return authUser.register_user()
+    return authUser.register_user(request.get_json())
 
 @auth_blueprint.route("/login", methods=["POST"])
 def login():
-    return authUser.login_user()
+    return authUser.login_user(request.get_json())
 
 @auth_blueprint.route("/logout", methods=["POST"])
 def logout():
-    return authUser.logout_user()
+    return authUser.logout_user(request.get_json())
