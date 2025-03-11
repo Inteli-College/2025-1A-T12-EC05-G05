@@ -4,6 +4,7 @@ import LoginPage from "./pages/login.jsx";
 import RegisterPage from "./pages/registerPage.jsx";
 import NotFound from "./pages/notFound.jsx";
 import PrivateRoute from "./components/privateRoute.jsx";
+import FitaMedicamentos from "./pages/fitaMedicamentos.jsx";
 
 const Router = () => {
   return (
@@ -11,7 +12,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
-
+        <Route path="/tela-medicamentos" element={<FitaMedicamentos />} />
         
         {/* Rotas protegidas */}
         <Route element={<PrivateRoute />}>
