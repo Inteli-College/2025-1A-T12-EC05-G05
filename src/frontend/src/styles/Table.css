@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-.table{
+.table {
     display: flex;
     flex-direction: column;
     background-color: #F0F0F0;
@@ -12,48 +12,105 @@
 .title {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: #5CE1E6;
     border-radius: 10px 10px 0 0;
-    padding: 0 15px;
+    padding: 10px 15px;
 }
 
-img {
-    scale: 60%;
+.title-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.title h1{
+.title h1 {
     font-size: 16px;
     margin: 0;
     font-weight: 400;
 }
 
-.itens{
+.title img {
+    width: 16px;
+    height: 16px;
+}
+
+.select-all {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.itens {
     padding: 0 14px 12px 14px;
 }
 
 .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-top: 10px;
+    padding: 10px 0;
+}
+
+.item-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .item h2 {
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
-    letter-spacing: 0.5;
+    letter-spacing: 0.5px;
     margin: 0;
 }
 
 .item p {
     font-size: 12px;
     line-height: 16px;
-    letter-spacing: 0.25;
+    letter-spacing: 0.25px;
     color: #49454F;
     margin: 0;
 }
 
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #49454F;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    background-color: white;
+    position: relative;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #5CE1E6;
+    border: 5px solid white;
+    box-shadow: 0 0 0 2px #5CE1E6;
+}
 
 hr {
     width: 98%;
-    color: #CAC4D0;
+    border: none;
+    height: 1px;
+    background-color: #CAC4D0;
     margin-top: 8px;
+}
+.status-tag {
+    background-color: #49454F;
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 500;
 }
