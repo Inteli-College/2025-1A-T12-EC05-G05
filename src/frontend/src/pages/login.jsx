@@ -39,7 +39,7 @@ export default function LoginPage() {
       window.location.href = "/";
     } catch (error) {
       if (error.response?.status === 401) setErrors({ submit: "Email ou senha incorretos" });
-      else setErrors({ submit: "An unexpected error occurred. Please try again later." });
+      else setErrors({ submit: "Ocorreu um erro, tente novamente mais tarde." });
     } finally {
       setIsLoading(false);
     }

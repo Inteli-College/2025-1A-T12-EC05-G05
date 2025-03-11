@@ -21,7 +21,6 @@ html, body {
 #login-card {
   position: relative;
   background: #3737435e;
-  border: 1px solid #373643;
   padding: 2.5rem;
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -115,7 +114,6 @@ html, body {
 
 #input-wrapper input:focus {
   outline: none;
-  border-color: #4299e1;
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
 
