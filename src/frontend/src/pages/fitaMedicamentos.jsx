@@ -1,6 +1,6 @@
 import React from "react";
 import Table from "../components/Table";
-import Header from "../components/Header"; // Agora só usamos o Header
+import PageHeader from "../components/PageHeader";
 import "../styles/fitaMedicamentos.css";
 
 const dataAFazer = [
@@ -24,7 +24,7 @@ const dataProntas = [
 export default function FitaMedicamentos() {
     return (
         <>  
-            <Header title="Fita de Medicamentos" />
+            <PageHeader title="Fita de Medicamentos" />
             <div className="conteudo">
                 <Table title="A fazer" data={dataAFazer} maxItems={2} />
                 <Table title="Em progresso" data={dataEmProgresso} maxItems={1} />

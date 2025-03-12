@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "../styles/Header.css";
+import "../styles/PageHeader.css";
 import lupa from "../assets/icones/lupa.svg";
 
-export default function Header({ title }) {
+export default function PageHeader({ title }) {
     const [query, setQuery] = useState("");
 
     const handleChange = (event) => {
