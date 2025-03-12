@@ -1,6 +1,8 @@
 // LoginPage.jsx
 import React, { useState } from "react";
 import Table from "../components/Table";
+import Search from "../components/Search";
+import "../styles/fitaMedicamentos.css";
 
 const dataAFazer = [
     { nome: "Fita 5", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
@@ -23,10 +25,16 @@ const dataProntas = [
 
 export default function FitaMedicamentos() {
     return (
-        <>
+        <>  
+            <div className="header">
+            <h1>Fita de Medicamentos</h1>
+            <Search></Search>
+            </div>
+            <div className="conteudo" >
             <Table title="A fazer" data={dataAFazer} maxItems={2} />
             <Table title="Em progresso" data={dataEmProgresso} maxItems={1} />
             <Table title="Prontas" data={dataProntas} maxItems={2} />
+            </div>
         </>
 
     )
