@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-.table {
+.content {
     display: flex;
     flex-direction: column;
     background-color: #F0F0F0;
@@ -85,7 +85,7 @@ input[type="checkbox"] {
     appearance: none;
     width: 16px;
     height: 16px;
-    border: 2px solid #49454F;
+    border: 1.5px solid #49454F;
     border-radius: 50%;
     cursor: pointer;
     transition: 0.2s ease-in-out;
@@ -93,10 +93,16 @@ input[type="checkbox"] {
     position: relative;
 }
 
-input[type="checkbox"]:checked {
+.checkbox-container input[type="checkbox"]:checked {
     background-color: #5CE1E6;
-    border: 5px solid white;
+    border: 3px solid white;
     box-shadow: 0 0 0 2px #5CE1E6;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #034078;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px #034078;
 }
 
 hr {
@@ -113,4 +119,44 @@ hr {
     padding: 4px 8px;
     border-radius: 12px;
     font-weight: 500;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all 0.3s ease-in-out;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    background-color: #F0F0F0;
+    border-radius: 10px;
+    width: 80vw;
+    font-family: "Roboto", sans-serif;
+    transition: padding-bottom 0.3s ease-in-out;
+}
+
+.colocar-em-producao {
+    background-color: #373643; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: flex-end;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(10px);
+    height: 0;
+    overflow: hidden; 
+}
+
+.colocar-em-producao.show {
+    opacity: 1;
+    transform: translateY(0);
+    height: auto;
+    margin-top: 15px;
 }
