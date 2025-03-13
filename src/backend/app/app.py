@@ -76,5 +76,11 @@ def logout_user():
     session.pop("user_id")
     return "200"
 
+@app.route("/print-response", methods=["POST"])
+def print_response():
+    data = request.get_json()
+    print("Resposta obtida:", data)
+    return jsonify({"message": "Dados recebidos e impressos no console"}), 200
+
 if __name__ == "__main__":
     app.run(debug=True)
