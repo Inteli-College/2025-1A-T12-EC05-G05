@@ -58,6 +58,11 @@ jobs:
           cache: 'npm'
           cache-dependency-path: src/frontend/package-lock.json
 
+      - name: Listar arquivos do diretório components
+        working-directory: src/frontend/src/components
+        run: ls -la
+
+
       - name: Limpar cache e remover dependências antigas
         working-directory: src/frontend
         run:
