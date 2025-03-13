@@ -5,7 +5,6 @@ import LoginPage from "./pages/login.jsx";
 import RegisterPage from "./pages/registerPage.jsx";
 import NotFound from "./pages/notFound.jsx";
 import PrivateRoute from "./components/privateRoute.jsx";
-import Layout from "./Layout.jsx";
 
 const Router = () => {
   return (
@@ -13,6 +12,15 @@ const Router = () => {
       <Routes>
         {/* Rota de login, sem sidebar */}
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/tela-medicamentos" element={<FitaMedicamentos />} />
+        
+        {/* Rotas protegidas */}
+        <Route element={<PrivateRoute />}>
+          <Route path="/register" element={<RegisterPage />} />
+        </Route>
+
+        {/* Rota para não encontrado */}
+        <Route path="*" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
         
         {/* Rotas que terão o layout com sidebar */}

@@ -1,0 +1,20 @@
+/* login.css */
+html {
+    height: 100%;
+    margin: 0;
+    padding: 20px 0;
+    background-image: url(../assets/fundo.svg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+.conteudo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    margin: 15px 0 30px 0;
+}
