@@ -1,13 +1,23 @@
+## Descrição
+<!-- Explique brevemente as alterações realizadas e o motivo delas. -->
 
-### What is this PR doing?
+## Como testar?
+<!-- Explique como podemos testar as alterações, incluindo passos para reproduzir e verificar as mudanças. -->
 
-Write here!!!
 
----
+## Tipo de alteração
+<!-- Marque com um X as opções que se aplicam -->
+- [ ] Correção de bug
+- [ ] Nova funcionalidade
+- [ ] Atualização de documentação
+- [ ] Refatoração de código
+- [ ] Novo componente
+- [ ] Nova tela
+- [ ] Estilização de componente/página
+- [ ] Outro (escrever)
 
-- [ ] Was testing performed on your machine?
-- [ ] Are you confident about this PR?
+## Checklist
+<!-- Marque com um x quando o item estiver concluído -->
+- [ ] Realizei testes locais e estão funcionando conforme o esperado.
+- [ ] ***Este pull request está direcionado para a branch correta?***
 
-## If any of the options are not checked, please write the reason below:
-
-Write here!!!
