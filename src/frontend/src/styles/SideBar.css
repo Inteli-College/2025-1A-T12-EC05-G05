@@ -1,0 +1,116 @@
+.sidebar {
+    width: 40px;
+    background-color: #373643;
+    padding: 20px;
+    height: 100vh;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.5s ease;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .sidebar:hover {
+    width: 16.66vw;
+  }
+  
+  #logo {
+    width: 50%;
+    display: block;
+    margin: 0 auto 20px;
+    transition: width 0.5s ease;
+  }
+  
+  #stripsIcon,
+  #historyIcon,
+  #logoutIcon {
+    width: 20px;
+    height: auto;
+    margin-right: 1rem;
+    transition: margin 0.5s ease;
+  }
+  
+  .sidebar:hover #stripsIcon,
+  .sidebar:hover #historyIcon,
+  .sidebar:hover #logoutIcon {
+    margin-left: 1rem;
+  }
+  
+  .sidebar:not(:hover) #logo {
+    width: 100%;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    padding-left: 10px;
+    transition: padding-left 0.5s ease, all 0.5s ease;
+  }
+  
+  .sidebar:hover li a {
+    padding-left: 0;
+  }
+  
+  .sidebar li:hover {
+    background-color: #5A596C;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .linkText {
+    opacity: 0;
+    transform: translateX(-10px);
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity 0.5s ease, transform 0.5s ease, max-width 0.5s ease;
+  }
+  
+  .sidebar:hover .linkText {
+    opacity: 1;
+    transform: translateX(0);
+    max-width: 100px;
+  }
+  
+  #logoutContainer {
+    position: absolute;
+    bottom: 20px;
+    width: calc(100% - 40px);
+  }
+  
+  #logoutContainer button {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #373643;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.5s ease, padding-left 0.5s ease;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    margin-bottom: 40px;
+  }
+  
+  .sidebar:hover #logoutContainer button {
+    padding-left: 0;
+  }
+  
+  #logoutContainer button:hover {
+    background-color: #c53030;
+  }  
