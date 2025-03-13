@@ -5,6 +5,8 @@ import LoginPage from "./pages/login.jsx";
 import RegisterPage from "./pages/registerPage.jsx";
 import NotFound from "./pages/notFound.jsx";
 import PrivateRoute from "./components/privateRoute.jsx";
+import Layout from "./Layout.jsx";
+import FitaMedicamentos from "./pages/fitaMedicamentos.jsx";
 
 const Router = () => {
   return (
