@@ -1,7 +1,7 @@
 // LoginPage.jsx
 import React, { useState } from "react";
 import httpClient from "../httpClient";
-import Header from "../components/Header";
+import Header from "../components/Header.jsx";
 import "../styles/login.css";
 import userIcon from "../assets/icones/usuario.svg";
 import cadeadoIcon from "../assets/icones/cadeado.svg";
