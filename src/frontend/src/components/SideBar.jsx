@@ -12,7 +12,7 @@ const Sidebar = () => {
       <img id="logo" src={presciptLogo} alt="Logo Prescript" />
       <ul>
         <li>
-          <Link to="/fitas-medicamentos">
+          <Link to="/tela-medicamentos">
             <img id="stripsIcon" src={agenda} alt="" />
             <span className="linkText">Fitas</span>
           </Link>
