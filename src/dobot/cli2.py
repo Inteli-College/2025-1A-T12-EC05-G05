@@ -13,7 +13,7 @@ from controller.position import Position
 cli = typer.Typer()
 
 dobot = DobotController()
-SERVER = "http://localhost:5000/medicamento"
+rota_qrcode = "http://127.0.0.1:5000/qrcode-response"
 file_path = "config.json"
 
 with open(file_path, "r") as file:
@@ -33,7 +33,7 @@ def request_bip(timeout: int = 10):
     print("🕐 Solicitando bipagem via HTTP...")
 
     try:
-        response = requests.get(SERVER, timeout=timeout)
+        response = requests.get(rota_qrcode, timeout=timeout)
         response.raise_for_status()
         scanned_medicine = response.json()
         print(f"📡 Medicamento bipado recebido: {scanned_medicine}")
@@ -54,9 +54,7 @@ def check_suction(position: Position, is_bin: bool = False):
     
     # Simulação de validação do medicamento
     expected_medicine = {
-      "medicamento": "Paracetamol 500mg", 
-      "validade": "2026-08-15", 
-      "lote":"ABC12345"
+      {"qr_code": "{\"medicamento\": \"Paracetamol 500mg\", \"validade\": \"2026-08-15\", \"lote\": \"ABC12345\"}"}
     }
     
     # scanned_medicine = request_bip()
