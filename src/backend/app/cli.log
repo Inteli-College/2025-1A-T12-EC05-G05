@@ -184,3 +184,12 @@
 2025-03-14 11:43:39,244 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
 2025-03-14 11:43:39,805 - WARNING -  * Debugger is active!
 2025-03-14 11:43:39,814 - INFO -  * Debugger PIN: 856-190-225
+2025-03-14 12:13:09,056 - INFO -  * Detected change in 'C:\\Users\\Inteli\\documents\\inteli\\ano2\\modulo5\\2025-1A-T12-EC05-G05\\src\\backend\\app\\app.py', reloading
+2025-03-14 12:13:09,337 - INFO -  * Restarting with stat
+2025-03-14 12:13:14,880 - INFO - BEGIN (implicit)
+2025-03-14 12:13:14,880 - INFO - PRAGMA main.table_info("users")
+2025-03-14 12:13:14,880 - INFO - [raw sql] ()
+2025-03-14 12:13:14,880 - INFO - COMMIT
+2025-03-14 12:13:14,890 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 12:13:14,943 - WARNING -  * Debugger is active!
+2025-03-14 12:13:14,943 - INFO -  * Debugger PIN: 856-190-225
