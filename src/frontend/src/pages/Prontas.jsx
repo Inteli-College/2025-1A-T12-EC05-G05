@@ -1,6 +1,5 @@
 import React from "react";
 import Table from "../components/Table";
-import PageHeader from "../components/PageHeader";
 
 const dataProntas = [
     { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
