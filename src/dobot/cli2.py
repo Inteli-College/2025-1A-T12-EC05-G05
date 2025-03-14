@@ -35,7 +35,7 @@ def request_bip(timeout: int = 10):
     try:
         response = requests.get(rota_qrcode, timeout=timeout)
         response.raise_for_status()
-        scanned_medicine = response.json()["qr_code"]
+        scanned_medicine = response.json()["qrcode"]
         print(f"📡 Medicamento bipado recebido: {scanned_medicine}")
         return scanned_medicine
 
@@ -54,7 +54,7 @@ def check_suction(position: Position, is_bin: bool = False):
     
     # Simulação de validação do medicamento
     expected_medicine = {
-      "qr_code": "{qr_code: \"{\"medicamento\": \"Paracetamol 500mg\", \"validade\": \"2026-08-15\", \"lote\": \"ABC12345\"}\"}",
+      "qrcode": "{qr_code: \"{\"medicamento\": \"Paracetamol 500mg\", \"validade\": \"2026-08-15\", \"lote\": \"ABC12345\"}\"}",
     }
     
     scanned_medicine = request_bip()
