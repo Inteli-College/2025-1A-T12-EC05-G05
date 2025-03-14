@@ -1,0 +1,97 @@
+2025-03-14 00:53:37,532 - INFO - Iniciando aplicaÁ„o CLI
+2025-03-14 00:53:38,543 - DEBUG - Tentando conectar ao banco em: C:\Users\gabri\Documents\GitHub\2025-1A-T12-EC05-G05\src\instance\dbCli.sqlite
+2025-03-14 00:53:38,550 - INFO - Conex„o estabelecida, iniciando fluxo de login
+2025-03-14 00:53:49,520 - INFO - Tentativa de login para usu·rio: Pedro
+2025-03-14 00:53:49,521 - DEBUG - Verificando usu·rios disponÌveis no banco:
+2025-03-14 00:53:49,522 - DEBUG -   - Nome: 'teste', Senha: 'senha123'
+2025-03-14 00:53:49,523 - DEBUG - Executando query: SELECT senha FROM user WHERE nome = ? com par‚metro: Pedro
+2025-03-14 00:53:49,527 - WARNING - Usu·rio 'Pedro' n„o encontrado no banco de dados
+2025-03-14 00:53:49,527 - WARNING - Tentativa de login falhou para usu·rio: Pedro (tentativa 1 de 3)
+2025-03-14 00:54:04,904 - INFO - Tentativa de login para usu·rio: teste
+2025-03-14 00:54:04,904 - DEBUG - Verificando usu·rios disponÌveis no banco:
+2025-03-14 00:54:04,905 - DEBUG -   - Nome: 'teste', Senha: 'senha123'
+2025-03-14 00:54:04,905 - DEBUG - Executando query: SELECT senha FROM user WHERE nome = ? com par‚metro: teste
+2025-03-14 00:54:04,906 - DEBUG - Senha encontrada no banco: 'senha123'
+2025-03-14 00:54:04,906 - DEBUG - Senha digitada pelo usu·rio: 'senha123'
+2025-03-14 00:54:04,907 - DEBUG - As senhas s„o iguais? True
+2025-03-14 00:54:04,907 - INFO - Login bem-sucedido para: teste
+2025-03-14 00:54:05,910 - DEBUG - Buscando logs para o usu·rio: teste
+2025-03-14 00:54:05,912 - DEBUG - Encontrados 0 logs para o usu·rio teste
+2025-03-14 00:54:05,914 - INFO - Sess„o encerrada com sucesso
+2025-03-14 00:54:05,915 - INFO - Fechando conex„o com o banco de dados
+2025-03-14 00:54:45,006 - INFO - Iniciando aplicaÁ„o CLI
+2025-03-14 00:54:46,016 - DEBUG - Tentando conectar ao banco em: C:\Users\gabri\Documents\GitHub\2025-1A-T12-EC05-G05\src\instance\dbCli.sqlite
+2025-03-14 00:54:46,024 - INFO - Conex„o estabelecida, iniciando fluxo de login
+2025-03-14 00:54:57,899 - INFO - Tentativa de login para usu·rio: Pedro
+2025-03-14 00:54:57,900 - DEBUG - Verificando usu·rios disponÌveis no banco:
+2025-03-14 00:54:57,901 - DEBUG -   - Nome: 'teste', Senha: 'senha123'
+2025-03-14 00:54:57,901 - DEBUG - Executando query: SELECT senha FROM user WHERE nome = ? com par‚metro: Pedro
+2025-03-14 00:54:57,902 - WARNING - Usu·rio 'Pedro' n„o encontrado no banco de dados
+2025-03-14 00:54:57,902 - WARNING - Tentativa de login falhou para usu·rio: Pedro (tentativa 1 de 3)
+2025-03-14 00:55:12,559 - INFO - Tentativa de login para usu·rio: Pedro
+2025-03-14 00:55:12,560 - DEBUG - Verificando usu·rios disponÌveis no banco:
+2025-03-14 00:55:12,560 - DEBUG -   - Nome: 'teste', Senha: 'senha123'
+2025-03-14 00:55:12,561 - DEBUG - Executando query: SELECT senha FROM user WHERE nome = ? com par‚metro: Pedro
+2025-03-14 00:55:12,561 - WARNING - Usu·rio 'Pedro' n„o encontrado no banco de dados
+2025-03-14 00:55:12,562 - WARNING - Tentativa de login falhou para usu·rio: Pedro (tentativa 2 de 3)
+2025-03-14 00:55:23,274 - INFO - Tentativa de login para usu·rio: Pedro
+2025-03-14 00:55:23,275 - DEBUG - Verificando usu·rios disponÌveis no banco:
+2025-03-14 00:55:23,275 - DEBUG -   - Nome: 'teste', Senha: 'senha123'
+2025-03-14 00:55:23,275 - DEBUG - Executando query: SELECT senha FROM user WHERE nome = ? com par‚metro: Pedro
+2025-03-14 00:55:23,276 - WARNING - Usu·rio 'Pedro' n„o encontrado no banco de dados
+2025-03-14 00:55:23,276 - WARNING - Tentativa de login falhou para usu·rio: Pedro (tentativa 3 de 3)
+2025-03-14 00:55:24,277 - WARNING - Excedido n˙mero m·ximo de tentativas de login
+2025-03-14 00:55:24,277 - WARNING - Sess„o encerrada apÛs falhas de login
+2025-03-14 00:55:24,278 - INFO - Fechando conex„o com o banco de dados
+2025-03-14 00:57:33,251 - INFO - Iniciando aplica√ß√£o CLI
+2025-03-14 00:57:33,253 - INFO - Conectando ao banco de dados...
+2025-03-14 00:57:34,254 - DEBUG - Tentando conectar ao banco em: C:\Users\gabri\Documents\GitHub\2025-1A-T12-EC05-G05\src\instance\dbCli.sqlite
+2025-03-14 00:57:34,256 - INFO - Conectado ao banco de dados em: C:\Users\gabri\Documents\GitHub\2025-1A-T12-EC05-G05\src\instance\dbCli.sqlite
+2025-03-14 00:57:34,258 - INFO - Conex√£o estabelecida, iniciando fluxo de login
+2025-03-14 00:57:44,514 - INFO - Tentativa de login para usu√°rio: Pedro
+2025-03-14 00:57:44,515 - DEBUG - Verificando usu√°rios dispon√≠veis no banco:
+2025-03-14 00:57:44,515 - DEBUG -   - Nome: 'teste', Senha: 'senha123'
+2025-03-14 00:57:44,516 - DEBUG - Executando query: SELECT senha FROM user WHERE nome = ? com par√¢metro: Pedro
+2025-03-14 00:57:44,516 - WARNING - Usu√°rio 'Pedro' n√£o encontrado no banco de dados
+2025-03-14 00:57:44,517 - WARNING - Tentativa de login falhou para usu√°rio: Pedro (tentativa 1 de 3)
+2025-03-14 00:59:43,441 - INFO - Fechando conex√£o com o banco de dados
+2025-03-14 00:59:48,017 - INFO - Iniciando aplica√ß√£o CLI
+2025-03-14 00:59:48,018 - INFO - Conectando ao banco de dados...
+2025-03-14 00:59:49,019 - INFO - Removendo banco de dados existente: C:\Users\gabri\Documents\GitHub\2025-1A-T12-EC05-G05\src\instance\dbCli.sqlite
+2025-03-14 00:59:49,021 - INFO - Novo banco de dados criado em: C:\Users\gabri\Documents\GitHub\2025-1A-T12-EC05-G05\src\instance\dbCli.sqlite
+2025-03-14 00:59:49,031 - INFO - Banco de dados inicializado com sucesso com os usu√°rios padr√£o
+2025-03-14 00:59:49,032 - INFO - Conex√£o estabelecida, iniciando fluxo de login
+2025-03-14 01:00:18,637 - INFO - Tentativa de login para usu√°rio: Pedro
+2025-03-14 01:00:18,638 - DEBUG - Verificando usu√°rios dispon√≠veis no banco:
+2025-03-14 01:00:18,638 - DEBUG -   - Nome: 'Jo√£o', Senha: 'senha123'
+2025-03-14 01:00:18,639 - DEBUG -   - Nome: 'Maria', Senha: 'senha456'
+2025-03-14 01:00:18,639 - DEBUG -   - Nome: 'Pedro', Senha: 'senha789'
+2025-03-14 01:00:18,640 - DEBUG - Executando query: SELECT senha FROM user WHERE nome = ? com par√¢metro: Pedro
+2025-03-14 01:00:18,640 - DEBUG - Senha encontrada no banco: 'senha789'
+2025-03-14 01:00:18,641 - DEBUG - Senha digitada pelo usu√°rio: 'senha789'
+2025-03-14 01:00:18,641 - DEBUG - As senhas s√£o iguais? True
+2025-03-14 01:00:18,641 - INFO - Login bem-sucedido para: Pedro
+2025-03-14 01:00:19,644 - DEBUG - Buscando logs para o usu√°rio: Pedro
+2025-03-14 01:00:19,645 - DEBUG - Encontrados 1 logs para o usu√°rio Pedro
+2025-03-14 01:00:19,648 - INFO - Sess√£o encerrada com sucesso
+2025-03-14 01:00:19,648 - INFO - Fechando conex√£o com o banco de dados
+2025-03-14 01:01:49,262 - INFO - Iniciando aplica√ß√£o CLI
+2025-03-14 01:01:49,262 - INFO - Conectando ao banco de dados...
+2025-03-14 01:01:50,264 - INFO - Removendo banco de dados existente: C:\Users\gabri\Documents\GitHub\2025-1A-T12-EC05-G05\src\instance\dbCli.sqlite
+2025-03-14 01:01:50,266 - INFO - Novo banco de dados criado em: C:\Users\gabri\Documents\GitHub\2025-1A-T12-EC05-G05\src\instance\dbCli.sqlite
+2025-03-14 01:01:50,281 - INFO - Banco de dados inicializado com sucesso com os usu√°rios padr√£o
+2025-03-14 01:01:50,282 - INFO - Conex√£o estabelecida, iniciando fluxo de login
+2025-03-14 01:02:01,329 - INFO - Tentativa de login para usu√°rio: Pedro
+2025-03-14 01:02:01,330 - DEBUG - Verificando usu√°rios dispon√≠veis no banco:
+2025-03-14 01:02:01,330 - DEBUG -   - Nome: 'Jo√£o', Senha: 'senha123'
+2025-03-14 01:02:01,331 - DEBUG -   - Nome: 'Maria', Senha: 'senha456'
+2025-03-14 01:02:01,331 - DEBUG -   - Nome: 'Pedro', Senha: 'senha789'
+2025-03-14 01:02:01,332 - DEBUG - Executando query: SELECT senha FROM user WHERE nome = ? com par√¢metro: Pedro
+2025-03-14 01:02:01,332 - DEBUG - Senha encontrada no banco: 'senha789'
+2025-03-14 01:02:01,333 - DEBUG - Senha digitada pelo usu√°rio: 'senha789'
+2025-03-14 01:02:01,333 - DEBUG - As senhas s√£o iguais? True
+2025-03-14 01:02:01,333 - INFO - Login bem-sucedido para: Pedro
+2025-03-14 01:02:02,335 - DEBUG - Buscando logs para o usu√°rio: Pedro
+2025-03-14 01:02:02,336 - DEBUG - Encontrados 1 logs para o usu√°rio Pedro
+2025-03-14 01:02:02,338 - INFO - Sess√£o encerrada com sucesso
+2025-03-14 01:02:02,339 - INFO - Fechando conex√£o com o banco de dados
