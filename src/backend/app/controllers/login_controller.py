@@ -1,9 +1,14 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from flask_cors import cross_origin
 from services.login_service import authService
 
+
 auth_blueprint = Blueprint("auth", __name__)
 authUser = authService()
+
+@auth_blueprint.route("/", methods=["GET"])
+def auth_home():
+    return jsonify({"message": "Use /login, /register, or /@me"})
 
 @auth_blueprint.route("/@me")
 @cross_origin(supports_credentials=True)
