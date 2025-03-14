@@ -1,5 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+.historico {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-image: url(../assets/fundo.svg);
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.conteudo-historico {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin: 15px 0 30px 0;
+}
+
 .historico-content {
     display: flex;
     justify-content: space-between;
@@ -8,7 +33,7 @@
     border-radius: 10px;
     font-family: "Roboto", sans-serif;
     align-items: center;
-    width: 65vw;
+    width: 92%;
 }
 
 .calendar-container {

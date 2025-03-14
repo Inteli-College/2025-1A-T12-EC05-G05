@@ -24,8 +24,6 @@ const dataProntas = [
 
 export default function FitaMedicamentos() {
     const location = useLocation();
-    
-    // A lógica correta para definir se estamos em uma sub-rota
     const isSingleFita = location.pathname !== "/tela-medicamentos"
 
     return (

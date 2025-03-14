@@ -53,7 +53,8 @@ export default function Historico() {
     };
 
     return (
-        <>
+        <div className="historico">
+            <div className="conteudo-historico">
             <PageHeader title="Histórico" />
             <div className="historico-content">
                 <div className="calendar-container">
@@ -94,6 +95,7 @@ export default function Historico() {
                     </button>
                 </div>
             </div>
-        </>
+            </div>
+        </div>
     );
 }
