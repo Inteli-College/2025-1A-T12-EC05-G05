@@ -7,6 +7,9 @@ import NotFound from "./pages/notFound.jsx";
 import PrivateRoute from "./components/privateRoute.jsx";
 import Layout from "./Layout.jsx";
 import FitaMedicamentos from "./pages/fitaMedicamentos.jsx";
+import AFazer from "./pages/AFazer.jsx";
+import EmProgresso from "./pages/EmProgresso.jsx";
+import Prontas from "./pages/Prontas.jsx";
 import Historico from "./pages/historico.jsx";
 
 const Router = () => {
@@ -28,6 +31,9 @@ const Router = () => {
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />
           <Route path="/tela-medicamentos" element={<FitaMedicamentos />} />
+          <Route path="/a-fazer" element={<AFazer />} />
+          <Route path="/em-progresso" element={<EmProgresso />} />
+          <Route path="/prontas" element={<Prontas />} />
           <Route path="/historico" element={<Historico/>} />
 
           
