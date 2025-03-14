@@ -145,36 +145,35 @@ def logout_user():
 @app.route("/print-response", methods=["POST"])
 def print_response():
     """
-    Recebe um JSON e insere os dados na tabela 'log' do banco SQLite.
-    Espera que o JSON contenha: 'user_nome', 'qrcode' e 'presenca'.
+    Recebe um payload em formato de texto (plain text) e insere esse mesmo texto
+    na coluna 'qrcode' da tabela 'log' do banco SQLite.
+    
+    Exemplo de payload (enviado como text/plain):
+    {"medicamento": "Paracetamol 500mg", "validade": "2026-08-15", "lote": "ABC12345"}
     """
-    data = request.get_json()
-    if not data or "user_nome" not in data or "qrcode" not in data or "presenca" not in data:
-        logger.warning("Dados incompletos recebidos: %s", data)
+    txt_data = request.get_data(as_text=True)
+    if not txt_data:
+        logger.warning("Nenhum dado de texto recebido.")
         return jsonify({"error": "Dados incompletos"}), 400
 
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        qrcode_str = json.dumps(data.get("qrcode"))
-        presenca_val = 1 if data.get("presenca") in [True, 1, "1"] else 0
-
-        logger.debug("Inserindo log: user_nome=%s, qrcode=%s, presenca=%s",
-                     data.get("user_nome"), qrcode_str, presenca_val)
+        logger.debug("Inserindo QR Code como texto: %s", txt_data)
 
         cursor.execute(
-            "INSERT INTO log (user_nome, qrcode, presenca) VALUES (?, ?, ?)",
-            (data.get("user_nome"), qrcode_str, presenca_val)
+            "INSERT INTO log (qrcode) VALUES (?)",
+            (txt_data,)
         )
         conn.commit()
-        response_msg = "Dados inseridos no banco dbCli.sqlite com sucesso."
+        response_msg = "QR Code inserido no banco dbCli.sqlite com sucesso."
         status_code = 200
-        logger.info("Log inserido com sucesso para o usuário: %s", data.get("user_nome"))
+        logger.info("QR Code inserido com sucesso.")
     except Exception as e:
         conn.rollback()
-        response_msg = f"Erro ao inserir dados: {e}"
+        response_msg = f"Erro ao inserir QR Code: {e}"
         status_code = 500
-        logger.error("Erro ao inserir log: %s", e)
+        logger.error("Erro ao inserir QR Code: %s", e)
     finally:
         cursor.close()
         conn.close()

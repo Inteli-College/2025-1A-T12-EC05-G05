@@ -49,3 +49,97 @@
 2025-03-14 01:46:45,775 - INFO - 127.0.0.1 - - [14/Mar/2025 01:46:45] "POST /print-response HTTP/1.1" 200 -
 2025-03-14 01:46:45,914 - INFO - Log inserido com sucesso para o usuário: Pedro
 2025-03-14 01:46:45,914 - INFO - 127.0.0.1 - - [14/Mar/2025 01:46:45] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 10:30:19,533 - INFO - BEGIN (implicit)
+2025-03-14 10:30:19,534 - INFO - PRAGMA main.table_info("users")
+2025-03-14 10:30:19,535 - INFO - [raw sql] ()
+2025-03-14 10:30:19,537 - INFO - COMMIT
+2025-03-14 10:30:19,540 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 10:30:19,605 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-14 10:30:19,605 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-14 10:30:19,606 - INFO -  * Restarting with stat
+2025-03-14 10:30:20,169 - INFO - BEGIN (implicit)
+2025-03-14 10:30:20,169 - INFO - PRAGMA main.table_info("users")
+2025-03-14 10:30:20,170 - INFO - [raw sql] ()
+2025-03-14 10:30:20,171 - INFO - COMMIT
+2025-03-14 10:30:20,174 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 10:30:20,188 - WARNING -  * Debugger is active!
+2025-03-14 10:30:20,200 - INFO -  * Debugger PIN: 581-563-860
+2025-03-14 10:49:56,371 - WARNING - Dados incompletos recebidos: {'user_nome': 'djsadfadf', 'qrcode': {'codigo': 'hjaskdlslfa'}, 'senha': 'senha123'}
+2025-03-14 10:49:56,372 - INFO - 127.0.0.1 - - [14/Mar/2025 10:49:56] "[31m[1mPOST /print-response HTTP/1.1[0m" 400 -
+2025-03-14 10:50:52,159 - WARNING - Dados incompletos recebidos: {'user_nome': 'djsadfadf', 'qrcode': 'hjaskdlslfa', 'senha': 'senha123'}
+2025-03-14 10:50:52,160 - INFO - 127.0.0.1 - - [14/Mar/2025 10:50:52] "[31m[1mPOST /print-response HTTP/1.1[0m" 400 -
+2025-03-14 10:51:19,567 - INFO - Log inserido com sucesso para o usuário: João
+2025-03-14 10:51:19,568 - INFO - 127.0.0.1 - - [14/Mar/2025 10:51:19] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 10:52:31,457 - INFO -  * Detected change in 'C:\\Users\\gabri\\Documents\\GitHub\\2025-1A-T12-EC05-G05\\src\\backend\\app\\app.py', reloading
+2025-03-14 10:52:31,559 - INFO -  * Restarting with stat
+2025-03-14 10:52:32,326 - INFO - BEGIN (implicit)
+2025-03-14 10:52:32,326 - INFO - PRAGMA main.table_info("users")
+2025-03-14 10:52:32,326 - INFO - [raw sql] ()
+2025-03-14 10:52:32,328 - INFO - COMMIT
+2025-03-14 10:52:32,332 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 10:52:32,347 - WARNING -  * Debugger is active!
+2025-03-14 10:52:32,351 - INFO -  * Debugger PIN: 581-563-860
+2025-03-14 10:52:37,422 - INFO -  * Detected change in 'C:\\Users\\gabri\\Documents\\GitHub\\2025-1A-T12-EC05-G05\\src\\backend\\app\\app.py', reloading
+2025-03-14 10:52:37,510 - INFO -  * Restarting with stat
+2025-03-14 10:52:38,220 - INFO - BEGIN (implicit)
+2025-03-14 10:52:38,221 - INFO - PRAGMA main.table_info("users")
+2025-03-14 10:52:38,222 - INFO - [raw sql] ()
+2025-03-14 10:52:38,224 - INFO - COMMIT
+2025-03-14 10:52:38,227 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 10:52:38,245 - WARNING -  * Debugger is active!
+2025-03-14 10:52:38,250 - INFO -  * Debugger PIN: 581-563-860
+2025-03-14 10:52:43,325 - INFO -  * Detected change in 'C:\\Users\\gabri\\Documents\\GitHub\\2025-1A-T12-EC05-G05\\src\\backend\\app\\app.py', reloading
+2025-03-14 10:52:43,424 - INFO -  * Restarting with stat
+2025-03-14 10:52:44,141 - INFO - BEGIN (implicit)
+2025-03-14 10:52:44,142 - INFO - PRAGMA main.table_info("users")
+2025-03-14 10:52:44,143 - INFO - [raw sql] ()
+2025-03-14 10:52:44,144 - INFO - COMMIT
+2025-03-14 10:52:44,146 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 10:52:44,158 - WARNING -  * Debugger is active!
+2025-03-14 10:52:44,163 - INFO -  * Debugger PIN: 581-563-860
+2025-03-14 10:52:46,210 - INFO -  * Detected change in 'C:\\Users\\gabri\\Documents\\GitHub\\2025-1A-T12-EC05-G05\\src\\backend\\app\\app.py', reloading
+2025-03-14 10:52:46,317 - INFO -  * Restarting with stat
+2025-03-14 10:52:47,037 - INFO - BEGIN (implicit)
+2025-03-14 10:52:47,038 - INFO - PRAGMA main.table_info("users")
+2025-03-14 10:52:47,039 - INFO - [raw sql] ()
+2025-03-14 10:52:47,040 - INFO - COMMIT
+2025-03-14 10:52:47,042 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 10:52:47,057 - WARNING -  * Debugger is active!
+2025-03-14 10:52:47,063 - INFO -  * Debugger PIN: 581-563-860
+2025-03-14 10:52:49,118 - INFO -  * Detected change in 'C:\\Users\\gabri\\Documents\\GitHub\\2025-1A-T12-EC05-G05\\src\\backend\\app\\app.py', reloading
+2025-03-14 10:52:49,200 - INFO -  * Restarting with stat
+2025-03-14 10:52:49,929 - INFO - BEGIN (implicit)
+2025-03-14 10:52:49,930 - INFO - PRAGMA main.table_info("users")
+2025-03-14 10:52:49,930 - INFO - [raw sql] ()
+2025-03-14 10:52:49,932 - INFO - COMMIT
+2025-03-14 10:52:49,936 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 10:52:49,954 - WARNING -  * Debugger is active!
+2025-03-14 10:52:49,960 - INFO -  * Debugger PIN: 581-563-860
+2025-03-14 10:54:57,573 - INFO -  * Detected change in 'C:\\Users\\gabri\\Documents\\GitHub\\2025-1A-T12-EC05-G05\\src\\backend\\app\\app.py', reloading
+2025-03-14 10:54:57,664 - INFO -  * Restarting with stat
+2025-03-14 10:54:58,389 - INFO - BEGIN (implicit)
+2025-03-14 10:54:58,390 - INFO - PRAGMA main.table_info("users")
+2025-03-14 10:54:58,390 - INFO - [raw sql] ()
+2025-03-14 10:54:58,391 - INFO - COMMIT
+2025-03-14 10:54:58,395 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 10:54:58,411 - WARNING -  * Debugger is active!
+2025-03-14 10:54:58,416 - INFO -  * Debugger PIN: 581-563-860
+2025-03-14 10:55:29,280 - INFO - 127.0.0.1 - - [14/Mar/2025 10:55:29] "[31m[1mPOST /print-response HTTP/1.1[0m" 400 -
+2025-03-14 10:55:37,943 - INFO - 127.0.0.1 - - [14/Mar/2025 10:55:37] "[31m[1mPOST /print-response HTTP/1.1[0m" 415 -
+2025-03-14 10:55:43,307 - INFO - 127.0.0.1 - - [14/Mar/2025 10:55:43] "[31m[1mPOST /print-response HTTP/1.1[0m" 400 -
+2025-03-14 10:55:54,086 - INFO - QR Code inserido com sucesso.
+2025-03-14 10:55:54,087 - INFO - 127.0.0.1 - - [14/Mar/2025 10:55:54] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 10:55:55,311 - INFO - QR Code inserido com sucesso.
+2025-03-14 10:55:55,312 - INFO - 127.0.0.1 - - [14/Mar/2025 10:55:55] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 10:57:19,104 - INFO -  * Detected change in 'C:\\Users\\gabri\\Documents\\GitHub\\2025-1A-T12-EC05-G05\\src\\backend\\app\\app.py', reloading
+2025-03-14 10:57:19,196 - INFO -  * Restarting with stat
+2025-03-14 10:57:19,960 - INFO - BEGIN (implicit)
+2025-03-14 10:57:19,961 - INFO - PRAGMA main.table_info("users")
+2025-03-14 10:57:19,962 - INFO - [raw sql] ()
+2025-03-14 10:57:19,963 - INFO - COMMIT
+2025-03-14 10:57:19,968 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 10:57:19,985 - WARNING -  * Debugger is active!
+2025-03-14 10:57:19,991 - INFO -  * Debugger PIN: 581-563-860
+2025-03-14 10:57:23,362 - INFO - QR Code inserido com sucesso.
+2025-03-14 10:57:23,363 - INFO - 127.0.0.1 - - [14/Mar/2025 10:57:23] "POST /print-response HTTP/1.1" 200 -
