@@ -34,7 +34,7 @@ export default function Table({ title, data, maxItems = data.length, route }) {
 
   return (
     <div className={`table ${showButton ? "with-button" : ""}`}>
-      <div className="content">
+      <div className="table-content">
         <div className="title">
           <div className="title-left">
             <button className="table-title-button" onClick={handleTitleClick}>

@@ -114,3 +114,8 @@
   #logoutContainer button:hover {
     background-color: #c53030;
   }  
+
+  .sidebar li.active {
+    background-color: #5A596C;
+    border-radius: 8px;
+  }
