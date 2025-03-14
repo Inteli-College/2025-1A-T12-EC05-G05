@@ -14,7 +14,6 @@ const Router = () => {
       <Routes>
         {/* Rota de login, sem sidebar */}
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/tela-medicamentos" element={<FitaMedicamentos />} />
         
         {/* Rotas protegidas */}
         <Route element={<PrivateRoute />}>
@@ -23,11 +22,12 @@ const Router = () => {
 
         {/* Rota para não encontrado */}
         <Route path="*" element={<NotFound />} />
-        <Route path="*" element={<NotFound />} />
         
         {/* Rotas que terão o layout com sidebar */}
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/tela-medicamentos" element={<FitaMedicamentos />} />
+
           
           {/* Rotas protegidas */}
           <Route element={<PrivateRoute />}>

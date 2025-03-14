@@ -11,7 +11,7 @@ export default function PageHeader({ title }) {
 
     return (
         <div className="header">
-            <h1>{title}</h1>
+            <h1 id="title">{title}</h1>
             <div className="search-container">
                 <img src={lupa} className="search-icon" alt="Buscar" />
                 <input 

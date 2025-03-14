@@ -23,13 +23,13 @@ const dataProntas = [
 
 export default function FitaMedicamentos() {
     return (
-        <>  
-            <PageHeader title="Fita de Medicamentos" />
+        <div className="fitaMedicamentos"> 
             <div className="conteudo">
+                <PageHeader title="Fitas de medicamentos" />
                 <Table title="A fazer" data={dataAFazer} maxItems={2} />
                 <Table title="Em progresso" data={dataEmProgresso} maxItems={1} />
                 <Table title="Prontas" data={dataProntas} maxItems={2} />
             </div>
-        </>
+        </div>
     );
 }
