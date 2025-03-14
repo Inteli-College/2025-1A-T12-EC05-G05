@@ -180,6 +180,32 @@ def print_response():
 
     return jsonify({"message": response_msg}), status_code
 
+@app.route("/qrcode-response", methods=["GET"])
+def latest_qr_code():
+    """
+    Consulta e retorna a última (mais recente) informação da coluna 'qrcode'
+    da tabela 'log' do banco SQLite.
+    """
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        logger.debug("Consultando o último QR Code inserido na tabela log.")
+        cursor.execute("SELECT qrcode FROM log ORDER BY id DESC LIMIT 1")
+        row = cursor.fetchone()
+        if row:
+            latest_qrcode = row["qrcode"]
+            logger.info("Último QR Code recuperado com sucesso.")
+            return jsonify({"qrcode": latest_qrcode}), 200
+        else:
+            logger.info("Nenhum QR Code encontrado na tabela log.")
+            return jsonify({"message": "Nenhum QR Code encontrado."}), 404
+    except Exception as e:
+        logger.error("Erro ao buscar o último QR Code: %s", e)
+        return jsonify({"error": f"Erro ao buscar o último QR Code: {e}"}), 500
+    finally:
+        cursor.close()
+        conn.close()
+
 if __name__ == "__main__":
     init_db()  # Inicializa as tabelas ao iniciar o app
     app.run(debug=True)
