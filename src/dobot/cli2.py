@@ -53,9 +53,8 @@ def check_suction(position: Position, is_bin: bool = False):
         wait_before_suction()  # Só espera a leitura do QR Code ao pegar no bin
     
     # Simulação de validação do medicamento
-    expected_medicine = {
-      "qrcode": {"qr_code": "{\"medicamento\": \"Paracetamol 500mg\", \"validade\": \"2026-08-15\", \"lote\": \"ABC12345\"}"},
-    }
+    expected_medicine = {"qr_code": "{\"medicamento\": \"Paracetamol 500mg\", \"validade\": \"2026-08-15\", \"lote\": \"ABC12345\"}"},
+    
     
     scanned_medicine = request_bip()
     
