@@ -91,7 +91,7 @@ def menu_inicial(conn):
         if escolha == "1":
             print("Ops... Parece que essa funcionalidade não está pronta.")
         elif escolha == "2":
-            print("Você escolheu Ver Histórico. (Funcionalidade futura)")
+            historico()
         elif escolha == "3":
             print("Saindo...")
             time.sleep(2)
@@ -105,6 +105,14 @@ def menu_inicial(conn):
             time.sleep(2)
             menu_inicial(conn)
 
+# Query para pesquisar os logs(historico)
+# def query_historico(conn, nome, tipo):
+
+# Histórico
+def historico(conn):
+    time.sleep(2)
+    print("\n 🕑HISTÓRICO DE LOGS")
+    
 if __name__ == "__main__":
     identidade_visual() 
     conn = conectar_ao_banco()
