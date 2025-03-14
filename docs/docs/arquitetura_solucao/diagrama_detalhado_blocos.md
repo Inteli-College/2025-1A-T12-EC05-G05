@@ -1,10 +1,10 @@
 ---  
-title: Diagrama Detalhada de Sistema  
-sidebar_label: Diagrama Dtalhada do Sistema  
+title: Diagrama Detalhado do Sistema  
+sidebar_label: Diagrama Detalhado do Sistema  
 sidebar_position: 1
 ---
 
-# 🖥️ Arquitetura Detalhada do Sistema
+# 🖥️ Diagrama Detalhado do Sistema  
 
 ## 📌 O que é um Diagrama de Blocos?  
 &emsp; Um diagrama de blocos é uma representação visual que ilustra a interação entre os diferentes componentes de um sistema. Esse tipo de diagrama facilita a compreensão da arquitetura do sistema e auxilia na análise e otimização dos processos envolvidos.
@@ -16,7 +16,7 @@ sidebar_position: 1
 
   <sub>Figura 1 - Diagrama de Blocos </sub>
 
-  <img src="../../../img/arquiteraDetalhadaBlocos.jpeg"/>
+  <img src="../../img/arquiteraDetalhadaBlocos.jpeg"/>
 
   <sup>Fonte: Material produzido pelos autores (2025).</sup>
 
