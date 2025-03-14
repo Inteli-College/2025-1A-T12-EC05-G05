@@ -13,7 +13,7 @@ from controller.position import Position
 cli = typer.Typer()
 
 dobot = DobotController()
-    
+SERVER = "http://localhost:5000/medicamento"
 file_path = "config.json"
 
 with open(file_path, "r") as file:
