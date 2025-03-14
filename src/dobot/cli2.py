@@ -54,7 +54,7 @@ def check_suction(position: Position, is_bin: bool = False):
     
     # Simulação de validação do medicamento
     expected_medicine = {
-      "qrcode": "{\"qr_code\": \"{\\\"medicamento\\\": \\\"Paracetamol 500mg\\\", \\\"validade\\\": \\\"2026-08-15\\\", \\\"lote\\\": \\\"ABC12345\\\"}\"}",
+      "qrcode": "{\"qr_code\": \"{\"medicamento\": \"Paracetamol 500mg\", \"validade\": \"2026-08-15\", \"lote\": \"ABC12345\"}\"}",
     }
     
     scanned_medicine = request_bip()
