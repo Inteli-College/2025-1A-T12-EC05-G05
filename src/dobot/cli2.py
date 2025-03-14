@@ -35,7 +35,7 @@ def request_bip(timeout: int = 10):
     try:
         response = requests.get(rota_qrcode, timeout=timeout)
         response.raise_for_status()
-        scanned_medicine = response.json()
+        scanned_medicine = response.json()["qrcode"]
         print(f"📡 Medicamento bipado recebido: {scanned_medicine}")
         return scanned_medicine
 
