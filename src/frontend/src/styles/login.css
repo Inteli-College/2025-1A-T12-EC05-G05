@@ -1,79 +1,69 @@
 /* login.css */
-.login-container {
-  min-height: 100vh;
+html, body {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#login-container {
+  height: 89dvh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ef 100%);
+  background-image: url(../assets/fundo.svg);
+  background-size: cover;
+  background-position: center;
+  margin-top: 5%;
 }
 
-.login-card {
-  background: white;
+#login-card {
+  position: relative;
+  background: #3737435e;
   padding: 2.5rem;
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 440px;
+  max-width: 550px;
 }
 
-.login-card h1 {
-  color: #2d3748;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  text-align: center;
+#prescipt-logo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
-.subtitle {
-  color: #718096;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.login-form {
+#login-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.form-group {
+#email-input {
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.form-group label {
-  color: #4a5568;
-  font-weight: 500;
-  font-size: 0.95rem;
+#password-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.form-group input {
-  padding: 0.75rem 1rem;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: #4299e1;
-  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
-}
-
-.form-group input.error {
-  border-color: #f56565;
-}
-
-.error-text {
+#error-text {
   color: #e53e3e;
   font-size: 0.875rem;
   margin-top: 0.25rem;
 }
 
-.error-message {
+#error-message {
   background-color: #fff5f5;
   color: #c53030;
   padding: 0.75rem;
@@ -83,9 +73,57 @@
   border: 1px solid #feb2b2;
 }
 
-.submit-button {
-  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
-  color: white;
+#input-wrapper {
+  position: relative;
+}
+
+#error {
+  border-color: #f56565;
+}
+
+#icon-square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #373643;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#input-icon {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(86%);
+}
+
+#input-wrapper input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  padding-left: 3.5rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+#input-wrapper input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+#input-wrapper input.error {
+  border-color: #f56565;
+}
+
+#submit-button {
+  background: #373643;
+  color: #fff;
   padding: 0.875rem;
   border: none;
   border-radius: 8px;
@@ -94,46 +132,29 @@
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 1rem;
+  height: 3rem;
+  width: 25%;
+  align-self: center;
+  text-align: center;
 }
 
-.submit-button:hover {
-  transform: translateY(-2px);
+#submit-button:hover {
+  transform: translateY(-1px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.submit-button:disabled {
+#submit-button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
   transform: none;
 }
 
-.register-link {
-  text-align: center;
-  margin-top: 1.5rem;
-  color: #718096;
-}
-
-.register-link a {
-  color: #4299e1;
-  font-weight: 500;
-  text-decoration: none;
-  margin-left: 0.25rem;
-}
-
-.register-link a:hover {
-  text-decoration: underline;
-}
-
 @media (max-width: 640px) {
-  .login-container {
+  #login-container {
     padding: 1rem;
+    margin-top: 15%;
   }
-
-  .login-card {
+  #login-card {
     padding: 1.5rem;
-  }
-
-  .login-card h1 {
-    font-size: 1.75rem;
   }
 }
