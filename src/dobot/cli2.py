@@ -57,13 +57,7 @@ def check_suction(position: Position, is_bin: bool = False):
       "qrcode": "{\"qr_code\": \"{\\\"medicamento\\\": \\\"Paracetamol 500mg\\\", \\\"validade\\\": \\\"2026-08-15\\\", \\\"lote\\\": \\\"ABC12345\\\"}\"}",
     }
     
-    # scanned_medicine = request_bip()
-    
-    scanned_medicine = {
-      "medicamento": "Paracetamol 500mg", 
-      "validade": "2026-08-15", 
-      "lote":"ABC12345"
-    }
+    scanned_medicine = request_bip()
     
     if scanned_medicine == expected_medicine:
       if (position.get("suction")):
@@ -74,10 +68,6 @@ def check_suction(position: Position, is_bin: bool = False):
       
     else:
         print("⚠️ Medicamento inválido. Decidindo ação...")
-        if scanned_medicine["expiration_date"] < "2024-12-31":  # Simulação de medicamento vencido
-            discard_medicine()
-        else:
-            return_medicine()
 
 def execute_movement(position, add_height=0):
     """ Move o robô para a posição especificada, aplicando delay apenas antes de descer para pegar o medicamento. """
