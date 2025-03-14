@@ -13,7 +13,7 @@ export default function EmProgresso() {
         <div className="fitaMedicamentos"> 
             <div className="conteudo">
                 <PageHeader title="Fitas de medicamentos" isSingleFita={true}/>
-                <Table title="Em progresso" data={dataEmProgresso} />
+                <Table title="Em progresso" data={dataEmProgresso} route="/em-progresso"/>
             </div>
         </div>
     );

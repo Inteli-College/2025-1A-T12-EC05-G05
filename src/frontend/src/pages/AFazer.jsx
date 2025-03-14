@@ -14,7 +14,7 @@ export default function AFazer() {
         <div className="fitaMedicamentos"> 
             <div className="conteudo">
                 <PageHeader title="Fitas de medicamentos" isSingleFita={true}/>
-                <Table title="A fazer" data={dataAFazer} />
+                <Table title="A fazer" data={dataAFazer} route="/a-fazer"/>
             </div>
         </div>
     );

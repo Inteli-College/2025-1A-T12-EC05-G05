@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Table.css";
 import seta from "../assets/icones/seta.svg";
 
-export default function Table({ title, data, maxItems = data.length }) {
+export default function Table({ title, data, maxItems = data.length, route }) {
+  const navigate = useNavigate();
   const visibleItems = data.slice(0, maxItems);
   const [selectedItems, setSelectedItems] = useState(Array(visibleItems.length).fill(false));
   const [selectAll, setSelectAll] = useState(false);
@@ -26,12 +28,18 @@ export default function Table({ title, data, maxItems = data.length }) {
     setSelectedItems(newSelectedItems);
   };
 
+  const handleTitleClick = () => {
+    navigate(route);
+  };
+
   return (
     <div className={`table ${showButton ? "with-button" : ""}`}>
       <div className="content">
         <div className="title">
           <div className="title-left">
-            <h1>{title}</h1>
+            <button className="table-title-button" onClick={handleTitleClick}>
+              {title}
+            </button>
             <img src={seta} alt="seta para a direita" />
           </div>
           {title === "A fazer" && (
