@@ -1,0 +1,64 @@
+.notFoundContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(../assets/fundo.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+  
+  .notFoundContent {
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .notFoundContent h1 {
+    font-size: 120px;
+    margin-bottom: 100px;
+    color: #1e5e86;
+  }
+  
+  .notFoundContent p {
+    font-size: 28px;
+    margin: 20px;
+    color: #373643;
+  }
+  
+  .backButton {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #1e5e86;
+    color: #fff;
+    text-decoration: none;
+    border-color: #1e5e86;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .backButton:hover {
+    background-color: #34a7ec;
+    border-color: #34a7ec;
+  }
+  
+  .pilula {
+    position: absolute;
+    top: 17%;
+    left: 15%;
+    z-index: 1;
+    transition: all 0.5s ease;
+  }
+  
+  .seringa {
+    position: absolute;
+    bottom: 43%;
+    right: 25%;
+    z-index: 1;
+    transition: all 0.5s ease;
+  }
+  
