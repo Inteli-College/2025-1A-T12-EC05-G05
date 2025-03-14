@@ -74,7 +74,11 @@ def forcar_recriacao_banco():
         logs = [
             ("João", json.dumps({"codigo": "QR_A1"}), 1),
             ("Maria", json.dumps({"codigo": "QR_B2"}), 0),
-            ("Pedro", json.dumps({"codigo": "QR_C3"}), 1)
+            ("Pedro", json.dumps({"codigo": "QR_C3"}), 1),
+            ("Pedro", json.dumps({"codigo": "QR_Cdsasdas3"}), 1),
+            ("Pedro", json.dumps({"codigo": "QR_Cdsada3"}), 1)
+
+
         ]
         
         cursor.executemany("""

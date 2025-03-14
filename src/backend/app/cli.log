@@ -35,3 +35,17 @@
 2025-03-14 01:26:51,501 - INFO - 127.0.0.1 - - [14/Mar/2025 01:26:51] "POST /print-response HTTP/1.1" 200 -
 2025-03-14 01:27:25,201 - INFO - Log inserido com sucesso para o usuário: sfasdfdsafdsfds
 2025-03-14 01:27:25,202 - INFO - 127.0.0.1 - - [14/Mar/2025 01:27:25] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 01:46:44,032 - INFO - Log inserido com sucesso para o usuário: Pedro
+2025-03-14 01:46:44,033 - INFO - 127.0.0.1 - - [14/Mar/2025 01:46:44] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 01:46:44,521 - INFO - Log inserido com sucesso para o usuário: Pedro
+2025-03-14 01:46:44,522 - INFO - 127.0.0.1 - - [14/Mar/2025 01:46:44] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 01:46:44,950 - INFO - Log inserido com sucesso para o usuário: Pedro
+2025-03-14 01:46:44,950 - INFO - 127.0.0.1 - - [14/Mar/2025 01:46:44] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 01:46:45,228 - INFO - Log inserido com sucesso para o usuário: Pedro
+2025-03-14 01:46:45,229 - INFO - 127.0.0.1 - - [14/Mar/2025 01:46:45] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 01:46:45,415 - INFO - Log inserido com sucesso para o usuário: Pedro
+2025-03-14 01:46:45,416 - INFO - 127.0.0.1 - - [14/Mar/2025 01:46:45] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 01:46:45,773 - INFO - Log inserido com sucesso para o usuário: Pedro
+2025-03-14 01:46:45,775 - INFO - 127.0.0.1 - - [14/Mar/2025 01:46:45] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 01:46:45,914 - INFO - Log inserido com sucesso para o usuário: Pedro
+2025-03-14 01:46:45,914 - INFO - 127.0.0.1 - - [14/Mar/2025 01:46:45] "POST /print-response HTTP/1.1" 200 -
