@@ -10,6 +10,7 @@ import FitaMedicamentos from "./pages/fitaMedicamentos.jsx";
 import AFazer from "./pages/AFazer.jsx";
 import EmProgresso from "./pages/EmProgresso.jsx";
 import Prontas from "./pages/Prontas.jsx";
+import Historico from "./pages/historico.jsx";
 
 const Router = () => {
   return (
@@ -33,6 +34,7 @@ const Router = () => {
           <Route path="/a-fazer" element={<AFazer />} />
           <Route path="/em-progresso" element={<EmProgresso />} />
           <Route path="/prontas" element={<Prontas />} />
+          <Route path="/historico" element={<Historico/>} />
 
           
           {/* Rotas protegidas */}
