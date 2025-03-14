@@ -9,11 +9,6 @@ const dataProntas = [
 
 export default function Prontas() {
     return (
-        <div className="fitaMedicamentos"> 
-            <div className="conteudo">
-                <PageHeader title="Fitas de medicamentos" isSingleFita={true}/>
-                <Table title="Prontas" data={dataProntas} route="/prontas"/>
-            </div>
-        </div>
+        <Table title="Prontas" data={dataProntas} route="/tela-medicamentos/prontas" />
     );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import Table from "../components/Table";
 import PageHeader from "../components/PageHeader";
 import "../styles/fitaMedicamentos.css";
@@ -22,13 +23,24 @@ const dataProntas = [
 ];
 
 export default function FitaMedicamentos() {
+    const location = useLocation();
+    
+    // A lógica correta para definir se estamos em uma sub-rota
+    const isSingleFita = location.pathname !== "/tela-medicamentos"
+
     return (
-        <div className="fitaMedicamentos"> 
+        <div className="fitaMedicamentos">
             <div className="conteudo">
-                <PageHeader title="Fitas de medicamentos" />
-                <Table title="A fazer" data={dataAFazer} maxItems={2} route="/a-fazer"/>
-                <Table title="Em progresso" data={dataEmProgresso} maxItems={1} route="/em-progresso"/>
-                <Table title="Prontas" data={dataProntas} maxItems={2} route="/prontas"/>
+                <PageHeader title="Fitas de medicamentos" isSingleFita={isSingleFita} />
+                {location.pathname === "/tela-medicamentos" ? (
+                    <>
+                        <Table title="A fazer" data={dataAFazer} maxItems={2} route="/tela-medicamentos/a-fazer"/>
+                        <Table title="Em progresso" data={dataEmProgresso} maxItems={1} route="/tela-medicamentos/em-progresso"/>
+                        <Table title="Prontas" data={dataProntas} maxItems={2} route="/tela-medicamentos/prontas"/>
+                    </>
+                ) : (
+                    <Outlet />
+                )}
             </div>
         </div>
     );

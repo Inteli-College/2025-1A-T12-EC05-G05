@@ -18,7 +18,7 @@ const Router = () => {
       <Routes>
         {/* Rota de login, sem sidebar */}
         <Route path="/login" element={<LoginPage />} />
-        
+
         {/* Rotas protegidas */}
         <Route element={<PrivateRoute />}>
           <Route path="/register" element={<RegisterPage />} />
@@ -26,17 +26,18 @@ const Router = () => {
 
         {/* Rota para não encontrado */}
         <Route path="*" element={<NotFound />} />
-        
+
         {/* Rotas que terão o layout com sidebar */}
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/tela-medicamentos" element={<FitaMedicamentos />} />
-          <Route path="/a-fazer" element={<AFazer />} />
-          <Route path="/em-progresso" element={<EmProgresso />} />
-          <Route path="/prontas" element={<Prontas />} />
-          <Route path="/historico" element={<Historico/>} />
+          <Route path="/tela-medicamentos" element={<FitaMedicamentos />}>
+            <Route path="a-fazer" element={<AFazer />} />
+            <Route path="em-progresso" element={<EmProgresso />} />
+            <Route path="prontas" element={<Prontas />} />
+          </Route>
+          <Route path="/historico" element={<Historico />} />
 
-          
+
           {/* Rotas protegidas */}
           <Route element={<PrivateRoute />}>
             <Route path="/register" element={<RegisterPage />} />

@@ -10,11 +10,6 @@ const dataEmProgresso = [
 
 export default function EmProgresso() {
     return (
-        <div className="fitaMedicamentos"> 
-            <div className="conteudo">
-                <PageHeader title="Fitas de medicamentos" isSingleFita={true}/>
-                <Table title="Em progresso" data={dataEmProgresso} route="/em-progresso"/>
-            </div>
-        </div>
+        <Table title="Em progresso" data={dataEmProgresso} route="/tela-medicamentos/em-progresso" />
     );
 }

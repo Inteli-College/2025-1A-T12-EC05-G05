@@ -13,7 +13,7 @@ const Sidebar = () => {
     <aside className="sidebar">
       <img id="logo" src={presciptLogo} alt="Logo Prescript" />
       <ul>
-        <li className={location.pathname === "/tela-medicamentos" ? "active" : ""}>
+        <li className={location.pathname.startsWith("/tela-medicamentos") ? "active" : ""}>
           <Link to="/tela-medicamentos">
             <img id="stripsIcon" src={agenda} alt="" />
             <span className="linkText">Fitas</span>

@@ -11,11 +11,6 @@ const dataAFazer = [
 
 export default function AFazer() {
     return (
-        <div className="fitaMedicamentos"> 
-            <div className="conteudo">
-                <PageHeader title="Fitas de medicamentos" isSingleFita={true}/>
-                <Table title="A fazer" data={dataAFazer} route="/a-fazer"/>
-            </div>
-        </div>
+        <Table title="A fazer" data={dataAFazer} route="/tela-medicamentos/a-fazer" />
     );
 }
