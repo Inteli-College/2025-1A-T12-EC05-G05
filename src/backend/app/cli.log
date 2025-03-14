@@ -1,0 +1,37 @@
+2025-03-14 01:22:32,411 - INFO - BEGIN (implicit)
+2025-03-14 01:22:32,412 - INFO - PRAGMA main.table_info("users")
+2025-03-14 01:22:32,412 - INFO - [raw sql] ()
+2025-03-14 01:22:32,413 - INFO - COMMIT
+2025-03-14 01:22:32,425 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 01:22:32,444 - WARNING -  * Debugger is active!
+2025-03-14 01:22:32,450 - INFO -  * Debugger PIN: 581-563-860
+2025-03-14 01:26:18,893 - INFO - BEGIN (implicit)
+2025-03-14 01:26:18,893 - INFO - PRAGMA main.table_info("users")
+2025-03-14 01:26:18,894 - INFO - [raw sql] ()
+2025-03-14 01:26:18,895 - INFO - COMMIT
+2025-03-14 01:26:18,904 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 01:26:18,938 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-14 01:26:18,939 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-14 01:26:18,940 - INFO -  * Restarting with stat
+2025-03-14 01:26:19,694 - INFO - BEGIN (implicit)
+2025-03-14 01:26:19,695 - INFO - PRAGMA main.table_info("users")
+2025-03-14 01:26:19,695 - INFO - [raw sql] ()
+2025-03-14 01:26:19,695 - INFO - COMMIT
+2025-03-14 01:26:19,705 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 01:26:19,723 - WARNING -  * Debugger is active!
+2025-03-14 01:26:19,728 - INFO -  * Debugger PIN: 581-563-860
+2025-03-14 01:26:25,058 - INFO - Log inserido com sucesso para o usuário: João
+2025-03-14 01:26:25,060 - INFO - 127.0.0.1 - - [14/Mar/2025 01:26:25] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 01:26:49,933 - INFO - Log inserido com sucesso para o usuário: João
+2025-03-14 01:26:49,934 - INFO - 127.0.0.1 - - [14/Mar/2025 01:26:49] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 01:26:50,702 - INFO - Log inserido com sucesso para o usuário: João
+2025-03-14 01:26:50,703 - INFO - 127.0.0.1 - - [14/Mar/2025 01:26:50] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 01:26:51,022 - INFO - Log inserido com sucesso para o usuário: João
+2025-03-14 01:26:51,022 - INFO - 127.0.0.1 - - [14/Mar/2025 01:26:51] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 01:26:51,241 - INFO - Log inserido com sucesso para o usuário: João
+2025-03-14 01:26:51,242 - INFO - 127.0.0.1 - - [14/Mar/2025 01:26:51] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 01:26:51,500 - INFO - Log inserido com sucesso para o usuário: João
+2025-03-14 01:26:51,501 - INFO - 127.0.0.1 - - [14/Mar/2025 01:26:51] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 01:27:25,201 - INFO - Log inserido com sucesso para o usuário: sfasdfdsafdsfds
+2025-03-14 01:27:25,202 - INFO - 127.0.0.1 - - [14/Mar/2025 01:27:25] "POST /print-response HTTP/1.1" 200 -
