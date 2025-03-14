@@ -5,6 +5,7 @@ import RegisterPage from "./pages/registerPage.jsx";
 import NotFound from "./pages/notFound.jsx";
 import PrivateRoute from "./components/privateRoute.jsx";
 import FitaMedicamentos from "./pages/fitaMedicamentos.jsx";
+import Historico from "./pages/historico.jsx";
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/tela-medicamentos" element={<FitaMedicamentos />} />
+        <Route path="/historico" element={<Historico/>} />
         
         {/* Rotas protegidas */}
         <Route element={<PrivateRoute />}>
