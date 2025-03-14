@@ -1,9 +1,21 @@
+import os
+import sqlite3
 import time
+import logging
 from termcolor import colored
-import psycopg2
 from getpass import getpass
+import json
+import sys
 
-# Função para fazer a identidade visual
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("cli.log", encoding='utf-8'),
+    ]
+)
+logger = logging.getLogger(__name__)
+
 def identidade_visual():
     print(colored("""
   _____                         _       _   
@@ -14,101 +26,173 @@ def identidade_visual():
  |_|   |_|  \___||___/\___|_|  |_| .__/ \__|
                                  | |        
                                  |_|        
- """, "cyan"))
+    """, "cyan"))
 
-# Função para conectar ao banco de dados
-def conectar_ao_banco():
-    print(f"⚙ Conectando ao banco de dados...")
-    time.sleep(2)
+def forcar_recriacao_banco():
     try:
-        conn = psycopg2.connect(
-            dbname="Prescrito o DataBase",  
-            user="cli",      
-            password="cliprescript",    
-            host="10.128.0.49",        
-            port="5433"  
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        db_dir = os.path.join(current_dir, "..", "instance")
+        db_path = os.path.join(db_dir, "dbCli.sqlite")
+        db_path = os.path.normpath(db_path)
+        
+        if os.path.exists(db_path):
+            os.remove(db_path)
+        
+        os.makedirs(db_dir, exist_ok=True)
+        
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS user (
+            nome TEXT PRIMARY KEY,
+            senha TEXT NOT NULL
         )
-        print("Conectado!") 
+        ''')
+        
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS log (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_nome TEXT,
+            qrcode TEXT,
+            presenca INTEGER,
+            FOREIGN KEY (user_nome) REFERENCES user(nome)
+        )
+        ''')
+        
+        usuarios = [
+            ("João", "senha123"),
+            ("Maria", "senha456"),
+            ("Pedro", "senha789")
+        ]
+        
+        cursor.executemany("""
+        INSERT INTO user (nome, senha)
+        VALUES (?, ?)
+        """, usuarios)
+        
+        logs = [
+            ("João", json.dumps({"codigo": "QR_A1"}), 1),
+            ("Maria", json.dumps({"codigo": "QR_B2"}), 0),
+            ("Pedro", json.dumps({"codigo": "QR_C3"}), 1)
+        ]
+        
+        cursor.executemany("""
+        INSERT INTO log (user_nome, qrcode, presenca)
+        VALUES (?, ?, ?)
+        """, logs)
+        
+        conn.commit()
         return conn
     except Exception as e:
-        print(f" ⚠️  Erro ao conectar ao banco de dados: {e}")
+        logger.error(f"Erro ao recriar banco de dados: {e}")
         return None
 
-# Função para autenticação
-def query_login(conn, nome, senha):
-    if conn is None:
-        return False  # Se a conexão não estiver ativa, retorna False
+def conectar_ao_banco():
+    time.sleep(1)
+    conn = forcar_recriacao_banco()
+    if conn:
+        return conn
     
     try:
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        db_path = os.path.join(current_dir, "..", "instance", "dbCli.sqlite")
+        db_path = os.path.normpath(db_path)
+        
+        if not os.path.exists(db_path):
+            return None
+            
+        conn = sqlite3.connect(db_path)
+        conn.text_factory = str
+        return conn
+    except Exception as e:
+        logger.error(f"Erro ao conectar ao banco de dados: {e}")
+        return None
+
+def query_login(conn, nome, senha):
+    if conn is None:
+        return False
+    try:
         cursor = conn.cursor()
-        query = 'SELECT "senha" FROM "Users" WHERE "nome" = %s'
+        
+        query = "SELECT senha FROM user WHERE nome = ?"
         cursor.execute(query, (nome,))
         resultado = cursor.fetchone()
         
         if resultado:
             senha_correta = resultado[0]
-            return senha == senha_correta  # Comparação direta (deve ser hash no futuro!)
+            return senha == senha_correta
         else:
-            return False  # Usuário não encontrado
+            return False
     except Exception as e:
-        print(f" ⚠️  Erro na consulta ao banco: {e} ⚠️")
+        logger.error(f"Erro na consulta ao banco durante login: {e}")
         return False
     finally:
-        cursor.close()
+        if cursor:
+            cursor.close()
 
-# Função de login
-def login(conn):
-    time.sleep(2)
-    print("\n👤 LOGIN")
-    nome = input("    ➣  Digite seu nome: ")
-    senha = getpass("    ➣  Digite sua senha: ")  # Oculta a senha ao digitar
+def buscar_logs_usuario(conn, nome):
+    if conn is None:
+        return []
+    
+    try:
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, qrcode, presenca FROM log WHERE user_nome = ?", (nome,))
+        logs = cursor.fetchall()
+        return logs
+    except Exception as e:
+        logger.error(f"Erro ao consultar logs do usuário: {e}")
+        return []
+    finally:
+        if cursor:
+            cursor.close()
 
-    if query_login(conn, nome, senha):
-        time.sleep(1)
-        print("\n Bem-vindo(a)", nome) 
-        menu_inicial(conn)  
-    else:
-        time.sleep(1)
-        print("⚠️  Acesso negado, tente novamente ⚠️")
-        time.sleep(1)
-        login(conn)  
-
-# Menu inicial
-def menu_inicial(conn):
-    while True:
-        time.sleep(2)
-        print("\n 🏠 MENU INICIAL")
-        time.sleep(2)
-        print("    ➣  Selecione uma opção:")
-        time.sleep(1)
-        print("        ➣  1. Separar Medicamento")
-        print("        ➣  2. Ver Histórico")
-        print("        ➣  3. Sair")
-        print("        ➣  4. Fechar programa")
-        time.sleep(2)
-        escolha = input("Digite o número da sua escolha: ")
+def login(conn, tentativa=1):
+    if tentativa > 3:
+        print("\n⛔ Número máximo de tentativas excedido. Encerrando programa.")
+        return False
         
-        if escolha == "1":
-            print("Ops... Parece que essa funcionalidade não está pronta.")
-        elif escolha == "2":
-            print("Você escolheu Ver Histórico. (Funcionalidade futura)")
-        elif escolha == "3":
-            print("Saindo...")
-            time.sleep(2)
-            login(conn) 
-        elif escolha == "4":
-            print("⚙ Encerrando ...")
-            time.sleep(2) 
-            break
+    time.sleep(1)
+    print("\n👤 LOGIN")
+    print("Usuários disponíveis: João, Maria, Pedro")
+    nome = input("    ➣  Digite seu nome: ")
+    senha = getpass("    ➣  Digite sua senha: ")
+    
+    autenticado = query_login(conn, nome, senha)
+    if autenticado:
+        time.sleep(1)
+        print("\nBem-vindo(a)", nome)
+        
+        logs = buscar_logs_usuario(conn, nome)
+        if logs:
+            print("\nLogs existentes para o usuário:")
+            for log in logs:
+                qrcode_data = log[1]
+                try:
+                    qrcode_info = json.loads(qrcode_data)
+                    qrcode_display = qrcode_info.get("codigo", qrcode_data)
+                except:
+                    qrcode_display = qrcode_data
+                        
+                print(f"ID: {log[0]}, QR Code: {qrcode_display}, Presença: {'Sim' if log[2] == 1 else 'Não'}")
         else:
-            print(" ⚠️ Escolha inválida! Tente novamente. ⚠️ ")
-            time.sleep(2)
-            menu_inicial(conn)
+            print("\nNenhum log encontrado para o usuário.")
+        
+        return True
+    else:
+        print("⚠️ Acesso negado, tente novamente ⚠️")
+        time.sleep(1)
+        return login(conn, tentativa + 1)
 
 if __name__ == "__main__":
-    identidade_visual() 
+    identidade_visual()
     conn = conectar_ao_banco()
-    
     if conn:
-        login(conn)
-        conn.close()  # Fecha a conexão ao final do programa
+        try:
+            login_successful = login(conn)
+        except Exception as e:
+            print(f"\n⚠️ Ocorreu um erro inesperado: {e}")
+        finally:
+            conn.close()
+    else:
+        print("\n⚠️ Não foi possível conectar ao banco de dados.")
