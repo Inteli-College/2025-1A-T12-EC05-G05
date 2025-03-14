@@ -168,3 +168,19 @@
 2025-03-14 11:03:31,032 - INFO -  * Debugger PIN: 294-982-705
 2025-03-14 11:04:16,741 - INFO - QR Code inserido com sucesso.
 2025-03-14 11:04:16,742 - INFO - 127.0.0.1 - - [14/Mar/2025 11:04:16] "POST /print-response HTTP/1.1" 200 -
+2025-03-14 11:43:32,810 - INFO - BEGIN (implicit)
+2025-03-14 11:43:32,810 - INFO - PRAGMA main.table_info("users")
+2025-03-14 11:43:32,817 - INFO - [raw sql] ()
+2025-03-14 11:43:32,826 - INFO - COMMIT
+2025-03-14 11:43:32,827 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 11:43:37,351 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-14 11:43:37,351 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-14 11:43:37,383 - INFO -  * Restarting with stat
+2025-03-14 11:43:39,235 - INFO - BEGIN (implicit)
+2025-03-14 11:43:39,235 - INFO - PRAGMA main.table_info("users")
+2025-03-14 11:43:39,235 - INFO - [raw sql] ()
+2025-03-14 11:43:39,235 - INFO - COMMIT
+2025-03-14 11:43:39,244 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
+2025-03-14 11:43:39,805 - WARNING -  * Debugger is active!
+2025-03-14 11:43:39,814 - INFO -  * Debugger PIN: 856-190-225

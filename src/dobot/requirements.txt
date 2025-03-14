@@ -1,0 +1,3 @@
+typer==0.9.0
+yaspin==2.3.0
+pyserial==3.5
