@@ -11,7 +11,7 @@ sidebar_position: 2
 
 ## 🎯 Como funciona?
 
-&emsp; O robô é controlado por meio de uma Interface de Linha de Comando (CLI), permitindo a interação do usuário por meio de comandos diretamente no terminal. Com esses comandos, o robô realiza movimentações, grava posições, pega medicamentos, escaneia QR codes para identificação dos itens e mais algumas outras ações essenciais para o funcionamento do sistema. 
+&emsp; O robô está sendo controlado por meio de uma Interface de Linha de Comando (CLI), permitindo a interação do usuário por meio de comandos diretamente no terminal. Com esses comandos, o robô realiza movimentações, grava posições, pega medicamentos, escaneia QR codes para identificação dos itens e outras ações essenciais para o funcionamento do sistema. Assim, a CLI facilita o desenvolvimento, pois permite a execução rápida de comandos para testar e ajustar o comportamento do robô, agilizando o processo de implementação e depuração.
 
 ## ✅ Conclusão
 
