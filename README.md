@@ -13,10 +13,10 @@
 ## 👨‍🎓 Integrantes: 
 - <a href="https://www.linkedin.com/in/danilo-martins-merlo-381b76228/">Danilo Martins Merlo</a>
 - <a href="https://www.linkedin.com/in/davi-nascimento-de-jesus/">Davi Nascimento de Jesus</a> 
-- <a href="http://linkedin.com/in/gabriel-martins-alves/">Gabriel Henrique Martins Alves</a>
+- <a href="https://linkedin.com/in/gabriel-martins-alves/">Gabriel Henrique Martins Alves</a>
 - <a href="https://www.linkedin.com/in/jo%C3%A3o-v-wandermurem/">João Victor Wandermurem</a> 
 - <a href="https://www.linkedin.com/in/mariella-kamezawa/">Mariella Sayumi Mercado Kamezawa</a>
-- <a href="=https://www.linkedin.com/in/rafaela-s-o-lima/">Rafaela Silva de Oliveira Lima</a>
+- <a href="https://www.linkedin.com/in/rafaela-s-o-lima/">Rafaela Silva de Oliveira Lima</a>
 - <a href="https://www.linkedin.com/in/yasmim-passos/">Yasmim Marly Passos</a>
 
 ## 👩‍🏫 Professores:
@@ -118,15 +118,15 @@ Esse comando exibe todas as funções disponíveis na CLI, permitindo começar a
 ## 🗃 Histórico de lançamentos
 
 * 0.5.0 - 11/04/2025
-    * **[Sprint 5]** <br><br>
+    * **[Sprint 5] Refinamento e Revisão** <br><br>
 * 0.4.0 - 28/03/2025
-    * **[Sprint 4]** <br><br>
+    * **[Sprint 4] Integração da Aplicação ao Robô** <br><br>
 * 0.3.0 - 14/03/2025
-    * **[Sprint 3]** <br><br>
+    * **[Sprint 3] Integração do Leitor de QR Code** <br><br>
 * 0.2.0 - 28/02/2025
-    * **[Sprint 2]** <br><br>
+    * **[Sprint 2] Wireflow e Automação Básica** <br><br>
 * 0.1.0 - 14/02/2025
-    * **[Sprint 1]** 
+    * **[Sprint 1] Entendimento do Negócio e do Usuário** 
 
 #
 
