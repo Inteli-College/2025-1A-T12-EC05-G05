@@ -56,9 +56,9 @@ def validate_and_suction(position):
         
     wait_before_suction()
 
-    # Simulação da leitura e validação
-    expected_medicine = "a"
-    scanned_medicine = "a"  # Mockado como válido
+    
+    expected_medicine = {'qrcode': '{"qr_code": "{\\"medicamento\\": \\"Paracetamol 500mg\\", \\"validade\\": \\"2026-08-15\\", \\"lote\\": \\"ABC12345\\"}"}'}
+    scanned_medicine = request_bip()
 
     if scanned_medicine == expected_medicine:
         dobot.enable_tool(100)
@@ -129,7 +129,7 @@ def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos
 def main():
     available_ports = list_ports.comports()
     print(f'available ports: {[x.device for x in available_ports]} \n')
-    port_input = 5
+    port_input = input("Desired port number: ")
     port = available_ports[int(port_input)].device
     spinner = yaspin(text=f"Connecting with port {port}...")
     spinner.start()
