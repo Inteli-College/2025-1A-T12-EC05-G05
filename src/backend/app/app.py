@@ -145,41 +145,66 @@ def logout_user():
 @app.route("/print-response", methods=["POST"])
 def print_response():
     """
-    Recebe um JSON e insere os dados na tabela 'log' do banco SQLite.
-    Espera que o JSON contenha: 'user_nome', 'qrcode' e 'presenca'.
+    Recebe um payload em formato de texto (plain text) e insere esse mesmo texto
+    na coluna 'qrcode' da tabela 'log' do banco SQLite.
+    
+    Exemplo de payload (enviado como text/plain):
+    {"medicamento": "Paracetamol 500mg", "validade": "2026-08-15", "lote": "ABC12345"}
     """
-    data = request.get_json()
-    if not data or "user_nome" not in data or "qrcode" not in data or "presenca" not in data:
-        logger.warning("Dados incompletos recebidos: %s", data)
+    txt_data = request.get_data(as_text=True)
+    if not txt_data:
+        logger.warning("Nenhum dado de texto recebido.")
         return jsonify({"error": "Dados incompletos"}), 400
 
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        qrcode_str = json.dumps(data.get("qrcode"))
-        presenca_val = 1 if data.get("presenca") in [True, 1, "1"] else 0
-
-        logger.debug("Inserindo log: user_nome=%s, qrcode=%s, presenca=%s",
-                     data.get("user_nome"), qrcode_str, presenca_val)
+        logger.debug("Inserindo QR Code como texto: %s", txt_data)
 
         cursor.execute(
-            "INSERT INTO log (user_nome, qrcode, presenca) VALUES (?, ?, ?)",
-            (data.get("user_nome"), qrcode_str, presenca_val)
+            "INSERT INTO log (qrcode) VALUES (?)",
+            (txt_data,)
         )
         conn.commit()
-        response_msg = "Dados inseridos no banco dbCli.sqlite com sucesso."
+        response_msg = "QR Code inserido no banco dbCli.sqlite com sucesso."
         status_code = 200
-        logger.info("Log inserido com sucesso para o usuário: %s", data.get("user_nome"))
+        logger.info("QR Code inserido com sucesso.")
     except Exception as e:
         conn.rollback()
-        response_msg = f"Erro ao inserir dados: {e}"
+        response_msg = f"Erro ao inserir QR Code: {e}"
         status_code = 500
-        logger.error("Erro ao inserir log: %s", e)
+        logger.error("Erro ao inserir QR Code: %s", e)
     finally:
         cursor.close()
         conn.close()
 
     return jsonify({"message": response_msg}), status_code
+
+@app.route("/qrcode-response", methods=["GET"])
+def latest_qr_code():
+    """
+    Consulta e retorna a última (mais recente) informação da coluna 'qrcode'
+    da tabela 'log' do banco SQLite.
+    """
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        logger.debug("Consultando o último QR Code inserido na tabela log.")
+        cursor.execute("SELECT qrcode FROM log ORDER BY id DESC LIMIT 1")
+        row = cursor.fetchone()
+        if row:
+            latest_qrcode = row["qrcode"]
+            logger.info("Último QR Code recuperado com sucesso.")
+            return jsonify({"qrcode": latest_qrcode}), 200
+        else:
+            logger.info("Nenhum QR Code encontrado na tabela log.")
+            return jsonify({"message": "Nenhum QR Code encontrado."}), 404
+    except Exception as e:
+        logger.error("Erro ao buscar o último QR Code: %s", e)
+        return jsonify({"error": f"Erro ao buscar o último QR Code: {e}"}), 500
+    finally:
+        cursor.close()
+        conn.close()
 
 if __name__ == "__main__":
     init_db()  # Inicializa as tabelas ao iniciar o app

@@ -16,15 +16,15 @@ class DobotController:
     def __init__(self):
         self.tool_enable = False
         self.home_position = home_position
-        self.conected = False
+        self.connected = False
 
     def connect(self, port):
         self.dobot = pydobot.Dobot(port=port, verbose=False)
-        self.conect = True
+        self.connected = True
         
-    def disconect(self):
+    def disconnect(self):
         self.dobot.close
-        self.conected = False
+        self.connected = False
 
     def pose(self):
         current_position = Position(*self.dobot.pose())
@@ -53,3 +53,7 @@ class DobotController:
         self.dobot.suck(False)
         self.dobot.wait(time)
         self.tool_enabled = False
+    
+    def get_suction_sensor_status(self):
+
+      return self.dobot._set_end_effector_suction_cup(enable=True)  # Corrigido para o método correto
