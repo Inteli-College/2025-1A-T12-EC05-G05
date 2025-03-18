@@ -193,3 +193,101 @@
 2025-03-14 12:13:14,890 - INFO - Banco de dados inicializado com as tabelas: user, log e teste.
 2025-03-14 12:13:14,943 - WARNING -  * Debugger is active!
 2025-03-14 12:13:14,943 - INFO -  * Debugger PIN: 856-190-225
+2025-03-17 08:28:35,657 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:28:35,691 - INFO - 127.0.0.1 - - [17/Mar/2025 08:28:35] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:28:42,685 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:28:42,687 - INFO - 127.0.0.1 - - [17/Mar/2025 08:28:42] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:28:49,657 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:28:49,657 - INFO - 127.0.0.1 - - [17/Mar/2025 08:28:49] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:31:37,442 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:31:37,444 - INFO - 127.0.0.1 - - [17/Mar/2025 08:31:37] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:31:44,394 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:31:44,401 - INFO - 127.0.0.1 - - [17/Mar/2025 08:31:44] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:31:51,351 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:31:51,361 - INFO - 127.0.0.1 - - [17/Mar/2025 08:31:51] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:32:38,303 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:32:38,303 - INFO - 127.0.0.1 - - [17/Mar/2025 08:32:38] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:32:45,267 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:32:45,271 - INFO - 127.0.0.1 - - [17/Mar/2025 08:32:45] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:32:52,225 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:32:52,237 - INFO - 127.0.0.1 - - [17/Mar/2025 08:32:52] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:39:33,193 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:39:33,194 - INFO - 127.0.0.1 - - [17/Mar/2025 08:39:33] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:39:48,914 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:39:48,914 - INFO - 127.0.0.1 - - [17/Mar/2025 08:39:48] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:40:36,958 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:40:36,958 - INFO - 127.0.0.1 - - [17/Mar/2025 08:40:36] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:40:52,396 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:40:52,397 - INFO - 127.0.0.1 - - [17/Mar/2025 08:40:52] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:56:56,455 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:56:56,455 - INFO - 127.0.0.1 - - [17/Mar/2025 08:56:56] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:56:59,696 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:56:59,696 - INFO - 127.0.0.1 - - [17/Mar/2025 08:56:59] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 08:57:02,957 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 08:57:02,957 - INFO - 127.0.0.1 - - [17/Mar/2025 08:57:02] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:08:25,220 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:08:25,220 - INFO - 127.0.0.1 - - [17/Mar/2025 09:08:25] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:08:38,490 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:08:38,491 - INFO - 127.0.0.1 - - [17/Mar/2025 09:08:38] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:08:51,728 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:08:51,729 - INFO - 127.0.0.1 - - [17/Mar/2025 09:08:51] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:15:49,469 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:15:49,469 - INFO - 127.0.0.1 - - [17/Mar/2025 09:15:49] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:15:55,612 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:15:55,613 - INFO - 127.0.0.1 - - [17/Mar/2025 09:15:55] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:16:01,153 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:16:01,154 - INFO - 127.0.0.1 - - [17/Mar/2025 09:16:01] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:16:04,190 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:16:04,191 - INFO - 127.0.0.1 - - [17/Mar/2025 09:16:04] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:16:07,546 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:16:07,546 - INFO - 127.0.0.1 - - [17/Mar/2025 09:16:07] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:16:10,893 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:16:10,894 - INFO - 127.0.0.1 - - [17/Mar/2025 09:16:10] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:17:52,447 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:17:52,448 - INFO - 127.0.0.1 - - [17/Mar/2025 09:17:52] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:17:58,289 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:17:58,290 - INFO - 127.0.0.1 - - [17/Mar/2025 09:17:58] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:18:03,828 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:18:03,829 - INFO - 127.0.0.1 - - [17/Mar/2025 09:18:03] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:18:06,859 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:18:06,860 - INFO - 127.0.0.1 - - [17/Mar/2025 09:18:06] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:18:10,197 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:18:10,198 - INFO - 127.0.0.1 - - [17/Mar/2025 09:18:10] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:18:13,542 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:18:13,552 - INFO - 127.0.0.1 - - [17/Mar/2025 09:18:13] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:18:19,405 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:18:19,406 - INFO - 127.0.0.1 - - [17/Mar/2025 09:18:19] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:18:25,871 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:18:25,872 - INFO - 127.0.0.1 - - [17/Mar/2025 09:18:25] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:18:31,410 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:18:31,411 - INFO - 127.0.0.1 - - [17/Mar/2025 09:18:31] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:18:34,470 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:18:34,471 - INFO - 127.0.0.1 - - [17/Mar/2025 09:18:34] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:18:38,437 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:18:38,438 - INFO - 127.0.0.1 - - [17/Mar/2025 09:18:38] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:18:41,779 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:18:41,780 - INFO - 127.0.0.1 - - [17/Mar/2025 09:18:41] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:18:47,637 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:18:47,638 - INFO - 127.0.0.1 - - [17/Mar/2025 09:18:47] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:18:54,412 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:18:54,413 - INFO - 127.0.0.1 - - [17/Mar/2025 09:18:54] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:18:59,969 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:18:59,970 - INFO - 127.0.0.1 - - [17/Mar/2025 09:18:59] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:19:03,006 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:19:03,007 - INFO - 127.0.0.1 - - [17/Mar/2025 09:19:03] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:19:05,138 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:19:05,139 - INFO - 127.0.0.1 - - [17/Mar/2025 09:19:05] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:19:06,385 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:19:06,387 - INFO - 127.0.0.1 - - [17/Mar/2025 09:19:06] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:25:57,444 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:25:57,445 - INFO - 127.0.0.1 - - [17/Mar/2025 09:25:57] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 09:26:03,817 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 09:26:03,817 - INFO - 127.0.0.1 - - [17/Mar/2025 09:26:03] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 11:09:22,805 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 11:09:22,813 - INFO - 127.0.0.1 - - [17/Mar/2025 11:09:22] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 11:09:38,018 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 11:09:38,019 - INFO - 127.0.0.1 - - [17/Mar/2025 11:09:38] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 12:12:33,294 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 12:12:33,294 - INFO - 127.0.0.1 - - [17/Mar/2025 12:12:33] "GET /qrcode-response HTTP/1.1" 200 -
+2025-03-17 12:12:47,030 - INFO - Último QR Code recuperado com sucesso.
+2025-03-17 12:12:47,030 - INFO - 127.0.0.1 - - [17/Mar/2025 12:12:47] "GET /qrcode-response HTTP/1.1" 200 -
