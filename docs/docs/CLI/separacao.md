@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## 🔍 O que é?
 
-&emsp;  A **separação de medicamentos** é uma funcionalidade disponível na CLI, permitindo que o usuário solicite a separação dos medicamentos desejados de forma organizada.
+&emsp;  A **separação de medicamentos** É uma funcionalidade disponível na `CLI`, permitindo que o usuário solicite a separação dos medicamentos desejados de forma organizada. Atualmente, as solicitações ainda não estão sendo processadas para a separação real, pois a integração ainda não foi concluída. No entanto, o que está integrado até o momento é o banco de dados, onde todas as solicitações são registradas, mas ainda não realizadas a separação dos medicamentos.
 
 ## 🤔 Como funciona?
 

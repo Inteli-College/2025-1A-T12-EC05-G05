@@ -7,7 +7,7 @@ sidebar_position: 1
 ## 🔍 O que é?
 
 &emsp; Na `CLI`, foi implementado o *histórico* que registra informações sobre as solicitações de pedidos de medicamentos. Como nesta sprint não há integração com ferramentas de front-end, optamos por uma interface diretamente na linha de comando, que funciona como uma espécie de pré-interface. Dessa forma, buscamos tornar a interação o mais agradável possível neste estágio do desenvolvimento. Atualmente, o histórico armazena dados essenciais, como a data e a hora da solicitação, o nome do responsável e os medicamentos separados.   
-&emsp; Atualmente, o histórico armazena dados, como a data e hora da solicitação, o nome do responsável e os medicamentos separados. Além disso, há planos para a implementação de um histórico para a separação dos medicamentos, que registrará as ações do robô, incluindo informações sobre os medicamentos manipulados, leituras de QR codes e os bins utilizados no processo. Com isso, o sistema proporcionará um acompanhamento ainda mais estruturado e preciso das operações realizadas.
+&emsp; Atualmente, o histórico armazena dados, como a data e hora da solicitação, o nome do responsável e os medicamentos separados.  Além disso, há planos para implementar outros logs no histórico, como registros das ações do robô, erros e reposições de estoque. Com isso, o sistema proporcionará um acompanhamento ainda mais estruturado e preciso das operações realizadas.
 
 ## 🤔 Como funciona?
 
