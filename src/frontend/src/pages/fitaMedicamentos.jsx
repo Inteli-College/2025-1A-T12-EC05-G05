@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Table from "../components/Table";
 import PageHeader from "../components/PageHeader";
+import LoadingModal from "../components/LoadingModal";
 import "../styles/fitaMedicamentos.css";
 
 const dataAFazer = [
@@ -28,6 +29,7 @@ export default function FitaMedicamentos() {
 
     return (
         <div className="fitaMedicamentos">
+            <LoadingModal isLoading={true}/>
             <div className="conteudo">
                 <PageHeader title="Fitas de medicamentos" isSingleFita={isSingleFita} />
                 {location.pathname === "/tela-medicamentos" ? (

@@ -1,0 +1,31 @@
+.loading-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(79, 69, 79, 0.59);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loader {
+    border: 6px solid rgba(98, 89, 98, 0.75);
+    border-top: 6px solid #000000;
+    border-radius: 50%;
+    width: 15vh;
+    height: 15vh;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
