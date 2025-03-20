@@ -36,7 +36,7 @@ jobs:
         working-directory: src/backend/app
         run: |
           # Inicia o servidor em segundo plano
-          nohup python app.py &
+          nohup python __init__.py &
           SERVER_PID=$!
           # Aguarda 5 segundos para o servidor subir
           sleep 5
