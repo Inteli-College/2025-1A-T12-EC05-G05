@@ -3,7 +3,7 @@ from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_session import Session
 from config import ApplicationConfig
-from models import db  # Isso deve estar correto se os modelos estão em models.py
+from models import db
 
 import controllers.login_controller as auth_blueprint
 import controllers.statusfitas_controller as fita_blueprint
