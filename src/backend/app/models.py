@@ -1,7 +1,10 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 from datetime import datetime, timezone
+import os
 
 db = SQLAlchemy()
+bcrypt = Bcrypt()
 
 # Tabela Usuario
 class Usuario(db.Model):
@@ -67,6 +70,8 @@ class Log(db.Model):
     responsavel = db.Column(db.Boolean, nullable=False)                                             # Responsável (farm, dobot)
     paciente_id = db.Column(db.Integer, db.ForeignKey('pacientes.id'), nullable=False)              # Paciente (referência para paciente)
 
+
+# Função para criar descrições iniciais
 def criar_descricoes_iniciais():
     if not Descricao.query.first():
         descricoes = [
@@ -93,3 +98,34 @@ def criar_descricoes_iniciais():
             nova_descricao = Descricao(descricao=descricao)
             db.session.add(nova_descricao)
         db.session.commit()
+
+# Função para criar o usuário
+def criar_usuario():
+    # Dados do usuário
+    nome = "Gabriel Henrique"
+    email = "gabrielhenrique@gmail.com"
+    senha = "123456"
+
+    # Criptografar a senha
+    senha_hash = bcrypt.generate_password_hash(senha).decode('utf-8')
+
+    # Criar o usuário
+    novo_usuario = Usuario(nome=nome, email=email, senha=senha_hash)
+
+    # Adicionar o usuário ao banco de dados
+    try:
+        db.session.add(novo_usuario)
+        db.session.commit()
+        print(f"Usuário {nome} criado com sucesso!")
+    except Exception as e:
+        db.session.rollback()
+        print(f"Erro ao criar usuário: {str(e)}")
+
+
+# Rodar as funções
+if __name__ == "__main__":
+    # Criar descrições iniciais, se necessário
+    criar_descricoes_iniciais()
+
+    # Criar o usuário Gabriel
+    criar_usuario()
