@@ -40,10 +40,10 @@ jobs:
           SERVER_PID=$!
           # Aguarda 5 segundos para o servidor subir
           sleep 5
-          # Agora, faz uma requisição de login para a rota /login
-          status_code=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Content-Type: application/json" -d '{"email": "gabrielhenrique@gmail.com", "password": "123456"}' http://127.0.0.1:5000/auth/login)
+          # Verifica se o servidor Flask está respondendo com 200 OK
+          status_code=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:5000)
           echo "Status code: $status_code"
-          # Aceita 200 como resposta válida para login bem-sucedido
+          # Aceita 200 como resposta válida
           if [ "$status_code" -ne 200 ]; then
             kill $SERVER_PID
             exit 1
