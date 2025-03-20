@@ -1,6 +1,6 @@
 from flask import jsonify, session
 from flask_bcrypt import Bcrypt
-from models import db, User
+from models import db, Usuario as User
 
 bcrypt = Bcrypt()
 

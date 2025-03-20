@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import datetime, timezone
 
 db = SQLAlchemy()
 
@@ -62,15 +62,13 @@ class Descricao(db.Model):
 class Log(db.Model):
     __tablename__ = 'logs'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)                                # id_log (serial)
-    datetime = db.Column(db.DateTime, default=datetime.now(datetime.timezone.utc), nullable=False)  # datetime
+    datetime = db.Column(db.DateTime, default=datetime.now(timezone.utc), nullable=False)  # datetime
     descricao_id = db.Column(db.Integer, db.ForeignKey('descricoes.id'), nullable=False)            # ID da descrição
     responsavel = db.Column(db.Boolean, nullable=False)                                             # Responsável (farm, dobot)
     paciente_id = db.Column(db.Integer, db.ForeignKey('pacientes.id'), nullable=False)              # Paciente (referência para paciente)
 
-# Função para inserir descrições iniciais
 def criar_descricoes_iniciais():
-    # Verifica se a tabela de Descrições já está populada, se não, insere os valores
-    if not Descricao.query.first():  # Verifica se a tabela já possui dados
+    if not Descricao.query.first():
         descricoes = [
             "prescrição enviada --> esperando autorização",
             "autorizar a separação --> pronto para separação",
