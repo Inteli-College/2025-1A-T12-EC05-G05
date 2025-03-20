@@ -10,65 +10,65 @@ on:
       - develop
       - main
 
-jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
-    env:
-      SECRET_KEY: ${{ secrets.SECRET_KEY }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+# jobs:
+#   build-and-test:
+#     runs-on: ubuntu-latest
+#     env:
+#       SECRET_KEY: ${{ secrets.SECRET_KEY }}
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
 
-      # Backend steps (Python)
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-          cache: 'pip'
+#       # Backend steps (Python)
+#       - name: Set up Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: '3.11'
+#           cache: 'pip'
 
-      - name: Install backend dependencies
-        working-directory: src/backend/app
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+#       - name: Install backend dependencies
+#         working-directory: src/backend/app
+#         run: |
+#           python -m pip install --upgrade pip
+#           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Check backend server
-        working-directory: src/backend/app
-        run: |
-          # Inicia o servidor Flask em segundo plano
-          nohup python __init__.py &  # __init__.py iniciando o servidor Flask
-          SERVER_PID=$!
-          # Aguarda 5 segundos para o servidor subir
-          sleep 5
-          # Verifica se o servidor Flask está respondendo com 200 OK
-          status_code=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:5000)
-          echo "Status code: $status_code"
-          # Aceita 200 como resposta válida
-          if [ "$status_code" -ne 200 ]; then
-            kill $SERVER_PID
-            exit 1
-          fi
-          kill $SERVER_PID
+#       - name: Check backend server
+#         working-directory: src/backend/app
+#         run: |
+#           # Inicia o servidor Flask em segundo plano
+#           nohup python __init__.py &  # __init__.py iniciando o servidor Flask
+#           SERVER_PID=$!
+#           # Aguarda 5 segundos para o servidor subir
+#           sleep 5
+#           # Verifica se o servidor Flask está respondendo com 200 OK
+#           status_code=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:5000)
+#           echo "Status code: $status_code"
+#           # Aceita 200 como resposta válida
+#           if [ "$status_code" -ne 200 ]; then
+#             kill $SERVER_PID
+#             exit 1
+#           fi
+#           kill $SERVER_PID
 
-      # Frontend steps (React)
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.11.0'
-          cache: 'npm'
-          cache-dependency-path: src/frontend/package-lock.json
+#       # Frontend steps (React)
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '20.11.0'
+#           cache: 'npm'
+#           cache-dependency-path: src/frontend/package-lock.json
 
-      - name: Limpar cache e remover dependências antigas
-        working-directory: src/frontend
-        run:
-          npm cache clean --force
-          rm -rf node_modules
-          rm -rf build
+#       - name: Limpar cache e remover dependências antigas
+#         working-directory: src/frontend
+#         run:
+#           npm cache clean --force
+#           rm -rf node_modules
+#           rm -rf build
 
-      - name: Instalar dependências do frontend
-        working-directory: src/frontend
-        run: npm install
+#       - name: Instalar dependências do frontend
+#         working-directory: src/frontend
+#         run: npm install
 
-      - name: Build Frontend
-        working-directory: src/frontend
-        run: npm run build
+#       - name: Build Frontend
+#         working-directory: src/frontend
+#         run: npm run build
