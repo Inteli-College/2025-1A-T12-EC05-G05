@@ -6,14 +6,14 @@ const LandingPage = () => {
   const [user, setUser] = useState(null);
 
   const logoutUser = async () => {
-    await httpClient.post("http://localhost:5000/logout");
+    await httpClient.post("http://localhost:5000/auth/logout");
     window.location.href = "/";
   };
 
   useEffect(() => {
     (async () => {
       try {
-        const resp = await httpClient.get("http://localhost:5000/@me");
+        const resp = await httpClient.get("http://localhost:5000/auth/@me");
         setUser(resp.data);
       } catch (error) {
         console.log("Not authenticated");

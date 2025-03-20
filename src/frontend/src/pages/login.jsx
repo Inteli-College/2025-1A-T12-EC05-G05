@@ -32,7 +32,7 @@ export default function LoginPage() {
     if (!validateForm()) return;
     setIsLoading(true);
     try {
-      await httpClient.post("http://localhost:5000/login", {
+      await httpClient.post("http://localhost:5000/auth/login", {
         email: formData.email,
         password: formData.password,
       });

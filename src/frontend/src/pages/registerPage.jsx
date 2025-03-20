@@ -56,7 +56,7 @@ const RegisterPage = () => {
 
     setIsLoading(true);
     try {
-      await httpClient.post("http://localhost:5000/register", {
+      await httpClient.post("http://localhost:5000/auth/register", {
         email: formData.email,
         password: formData.password,
       });
