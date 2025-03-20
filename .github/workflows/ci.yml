@@ -35,16 +35,16 @@ jobs:
       - name: Check backend server
         working-directory: src/backend/app
         run: |
-          # Inicia o servidor em segundo plano
-          nohup python __init__.py &
+          # Inicia o servidor Flask em segundo plano
+          nohup python __init__.py &  # __init__.py iniciando o servidor Flask
           SERVER_PID=$!
           # Aguarda 5 segundos para o servidor subir
           sleep 5
-          # Obtém o código de status da rota /@me
-          status_code=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:5000/@me)
+          # Agora, faz uma requisição de login para a rota /login
+          status_code=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Content-Type: application/json" -d '{"email": "gabrielhenrique@gmail.com", "password": "123456"}' http://127.0.0.1:5000/auth/login)
           echo "Status code: $status_code"
-          # Aceita 401 como resposta válida (pois indica que o servidor está funcionando sem usuário logado)
-          if [ "$status_code" -ne 401 ]; then
+          # Aceita 200 como resposta válida para login bem-sucedido
+          if [ "$status_code" -ne 200 ]; then
             kill $SERVER_PID
             exit 1
           fi
