@@ -27,7 +27,7 @@ class authService:
         if user_exists:
             return jsonify({"error": "User already exists"}), 409
 
-        hashed_password = bcrypt.generate_password_hash(senha)
+        hashed_password = bcrypt.generate_password_hash(password=password)
         new_user = User(email=email, senha=hashed_password)
         db.session.add(new_user)
         db.session.commit()
