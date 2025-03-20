@@ -58,8 +58,14 @@ jobs:
           cache: 'npm'
           cache-dependency-path: src/frontend/package-lock.json
 
+      - name: Limpar cache e remover dependências antigas
+        working-directory: src/frontend
+        run:
+          npm cache clean --force
+          rm -rf node_modules
+          rm -rf build
 
-      - name: Install frontend dependencies
+      - name: Instalar dependências do frontend
         working-directory: src/frontend
         run: npm install
 

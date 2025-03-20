@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.historico {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-image: url(../assets/fundo.svg);
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.conteudo-historico {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin: 15px 0 30px 0;
+}
+
+.historico-content {
+    display: flex;
+    justify-content: space-between;
+    background: #f0f0f0;
+    padding: 10px 40px;
+    border-radius: 10px;
+    font-family: "Roboto", sans-serif;
+    align-items: center;
+    width: 92%;
+}
+
+.calendar-container {
+    padding: 15px;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.react-calendar {
+    border: none !important;
+    background-color: transparent;
+    font-family: "Roboto", sans-serif;
+}
+
+.react-calendar button {
+    border: 1px solid #D5D4DF !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 20px;
+    transition: background 0.3s ease-in-out;
+}
+
+.react-calendar__tile--now {
+    background-color: #dbdadb !important;
+}
+
+.react-calendar__tile--active {
+    background: #5CE1E6 !important;
+    color: black !important;
+}
+
+.react-calendar__month-view__days__day--weekend {
+    color: black;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+    color: #89898c;
+    background-color: #e4e4e4;
+}
+
+abbr[title] {
+    text-decoration: none;
+    text-transform: lowercase;
+    display: inline-block;
+    font-weight: 500;
+    padding: 10px 0;
+}
+
+abbr[title]::first-letter {
+    text-transform: uppercase;
+}
+
+.react-calendar__navigation button {
+    border: none !important;
+}
+
+.react-calendar__month-view {
+    border: none !important;
+}
+
+.react-calendar__month-view__days {
+    border: none !important;
+}
+
+.react-calendar__month-view__weekdays {
+    border: none !important;
+}
+
+.react-calendar__navigation__next2-button,
+.react-calendar__navigation__prev2-button {
+    display: none !important;
+}
+
+.react-calendar__navigation__label__labelText {
+    font-size: 20px;
+    font-weight: 900;
+    font-family: "Inter", sans-serif;
+    color: #373743;
+}
+
+.content {
+    width: 50%;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding-top: 75px;
+}
+
+.fitas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.fitas-header h2 {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.5;
+}
+
+.total-fitas {
+    background-color: #5CE1E6;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.25;
+    margin: 0;
+    padding: 4px 8px;
+    border-radius: 14px;
+}
+
+.fitas-lista {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.fita-item {
+    padding: 10px 0 0 10px;
+    width: 95%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    display: block;
+    width: 100%;
+    margin: 6px 0;
+}
+
+.fita-item h3 {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    margin: 0;
+}
+
+.fita-item p {
+    font-size: 12px;
+    color: #49454F;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    margin: 0 0 8px 0;
+}
+
+.fita-item hr {
+    border: none;
+    height: 1px;
+    background-color: #CAC4D0;
+    margin: 0 4px;
+}
+
+.fitas-lista {
+    height: 202px;
+    overflow-y: auto;
+    direction: rtl;
+    scrollbar-width: thin;
+    scrollbar-color: #888888 #f0f0f0;
+}
+
+.fitas-lista > * {
+    direction: ltr;
+}
+
+.fitas-header.com-scroll {
+    padding-left: 20px;
+}
+
+.fita-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.sem-fitas {
+    margin-left: 10px;
+    font-size: 13px;
+    color: #373743;
+}
+
+.exportar-csv {
+    background-color: #373643; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: flex-end;
+    height: auto;
+    overflow: hidden; 
+    transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.exportar-csv:disabled,
+.exportar-csv.desativado {
+    background-color: #BEBEBE;
+    color: #777;
+    cursor: not-allowed;
+}

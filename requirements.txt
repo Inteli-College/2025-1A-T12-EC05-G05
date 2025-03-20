@@ -1,0 +1,6 @@
+typer
+yaspin
+pyserial
+pydobot
+termcolor
+psycopg2
