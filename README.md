@@ -14,16 +14,65 @@
   
 </div>
 
+
 <br>
 
+## Equipe Prescript:
+<img src= "assets/foto-grupo.jpg"></img>
+
 ## 👨‍🎓 Integrantes: 
-- <a href="https://www.linkedin.com/in/danilo-martins-merlo-381b76228/">Danilo Martins Merlo</a>
-- <a href="https://www.linkedin.com/in/davi-nascimento-de-jesus/">Davi Nascimento de Jesus</a> 
-- <a href="https://linkedin.com/in/gabriel-martins-alves/">Gabriel Henrique Martins Alves</a>
-- <a href="https://www.linkedin.com/in/jo%C3%A3o-v-wandermurem/">João Victor Wandermurem</a> 
-- <a href="https://www.linkedin.com/in/mariella-kamezawa/">Mariella Sayumi Mercado Kamezawa</a>
-- <a href="https://www.linkedin.com/in/rafaela-s-o-lima/">Rafaela Silva de Oliveira Lima</a>
-- <a href="https://www.linkedin.com/in/yasmim-passos/">Yasmim Marly Passos</a>
+
+<div align="center">
+
+<table style="border-collapse: collapse; width: 100%; max-width: 1500px;">
+  <tr>
+    <td align="center" style="padding: 15px; border: 0.5px solid #464646;">
+        <img src="assets/danilo.png" width="150px;" alt=""/><br>
+        <sub><b>Danilo Martins Merlo</b></sub><br><br>
+         <a href="https://www.linkedin.com/in/danilo-martins-merlo-381b76228/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
+         <a href="https://github.com/DaniloMartinsMerlo"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a>
+    </td>
+    <td align="center" style="padding: 15px; border: 1px solid #464646;">
+        <img src="assets/davi.png" width="150px;" alt=""/><br>
+        <sub><b>Davi Nascimento de Jesus</b></sub><br><br>
+         <a href="https://www.linkedin.com/in/davi-nascimento-de-jesus/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
+        <a href="https://github.com/nDaviii"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a>
+    </td>
+    <td align="center" style="padding: 15px; border: 1px solid #464646;">
+        <img src="assets/gabriel.png" width="150px;" alt=""/><br>
+        <sub><b>Gabriel Martins Alves</b></sub><br><br>
+        <a href="https://linkedin.com/in/gabriel-martins-alves/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
+        <a href="https://github.com/GabrielMartinsAlves"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a>
+    </td>
+    <td align="center" style="padding: 15px; border: 1px solid #464646;">
+        <img src="assets/wandermurem.png" width="150px;" alt=""/><br>
+        <sub><b>João Victor Wandermurem</b></sub><br><br>
+        <a href="https://www.linkedin.com/in/jo%C3%A3o-v-wandermurem/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
+        <a href="https://github.com/JvWandermurem"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a>
+    </td>
+    <td align="center" style="padding: 15px; border: 1px solid #464646;">
+        <img src="assets/mariella.png" width="150px;" alt=""/><br>
+        <sub><b>Mariella Sayumi Kamezawa</b></sub><br><br>
+        <a href="https://www.linkedin.com/in/mariella-kamezawa/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
+        <a href="https://github.com/marikamezawa"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a> 
+    </td>
+    <td align="center" style="padding: 15px; border: 1px solid #464646;">
+        <img src="assets/rafaela.png" width="150px;" alt=""/><br>
+        <sub><b>Rafaela Silva Lima</b></sub><br><br>
+        <a href="https://www.linkedin.com/in/rafaela-s-o-lima/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
+        <a href="https://github.com/RafaelaSOLima"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a>
+    </td>
+    <td align="center" style="padding: 15px; border: 1px solid #464646;">
+      <img src="assets/yasmim.png" width="150px;" alt=""/><br>
+      <sub><b>Yasmim Marly Passos</b></sub><br><br>
+      <a href="https://www.linkedin.com/in/yasmim-passos/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
+      <a href="https://github.com/yasmimpassos"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a>
+    </td>
+  </tr>
+</table>
+
+</div>
+
 
 ## 👩‍🏫 Professores:
 ### Orientador(a) 
