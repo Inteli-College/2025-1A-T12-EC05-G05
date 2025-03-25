@@ -330,10 +330,20 @@ def check_suction(
 def take_medicine(
     bin: Annotated[str, typer.Argument(help="Name of the bin from which medicine should be taken.")]
 ):
-    for position in data[bin]:
-        check_suction(position)
-        execute_movement(position)
-    deliver()
+    positions = data.get(bin, [])
+    
+    if not positions:
+        print(f"No data found for bin: {bin}")
+        return
+    
+    first_position = positions[0]
+    execute_movement(first_position)
+    
+    if validate():
+        for position in positions[1:]:
+            check_suction(position)
+            execute_movement(position)
+        deliver()
 
 def return_to_home():
     print("\U0001F3E0 Retornando à posição padrão...")
