@@ -307,7 +307,7 @@ def execute_movement(
 def validate():
 
     wait_before_suction()
-    expected_medicine = {'qrcode': '{"qr_code": "{\\"medicamento\\": \\"Paracetamol 500mg\\", \\"validade\\": \\"2026-08-15\\", \\"lote\\": \\"ABC12345\\"}"}'}
+    expected_medicine = {"Dorflex 300mg", "2025-09-30", "JKL44556"}
     scanned_medicine = request_bip()
 
     if scanned_medicine == expected_medicine:
