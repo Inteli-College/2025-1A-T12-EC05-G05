@@ -20,9 +20,13 @@ cli = typer.Typer()
 dobot = DobotController()
 rota_qrcode = "http://127.0.0.1:5000/qrcode-response"
 file_path = "config.json"
+file_path_med = "medicamentos.json"
 
 with open(file_path, "r") as file:
     data = json.load(file)
+
+with open(file_path_med, "r") as file:
+    data_med = json.load(file)
 
 deliver_value = 1
 add_height = 0
@@ -155,7 +159,7 @@ def menu_inicial(conn, nome):
 # Menu de separação --> ADICIONAR COISAS DO ROBO
 def menu_de_separacao(conn, nome):
     medicamentos = {
-        '1': 'Ibupofeno',
+        '1': 'Ibuprofeno',
         '2': 'Dorflex',
         '3': 'Buscopan',
         '4': 'Dipirona',
@@ -304,10 +308,10 @@ def execute_movement(
         
     spinner.stop()
 
-def validate():
-
+def validate(bin_n):
+    
     wait_before_suction()
-    expected_medicine = {'qr_code': 'Dorflex 300mg, 2025-09-30, JKL44556'}
+    expected_medicine = data_med.get(bin_n, [])
     scanned_medicine = request_bip()
 
     if scanned_medicine == expected_medicine:
@@ -328,7 +332,8 @@ def check_suction(
         dobot.disable_tool(100)
 
 def take_medicine(
-    bin: Annotated[str, typer.Argument(help="Name of the bin from which medicine should be taken.")]
+    bin: Annotated[str, typer.Argument(help="Name of the bin from which medicine should be taken.")],
+    bin_n: Annotated[str, typer.Argument(help="Name of the bin from which medicine should be taken.")]
 ):
     positions = data.get(bin, [])
     
@@ -339,7 +344,7 @@ def take_medicine(
     first_position = positions[0]
     execute_movement(first_position)
     
-    if validate():
+    if validate(bin_n):
         for position in positions[1:]:
             check_suction(position)
             execute_movement(position)
@@ -384,7 +389,7 @@ def collect_bin(
 def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos bins a coletar")]):
     ordered_list = sorted(input_list)
     for bin_num in ordered_list:
-        take_medicine(f'bin_{bin_num}')
+        take_medicine(f'bin_{bin_num}', bin_num)
 
 def main():
     available_ports = list_ports.comports()
