@@ -2,14 +2,18 @@ from flask import jsonify
 from models import db, Fita
 
 class HistoricoService:
-    def get_historico_por_data(self, data):
-        fitas = Fita.query.filter(Fita.data.cast(db.String) == data).all()
+    def get_historico(self):
+        fitas = Fita.query.all()
 
         if not fitas:
             return None
 
         resultado = [
-            {"nome": fita.id, "descricao": fita.status}
+            {
+                "data": fita.data.strftime("%Y-%m-%d"),  # Pegando apenas a data no formato YYYY-MM-DD
+                "nome": fita.id,
+                "descricao": fita.status
+            }
             for fita in fitas
         ]
 
