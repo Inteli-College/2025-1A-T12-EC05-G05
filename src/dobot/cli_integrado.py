@@ -155,11 +155,11 @@ def menu_inicial(conn, nome):
 # Menu de separação --> ADICIONAR COISAS DO ROBO
 def menu_de_separacao(conn, nome):
     medicamentos = {
-        '1': 'Paracetamol',
-        '2': 'Dipirona',
+        '1': 'Ibupofeno',
+        '2': 'Dorflex',
         '3': 'Buscopan',
-        '4': 'Dorflex',
-        '5': 'Ibuprofeno'
+        '4': 'Dipirona',
+        '5': 'Paracetamol'
     }
 
     while True:
@@ -307,7 +307,7 @@ def execute_movement(
 def validate():
 
     wait_before_suction()
-    expected_medicine = {"Dorflex 300mg", "2025-09-30", "JKL44556"}
+    expected_medicine = {'qr_code': 'Dorflex 300mg, 2025-09-30, JKL44556'}
     scanned_medicine = request_bip()
 
     if scanned_medicine == expected_medicine:
