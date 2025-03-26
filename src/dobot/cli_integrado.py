@@ -314,7 +314,7 @@ def validate(bin_n):
     expected_medicine = data_med.get(bin_n, [])
     scanned_medicine = request_bip()
 
-    if scanned_medicine == expected_medicine:
+    if scanned_medicine == expected_medicine[0]:
         print("✅ Medicamento validado. Descendo para coletar...")
         return True
     
