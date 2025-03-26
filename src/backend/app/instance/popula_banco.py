@@ -1,49 +1,19 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
-from datetime import datetime, timezone
-import os
+from datetime import datetime
+from models import db, Fita, Usuario, Descricao
 
-app = Flask(__name__)
-
-# Caminho absoluto para o banco de dados
-basedir = os.path.abspath(os.path.dirname(__file__))
-app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(basedir, 'db.sqlite')}"
-
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-
-# Tabela Usuario
-class Usuario(db.Model):
-    __tablename__ = 'usuarios'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    nome = db.Column(db.String(300), nullable=False)
-    email = db.Column(db.String(345), unique=True, nullable=False)
-    senha = db.Column(db.Text, nullable=False)
-
-# Tabela Descrição
-class Descricao(db.Model):
-    __tablename__ = 'descricoes'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    descricao = db.Column(db.String(500), nullable=False)
-
-# Função para criar o banco e popular com dados
 def popular_banco():
-    with app.app_context():
-        # Cria as tabelas no banco de dados
-        db.create_all()
-
-        # Verifica se o usuário já existe
+    with db.session.begin():
+        # Criando Usuário se não existir
         usuario_existente = Usuario.query.filter_by(email="gabrielhenrique@gmail.com").first()
         if not usuario_existente:
-            # Criação de um novo usuário com senha criptografada
-            senha_hash = bcrypt.generate_password_hash("123456").decode('utf-8')
-            usuario = Usuario(nome="Gabriel Henrique", email="gabrielhenrique@gmail.com", senha=senha_hash)
+            usuario = Usuario(
+                nome="Gabriel Henrique", 
+                email="gabrielhenrique@gmail.com", 
+                senha="123456"  # Adicione a senha criptografada se necessário
+            )
             db.session.add(usuario)
 
-        # Adiciona descrições se não existirem
+        # Criando Descrições se não existirem
         if not Descricao.query.first():
             descricoes = [
                 "prescrição enviada --> esperando autorização",
@@ -67,10 +37,24 @@ def popular_banco():
                 nova_descricao = Descricao(descricao=descricao)
                 db.session.add(nova_descricao)
 
-        # Commit todas as mudanças no banco
+        # Criando Fitas com datas de exemplo
+        if not Fita.query.first():
+            fitas = [
+                {"qr_code": "qr123", "hc": 12345, "id_prescricao": 1, "status": "prescrição enviada", "data": datetime(2025, 3, 26, 10, 30)},
+                {"qr_code": "qr124", "hc": 12346, "id_prescricao": 2, "status": "separando fita", "data": datetime(2025, 3, 26, 11, 00)},
+                {"qr_code": "qr125", "hc": 12347, "id_prescricao": 3, "status": "remédio separado", "data": datetime(2025, 3, 26, 11, 30)}
+            ]
+            for fita_data in fitas:
+                fita = Fita(
+                    qr_code=fita_data["qr_code"], 
+                    hc=fita_data["hc"], 
+                    id_prescricao=fita_data["id_prescricao"], 
+                    status=fita_data["status"], 
+                    data=fita_data["data"]
+                )
+                db.session.add(fita)
+
         db.session.commit()
+
         print("Banco de dados populado com sucesso!")
 
-# Chama a função para popular o banco
-if __name__ == "__main__":
-    popular_banco()
