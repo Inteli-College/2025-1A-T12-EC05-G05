@@ -6,6 +6,8 @@ import calendario from "../assets/icones/calendario.svg";
 import agenda from "../assets/icones/agenda.svg";
 import logoutIcon from "../assets/icones/sair.svg";
 import logs from "../assets/icones/logs.svg";
+import devolucao from "../assets/icones/devolucao.svg";
+
 
 const Sidebar = () => {
   const location = useLocation();
@@ -26,6 +28,12 @@ const Sidebar = () => {
             <span className="linkText">Histórico</span>
           </Link>
         </li>
+        <li className={location.pathname === "/devolucao" ? "active" : ""}>
+         <Link to="/devolucao">
+          <img id="devolucaoIcon" src={devolucao} alt="" />
+          <span className="linkText">Devolução</span>
+         </Link>
+       </li>
         <li className={location.pathname === "/logs" ? "active" : ""}>
           <Link to="/logs">
             <img id="logsIcon" src={logs} alt="" />
