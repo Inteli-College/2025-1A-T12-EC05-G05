@@ -5,6 +5,7 @@ import presciptLogo from "../assets/logo-pequeno.svg";
 import calendario from "../assets/icones/calendario.svg";
 import agenda from "../assets/icones/agenda.svg";
 import logoutIcon from "../assets/icones/sair.svg";
+import logs from "../assets/icones/logs.svg";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -23,6 +24,12 @@ const Sidebar = () => {
           <Link to="/historico">
             <img id="historyIcon" src={calendario} alt="" />
             <span className="linkText">Histórico</span>
+          </Link>
+        </li>
+        <li className={location.pathname === "/logs" ? "active" : ""}>
+          <Link to="/logs">
+            <img id="logsIcon" src={logs} alt="" />
+            <span className="linkText">Logs</span>
           </Link>
         </li>
       </ul>
