@@ -8,6 +8,7 @@ from models import db
 import controllers.login_controller as auth_blueprint
 import controllers.statusfitas_controller as fita_blueprint
 import controllers.qrcode_controller as qrcode_blueprint
+import controllers.robot_controller as robot_blueprint
 
 # Inicializando a aplicação
 app = Flask(__name__)
@@ -29,6 +30,7 @@ db.init_app(app)
 app.register_blueprint(auth_blueprint.auth_blueprint, url_prefix="/auth")
 app.register_blueprint(fita_blueprint.fita_blueprint, url_prefix="/api")
 app.register_blueprint(qrcode_blueprint.qrcode_blueprint)
+app.register_blueprint(robot_blueprint.robot_blueprint, url_prefix="/robot")
 
 # Função para criar o banco de dados
 with app.app_context():

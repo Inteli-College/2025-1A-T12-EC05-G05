@@ -1,6 +1,5 @@
 // src/Router.jsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LandingPage from "./pages/landingPage.jsx";
 import LoginPage from "./pages/login.jsx";
 import RegisterPage from "./pages/registerPage.jsx";
 import NotFound from "./pages/notFound.jsx";
@@ -17,30 +16,22 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         {/* Rota de login, sem sidebar */}
-        <Route path="/login" element={<LoginPage />} />
-
-        {/* Rotas protegidas */}
-        <Route element={<PrivateRoute />}>
-          <Route path="/register" element={<RegisterPage />} />
-        </Route>
+        <Route path="/" element={<LoginPage />} />
 
         {/* Rota para não encontrado */}
         <Route path="*" element={<NotFound />} />
 
         {/* Rotas que terão o layout com sidebar */}
         <Route element={<Layout />}>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/tela-medicamentos" element={<FitaMedicamentos />}>
+          {/* Rotas protegidas */}
+          <Route element={<PrivateRoute />}>
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/tela-medicamentos" element={<FitaMedicamentos />}>
             <Route path="a-fazer" element={<AFazer />} />
             <Route path="em-progresso" element={<EmProgresso />} />
             <Route path="prontas" element={<Prontas />} />
           </Route>
           <Route path="/historico" element={<Historico />} />
-
-
-          {/* Rotas protegidas */}
-          <Route element={<PrivateRoute />}>
-            <Route path="/register" element={<RegisterPage />} />
           </Route>
         </Route>
       </Routes>

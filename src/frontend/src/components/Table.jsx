@@ -2,35 +2,66 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Table.css";
 import seta from "../assets/icones/seta.svg";
+import httpClient from "../httpClient";
 
 export default function Table({ title, data, maxItems = data.length, route }) {
   const navigate = useNavigate();
   const visibleItems = data.slice(0, maxItems);
-  const [selectedItems, setSelectedItems] = useState(Array(visibleItems.length).fill(false));
+  const [selectedItems, setSelectedItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    const hasSelected = selectedItems.some((item) => item);
+    const hasSelected = selectedItems.length > 0;
     setShowButton(hasSelected);
-    setSelectAll(selectedItems.every((item) => item) && selectedItems.length > 0);
-  }, [selectedItems]);
+    setSelectAll(selectedItems.length === visibleItems.length && selectedItems.length > 0);
+  }, [selectedItems, visibleItems.length]);
 
   const handleSelectAll = () => {
     const newState = !selectAll;
-    setSelectedItems(Array(visibleItems.length).fill(newState));
+    if (newState) {
+      setSelectedItems(visibleItems.map(item => Number(item.id)));
+    } else {
+      setSelectedItems([]);
+    }
     setSelectAll(newState);
   };
-
+  
   const handleSelectItem = (index) => {
-    const newSelectedItems = [...selectedItems];
-    newSelectedItems[index] = !newSelectedItems[index];
-    setSelectedItems(newSelectedItems);
+    const selectedItemId = Number(visibleItems[index].id);
+    if (selectedItems.includes(selectedItemId)) {
+      setSelectedItems(selectedItems.filter(id => id !== selectedItemId));
+    } else {
+      setSelectedItems([...selectedItems, selectedItemId]);
+    }
   };
+  
 
   const handleTitleClick = () => {
     navigate(route);
   };
+
+  async function goToProduction(e) {
+    e.preventDefault();
+    if (selectedItems.length === 0) {
+      alert("Nenhum medicamento selecionado");
+      return;
+    }
+
+    try {
+      const mockResponse = { data: { bins: selectedItems } };
+      setTimeout(() => {
+        alert("Medicamentos colocados em produção com sucesso!");
+      }, 1000);
+      await httpClient.post("http://localhost:5000/robot/collect", mockResponse.data);
+    } catch (error) {
+      if (error.response?.status === 401) {
+        alert("Nenhum medicamento selecionado.");
+      } else {
+        alert("Ocorreu um erro, tente novamente mais tarde.");
+      }
+    }
+  }
 
   return (
     <div className={`table ${showButton ? "with-button" : ""}`}>
@@ -66,7 +97,7 @@ export default function Table({ title, data, maxItems = data.length, route }) {
                   <div className="checkbox-container">
                     <input
                       type="checkbox"
-                      checked={selectedItems[index]}
+                      checked={selectedItems.includes(item.id)}
                       onChange={() => handleSelectItem(index)}
                     />
                   </div>
@@ -78,7 +109,7 @@ export default function Table({ title, data, maxItems = data.length, route }) {
         </div>
       </div>
       {showButton && (
-        <button className="colocar-em-producao show">
+        <button className="colocar-em-producao show" onClick={goToProduction}>
           Colocar em produção
         </button>
       )}
