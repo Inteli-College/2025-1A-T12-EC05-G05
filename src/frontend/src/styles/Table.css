@@ -16,7 +16,7 @@
     justify-content: space-between;
     background-color: #5CE1E6;
     border-radius: 10px 10px 0 0;
-    padding: 10px 15px;
+    padding: 10px 20px;
 }
 
 .title-left {
@@ -58,7 +58,14 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
-    padding: 10px 0;
+    padding: 10px 5px;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .item-content {
@@ -81,6 +88,14 @@
     letter-spacing: 0.25px;
     color: #49454F;
     margin: 0;
+}
+
+.item:focus {
+    outline: none;
+}
+
+.item:hover {
+    background-color: #E4E4E4;
 }
 
 .checkbox-container {

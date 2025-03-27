@@ -1,40 +1,104 @@
-import React from "react";
-import { Outlet, useLocation } from "react-router-dom";
-import Table from "../components/Table";
+import React, { useState } from "react";
 import PageHeader from "../components/PageHeader";
-import LoadingModal from "../components/LoadingModal";
-import "../styles/fitaMedicamentos.css";
+import "../styles/Logs.css";
+import GridTable from "../components/GridTable";
+import Filter from "../components/Filter";
+import Pagination from "../components/Pagination";
 
-const dataAFazer = [
-    { nome: "Fita 5", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
-    { nome: "Fita 4", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
-    { nome: "Fita 3", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
-    { nome: "Fita 2", descricao: "Este não será mostrado porque maxItems é 3." },
-];
 
-const dataEmProgresso = [
-    { nome: "Fita 3", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", separando: true },
-    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
-    { nome: "Fita 1", descricao: "Este não será mostrado porque maxItems é 2." },
-];
-
-const dataProntas = [
-    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
-    { nome: "Fita 1", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
+const dataLogs = [
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Esperando autorização" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Em progresso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Separado" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Em uso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Cancelada" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Cancelada" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Em progresso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Esperando autorização" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Em uso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Separado" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Cancelada" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Em progresso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Esperando autorização" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Em uso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Separado" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Cancelada" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Em progresso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Esperando autorização" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Em progresso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Separado" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Em uso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Cancelada" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Cancelada" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Em progresso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Esperando autorização" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Em uso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Separado" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Cancelada" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Em progresso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Esperando autorização" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Em uso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Separado" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Cancelada" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Em progresso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Esperando autorização" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Em progresso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Separado" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Em uso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Cancelada" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Cancelada" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Em progresso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Esperando autorização" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Em uso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Separado" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Cancelada" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Em progresso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Esperando autorização" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Em uso" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Separado" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Pronto para separação" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Ações do Robô", status: "Cancelada" },
+    { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Medicamentos", status: "Em progresso" },
 ];
 
 export default function Logs() {
-    const location = useLocation();
+    const [currentPage, setCurrentPage] = useState(1);
+    const logsPerPage = 8;
+    const totalLogs = dataLogs.length;
+
+    const indexOfLastLog = currentPage * logsPerPage;
+    const indexOfFirstLog = indexOfLastLog - logsPerPage;
+    const currentLogs = dataLogs.slice(indexOfFirstLog, indexOfLastLog);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div className="fitaMedicamentos">
-            <div className="conteudo">
+        <div className="logs">
+            <div className="conteudo-logs">
                 <PageHeader title="Histórico" />
-                <>
-                    <Table title="Logs" data={dataAFazer} maxItems={2} route="/tela-medicamentos/a-fazer" />
-                    <Table title="Em progresso" data={dataEmProgresso} maxItems={1} route="/tela-medicamentos/em-progresso" />
-                    <Table title="Prontas" data={dataProntas} maxItems={2} route="/tela-medicamentos/prontas" />
-                </>
+                <Filter />
+                <GridTable title="Logs" data={currentLogs} route="/logs" />
+                
+                <Pagination
+                    totalItems={totalLogs}
+                    itemsPerPage={logsPerPage}
+                    currentPage={currentPage}
+                    paginate={paginate}
+                />
             </div>
         </div>
     );

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Table from "../components/Table";
 import PageHeader from "../components/PageHeader";
-import LoadingModal from "../components/LoadingModal";
 import "../styles/fitaMedicamentos.css";
+import UnitaryCollection from "../components/UnitaryCollection";
+import PopUpFitas from "../components/PopUpFitas";
 
 const dataAFazer = [
     { nome: "Fita 5", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
@@ -25,18 +26,46 @@ const dataProntas = [
 
 export default function FitaMedicamentos() {
     const location = useLocation();
-    const isSingleFita = location.pathname !== "/tela-medicamentos"
+    const isSingleFita = location.pathname !== "/tela-medicamentos";
+    const [selectedFita, setSelectedFita] = useState(null);
+
+    const openPopUp = (fitaData) => {
+        setSelectedFita(fitaData); 
+    };
+
+    const closePopUp = () => {
+        setSelectedFita(null);
+    };
 
     return (
         <div className="fitaMedicamentos">
-            <LoadingModal isLoading={true}/>
+            <UnitaryCollection />
+            {selectedFita && <PopUpFitas data={selectedFita} closePopUp={closePopUp} />} 
             <div className="conteudo">
                 <PageHeader title="Fitas de medicamentos" isSingleFita={isSingleFita} />
                 {location.pathname === "/tela-medicamentos" ? (
                     <>
-                        <Table title="A fazer" data={dataAFazer} maxItems={2} route="/tela-medicamentos/a-fazer"/>
-                        <Table title="Em progresso" data={dataEmProgresso} maxItems={1} route="/tela-medicamentos/em-progresso"/>
-                        <Table title="Prontas" data={dataProntas} maxItems={2} route="/tela-medicamentos/prontas"/>
+                        <Table 
+                            title="A fazer" 
+                            data={dataAFazer} 
+                            maxItems={2} 
+                            route="/tela-medicamentos/a-fazer" 
+                            onItemClick={openPopUp}
+                        />
+                        <Table 
+                            title="Em progresso" 
+                            data={dataEmProgresso} 
+                            maxItems={1} 
+                            route="/tela-medicamentos/em-progresso" 
+                            onItemClick={openPopUp}
+                        />
+                        <Table 
+                            title="Prontas" 
+                            data={dataProntas} 
+                            maxItems={2} 
+                            route="/tela-medicamentos/prontas" 
+                            onItemClick={openPopUp}
+                        />
                     </>
                 ) : (
                     <Outlet />

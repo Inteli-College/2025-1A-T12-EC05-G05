@@ -3,7 +3,23 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Table.css";
 import seta from "../assets/icones/seta.svg";
 
-export default function Table({ title, data, maxItems = data.length, route }) {
+const dataPopUp = {
+  nome: 'Fita 1',
+  estado: 'Pronta',
+  paciente: 'João da Silva',
+  leito: 'Leito 07',
+  ultimaAtualizacao: '26/02/2025 - 18:34',
+  aprovadoPor: 'Maria Souza - 25/02/2025 - 08:15',
+  medicamentos: [
+      { nome: 'Paracetamol 500mg', tipo: 'Comprimido', validade: '12/2026', status: 'Em estoque', quantidade: 1 },
+      { nome: 'Amoxicilina 500mg', tipo: 'Cápsula', validade: '08/2025', status: 'Em falta', quantidade: 2 },
+      { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 },
+      { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 }
+  ]
+};
+
+
+export default function Table({ title, data, maxItems = data.length, route, onItemClick }) {
   const navigate = useNavigate();
   const visibleItems = data.slice(0, maxItems);
   const [selectedItems, setSelectedItems] = useState(Array(visibleItems.length).fill(false));
@@ -41,6 +57,11 @@ export default function Table({ title, data, maxItems = data.length, route }) {
 
   const buttonText = title === "A fazer" ? "Colocar em produção" :
     title === "Possíveis devoluções" ? "Devolver" : "";
+  const handleItemClick = (item) => {
+    if (onItemClick) {
+      onItemClick(dataPopUp);
+    }
+  };
 
   return (
     <div className={`table ${showButton ? "with-button" : ""}`}>
@@ -66,7 +87,10 @@ export default function Table({ title, data, maxItems = data.length, route }) {
         <div className="itens">
           {visibleItems.map((item, index) => (
             <React.Fragment key={index}>
-              <div className="item">
+              <button 
+                className="item" 
+                onClick={() => handleItemClick(item)} 
+              >
                 <div className="item-content">
                   <h2>{item.nome}</h2>
                   <p>{item.descricao}</p>
@@ -90,7 +114,7 @@ export default function Table({ title, data, maxItems = data.length, route }) {
                     )}
                   </div>
                 )}
-              </div>
+              </button>
               {index !== visibleItems.length - 1 && <hr />}
             </React.Fragment>
           ))}
