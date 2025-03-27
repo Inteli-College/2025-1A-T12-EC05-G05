@@ -4,6 +4,10 @@ import time
 from threading import Thread
 import requests
 import json  # Importa o módulo json para converter os dados
+from flask import Flask, request, jsonify
+
+# Configuração do Flask
+app = Flask(__name__)
 
 # Configuração do GPIO
 GPIO.setmode(GPIO.BCM)
@@ -47,6 +51,10 @@ def ler_qrcode():
     except KeyboardInterrupt:
         print("Encerrando leitura do QR Code.")
 
+@app.route("/status", methods=["GET"])
+def status():
+    return jsonify({"message": "Servidor rodando"}), 200
+
 if __name__ == "__main__":
     # Criando threads para rodar as duas funções em paralelo
     thread_gpio = Thread(target=ler_gpio, daemon=True)
@@ -56,10 +64,5 @@ if __name__ == "__main__":
     thread_gpio.start()
     thread_qrcode.start()
 
-    # Mantendo o programa principal rodando
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print("Encerrando programa...")
-        GPIO.cleanup()
+    # Iniciando o servidor Flask
+    app.run(debug=True, host="0.0.0.0", port=5000)
