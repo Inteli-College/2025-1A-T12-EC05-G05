@@ -1,0 +1,209 @@
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(79, 69, 79, 0.59);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: #fff;
+    width: 60%;
+    max-width: 800px;
+    padding: 40px 60px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.popup-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-header-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.popup-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    line-height: 28px;
+}
+
+.popup-status-tag {
+    background-color: #5CE1E6;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    padding: 0 14px;
+    border-radius: 12px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.popup-body {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: start;
+    height: 300px;
+}
+
+.patient-info div {
+    margin-bottom: 12px;
+}
+
+.patient-info p,.patient-info h2 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+}
+
+.patient-info h2 {
+    font-weight: 700;
+}
+
+.medicamentos-lista {
+    max-height: 260px;
+    overflow-y: auto;
+    direction: rtl;
+    scrollbar-width: thin;
+    scrollbar-color: #888888 #ffffff;
+}
+
+.medicamentos-lista > * {
+    direction: ltr;
+}
+
+.medicamento {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.medicamentos h3 {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.status-badge {
+    padding: 2px 14px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+}
+
+.status-badge.em-estoque {
+    background-color: #5CE1E6;
+}
+
+.status-badge.em-falta {
+    background-color: #004976;
+    color: #fff;
+}
+
+.exportar-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #666;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+.medicamentos-container {
+    width: 50%;
+}
+
+.medicamentos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.medicamentos-header h2 {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.5;
+    margin: 0;
+    margin-left: 5px;
+}
+
+.medicamento-status {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.medicamento-item {
+    margin: 6px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.medicamento-item-content {
+    padding: 10px 0 0 10px;
+    text-align: start;
+    justify-content: space-between;
+    display: flex;
+    width: 95%;
+}
+
+.medicamento-info p {
+    font-size: 12px;
+    color: #000000;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    margin: 0;
+}
+
+.medicamento-info h3 {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    margin: 0;
+}
+
+.medicamento-item hr {
+    border: none;
+    height: 1px;
+    background-color: #CAC4D0;
+    margin: 0 4px;
+    width: 95%;
+}
+
+.sem-medicamentos {
+    margin-left: 10px;
+    font-size: 13px;
+    color: #373743;
+}
