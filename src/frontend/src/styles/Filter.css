@@ -1,0 +1,107 @@
+.filter-container {
+    width: 100%;
+    padding: 15px;
+    font-family: "Roboto", sans-serif;
+    position: relative;
+}
+
+.filter-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.filter-header.filter-button.open {
+    border-radius: 8px 8px 0 0;
+}
+
+.filter-button {
+    display: flex;
+    align-items: center;
+    background-color: #D2D2D2;
+    padding: 0px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+}
+
+.filter-header.open .filter-button {
+    border-radius: 8px 8px 0 0;
+}
+
+.filter-icon {
+    background-color: #373643;
+    padding: 10px;
+    border-radius: 8px 0 0 8px;
+    color: #fff;
+}
+
+.filter-header.open .filter-icon {
+    border-radius: 8px 0 0 0;
+}
+
+.filter-button span {
+    color: black;
+    font-size: 16px;
+    line-height: 32px;
+    padding: 2px 30px;
+}
+
+.selected-filters {
+    display: flex;
+    gap: 20px;
+}
+
+.filter-tag {
+    background-color: #D2D2D2;
+    padding: 2px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.remove {
+    margin-left: 8px;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    margin-bottom: 2px;
+}
+
+.filter-menu {
+    position: absolute;
+    top: 52px;
+    left: 15px;
+    width: 178px;
+    background-color: #F5F5F5;
+    padding: 2px 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+}
+
+.filter-option {
+    padding: 10px 5px;
+    cursor: pointer;
+    font-size: 13px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter-option:hover {
+    background-color: #f0f0f0;
+}
+
+.filter-option:last-child {
+    border-bottom: none;
+}
+
+.check-icon {
+    width: 12px;
+    height: 12px;
+    margin-left: 10px;
+}
