@@ -60,9 +60,6 @@ export default function FitaMedicamentos() {
 
     return (
         <div className="fitaMedicamentos">
-            <UnitaryCollection/>
-            <PopUpFitas data={dataPopUp} />
-            {/* <LoadingModal isLoading={true} /> */}
             <div className="conteudo">
                 <PageHeader title="Fitas de medicamentos" isSingleFita={isSingleFita} />
                 {location.pathname === "/tela-medicamentos" ? (
