@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Table from "../components/Table";
 import PageHeader from "../components/PageHeader";
-import LoadingModal from "../components/LoadingModal";
+// import LoadingModal from "../components/LoadingModal";
 import "../styles/fitaMedicamentos.css";
 import PopUpFitas from "../components/PopUpFitas";
 
