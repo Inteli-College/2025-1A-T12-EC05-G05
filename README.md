@@ -24,47 +24,47 @@
 
 <div align="center">
 
-<table style="border-collapse: collapse; width: 100%; max-width: 1500px;">
+<table style="border-collapse: collapse; width: 100%; max-width: 1700px;">
   <tr>
-    <td align="center" style="padding: 15px; border: 0.5px solid #464646;">
-        <img src="assets/danilo.png" width="150px;" alt=""/><br>
-        <sub><b>Danilo Martins Merlo</b></sub><br><br>
+    <td align="center" style="padding: 15px; border: 1px solid #464646;">
+        <img src="assets/danilo.png" width="130px;" height="170px;"  alt=""/><br>
+        <sub><b>Danilo Martins</b></sub><br><br>
          <a href="https://www.linkedin.com/in/danilo-martins-merlo-381b76228/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
          <a href="https://github.com/DaniloMartinsMerlo"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a>
     </td>
     <td align="center" style="padding: 15px; border: 1px solid #464646;">
-        <img src="assets/davi.png" width="150px;" alt=""/><br>
-        <sub><b>Davi Nascimento de Jesus</b></sub><br><br>
+        <img src="assets/davi.png" width="130px;" height="170px;"  alt=""/><br>
+        <sub><b>Davi de Jesus</b></sub><br><br>
          <a href="https://www.linkedin.com/in/davi-nascimento-de-jesus/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
         <a href="https://github.com/nDaviii"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a>
     </td>
     <td align="center" style="padding: 15px; border: 1px solid #464646;">
-        <img src="assets/gabriel.png" width="150px;" alt=""/><br>
-        <sub><b>Gabriel Martins Alves</b></sub><br><br>
+        <img src="assets/gabriel.png" width="130px;" height="170px;"  alt=""/><br>
+        <sub><b>Gabriel Alves</b></sub><br><br>
         <a href="https://linkedin.com/in/gabriel-martins-alves/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
         <a href="https://github.com/GabrielMartinsAlves"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a>
     </td>
     <td align="center" style="padding: 15px; border: 1px solid #464646;">
-        <img src="assets/wandermurem.png" width="150px;" alt=""/><br>
-        <sub><b>João Victor Wandermurem</b></sub><br><br>
+        <img src="assets/wandermurem.png" width="130px;" height="170px;"  alt=""/><br>
+        <sub><b>João Oliveira</b></sub><br><br>
         <a href="https://www.linkedin.com/in/jo%C3%A3o-v-wandermurem/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
         <a href="https://github.com/JvWandermurem"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a>
     </td>
     <td align="center" style="padding: 15px; border: 1px solid #464646;">
-        <img src="assets/mariella.png" width="150px;" alt=""/><br>
-        <sub><b>Mariella Sayumi Kamezawa</b></sub><br><br>
+        <img src="assets/mariella.png" width="130px;" height="170px;"  height="170px;" alt=""/><br>
+        <sub><b>Mariella Kamezawa</b></sub><br><br>
         <a href="https://www.linkedin.com/in/mariella-kamezawa/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
         <a href="https://github.com/marikamezawa"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a> 
     </td>
     <td align="center" style="padding: 15px; border: 1px solid #464646;">
-        <img src="assets/rafaela.png" width="150px;" alt=""/><br>
-        <sub><b>Rafaela Silva Lima</b></sub><br><br>
+        <img src="assets/rafaela.png" width="130px;" height="170px;"  alt=""/><br>
+        <sub><b>Rafaela Lima</b></sub><br><br>
         <a href="https://www.linkedin.com/in/rafaela-s-o-lima/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
         <a href="https://github.com/RafaelaSOLima"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a>
     </td>
     <td align="center" style="padding: 15px; border: 1px solid #464646;">
-      <img src="assets/yasmim.png" width="150px;" alt=""/><br>
-      <sub><b>Yasmim Marly Passos</b></sub><br><br>
+      <img src="assets/yasmim.png" width="130px;" height="170px;"  alt=""/><br>
+      <sub><b>Yasmim Passos</b></sub><br><br>
       <a href="https://www.linkedin.com/in/yasmim-passos/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" /></a>
       <a href="https://github.com/yasmimpassos"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" /></a>
     </td>
@@ -89,7 +89,7 @@
 
 &emsp;A solução Prescript é um projeto inovador desenvolvido pelos alunos do 5º módulo de Automação com Garra Robôtica do 2º ano da faculdade Inteli, em parceria com o Hospital de Clínicas da Unicamp. O sistema visa resolver o desafio crítico da separação manual de medicamentos para pacientes internados, que é suscetível a erros humanos, como duplicidade, falhas de separação e desperdício. O sistema automatiza todo o processo, garantindo maior segurança, agilidade e precisão na entrega dos medicamentos.
 
-&emsp;O sistema utiliza uma interface por aplicação web, permitindo sua operação através de um fluxo sim. A integração com o leitor de QR Code é um ponto chave da solução, pois permite a validação automática dos medicamentos antes da coleta. O robô, então, utiliza essas informações para identificar e conferir os produtos, garantindo que cada item seja o correto antes de ser incluído no kit de medicamentos do paciente.
+&emsp;O sistema utiliza uma interface por aplicação web, permitindo sua operação através de um fluxo simples. A integração com o leitor de QR Code é um ponto chave da solução, pois permite a validação automática dos medicamentos antes da coleta. O robô, então, utiliza essas informações para identificar e conferir os produtos, garantindo que cada item seja o correto antes de ser incluído no kit de medicamentos do paciente.
 
 &emsp;A movimentação do robô Dobot foi otimizada continuamente para garantir precisão e eficiência durante o processo de coleta e movimentação dos medicamentos. O sistema permite que o robô execute o movimento de coleta com alta precisão, reduzindo significativamente o tempo necessário para a montagem das Fitas de Medicamentos. Isso permite que a equipe farmacêutica se concentre em tarefas mais críticas, como a revisão de protocolos e assistência farmacêutica direta.
 
@@ -172,15 +172,15 @@ npm start
 ## 🗃 Histórico de lançamentos
 
 * 0.5.0 - 11/04/2025
-    * **[Sprint 5] Refinamento e Revisão** <br><br>
+    * **[Sprint 5] Refinamento e Revisão.** <br><br>
 * 0.4.0 - 28/03/2025
-    * **[Sprint 4] Integração da Aplicação ao Robô** <br><br>
+    * **[Sprint 4] Integração da Aplicação ao Robô.** <br><br>
 * 0.3.0 - 14/03/2025
-    * **[Sprint 3] Integração do Leitor de QR Code** <br><br>
+    * **[Sprint 3] Integração do Leitor de QR Code.** <br><br>
 * 0.2.0 - 28/02/2025
-    * **[Sprint 2] Wireflow e Automação Básica** <br><br>
+    * **[Sprint 2] Wireflow e Automação Básica.** <br><br>
 * 0.1.0 - 14/02/2025
-    * **[Sprint 1] Entendimento do Negócio e do Usuário** 
+    * **[Sprint 1] Entendimento do Negócio e do Usuário.** 
 
 #
 
