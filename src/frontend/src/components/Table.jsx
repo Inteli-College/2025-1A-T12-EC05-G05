@@ -24,13 +24,23 @@ export default function Table({ title, data, maxItems = data.length, route }) {
 
   const handleSelectItem = (index) => {
     const newSelectedItems = [...selectedItems];
-    newSelectedItems[index] = !newSelectedItems[index];
+
+    if (title === "Possíveis devoluções") {
+      newSelectedItems.fill(false);
+      newSelectedItems[index] = true;
+    } else {
+      newSelectedItems[index] = !newSelectedItems[index];
+    }
+
     setSelectedItems(newSelectedItems);
   };
 
   const handleTitleClick = () => {
     navigate(route);
   };
+
+  const buttonText = title === "A fazer" ? "Colocar em produção" :
+    title === "Possíveis devoluções" ? "Devolver" : "";
 
   return (
     <div className={`table ${showButton ? "with-button" : ""}`}>
@@ -62,13 +72,22 @@ export default function Table({ title, data, maxItems = data.length, route }) {
                   <p>{item.descricao}</p>
                 </div>
                 {item.separando && <span className="status-tag">Separando</span>}
-                {title === "A fazer" && (
+                {(title === "A fazer" || title === "Possíveis devoluções") && (
                   <div className="checkbox-container">
-                    <input
-                      type="checkbox"
-                      checked={selectedItems[index]}
-                      onChange={() => handleSelectItem(index)}
-                    />
+                    {title === "Possíveis devoluções" ? (
+                      <input
+                        type="radio"
+                        checked={selectedItems[index]}
+                        onChange={() => handleSelectItem(index)}
+                        name="possible-return"
+                      />
+                    ) : (
+                      <input
+                        type="checkbox"
+                        checked={selectedItems[index]}
+                        onChange={() => handleSelectItem(index)}
+                      />
+                    )}
                   </div>
                 )}
               </div>
@@ -79,7 +98,7 @@ export default function Table({ title, data, maxItems = data.length, route }) {
       </div>
       {showButton && (
         <button className="colocar-em-producao show">
-          Colocar em produção
+          {buttonText}
         </button>
       )}
     </div>
