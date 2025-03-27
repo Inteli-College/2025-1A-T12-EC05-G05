@@ -12,15 +12,15 @@ from serial.tools import list_ports
 
 from typing_extensions import Annotated
 from typing_extensions import List
-from controller.dobotController import DobotController
-from controller.position import Position
+from .controller.dobotController import DobotController
+from .controller.position import Position
 
+file_path = os.path.join(os.path.dirname(__file__), "config.json")
+file_path_med = os.path.join(os.path.dirname(__file__), "medicamentos.json")
 cli = typer.Typer()
 
 dobot = DobotController()
-rota_qrcode = "http://127.0.0.1:5000/qrcode-response"
-file_path = "config.json"
-file_path_med = "medicamentos.json"
+
 
 with open(file_path, "r") as file:
     data = json.load(file)
@@ -282,7 +282,7 @@ def wait_before_suction(delay_time: float = 2.5):
 def request_bip(timeout: int = 10):
     print("\U0001F551 Solicitando bipagem via HTTP...")
     try:
-        response = requests.get(rota_qrcode, timeout=timeout)
+        response = requests.get("http://127.0.0.1:5000/qrcode-response", timeout=timeout)
         response.raise_for_status()
         scanned_medicine = response.json()
         print(f"\U0001F4E1 Medicamento bipado recebido: {scanned_medicine}")
@@ -387,15 +387,17 @@ def collect_bin(
 
 @cli.command()
 def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos bins a coletar")]):
+    main()
     ordered_list = sorted(input_list)
     for bin_num in ordered_list:
         take_medicine(f'bin_{bin_num}', bin_num)
 
 def main():
-    available_ports = list_ports.comports()
-    print(f'available ports: {[x.device for x in available_ports]} \n')
-    port_input = input("Desired port number: ")
-    port = available_ports[int(port_input)].device
+    # available_ports = list_ports.comports()
+    # print(f'available ports: {[x.device for x in available_ports]} \n')
+    # port_input = input("Desired port number: ")
+    # port = available_ports[int(port_input)].device
+    port = '/dev/ttyACM0'
     spinner = yaspin(text=f"Connecting with port {port}...")
     spinner.start()
     dobot.connect(port)
