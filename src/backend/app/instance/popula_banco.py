@@ -164,7 +164,7 @@ def popular_banco():
         fitas[5].remedios.extend(remedios[14:15])
         fitas[6].remedios.extend(remedios[15:16])
         fitas[7].remedios.extend(remedios[16:17])
-        fitas[8].remedios.extend(remedios[17:18])
+        fitas[8].remedios.extend(remedios[0:6])
 
         db.session.add_all(fitas)
 
