@@ -14,7 +14,7 @@ import controllers.historico_controller as hist_blueprint
 app = Flask(__name__)
 
 # Configurações da aplicação
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"  
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config.from_object(ApplicationConfig)
 

@@ -12,6 +12,7 @@ import EmProgresso from "./pages/EmProgresso.jsx";
 import Prontas from "./pages/Prontas.jsx";
 import Historico from "./pages/historico.jsx";
 
+
 const Router = () => {
   return (
     <BrowserRouter>

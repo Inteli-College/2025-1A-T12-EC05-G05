@@ -10,7 +10,7 @@ class HistoricoService:
 
         resultado = [
             {
-                "data": fita.data.strftime("%Y-%m-%d"),  # Pegando apenas a data no formato YYYY-MM-DD
+                "data": fita.data.strftime("%Y-%m-%d"), 
                 "nome": fita.id,
                 "descricao": fita.status
             }

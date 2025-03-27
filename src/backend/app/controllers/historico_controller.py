@@ -11,6 +11,7 @@ def get_historico():
     resultado = historicoService.get_historico()
 
     if resultado:
-        return resultado  # Retorna os dados encontrados
+        return resultado
     else:
-        return jsonify({"message": "Nenhuma fita encontrada."}), 404 
+        return jsonify({"message": "Nenhuma fita encontrada."}), 404
+
