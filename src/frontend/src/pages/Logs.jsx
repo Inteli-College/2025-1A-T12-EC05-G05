@@ -5,6 +5,7 @@ import GridTable from "../components/GridTable";
 import Filter from "../components/Filter";
 import Pagination from "../components/Pagination";
 
+
 const dataLogs = [
     { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Esperando autorização" },
     { nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", tipo: "Fita de medicamento", status: "Pronto para separação" },
@@ -84,6 +85,7 @@ export default function Logs() {
     const currentLogs = dataLogs.slice(indexOfFirstLog, indexOfLastLog);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+export default function Logs() {
 
     return (
         <div className="logs">
