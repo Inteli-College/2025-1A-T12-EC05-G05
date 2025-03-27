@@ -116,29 +116,11 @@ def popular_banco():
 
         # Criação de Remédios
         remedios = [
-            # Remédios para o primeiro paciente
-            Remedio(nome_do_remedio_com_gramagem="Dipirona 500mg", validade=datetime.now() + timedelta(days=365), qr_code="QR001"),
-            Remedio(nome_do_remedio_com_gramagem="Amoxicilina 250mg", validade=datetime.now() + timedelta(days=270), qr_code="QR002"),
-            Remedio(nome_do_remedio_com_gramagem="Ibuprofeno 200mg", validade=datetime.now() + timedelta(days=180), qr_code="QR003"),
+            Remedio(nome_do_remedio_com_gramagem="Ibuprofeno 400mg", validade=datetime.now() + timedelta(days=365), qr_code="MNO77889"),
+            Remedio(nome_do_remedio_com_gramagem="Dorflex 300mg", validade=datetime.now() + timedelta(days=270), qr_code="JKL44556"),
+            Remedio(nome_do_remedio_com_gramagem="Dipirona 500mg", validade=datetime.now() + timedelta(days=180), qr_code="QR003"),
             Remedio(nome_do_remedio_com_gramagem="Paracetamol 750mg", validade=datetime.now() + timedelta(days=240), qr_code="QR004"),
-            
-            # Remédios para o segundo paciente
-            Remedio(nome_do_remedio_com_gramagem="Metformina 850mg", validade=datetime.now() + timedelta(days=300), qr_code="QR005"),
-            Remedio(nome_do_remedio_com_gramagem="Losartana 50mg", validade=datetime.now() + timedelta(days=210), qr_code="QR006"),
-            Remedio(nome_do_remedio_com_gramagem="Sinvastatina 20mg", validade=datetime.now() + timedelta(days=270), qr_code="QR007"),
-            Remedio(nome_do_remedio_com_gramagem="Atenolol 50mg", validade=datetime.now() + timedelta(days=180), qr_code="QR008"),
-            
-            # Remédios para o terceiro paciente
-            Remedio(nome_do_remedio_com_gramagem="Ciprofloxacino 500mg", validade=datetime.now() + timedelta(days=240), qr_code="QR009"),
-            Remedio(nome_do_remedio_com_gramagem="Omeprazol 20mg", validade=datetime.now() + timedelta(days=300), qr_code="QR010"),
-            Remedio(nome_do_remedio_com_gramagem="Nimesulida 100mg", validade=datetime.now() + timedelta(days=180), qr_code="QR011"),
-            Remedio(nome_do_remedio_com_gramagem="Citalopram 20mg", validade=datetime.now() + timedelta(days=270), qr_code="QR012"),
-
-            Remedio(nome_do_remedio_com_gramagem="Cetoprofeno 100mg", validade=datetime.now() + timedelta(days=365), qr_code="QR013"),
-            Remedio(nome_do_remedio_com_gramagem="Ranitidina 150mg", validade=datetime.now() + timedelta(days=240), qr_code="QR014"),
-            Remedio(nome_do_remedio_com_gramagem="Loratadina 10mg", validade=datetime.now() + timedelta(days=300), qr_code="QR015"),
-            Remedio(nome_do_remedio_com_gramagem="Aspirina 500mg", validade=datetime.now() + timedelta(days=180), qr_code="QR016"),
-            Remedio(nome_do_remedio_com_gramagem="Diclofenaco 50mg", validade=datetime.now() + timedelta(days=210), qr_code="QR017")
+            Remedio(nome_do_remedio_com_gramagem="Paracetamol 750mg", validade=datetime.now() + timedelta(days=240), qr_code="QR004"),
         ]
         db.session.add_all(remedios)
 
@@ -156,15 +138,15 @@ def popular_banco():
         ]
 
         # Associar remédios às fitas
-        fitas[0].remedios.extend(remedios[0:4])
-        fitas[1].remedios.extend(remedios[4:8])
-        fitas[2].remedios.extend(remedios[8:12])
-        fitas[3].remedios.extend(remedios[12:13])
-        fitas[4].remedios.extend(remedios[13:14])
-        fitas[5].remedios.extend(remedios[14:15])
-        fitas[6].remedios.extend(remedios[15:16])
-        fitas[7].remedios.extend(remedios[16:17])
-        fitas[8].remedios.extend(remedios[0:6])
+        fitas[0].remedios.extend(remedios[0:1])
+        fitas[1].remedios.extend(remedios[0:1])
+        fitas[2].remedios.extend(remedios[3:4])
+        fitas[3].remedios.extend(remedios[2:3])
+        fitas[4].remedios.extend(remedios[1:3])
+        fitas[5].remedios.extend(remedios[0:2])
+        fitas[6].remedios.extend(remedios[1:4])
+        fitas[7].remedios.extend(remedios[2:3])
+        fitas[8].remedios.extend(remedios[0:4])
 
         db.session.add_all(fitas)
 
