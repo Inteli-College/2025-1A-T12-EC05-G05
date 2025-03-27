@@ -4,6 +4,7 @@ import Table from "../components/Table";
 import PageHeader from "../components/PageHeader";
 import LoadingModal from "../components/LoadingModal";
 import "../styles/fitaMedicamentos.css";
+import UnitaryCollection from "../components/UnitaryCollection";
 
 const dataAFazer = [
     { nome: "Fita 5", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
@@ -29,7 +30,8 @@ export default function FitaMedicamentos() {
 
     return (
         <div className="fitaMedicamentos">
-            <LoadingModal isLoading={true}/>
+            {/* <LoadingModal isLoading={true}/> */}
+            <UnitaryCollection/>
             <div className="conteudo">
                 <PageHeader title="Fitas de medicamentos" isSingleFita={isSingleFita} />
                 {location.pathname === "/tela-medicamentos" ? (
