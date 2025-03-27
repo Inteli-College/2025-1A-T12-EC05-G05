@@ -85,7 +85,6 @@ export default function Logs() {
     const currentLogs = dataLogs.slice(indexOfFirstLog, indexOfLastLog);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-export default function Logs() {
 
     return (
         <div className="logs">
