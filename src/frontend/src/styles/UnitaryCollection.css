@@ -1,0 +1,161 @@
+.unitary-collection-container {
+    position: fixed;
+    right: 0px;
+    top: 120px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.unitary-wrapper {
+    background-color: #5A5964;
+    border-radius: 15px 0 0 15px;
+    padding: 12px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.unitary-wrapper.form-active {
+    align-items: flex-start;
+    padding: 20px 30px;
+    transition: padding 0.3s ease;
+}
+
+.unitary-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+}
+
+.unitary-tooltip {
+    display: none;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 30px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.unitary-button:hover .unitary-tooltip {
+    display: block;
+    opacity: 1;
+}
+
+.unitary-tooltip.active {
+    display: block;
+    opacity: 1;
+    font-size: 18px;
+}
+
+.unitary-form {
+    display: none;
+    width: 320px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.unitary-form.active {
+    display: block;
+    opacity: 1;
+}
+
+.unitary-form form {
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.3s ease;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+}
+
+.form-group label span {
+    color: #5CE1E6;
+}
+
+.form-group input {
+    width: 100%;
+    padding-left: 40px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 0 10px 10px 0;
+    border: none;
+    background-color: #FAFAFA;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border: 1px solid #5CE1E6;
+}
+
+.form-group input::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+}
+
+.input-wrapper {
+    display: flex;
+    transition: all 0.3s ease;
+}
+
+.form-group .input-icon {
+    background-color: #373643;
+    padding: 12px;
+    color: white;
+    border-radius: 10px 0 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn {
+    background-color: #373643;
+    color: #fff;
+    padding: 18px 30px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    align-self: center;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #5CE1E6;
+    color: black;
+}
+
+.unitary-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.unitary-icon:hover {
+    transform: scale(1.1);
+}
+
+.error-text {
+    color: #5CE1E6;
+    font-size: 12px;
+    margin-top: 5px;
+}

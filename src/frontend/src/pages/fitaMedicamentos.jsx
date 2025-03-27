@@ -4,6 +4,7 @@ import Table from "../components/Table";
 import PageHeader from "../components/PageHeader";
 // import LoadingModal from "../components/LoadingModal";
 import "../styles/fitaMedicamentos.css";
+import UnitaryCollection from "../components/UnitaryCollection";
 import PopUpFitas from "../components/PopUpFitas";
 
 const dataAFazer = [
@@ -45,6 +46,7 @@ export default function FitaMedicamentos() {
 
     return (
         <div className="fitaMedicamentos">
+            <UnitaryCollection/>
             <PopUpFitas data={dataPopUp} />
             {/* <LoadingModal isLoading={true} /> */}
             <div className="conteudo">
