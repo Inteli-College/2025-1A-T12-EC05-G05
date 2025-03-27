@@ -38,7 +38,7 @@ def ler_qrcode():
                     try:
                         payload = json.dumps({"qr_code": line})
                         headers = {'Content-Type': 'application/json'}
-                        response = requests.post('http://127.0.0.1:5000/qrcode-response', data=payload, headers=headers)
+                        response = requests.post('http://10.128.0.194:5000/qrcode-response', data=payload, headers=headers)
                         print(f"Enviado por HTTP: status {response.status_code}")
                     except Exception as e:
                         print(f"Erro ao enviar por HTTP: {e}")
