@@ -20,7 +20,7 @@ def obter_fita(fita_id):
 def atualizar_fita(fita_id):
     return fita_service.atualiza_status(fita_id, request.get_json())
 
-#Rota feira para enviar dados
+#Rota feitra para enviar dados
 @fita_blueprint.route("/fitas", methods=["POST"])
 @cross_origin()
 def criar_fita():
