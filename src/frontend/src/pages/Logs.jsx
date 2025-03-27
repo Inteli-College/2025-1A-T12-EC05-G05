@@ -1,8 +1,6 @@
 import React from "react";
-import { Outlet, useLocation } from "react-router-dom";
 import Table from "../components/Table";
 import PageHeader from "../components/PageHeader";
-import LoadingModal from "../components/LoadingModal";
 import "../styles/fitaMedicamentos.css";
 
 const dataAFazer = [
@@ -24,7 +22,6 @@ const dataProntas = [
 ];
 
 export default function Logs() {
-    const location = useLocation();
 
     return (
         <div className="fitaMedicamentos">

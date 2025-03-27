@@ -5,7 +5,13 @@ import presciptLogo from "../assets/logo-pequeno.svg";
 import calendario from "../assets/icones/calendario.svg";
 import agenda from "../assets/icones/agenda.svg";
 import logoutIcon from "../assets/icones/sair.svg";
+import httpClient from "../httpClient";
 import logs from "../assets/icones/logs.svg";
+
+const logoutUser = async () => {
+  await httpClient.post("http://localhost:5000/auth/logout");
+  window.location.href = "/";
+};
 
 const Sidebar = () => {
   const location = useLocation();
@@ -34,7 +40,7 @@ const Sidebar = () => {
         </li>
       </ul>
       <div id="logoutContainer">
-        <button>
+        <button onClick={logoutUser}>
           <img id="logoutIcon" src={logoutIcon} alt="sair" />
           <span className="linkText">Sair</span>
         </button>
