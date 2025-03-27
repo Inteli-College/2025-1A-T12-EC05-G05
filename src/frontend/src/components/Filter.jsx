@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/Filter.css";
 import { FaFilter } from "react-icons/fa";
 import remove from "../assets/icones/remove.svg";
-import checkIcon from "../assets/icones/check.svg"; // Supondo que você tenha o ícone de check
+import checkIcon from "../assets/icones/check.svg";
 
 export default function Filter() {
     const [filters, setFilters] = useState([]);
