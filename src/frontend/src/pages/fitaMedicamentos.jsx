@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Table from "../components/Table";
 import PageHeader from "../components/PageHeader";
-// import LoadingModal from "../components/LoadingModal";
 import "../styles/fitaMedicamentos.css";
 import UnitaryCollection from "../components/UnitaryCollection";
 import PopUpFitas from "../components/PopUpFitas";
+
 export default function FitaMedicamentos() {
     const [fitas, setFitas] = useState({
         aFazer: [],
@@ -13,23 +13,22 @@ export default function FitaMedicamentos() {
         prontas: []
     });
     const [isLoading, setIsLoading] = useState(true);
+    const [selectedFita, setSelectedFita] = useState(null);
     const location = useLocation();
-    const isSingleFita = location.pathname !== "/tela-medicamentos"
+    const isSingleFita = location.pathname !== "/tela-medicamentos";
 
     useEffect(() => {
         const fetchFitas = async () => {
             try {
                 const response = await fetch('http://localhost:5000/api/fitas');
                 const data = await response.json();
-                
-                // Função para formatar lista de remédios
+
                 const formatarRemedios = (remedios) => {
                     return remedios && remedios.length > 0 
-                        ? `Remédios: ${remedios.join(', ')}` 
+                        ? `${remedios.join(', ')}` 
                         : 'Sem remédios';
                 };
 
-                // Classificar fitas por status
                 const aFazer = data.filter(fita => fita.status === "pendente");
                 const emProgresso = data.filter(fita => fita.status === "em_progresso");
                 const prontas = data.filter(fita => fita.status === "finalizada");
@@ -58,8 +57,18 @@ export default function FitaMedicamentos() {
         fetchFitas();
     }, []);
 
+    const openPopUp = (fitaData) => {
+        setSelectedFita(fitaData);
+    };
+
+    const closePopUp = () => {
+        setSelectedFita(null);
+    };
+
     return (
         <div className="fitaMedicamentos">
+            <UnitaryCollection />
+            {selectedFita && <PopUpFitas data={selectedFita} closePopUp={closePopUp} />}
             <div className="conteudo">
                 <PageHeader title="Fitas de medicamentos" isSingleFita={isSingleFita} />
                 {location.pathname === "/tela-medicamentos" ? (
@@ -69,18 +78,21 @@ export default function FitaMedicamentos() {
                             data={fitas.aFazer} 
                             maxItems={10} 
                             route="/tela-medicamentos/a-fazer"
+                            onItemClick={openPopUp}
                         />
                         <Table 
                             title="Em progresso" 
                             data={fitas.emProgresso} 
                             maxItems={10} 
                             route="/tela-medicamentos/em-progresso"
+                            onItemClick={openPopUp}
                         />
                         <Table 
                             title="Prontas" 
                             data={fitas.prontas} 
                             maxItems={10} 
                             route="/tela-medicamentos/prontas"
+                            onItemClick={openPopUp}
                         />
                     </>
                 ) : (
