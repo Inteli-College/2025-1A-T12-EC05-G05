@@ -18,7 +18,6 @@ const dataPopUp = {
   ]
 };
 
-
 export default function Table({ title, data, maxItems = data.length, route, onItemClick }) {
   const navigate = useNavigate();
   const visibleItems = data.slice(0, maxItems);
@@ -74,28 +73,30 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
             <img src={seta} alt="seta para a direita" />
           </div>
           {title === "A fazer" && (
-            <label className="select-all">
-              Selecionar tudo
-              <input
-                type="checkbox"
-                checked={selectAll}
-                onChange={handleSelectAll}
-              />
-            </label>
+              <label className="select-all">
+                Selecionar tudo
+                <input
+                  type="checkbox"
+                  checked={selectAll}
+                  onChange={handleSelectAll}
+                />
+              </label>
           )}
         </div>
         <div className="itens">
           {visibleItems.map((item, index) => (
             <React.Fragment key={index}>
-              <button 
-                className="item" 
-                onClick={() => handleItemClick(item)} 
-              >
-                <div className="item-content">
-                  <h2>{item.nome}</h2>
-                  <p>{item.descricao}</p>
-                </div>
-                {item.separando && <span className="status-tag">Separando</span>}
+              <div className="item-container">
+                <button 
+                  className="item" 
+                  onClick={() => handleItemClick(item)} 
+                >
+                  <div className="item-content">
+                    <h2>{item.nome}</h2>
+                    <p>{item.descricao}</p>
+                  </div>
+                  {item.separando && <span className="status-tag">Separando</span>}
+                </button>
                 {(title === "A fazer" || title === "Possíveis devoluções") && (
                   <div className="checkbox-container">
                     {title === "Possíveis devoluções" ? (
@@ -114,7 +115,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
                     )}
                   </div>
                 )}
-              </button>
+              </div>
               {index !== visibleItems.length - 1 && <hr />}
             </React.Fragment>
           ))}
