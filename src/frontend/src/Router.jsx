@@ -11,6 +11,7 @@ import AFazer from "./pages/AFazer.jsx";
 import EmProgresso from "./pages/EmProgresso.jsx";
 import Prontas from "./pages/Prontas.jsx";
 import Historico from "./pages/historico.jsx";
+import Logs from "./pages/Logs.jsx";
 
 const Router = () => {
   return (
@@ -36,6 +37,7 @@ const Router = () => {
             <Route path="prontas" element={<Prontas />} />
           </Route>
           <Route path="/historico" element={<Historico />} />
+          <Route path="/logs" element={<Logs />} />
 
 
           {/* Rotas protegidas */}
