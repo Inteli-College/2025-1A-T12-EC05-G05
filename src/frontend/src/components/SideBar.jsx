@@ -6,12 +6,12 @@ import calendario from "../assets/icones/calendario.svg";
 import agenda from "../assets/icones/agenda.svg";
 import logoutIcon from "../assets/icones/sair.svg";
 import httpClient from "../httpClient";
+import logs from "../assets/icones/logs.svg";
 
 const logoutUser = async () => {
   await httpClient.post("http://localhost:5000/auth/logout");
   window.location.href = "/";
 };
-import logs from "../assets/icones/logs.svg";
 
 const Sidebar = () => {
   const location = useLocation();
