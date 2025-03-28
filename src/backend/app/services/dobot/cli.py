@@ -282,7 +282,7 @@ def wait_before_suction(delay_time: float = 2.5):
 def request_bip(timeout: int = 10):
     print("\U0001F551 Solicitando bipagem via HTTP...")
     try:
-        response = requests.get("http://localhost:5000/qrcode-response", timeout=timeout)
+        response = requests.get("http://127.0.0.1:5000/qrcode-response", timeout=timeout)
         response.raise_for_status()
         scanned_medicine = response.json()
         print(f"\U0001F4E1 Medicamento bipado recebido: {scanned_medicine}")
@@ -313,8 +313,9 @@ def validate(bin_n):
     wait_before_suction()
     expected_medicine = data_med.get(bin_n, [])
     scanned_medicine = request_bip()
+    print(expected_medicine)
 
-    if scanned_medicine == expected_medicine[0]:
+    if scanned_medicine == expected_medicine:
         print("✅ Medicamento validado. Descendo para coletar...")
         return True
     
