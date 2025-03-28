@@ -31,6 +31,12 @@
     align-items: center;
 }
 
+.popup-header strong {
+    color: #7C7C7C;
+    font-weight: 700;
+    font-size: 22px;
+}
+
 .popup-header-content {
     display: flex;
     gap: 20px;
@@ -66,7 +72,8 @@
     justify-content: space-between;
     width: 100%;
     align-items: start;
-    height: 300px;
+    max-height: 300px;
+    min-height: 220px;
 }
 
 .patient-info div {
@@ -125,15 +132,13 @@
 }
 
 .exportar-btn {
-    margin-top: 20px;
-    padding: 10px 15px;
+    padding: 15px 20px;
     background-color: #666;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     display: block;
-    width: 100%;
 }
 
 .medicamentos-container {
