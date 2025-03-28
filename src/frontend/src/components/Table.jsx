@@ -11,14 +11,14 @@ const dataPopUp = {
   ultimaAtualizacao: '26/02/2025 - 18:34',
   aprovadoPor: 'Maria Souza - 25/02/2025 - 08:15',
   medicamentos: [
-      { nome: 'Paracetamol 500mg', tipo: 'Comprimido', validade: '12/2026', status: 'Em estoque', quantidade: 1 },
-      { nome: 'Amoxicilina 500mg', tipo: 'Cápsula', validade: '08/2025', status: 'Em falta', quantidade: 2 },
-      { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 },
-      { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 }
+    { nome: 'Paracetamol 500mg', tipo: 'Comprimido', validade: '12/2026', status: 'Em estoque', quantidade: 1 },
+    { nome: 'Amoxicilina 500mg', tipo: 'Cápsula', validade: '08/2025', status: 'Em falta', quantidade: 2 },
+    { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 },
+    { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 }
   ]
 };
 
-export default function Table({ title, data, maxItems = data.length, route, onItemClick }) {
+export default function Table({ title, data, maxItems = data.length, route, onItemClick, onButtonClick }) {
   const navigate = useNavigate();
   const location = useLocation();
   const visibleItems = data.slice(0, maxItems);
@@ -55,15 +55,24 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
     navigate(route);
   };
 
-  const buttonText = title === "A fazer" ? "Colocar em produção" :
-    title === "Possíveis devoluções" ? "Devolver" : "";
-
   const handleItemClick = (item) => {
     if (onItemClick) {
       onItemClick(dataPopUp);
     }
   };
 
+  const handleButtonClick = () => {
+    if (onButtonClick) {
+      const selectedIndex = selectedItems.findIndex(item => item);
+      if (selectedIndex !== -1) {
+        onButtonClick(data[selectedIndex]);
+      }
+    }
+  };
+
+  const buttonText = title === "A fazer" ? "Colocar em produção"
+                    : title === "Possíveis devoluções" ? "Devolver"
+                    : "";
   const isCurrentRoute = location.pathname === route;
 
   return (
@@ -87,20 +96,24 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
               </label>
           )} */}
         </div>
+
         <div className="itens">
           {visibleItems.map((item, index) => (
             <React.Fragment key={index}>
               <div className="item-container">
-                <button 
-                  className="item" 
-                  onClick={() => handleItemClick(item)} 
+                <button
+                  className="item"
+                  onClick={() => handleItemClick(item)}
                 >
                   <div className="item-content">
                     <h2>{item.nome}</h2>
                     <p>{item.descricao}</p>
                   </div>
-                  {item.separando && <span className="status-tag">Separando</span>}
+                  {item.separando && (
+                    <span className="status-tag">Separando</span>
+                  )}
                 </button>
+
                 {(title === "A fazer" || title === "Possíveis devoluções") && (
                   <div className="checkbox-container">
                     {(title === "A fazer" || title === "Possíveis devoluções") ? (
@@ -125,8 +138,9 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
           ))}
         </div>
       </div>
+
       {showButton && (
-        <button className="colocar-em-producao show">
+        <button className="colocar-em-producao show" onClick={handleButtonClick}>
           {buttonText}
         </button>
       )}

@@ -106,13 +106,13 @@ export default function FitaMedicamentos() {
                     <Outlet />
                 )}
             </div>
+            <LoadingModal isLoading={isLoading}/>
             {showModal && (
                 <FairModal
                     message="Algo deu errado. Por favor, tente novamente!"
                     onClose={handleCloseModal}
                 />
             )}
-            {isLoading && <LoadingModal isLoading={isLoading} />}
         </div>
     );
 }

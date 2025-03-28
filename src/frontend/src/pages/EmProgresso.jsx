@@ -12,7 +12,6 @@ export default function EmProgresso() {
                 const response = await fetch('http://localhost:5000/api/fitas');
                 const data = await response.json();
                 
-                // Filtrar apenas fitas em progresso
                 const fitasEmProgresso = data
                     .filter(fita => fita.status === "em_progresso")
                     .map(fita => ({
@@ -20,7 +19,7 @@ export default function EmProgresso() {
                         descricao: fita.remedios 
                             ? `Remédios: ${fita.remedios.join(', ')}` 
                             : 'Sem remédios',
-                        separando: true // Pode ajustar conforme necessidade
+                        separando: true
                     }));
 
                 setFitas(fitasEmProgresso);
