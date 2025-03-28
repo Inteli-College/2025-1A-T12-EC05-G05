@@ -58,7 +58,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
     title === "Possíveis devoluções" ? "Devolver" : "";
   const handleItemClick = (item) => {
     if (onItemClick) {
-      onItemClick(dataPopUp);
+      onItemClick(item);
     }
   };
 

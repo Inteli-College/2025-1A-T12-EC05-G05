@@ -35,14 +35,17 @@ export default function FitaMedicamentos() {
 
                 setFitas({
                     aFazer: aFazer.map(fita => ({
+                        id: fita.id,
                         nome: `Fita ${fita.id}`,
                         descricao: formatarRemedios(fita.remedios)
                     })),
                     emProgresso: emProgresso.map(fita => ({
+                        id: fita.id,
                         nome: `Fita ${fita.id}`,
                         descricao: formatarRemedios(fita.remedios)
                     })),
                     prontas: prontas.map(fita => ({
+                        id: fita.id,
                         nome: `Fita ${fita.id}`,
                         descricao: formatarRemedios(fita.remedios)
                     }))
@@ -57,10 +60,21 @@ export default function FitaMedicamentos() {
         fetchFitas();
     }, []);
 
-    const openPopUp = (fitaData) => {
-        setSelectedFita(fitaData);
+    const openPopUp = async (fitaData) => {
+        const fitaId = parseInt(fitaData.nome.replace('Fita ', ''));
+        
+        try {
+            const response = await fetch(`http://localhost:5000/api/fitas/${fitaId}`); // Passando o ID diretamente
+            if (response.ok) {
+                const data = await response.json();
+                setSelectedFita(data);
+            } else {
+                console.error('Erro ao buscar os detalhes da fita. Status:', response.status);
+            }
+        } catch (error) {
+            console.error('Erro ao buscar detalhes da fita:', error);
+        }
     };
-
     const closePopUp = () => {
         setSelectedFita(null);
     };
@@ -76,23 +90,32 @@ export default function FitaMedicamentos() {
                         <Table 
                             title="A fazer" 
                             data={fitas.aFazer} 
-                            maxItems={10} 
+                            maxItems={3} 
                             route="/tela-medicamentos/a-fazer"
-                            onItemClick={openPopUp}
+                            onItemClick={(fita) => {
+                                console.log("Fita clicada:", fita); 
+                                openPopUp(fita);
+                            }}
                         />
                         <Table 
                             title="Em progresso" 
                             data={fitas.emProgresso} 
-                            maxItems={10} 
+                            maxItems={3} 
                             route="/tela-medicamentos/em-progresso"
-                            onItemClick={openPopUp}
+                            onItemClick={(fita) => {
+                                console.log("Fita clicada:", fita); 
+                                openPopUp(fita);
+                            }}
                         />
                         <Table 
                             title="Prontas" 
                             data={fitas.prontas} 
-                            maxItems={10} 
+                            maxItems={3} 
                             route="/tela-medicamentos/prontas"
-                            onItemClick={openPopUp}
+                            onItemClick={(fita) => {
+                                console.log("Fita clicada:", fita); 
+                                openPopUp(fita);
+                            }}
                         />
                     </>
                 ) : (

@@ -1,5 +1,7 @@
 from models import db, Fita, Remedio, Paciente
 from flask import jsonify
+import random
+from datetime import datetime
 
 class FitaService:
     def listar_todas(self):
@@ -14,7 +16,7 @@ class FitaService:
             ]
         } for f in fitas])
 
-    def obter_fita(self, fita_id):
+    def obter_fita(self, fita_id:int):
         fita = Fita.query.get(fita_id)
         if not fita:
             return jsonify({"error": "Fita não encontrada"}), 404
@@ -28,21 +30,33 @@ class FitaService:
                 "leito": fita.paciente.leito
             }
 
-        # Retornar detalhes da fita, paciente e remédios
-        return jsonify({
-            "id": fita.id,
-            "status": fita.status,
-            "hc": fita.hc,
-            "paciente": paciente_info,
-            "remedios": [
-                {
-                    "id": remedio.id,
-                    "nome": remedio.nome_do_remedio_com_gramagem,
-                    "validade": remedio.validade.strftime('%Y-%m-%d')
-                }
-                for remedio in fita.remedios
-            ]
-        }), 200
+        # Mapeamento de status
+        status_mapeamento = {
+            "pendente": "Pendente",
+            "em_progresso": "Em Progresso", 
+            "finalizada": "Finalizada"
+        }
+
+        # Transformar remédios com informações adicionais
+        remedios_popup = []
+        for remedio in fita.remedios:
+            remedios_popup.append({
+                "nome": remedio.nome_do_remedio_com_gramagem,
+                "tipo": "Comprimido",  # Mock - adicionar lógica se necessário
+                "validade": remedio.validade.strftime('%d/%m/%Y'),
+                "status": "Em estoque" if random.random() > 0.3 else "Em falta",  # Mock status
+                "quantidade": random.randint(1, 3)  # Mock quantidade
+            })
+            return jsonify({
+                "id": fita.id,
+                "nome": f"Fita {fita.id}",
+                "status": status_mapeamento.get(fita.status, fita.status),  # Alterado de "estado" para "status"
+                "paciente": paciente_info['nome'] if paciente_info else "Paciente não identificado",
+                "leito": paciente_info['leito'] if paciente_info else "Leito não definido",
+                "ultimaAtualizacao": datetime.now().strftime('%d/%m/%Y - %H:%M'),
+                "aprovadoPor": "Maria Souza",  # Mock
+                "medicamentos": remedios_popup
+            }), 200
 
     def atualiza_status(self, fita_id, req):
         fita = Fita.query.get(fita_id)
