@@ -50,6 +50,15 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
     } else {
       setSelectedItems([...selectedItems, selectedItemId]);
     }
+    const newSelectedItems = [...selectedItems];
+
+    if (title === "Possíveis devoluções" | title === "A fazer") {
+      newSelectedItems.fill(false);
+      newSelectedItems[index] = true;
+
+    } else {
+      setSelectedItems([...selectedItems, selectedItemId]);
+    }
 
   };
   
@@ -63,6 +72,26 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
     if (selectedItems.length === 0) {
       alert("Nenhum medicamento selecionado");
       return;
+    }
+
+    try {
+      const mockResponse = { data: { bins: selectedItems } };
+      setTimeout(() => {
+        alert("Medicamentos colocados em produção com sucesso!");
+      }, 1000);
+      await httpClient.post("http://localhost:5000/robot/collect", mockResponse.data);
+    } catch (error) {
+      if (error.response?.status === 401) {
+        alert("Nenhum medicamento selecionado.");
+      } else {
+        alert("Ocorreu um erro, tente novamente mais tarde.");
+      }
+    }
+  }
+  const handleItemClick = (item) => {
+    if (onItemClick) {
+      onItemClick(dataPopUp);
+
     }
 
     try {
@@ -137,8 +166,8 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
       </div>
 
       {showButton && (
-        <button className="colocar-em-producao show" onClick={goToProduction}>
-          Colocar em produção
+        <button className="colocar-em-producao show" onClick={onButtonClick || goToProduction}>
+        {buttonText}
 
         </button>
       )}

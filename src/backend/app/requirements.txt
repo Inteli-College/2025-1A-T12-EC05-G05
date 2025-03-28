@@ -27,6 +27,7 @@ urllib3==2.3.0
 uvicorn==0.34.0
 yaspin==2.3.0
 
+
 # Somente no Linux, quando a plataforma for Raspberry Pi
 lgpio==0.2.2.0 ; sys_platform == 'linux'
 RPi.GPIO==0.7.1 ; sys_platform == 'linux'
