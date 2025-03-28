@@ -10,6 +10,11 @@ import AFazer from "./pages/AFazer.jsx";
 import EmProgresso from "./pages/EmProgresso.jsx";
 import Prontas from "./pages/Prontas.jsx";
 import Historico from "./pages/historico.jsx";
+import Logs from "./pages/Logs.jsx";
+import Inventario from "./pages/inventario.jsx";
+import Devolucao from "./pages/Devolucao.jsx";
+import PossivelDevolucao from "./pages/PossivelDevolucao.jsx";
+import Devolvidas from "./pages/Devolvidas.jsx";
 
 const Router = () => {
   return (

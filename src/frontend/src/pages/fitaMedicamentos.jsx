@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Table from "../components/Table";
 import PageHeader from "../components/PageHeader";
-import LoadingModal from "../components/LoadingModal";
 import "../styles/fitaMedicamentos.css";
+import UnitaryCollection from "../components/UnitaryCollection";
+import PopUpFitas from "../components/PopUpFitas";
+import FairModal from "../components/FairModal";
+import LoadingModal from "../components/LoadingModal";
 
 const dataAFazer = [
     { id: 1, nome: "Fita 5", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
@@ -31,6 +34,7 @@ export default function FitaMedicamentos() {
     return (
         <div className="fitaMedicamentos">
             <LoadingModal isLoading={!true} />
+
             <div className="conteudo">
                 <PageHeader title="Fitas de medicamentos" isSingleFita={isSingleFita} />
                 {location.pathname === "/tela-medicamentos" ? (
@@ -38,11 +42,19 @@ export default function FitaMedicamentos() {
                         <Table title="A fazer" data={dataAFazer} maxItems={2} route="/tela-medicamentos/a-fazer" />
                         <Table title="Em progresso" data={dataEmProgresso} maxItems={1} route="/tela-medicamentos/em-progresso" />
                         <Table title="Prontas" data={dataProntas} maxItems={2} route="/tela-medicamentos/prontas" />
+
                     </>
                 ) : (
                     <Outlet />
                 )}
             </div>
+            <LoadingModal isLoading={isLoading}/>
+            {showModal && (
+                <FairModal
+                    message="Algo deu errado. Por favor, tente novamente!"
+                    onClose={handleCloseModal}
+                />
+            )}
         </div>
     );
 }
