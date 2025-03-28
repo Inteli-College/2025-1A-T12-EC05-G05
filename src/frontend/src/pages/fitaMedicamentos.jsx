@@ -5,6 +5,7 @@ import PageHeader from "../components/PageHeader";
 import "../styles/fitaMedicamentos.css";
 import UnitaryCollection from "../components/UnitaryCollection";
 import PopUpFitas from "../components/PopUpFitas";
+import LoadingModal from "../components/LoadingModal";
 
 export default function FitaMedicamentos() {
     const [fitas, setFitas] = useState({
@@ -99,6 +100,7 @@ export default function FitaMedicamentos() {
                     <Outlet />
                 )}
             </div>
+            <LoadingModal isLoading={isLoading}/>
         </div>
     );
 }
