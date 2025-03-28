@@ -152,7 +152,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
                     {(title === "A fazer" || title === "Possíveis devoluções") ? (
                       <input
                         type="radio"
-                        checked={selectedItems.includes(item.id)}
+                        checked={selectedItems[index]}
                         onChange={() => handleSelectItem(index)}
                         name="possible-return"
                       />
@@ -173,8 +173,8 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
       </div>
 
       {showButton && (
-        <button className="colocar-em-producao show" onClick={goToProduction}>
-          {buttonText}
+        <button className="colocar-em-producao show" onClick={onButtonClick || goToProduction}>
+        {buttonText}
         </button>
       )}
     </div>
