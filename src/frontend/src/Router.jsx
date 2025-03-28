@@ -13,6 +13,9 @@ import Prontas from "./pages/Prontas.jsx";
 import Historico from "./pages/historico.jsx";
 import Logs from "./pages/Logs.jsx";
 import Inventario from "./pages/inventario.jsx";
+import Devolucao from "./pages/Devolucao.jsx";
+import PossivelDevolucao from "./pages/PossivelDevolucao.jsx";
+import Devolvidas from "./pages/Devolvidas.jsx";
 
 const Router = () => {
   return (
@@ -40,6 +43,10 @@ const Router = () => {
           <Route path="/historico" element={<Historico />} />
           <Route path="/logs" element={<Logs />} />
           <Route path="/inventario" element={<Inventario />} />
+          <Route path="/devolucao" element={<Devolucao />}>
+          <Route path="possivel-devolucao" element={<PossivelDevolucao />} />
+          <Route path="devolvidas" element={<Devolvidas />} />
+          </Route>
 
 
           {/* Rotas protegidas */}

@@ -25,6 +25,7 @@
   #logoutIcon, 
   #logsIcon,
   #inventarioIcon {
+  #devolucaoIcon {
     width: 20px;
     height: auto;
     margin-right: 1rem;
@@ -36,6 +37,7 @@
   .sidebar:hover #logoutIcon,
   .sidebar:hover #logsIcon,
   .sidebar:hover #inventarioIcon {
+  .sidebar:hover #devolucaoIcon {
     margin-left: 1rem;
   }
   

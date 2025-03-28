@@ -6,6 +6,13 @@ import os
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 
+# Tabela de Associação: Muitos-para-Muitos
+fita_remedio = db.Table(
+    'fita_remedio',
+    db.Column('fita_id', db.Integer, db.ForeignKey('fitas.id'), primary_key=True),
+    db.Column('remedio_id', db.Integer, db.ForeignKey('remedios.id'), primary_key=True)
+)
+
 # Tabela Usuario
 class Usuario(db.Model):
     __tablename__ = 'usuarios'
@@ -14,7 +21,6 @@ class Usuario(db.Model):
     email = db.Column(db.String(345), unique=True, nullable=False)    # Email
     senha = db.Column(db.Text, nullable=False)                        # Senha
 
-
 # Tabela Paciente
 class Paciente(db.Model):
     __tablename__ = 'pacientes'
@@ -22,7 +28,6 @@ class Paciente(db.Model):
     nome = db.Column(db.String(300), nullable=False)                  # Nome do paciente
     leito = db.Column(db.Integer, nullable=False)                     # Leito
     logs = db.relationship('Log', backref='paciente', lazy=True)      # Relação com logs
-
 
 # Tabela Bin
 class Bin(db.Model):
@@ -40,24 +45,24 @@ class Remedio(db.Model):
     nome_do_remedio_com_gramagem = db.Column(db.String(300), nullable=False)  # Nome do remédio com gramagem
     qr_code = db.Column(db.Text, nullable=True)                               # QR_Code (armazenado como texto)
     validade = db.Column(db.DateTime, nullable=False)                         # Validade
-
+    fitas = db.relationship('Fita', secondary=fita_remedio, back_populates='remedios')
 
 # Tabela Fita
 class Fita(db.Model):
     __tablename__ = 'fitas'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)  # Id_fita (serial)
-    qr_code = db.Column(db.Text, nullable=False)                      # QR_code (armazenado como texto, svg)
-    hc = db.Column(db.Integer, nullable=False)                        # HC #
-    id_prescricao = db.Column(db.Integer, nullable=False)             # Id_prescrição
-    status = db.Column(db.Text, nullable=False)                       # Status
-
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    qr_code = db.Column(db.Text, nullable=False)
+    hc = db.Column(db.Integer, nullable=False)
+    id_prescricao = db.Column(db.Integer, db.ForeignKey('pacientes.id'), nullable=False)
+    status = db.Column(db.Text, nullable=False)
+    remedios = db.relationship('Remedio', secondary=fita_remedio, back_populates='fitas')
+    paciente = db.relationship('Paciente', backref='fitas', lazy=True)
 
 # Tabela de Descrições (todas as descrições pré-definidas)
 class Descricao(db.Model):
     __tablename__ = 'descricoes'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)  # ID da descrição
     descricao = db.Column(db.String(500), nullable=False)             # Texto da descrição
-
     # Relação com logs
     logs = db.relationship('Log', backref='descricao', lazy=True)
 
