@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/Table.css";
 import seta from "../assets/icones/seta.svg";
 
@@ -20,6 +20,7 @@ const dataPopUp = {
 
 export default function Table({ title, data, maxItems = data.length, route, onItemClick }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const visibleItems = data.slice(0, maxItems);
   const [selectedItems, setSelectedItems] = useState(Array(visibleItems.length).fill(false));
   const [selectAll, setSelectAll] = useState(false);
@@ -56,11 +57,14 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
 
   const buttonText = title === "A fazer" ? "Colocar em produção" :
     title === "Possíveis devoluções" ? "Devolver" : "";
+
   const handleItemClick = (item) => {
     if (onItemClick) {
       onItemClick(dataPopUp);
     }
   };
+
+  const isCurrentRoute = location.pathname === route;
 
   return (
     <div className={`table ${showButton ? "with-button" : ""}`}>
@@ -70,7 +74,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
             <button className="table-title-button" onClick={handleTitleClick}>
               {title}
             </button>
-            <img src={seta} alt="seta para a direita" />
+            {!isCurrentRoute && <img src={seta} alt="seta para a direita" />}
           </div>
           {title === "A fazer" && (
               <label className="select-all">
