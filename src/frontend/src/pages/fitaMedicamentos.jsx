@@ -6,6 +6,7 @@ import "../styles/fitaMedicamentos.css";
 import UnitaryCollection from "../components/UnitaryCollection";
 import PopUpFitas from "../components/PopUpFitas";
 import FairModal from "../components/FairModal";
+import LoadingModal from "../components/LoadingModal";
 
 export default function FitaMedicamentos() {
     const [fitas, setFitas] = useState({
@@ -111,6 +112,7 @@ export default function FitaMedicamentos() {
                     onClose={handleCloseModal}
                 />
             )}
+            {isLoading && <LoadingModal isLoading={isLoading} />}
         </div>
     );
 }
