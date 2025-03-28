@@ -83,8 +83,10 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
       };
 
       const selectedMedicamentos = visibleItems.filter((item, index) => selectedItems[index]);
+
       const bins = selectedMedicamentos
         .map(item => item.descricao)
+        .flatMap(descricao => descricao.split(', '))
         .map(medicamento => medicamentoToBin[medicamento])
         .filter(bin => bin !== undefined);
 
@@ -108,6 +110,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
       }
     }
   }
+
 
   const handleItemClick = (item) => {
     if (onItemClick) {
