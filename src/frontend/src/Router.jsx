@@ -13,6 +13,7 @@ import Logs from "./pages/Logs.jsx";
 import Devolucao from "./pages/Devolucao.jsx";
 import PossivelDevolucao from "./pages/PossivelDevolucao.jsx";
 import Devolvidas from "./pages/Devolvidas.jsx";
+import Inventario from "./pages/inventario.jsx";
 
 const Router = () => {
   return (
@@ -36,6 +37,8 @@ const Router = () => {
             </Route>
             <Route path="/historico" element={<Historico />} />
             <Route path="/logs" element={<Logs />} />
+            <Route path="/inventario" element={<Inventario />} />
+            {/* Rotas aninhadas para devolução */}
             <Route path="/devolucao" element={<Devolucao />}>
               <Route path="possivel-devolucao" element={<PossivelDevolucao />} />
               <Route path="devolvidas" element={<Devolvidas />} />

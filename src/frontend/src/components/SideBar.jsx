@@ -8,6 +8,7 @@ import logoutIcon from "../assets/icones/sair.svg";
 import httpClient from "../httpClient";
 import logs from "../assets/icones/logs.svg";
 import devolucao from "../assets/icones/devolucao.svg";
+import inventario from "../assets/icones/inventario.svg";
 
 
 const logoutUser = async () => {
@@ -44,6 +45,12 @@ const Sidebar = () => {
           <Link to="/logs">
             <img id="logsIcon" src={logs} alt="" />
             <span className="linkText">Logs</span>
+          </Link>
+        </li>
+        <li className={location.pathname === "/inventario" ? "active" : ""}>
+          <Link to="/inventario">
+            <img id="inventarioIcon" src={inventario} alt="" />
+            <span className="linkText">Inventário</span>
           </Link>
         </li>
       </ul>
