@@ -36,7 +36,7 @@ export default function LoginPage() {
         email: formData.email,
         password: formData.password,
       });
-      window.location.href = "/";
+      window.location.href = "/tela-medicamentos";
     } catch (error) {
       if (error.response?.status === 401) setErrors({ submit: "Email ou senha incorretos" });
       else setErrors({ submit: "Ocorreu um erro, tente novamente mais tarde." });

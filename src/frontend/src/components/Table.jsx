@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/Table.css";
 import seta from "../assets/icones/seta.svg";
+import httpClient from "../httpClient";
 
 const dataPopUp = {
   nome: 'Fita 1',
@@ -22,58 +23,62 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
   const navigate = useNavigate();
   const location = useLocation();
   const visibleItems = data.slice(0, maxItems);
-  const [selectedItems, setSelectedItems] = useState(Array(visibleItems.length).fill(false));
+  const [selectedItems, setSelectedItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    const hasSelected = selectedItems.some((item) => item);
+    const hasSelected = selectedItems.length > 0;
     setShowButton(hasSelected);
-    setSelectAll(selectedItems.every((item) => item) && selectedItems.length > 0);
-  }, [selectedItems]);
+    setSelectAll(selectedItems.length === visibleItems.length && selectedItems.length > 0);
+  }, [selectedItems, visibleItems.length]);
 
   const handleSelectAll = () => {
     const newState = !selectAll;
-    setSelectedItems(Array(visibleItems.length).fill(newState));
+    if (newState) {
+      setSelectedItems(visibleItems.map(item => Number(item.id)));
+    } else {
+      setSelectedItems([]);
+    }
     setSelectAll(newState);
   };
-
+  
   const handleSelectItem = (index) => {
-    const newSelectedItems = [...selectedItems];
-
-    if (title === "Possíveis devoluções" | title === "A fazer") {
-      newSelectedItems.fill(false);
-      newSelectedItems[index] = true;
+    const selectedItemId = Number(visibleItems[index].id);
+    if (selectedItems.includes(selectedItemId)) {
+      setSelectedItems(selectedItems.filter(id => id !== selectedItemId));
     } else {
-      newSelectedItems[index] = !newSelectedItems[index];
+      setSelectedItems([...selectedItems, selectedItemId]);
     }
 
-    setSelectedItems(newSelectedItems);
   };
+  
 
   const handleTitleClick = () => {
     navigate(route);
   };
 
-  const handleItemClick = (item) => {
-    if (onItemClick) {
-      onItemClick(dataPopUp);
+  async function goToProduction(e) {
+    e.preventDefault();
+    if (selectedItems.length === 0) {
+      alert("Nenhum medicamento selecionado");
+      return;
     }
-  };
 
-  const handleButtonClick = () => {
-    if (onButtonClick) {
-      const selectedIndex = selectedItems.findIndex(item => item);
-      if (selectedIndex !== -1) {
-        onButtonClick(data[selectedIndex]);
+    try {
+      const mockResponse = { data: { bins: selectedItems } };
+      setTimeout(() => {
+        alert("Medicamentos colocados em produção com sucesso!");
+      }, 1000);
+      await httpClient.post("http://localhost:5000/robot/collect", mockResponse.data);
+    } catch (error) {
+      if (error.response?.status === 401) {
+        alert("Nenhum medicamento selecionado.");
+      } else {
+        alert("Ocorreu um erro, tente novamente mais tarde.");
       }
     }
-  };
-
-  const buttonText = title === "A fazer" ? "Colocar em produção"
-                    : title === "Possíveis devoluções" ? "Devolver"
-                    : "";
-  const isCurrentRoute = location.pathname === route;
+  }
 
   return (
     <div className={`table ${showButton ? "with-button" : ""}`}>
@@ -116,20 +121,12 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
 
                 {(title === "A fazer" || title === "Possíveis devoluções") && (
                   <div className="checkbox-container">
-                    {(title === "A fazer" || title === "Possíveis devoluções") ? (
-                      <input
-                        type="radio"
-                        checked={selectedItems[index]}
-                        onChange={() => handleSelectItem(index)}
-                        name="possible-return"
-                      />
-                    ) : (
-                      <input
-                        type="checkbox"
-                        checked={selectedItems[index]}
-                        onChange={() => handleSelectItem(index)}
-                      />
-                    )}
+                    <input
+                      type="checkbox"
+                      checked={selectedItems.includes(item.id)}
+                      onChange={() => handleSelectItem(index)}
+                    />
+
                   </div>
                 )}
               </div>
@@ -140,8 +137,9 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
       </div>
 
       {showButton && (
-        <button className="colocar-em-producao show" onClick={handleButtonClick}>
-          {buttonText}
+        <button className="colocar-em-producao show" onClick={goToProduction}>
+          Colocar em produção
+
         </button>
       )}
     </div>

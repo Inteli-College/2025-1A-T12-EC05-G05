@@ -6,11 +6,11 @@ import pydobot.enums.ControlValues
 import pydobot.message
 from .position import Position
 
-with open("config.json", "r") as file:
-    home_saved_positions = json.load(file)
+# with open("config.json", "r") as file:
+#     home_saved_positions = json.load(file)
     
-    home_position = Position()
-    home_position.load_from_dict(home_saved_positions["home"][0])
+home_position = Position()
+#     home_position.load_from_dict(home_saved_positions["home"][0])
 
 class DobotController:
     def __init__(self):
@@ -56,4 +56,4 @@ class DobotController:
     
     def get_suction_sensor_status(self):
 
-      return self.dobot._set_end_effector_suction_cup(enable=True)  # Corrigido para o método correto
+      return self.dobot._set_end_effector_suction_cup(enable=True)
