@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import "../styles/PopUpFitas.css";
+import SucessModal from "../components/SucessModal"; // ✅ Import do modal
 
 export default function PopUpDevolucao({ data, closePopUp }) {
     const [estadoDevolucao, setEstadoDevolucao] = useState(1);
     const [fitaData, setFitaData] = useState(null);
     const [medicamentosDevolvidos, setMedicamentosDevolvidos] = useState([]);
+    const [showSuccessModal, setShowSuccessModal] = useState(false); // ✅ Estado para modal de sucesso
 
     if (!data) return null;
 
@@ -47,77 +49,87 @@ export default function PopUpDevolucao({ data, closePopUp }) {
     };
 
     const terminarDevolucao = () => {
-        console.log("Devolução concluída"); // trocar por modal de sucesso
-        closePopUp();
+        setShowSuccessModal(true); // ✅ Exibe modal de sucesso
     };
 
-
     return (
-        <div className="popup-container">
-            <div className="popup-content">
-                <div className='popup-header'>
-                    <div className='popup-header-content'>
-                        <h1 className='popup-title'>{data.nome}</h1>
-                        <span className="popup-status-tag">Fazer devolução</span>
-                    </div>
-                    <strong>{renderMensagemTopo()}</strong>
-                    <button className="close-btn" onClick={closePopUp}>&times;</button>
-                </div>
-
-                <div className="popup-body">
-                    <div className="patient-info">
-                        <div><h2>Paciente</h2><p>{fitaData?.paciente || ""}</p></div>
-                        <div><h2>Leito</h2><p>{fitaData?.leito || ""}</p></div>
-                        <div><h2>Última atualização</h2><p>{fitaData?.ultimaAtualizacao || ""}</p></div>
-                        <div><h2>Aprovada por</h2><p>{fitaData?.aprovadoPor || ""}</p></div>
-                    </div>
-
-                    <div className="medicamentos-container">
-                        <div className="medicamentos-header">
-                            <h2>Medicamentos da fita</h2>
+        <>
+            <div className="popup-container">
+                <div className="popup-content">
+                    <div className='popup-header'>
+                        <div className='popup-header-content'>
+                            <h1 className='popup-title'>{data.nome}</h1>
+                            <span className="popup-status-tag">Fazer devolução</span>
                         </div>
-                        <div className="medicamentos-lista">
-                            {medicamentosDevolvidos.length === 0 ? (
-                                <p className="sem-medicamentos">Nenhum medicamento devolvido.</p>
-                            ) : (
-                                medicamentosDevolvidos.map((med, index) => (
-                                    <div key={index} className="medicamento-item">
-                                        <div className="medicamento-item-content">
-                                            <div className="medicamento-info">
-                                                <h3>{med.nome}</h3>
-                                                <p>{med.tipo}</p>
-                                                <p className='validade'>Válido até {med.validade}</p>
+                        <strong>{renderMensagemTopo()}</strong>
+                        <button className="close-btn" onClick={closePopUp}>&times;</button>
+                    </div>
+
+                    <div className="popup-body">
+                        <div className="patient-info">
+                            <div><h2>Paciente</h2><p>{fitaData?.paciente || ""}</p></div>
+                            <div><h2>Leito</h2><p>{fitaData?.leito || ""}</p></div>
+                            <div><h2>Última atualização</h2><p>{fitaData?.ultimaAtualizacao || ""}</p></div>
+                            <div><h2>Aprovada por</h2><p>{fitaData?.aprovadoPor || ""}</p></div>
+                        </div>
+
+                        <div className="medicamentos-container">
+                            <div className="medicamentos-header">
+                                <h2>Medicamentos da fita</h2>
+                            </div>
+                            <div className="medicamentos-lista">
+                                {medicamentosDevolvidos.length === 0 ? (
+                                    <p className="sem-medicamentos">Nenhum medicamento devolvido.</p>
+                                ) : (
+                                    medicamentosDevolvidos.map((med, index) => (
+                                        <div key={index} className="medicamento-item">
+                                            <div className="medicamento-item-content">
+                                                <div className="medicamento-info">
+                                                    <h3>{med.nome}</h3>
+                                                    <p>{med.tipo}</p>
+                                                    <p className='validade'>Válido até {med.validade}</p>
+                                                </div>
+                                                <div className="medicamento-status">
+                                                    <span className="status-badge em-estoque">Devolvida</span>
+                                                    <p>{med.quantidade}x</p>
+                                                </div>
                                             </div>
-                                            <div className="medicamento-status">
-                                                <span className="status-badge em-estoque">Devolvida</span>
-                                                <p>{med.quantidade}x</p>
-                                            </div>
+                                            {index !== medicamentosDevolvidos.length - 1 && <hr />}
                                         </div>
-                                        {index !== medicamentosDevolvidos.length - 1 && <hr />}
-                                    </div>
-                                ))
-                            )}
+                                    ))
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div style={{ display: "flex", gap: "10px", width: "100%", alignItems: 'center', justifyContent: "flex-end" }}>
-                    {estadoDevolucao === 1 && <button className="exportar-btn" onClick={biparFita}>Simular Bipagem da Fita</button>}
-                    {estadoDevolucao >= 2 && estadoDevolucao < 5 && (
-                        <button className="exportar-btn" onClick={biparMedicamento}>Simular Bipagem de Medicamento</button>
-                    )}
-                    {estadoDevolucao >= 3 && (
-                        <button
-                            className="exportar-btn"
-                            style={{ backgroundColor: "#5CE1E6", color: "#000" }}
-                            onClick={terminarDevolucao}
-                        >
-                            Terminar Devolução
-                        </button>
-                    )}
-
+                    <div style={{ display: "flex", gap: "10px", width: "100%", alignItems: 'center', justifyContent: "flex-end" }}>
+                        {estadoDevolucao === 1 && <button className="exportar-btn" onClick={biparFita}>Simular Bipagem da Fita</button>}
+                        {estadoDevolucao >= 2 && estadoDevolucao < 5 && (
+                            <button className="exportar-btn" onClick={biparMedicamento}>Simular Bipagem de Medicamento</button>
+                        )}
+                        {estadoDevolucao >= 3 && (
+                            <button
+                                className="exportar-btn"
+                                style={{ backgroundColor: "#5CE1E6", color: "#000" }}
+                                onClick={terminarDevolucao}
+                            >
+                                Terminar Devolução
+                            </button>
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
+
+            {/* ✅ Modal de sucesso */}
+            {showSuccessModal && (
+                <SucessModal
+                    message="Devolução registrada com sucesso!"
+                    onClose={() => {
+                        setShowSuccessModal(false);
+                        closePopUp(); // Fecha o popup junto com o modal
+                    }}
+                />
+            )}
+        </>
     );
 }

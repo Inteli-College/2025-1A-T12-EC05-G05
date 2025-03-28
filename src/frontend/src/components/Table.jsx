@@ -70,12 +70,11 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
   async function goToProduction(e) {
     e.preventDefault();
     if (selectedItems.length === 0) {
-      alert("Nenhum medicamento selecionado");
       return;
     }
 
     try {
-      const mockResponse = { data: { bins: selectedItems } };
+      const mockResponse = { data: { bins: "1" } };
       setTimeout(() => {
         alert("Medicamentos colocados em produção com sucesso!");
       }, 1000);
@@ -152,7 +151,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
                     {(title === "A fazer" || title === "Possíveis devoluções") ? (
                       <input
                         type="radio"
-                        checked={selectedItems.includes(item.id)}
+                        checked={selectedItems[index]}
                         onChange={() => handleSelectItem(index)}
                         name="possible-return"
                       />
