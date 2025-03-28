@@ -12,9 +12,6 @@ GPIO.setup(GPIO_PIN, GPIO.IN)
 
 def ler():
     
-    port = "/dev/ttyAMA0"
-    baudrate = 9600
-    
     try:
         estado = GPIO.input(GPIO_PIN)  # Lê o estado do pino
         print(f"Estado do pino {GPIO_PIN}: {'Alto' if estado else 'Baixo'}")
@@ -24,10 +21,6 @@ def ler():
         GPIO.cleanup()
 
     try:
-        with serial.Serial(port, baudrate, timeout=1) as ser:
-            print(f"Conectado à porta {port} a {baudrate} baud.")
-            print("Aguardando dados do QR Code...")
-
         if ser.in_waiting > 0:
             line = ser.readline().decode('utf-8', errors='ignore').strip()
             print(f"QR Code recebido: {line}")
@@ -47,5 +40,12 @@ def ler():
         print("Encerrando leitura do QR Code.")
 
 if __name__ == "__main__":
+
+    port = "/dev/ttyAMA0"
+    baudrate = 9600
+    with serial.Serial(port, baudrate, timeout=1) as ser:
+            print(f"Conectado à porta {port} a {baudrate} baud.")
+            print("Aguardando dados do QR Code...")
+
     while True:
         ler()
