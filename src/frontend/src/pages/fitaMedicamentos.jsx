@@ -5,6 +5,8 @@ import PageHeader from "../components/PageHeader";
 import "../styles/fitaMedicamentos.css";
 import UnitaryCollection from "../components/UnitaryCollection";
 import PopUpFitas from "../components/PopUpFitas";
+import FairModal from "../components/FairModal";
+import LoadingModal from "../components/LoadingModal";
 
 export default function FitaMedicamentos() {
     const [fitas, setFitas] = useState({
@@ -16,6 +18,7 @@ export default function FitaMedicamentos() {
     const [selectedFita, setSelectedFita] = useState(null);
     const location = useLocation();
     const isSingleFita = location.pathname !== "/tela-medicamentos";
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         const fetchFitas = async () => {
@@ -24,8 +27,8 @@ export default function FitaMedicamentos() {
                 const data = await response.json();
 
                 const formatarRemedios = (remedios) => {
-                    return remedios && remedios.length > 0 
-                        ? `${remedios.join(', ')}` 
+                    return remedios && remedios.length > 0
+                        ? `${remedios.join(', ')}`
                         : 'Sem remédios';
                 };
 
@@ -51,6 +54,7 @@ export default function FitaMedicamentos() {
             } catch (error) {
                 console.error('Erro ao buscar fitas:', error);
                 setIsLoading(false);
+                setShowModal(true);
             }
         };
 
@@ -65,6 +69,9 @@ export default function FitaMedicamentos() {
         setSelectedFita(null);
     };
 
+    const handleShowModal = () => setShowModal(true);
+    const handleCloseModal = () => setShowModal(false);
+
     return (
         <div className="fitaMedicamentos">
             <UnitaryCollection />
@@ -73,24 +80,24 @@ export default function FitaMedicamentos() {
                 <PageHeader title="Fitas de medicamentos" isSingleFita={isSingleFita} />
                 {location.pathname === "/tela-medicamentos" ? (
                     <>
-                        <Table 
-                            title="A fazer" 
-                            data={fitas.aFazer} 
-                            maxItems={10} 
+                        <Table
+                            title="A fazer"
+                            data={fitas.aFazer}
+                            maxItems={10}
                             route="/tela-medicamentos/a-fazer"
                             onItemClick={openPopUp}
                         />
-                        <Table 
-                            title="Em progresso" 
-                            data={fitas.emProgresso} 
-                            maxItems={10} 
+                        <Table
+                            title="Em progresso"
+                            data={fitas.emProgresso}
+                            maxItems={10}
                             route="/tela-medicamentos/em-progresso"
                             onItemClick={openPopUp}
                         />
-                        <Table 
-                            title="Prontas" 
-                            data={fitas.prontas} 
-                            maxItems={10} 
+                        <Table
+                            title="Prontas"
+                            data={fitas.prontas}
+                            maxItems={10}
                             route="/tela-medicamentos/prontas"
                             onItemClick={openPopUp}
                         />
@@ -99,6 +106,13 @@ export default function FitaMedicamentos() {
                     <Outlet />
                 )}
             </div>
+            {showModal && (
+                <FairModal
+                    message="Algo deu errado. Por favor, tente novamente!"
+                    onClose={handleCloseModal}
+                />
+            )}
+            {isLoading && <LoadingModal isLoading={isLoading} />}
         </div>
     );
 }
