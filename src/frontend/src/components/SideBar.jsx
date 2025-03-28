@@ -9,7 +9,6 @@ import httpClient from "../httpClient";
 import logs from "../assets/icones/logs.svg";
 import inventario from "../assets/icones/inventario.svg";
 import devolucao from "../assets/icones/devolucao.svg";
-import inventario from "../assets/icones/inventario.svg";
 
 const logoutUser = async () => {
   await httpClient.post("http://localhost:5000/auth/logout");

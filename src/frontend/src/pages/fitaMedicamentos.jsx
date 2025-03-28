@@ -56,27 +56,46 @@ export default function FitaMedicamentos() {
                 const emProgresso = data.filter(fita => fita.status === "em_progresso");
                 const prontas = data.filter(fita => fita.status === "finalizada");
 
+                setFitas({
+                    aFazer: aFazer.map(fita => ({
+                        nome: `Fita ${fita.id}`,
+                        descricao: formatarRemedios(fita.remedios)
+                    })),
+                    emProgresso: emProgresso.map(fita => ({
+                        nome: `Fita ${fita.id}`,
+                        descricao: formatarRemedios(fita.remedios)
+                    })),
+                    prontas: prontas.map(fita => ({
+                        nome: `Fita ${fita.id}`,
+                        descricao: formatarRemedios(fita.remedios)
+                    }))
+                });
+                setIsLoading(false);
+            } catch (error) {
+                console.error('Erro ao buscar fitas:', error);
+                setIsLoading(false);
+                setShowModal(true);
+            }
+        };
 
-const dataEmProgresso = [
-    { id: 5, nome: "Fita 3", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur.", separando: true },
-    { id: 6, nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
-    { id: 7, nome: "Fita 1", descricao: "Este não será mostrado porque maxItems é 2." },
-];
+        fetchFitas();
+    }, []);
 
-const dataProntas = [
-    { id: 8, nome: "Fita 2", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
-    { id: 9, nome: "Fita 1", descricao: "Supporting line text lorem ipsum dolor sit amet, consectetur." },
-];
+    const openPopUp = (fitaData) => {
+        setSelectedFita(fitaData);
+    };
 
+    const closePopUp = () => {
+        setSelectedFita(null);
+    };
 
-export default function FitaMedicamentos() {
-    const location = useLocation();
-    const isSingleFita = location.pathname !== "/tela-medicamentos";
+    const handleShowModal = () => setShowModal(true);
+    const handleCloseModal = () => setShowModal(false);
 
     return (
         <div className="fitaMedicamentos">
-            <LoadingModal isLoading={!true} />
-
+            <UnitaryCollection />
+            {selectedFita && <PopUpFitas data={selectedFita} closePopUp={closePopUp} />}
             <div className="conteudo">
                 <PageHeader title="Fitas de medicamentos" isSingleFita={isSingleFita} />
                 {location.pathname === "/tela-medicamentos" ? (
@@ -84,7 +103,6 @@ export default function FitaMedicamentos() {
                         <Table title="A fazer" data={dataAFazer} maxItems={2} onItemClick={openPopUp} route="/tela-medicamentos/a-fazer" />
                         <Table title="Em progresso" data={dataEmProgresso} maxItems={1} onItemClick={openPopUp} route="/tela-medicamentos/em-progresso" />
                         <Table title="Prontas" data={dataProntas} maxItems={2} onItemClick={openPopUp} route="/tela-medicamentos/prontas" />
-
                     </>
                 ) : (
                     <Outlet />
