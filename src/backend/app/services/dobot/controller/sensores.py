@@ -21,18 +21,17 @@ def ler():
         GPIO.cleanup()
 
     try:
-        if ser.in_waiting > 0:
-            line = ser.readline().decode('utf-8', errors='ignore').strip()
-            print(f"QR Code recebido: {line}")
-            
-            # Converter o conteúdo da variável 'line' para JSON
-            try:
-                payload = json.dumps({"qr_code": line})
-                headers = {'Content-Type': 'application/json'}
-                response = requests.post('http://10.128.0.194:5000/qrcode-response', data=payload, headers=headers)
-                print(f"Enviado por HTTP: status {response.status_code}")
-            except Exception as e:
-                print(f"Erro ao enviar por HTTP: {e}")
+        line = ser.readline().decode('utf-8', errors='ignore').strip()
+        print(f"QR Code recebido: {line}")
+        
+        # Converter o conteúdo da variável 'line' para JSON
+        try:
+            payload = json.dumps({"qr_code": line})
+            headers = {'Content-Type': 'application/json'}
+            response = requests.post('http://10.128.0.194:5000/qrcode-response', data=payload, headers=headers)
+            print(f"Enviado por HTTP: status {response.status_code}")
+        except Exception as e:
+            print(f"Erro ao enviar por HTTP: {e}")
     
     except serial.SerialException as e:
         print(f"Erro ao acessar a porta serial: {e}")
