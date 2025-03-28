@@ -41,7 +41,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
   const handleSelectItem = (index) => {
     const newSelectedItems = [...selectedItems];
 
-    if (title === "Possíveis devoluções") {
+    if (title === "Possíveis devoluções" | title === "A fazer") {
       newSelectedItems.fill(false);
       newSelectedItems[index] = true;
     } else {
@@ -76,7 +76,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
             </button>
             {!isCurrentRoute && <img src={seta} alt="seta para a direita" />}
           </div>
-          {title === "A fazer" && (
+          {/* {title === "A fazer" && (
               <label className="select-all">
                 Selecionar tudo
                 <input
@@ -85,7 +85,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
                   onChange={handleSelectAll}
                 />
               </label>
-          )}
+          )} */}
         </div>
         <div className="itens">
           {visibleItems.map((item, index) => (
@@ -103,7 +103,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
                 </button>
                 {(title === "A fazer" || title === "Possíveis devoluções") && (
                   <div className="checkbox-container">
-                    {title === "Possíveis devoluções" ? (
+                    {(title === "A fazer" || title === "Possíveis devoluções") ? (
                       <input
                         type="radio"
                         checked={selectedItems[index]}
