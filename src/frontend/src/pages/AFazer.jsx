@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Table from "../components/Table";
+import PageHeader from "../components/PageHeader";
+import Pagination from "../components/Pagination";
+
 
 export default function AFazer() {
+ 
     const [fitas, setFitas] = useState([]);
             const [isLoading, setIsLoading] = useState(true);
         
@@ -30,7 +34,37 @@ export default function AFazer() {
         
                 fetchFitasAFazer();
             }, []);
+
+        useEffect(() => {
+            console.log("isLoading:", isLoading);
+        }, [isLoading]);
+        
+
+        const [currentPage, setCurrentPage] = useState(1);
+        const aFazerPerPage = 8;
+        const totalAFazer = fitas.length;
+         
+        const indexOfLastAFazer = currentPage * aFazerPerPage;
+        const indexOfFirstAFazer = indexOfLastAFazer - aFazerPerPage;
+        const currentAFazer = fitas.slice(indexOfFirstAFazer, indexOfLastAFazer);
+        
+        const paginate = (pageNumber) => setCurrentPage(pageNumber);
+            
     return (
-        <Table title="A fazer" data={fitas} route="/tela-medicamentos/a-fazer" />
+       
+        <div className="a-fazer">
+        <div className="conteudo-AFazer">
+            <PageHeader title="A Fazer" />            
+            <Table title="A fazer" data={currentAFazer} route="/tela-medicamentos/a-fazer" />
+            <Pagination
+                totalItems={totalAFazer}
+                itemsPerPage={aFazerPerPage}
+                currentPage={currentPage}
+                paginate={paginate}
+            />
+        </div>
+    </div>
     );
 }
+
+

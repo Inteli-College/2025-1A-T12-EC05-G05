@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "../components/Table";
+import PageHeader from "../components/PageHeader";
+import Pagination from "../components/Pagination";
 
 
 const dataDevolvidas = [
@@ -10,10 +12,32 @@ const dataDevolvidas = [
 
 
 export default function Devolvidas() {
+   const [currentPage, setCurrentPage] = useState(1);
+   const devolvidasPerPage = 8;
+   const totalDevolvidas = dataDevolvidas.length;
+
+   const indexOfLastDevolvidas = currentPage * devolvidasPerPage;
+   const indexOfFirstDevolvidas = indexOfLastDevolvidas - devolvidasPerPage;
+   const currentDevolvidas = dataDevolvidas.slice(indexOfFirstDevolvidas, indexOfLastDevolvidas);
+
+   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+
    return (
-       <Table title="Devolvidas" data={dataDevolvidas} route="/devolucao/devolvidas" />
+       <div className="devolvidas">
+           <div className="conteudo-devolvidas">
+               <PageHeader title="Devolvidas" />
+               <Table title="Devolvidas" data={currentDevolvidas} route="/devolucao/devolvidas" />
+               
+               <Pagination
+                   totalItems={totalDevolvidas}
+                   itemsPerPage={devolvidasPerPage}
+                   currentPage={currentPage}
+                   paginate={paginate}
+               />
+           </div>
+       </div>
    );
 }
-
 
 

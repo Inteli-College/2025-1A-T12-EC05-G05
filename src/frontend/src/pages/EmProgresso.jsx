@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Table from "../components/Table";
-import LoadingModal from "../components/LoadingModal";
+import PageHeader from "../components/PageHeader";
+import Pagination from "../components/Pagination";
 
 export default function EmProgresso() {
     const [fitas, setFitas] = useState([]);
@@ -34,14 +35,34 @@ export default function EmProgresso() {
         fetchFitasEmProgresso();
     }, []);
 
-    return (
-        <>
-            <LoadingModal isLoading={isLoading} />
-            <Table 
-                title="Em progresso" 
-                data={fitas} 
-                route="/tela-medicamentos/em-progresso" 
-            />
-        </>
-    );
+    useEffect(() => {
+            console.log("isLoading:", isLoading);
+        }, [isLoading]);
+            
+    const [currentPage, setCurrentPage] = useState(1);
+    const emProgressoPerPage = 8;
+    const totalEmProgresso = fitas.length;
+ 
+    const indexOfLastEmProgresso = currentPage * emProgressoPerPage;
+    const indexOfFirstEmProgresso = indexOfLastEmProgresso - emProgressoPerPage;
+    const currentEmProgresso = fitas.slice(indexOfFirstEmProgresso, indexOfLastEmProgresso);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    
+
+return (
+
+<div className="em-progesso">
+<div className="conteudo-AFazer">
+    <PageHeader title="Em Progresso" />
+    <Table title="Em Progresso" data={currentEmProgresso} route="/tela-medicamentos/em-progresso" />
+    <Pagination
+        totalItems={totalEmProgresso}
+        itemsPerPage={emProgressoPerPage}
+        currentPage={currentPage}
+        paginate={paginate}
+    />
+</div>
+</div>
+);
 }
