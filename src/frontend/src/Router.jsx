@@ -1,4 +1,3 @@
-// src/Router.jsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/login.jsx";
 import RegisterPage from "./pages/registerPage.jsx";
@@ -10,6 +9,10 @@ import AFazer from "./pages/AFazer.jsx";
 import EmProgresso from "./pages/EmProgresso.jsx";
 import Prontas from "./pages/Prontas.jsx";
 import Historico from "./pages/historico.jsx";
+import Logs from "./pages/Logs.jsx";
+import Devolucao from "./pages/Devolucao.jsx";
+import PossivelDevolucao from "./pages/PossivelDevolucao.jsx";
+import Devolvidas from "./pages/Devolvidas.jsx";
 
 const Router = () => {
   return (
@@ -27,11 +30,16 @@ const Router = () => {
           <Route element={<PrivateRoute />}>
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/tela-medicamentos" element={<FitaMedicamentos />}>
-            <Route path="a-fazer" element={<AFazer />} />
-            <Route path="em-progresso" element={<EmProgresso />} />
-            <Route path="prontas" element={<Prontas />} />
-          </Route>
-          <Route path="/historico" element={<Historico />} />
+              <Route path="a-fazer" element={<AFazer />} />
+              <Route path="em-progresso" element={<EmProgresso />} />
+              <Route path="prontas" element={<Prontas />} />
+            </Route>
+            <Route path="/historico" element={<Historico />} />
+            <Route path="/logs" element={<Logs />} />
+            <Route path="/devolucao" element={<Devolucao />}>
+              <Route path="possivel-devolucao" element={<PossivelDevolucao />} />
+              <Route path="devolvidas" element={<Devolvidas />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

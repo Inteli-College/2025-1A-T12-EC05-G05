@@ -22,7 +22,9 @@
   
   #stripsIcon,
   #historyIcon,
-  #logoutIcon {
+  #logoutIcon, 
+  #logsIcon,
+  #devolucaoIcon {
     width: 20px;
     height: auto;
     margin-right: 1rem;
@@ -31,7 +33,9 @@
   
   .sidebar:hover #stripsIcon,
   .sidebar:hover #historyIcon,
-  .sidebar:hover #logoutIcon {
+  .sidebar:hover #logoutIcon,
+  .sidebar:hover #logsIcon,
+  .sidebar:hover #devolucaoIcon {
     margin-left: 1rem;
   }
   

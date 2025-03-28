@@ -3,9 +3,11 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../styles/Historico.css";
 import PageHeader from "../components/PageHeader";
+import SucessModal from "../components/SucessModal";
 
 export default function Historico() {
     const [date, setDate] = useState(new Date());
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const fitasPorData = {
         "2025-03-12": [
@@ -50,52 +52,61 @@ export default function Historico() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+
+        setShowSuccessModal(true);
     };
 
     return (
         <div className="historico">
             <div className="conteudo-historico">
-            <PageHeader title="Histórico" />
-            <div className="historico-content">
-                <div className="calendar-container">
-                    <Calendar onChange={setDate} value={date} />
-                </div>
-
-                <div className="content">
-                    <div className="fitas-container">
-                        <div className={`fitas-header ${fitasEntregues.length > 3 ? "com-scroll" : ""}`}>
-                            <h2>Fitas de medicamento entregues</h2>
-                            <span className="total-fitas">Total de fitas: {fitasEntregues.length}</span>
-                        </div>
-                        <div className="fitas-lista">
-                            {fitasEntregues.length > 0 ? (
-                                fitasEntregues.map((fita, index) => (
-                                    <button 
-                                        key={index} 
-                                        className="fita-item"
-                                        onClick={() => console.log(`Fita selecionada: ${fita.nome}`)}
-                                    >
-                                        <h3>{fita.nome}</h3>
-                                        <p>{fita.descricao}</p>
-                                        {index !== fitasEntregues.length - 1 && <hr />}
-                                    </button>
-                                ))
-                            ) : (
-                                <p className="sem-fitas">Nenhuma fita entregue nesta data.</p>
-                            )}
-                        </div>
+                <PageHeader title="Histórico" />
+                <div className="historico-content">
+                    <div className="calendar-container">
+                        <Calendar onChange={setDate} value={date} />
                     </div>
 
-                    <button 
-                        className={`exportar-csv ${fitasEntregues.length === 0 ? "desativado" : ""}`} 
-                        onClick={exportarCSV} 
-                        disabled={fitasEntregues.length === 0}
-                    >
-                        Exportar CSV
-                    </button>
+                    <div className="content">
+                        <div className="fitas-container">
+                            <div className={`fitas-header ${fitasEntregues.length > 3 ? "com-scroll" : ""}`}>
+                                <h2>Fitas de medicamento entregues</h2>
+                                <span className="total-fitas">Total de fitas: {fitasEntregues.length}</span>
+                            </div>
+                            <div className="fitas-lista">
+                                {fitasEntregues.length > 0 ? (
+                                    fitasEntregues.map((fita, index) => (
+                                        <button 
+                                            key={index} 
+                                            className="fita-item"
+                                            onClick={() => console.log(`Fita selecionada: ${fita.nome}`)}
+                                        >
+                                            <h3>{fita.nome}</h3>
+                                            <p>{fita.descricao}</p>
+                                            {index !== fitasEntregues.length - 1 && <hr />}
+                                        </button>
+                                    ))
+                                ) : (
+                                    <p className="sem-fitas">Nenhuma fita entregue nesta data.</p>
+                                )}
+                            </div>
+                        </div>
+
+                        <button 
+                            className={`exportar-csv ${fitasEntregues.length === 0 ? "desativado" : ""}`} 
+                            onClick={exportarCSV} 
+                            disabled={fitasEntregues.length === 0}
+                        >
+                            Exportar CSV
+                        </button>
+                    </div>
                 </div>
             </div>
-            </div>
+
+            {showSuccessModal && (
+                <SucessModal
+                    message="Arquivo CSV exportado com sucesso!"
+                    onClose={() => setShowSuccessModal(false)}
+                />
+            )}
         </div>
     );
 }
