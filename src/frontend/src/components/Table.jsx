@@ -42,7 +42,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
     }
     setSelectAll(newState);
   };
-  
+
   const handleSelectItem = (index) => {
     const selectedItemId = Number(visibleItems[index].id);
     if (selectedItems.includes(selectedItemId)) {
@@ -61,7 +61,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
 
     setSelectedItems(newSelectedItems);
   };
-  
+
 
   const handleTitleClick = () => {
     navigate(route);
@@ -74,10 +74,31 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
     }
 
     try {
-      const mockResponse = { data: { bins: "1" } };
+      const medicamentoToBin = {
+        "Ibuprofeno 400mg": "1",
+        "Dorflex 300mg": "2",
+        "Buscopan 10mg": "3",
+        "Dipirona 1g": "4",
+        "Paracetamol 500mg": "5"
+      };
+
+      const selectedMedicamentos = visibleItems.filter((item, index) => selectedItems[index]);
+      const bins = selectedMedicamentos
+        .map(item => item.descricao)
+        .map(medicamento => medicamentoToBin[medicamento])
+        .filter(bin => bin !== undefined);
+
+      if (bins.length === 0) {
+        alert("Nenhum medicamento selecionado.");
+        return;
+      }
+
+      const mockResponse = { data: { bins } };
+
       setTimeout(() => {
         alert("Medicamentos colocados em produção com sucesso!");
       }, 1000);
+
       await httpClient.post("http://localhost:5000/robot/collect", mockResponse.data);
     } catch (error) {
       if (error.response?.status === 401) {
@@ -87,6 +108,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
       }
     }
   }
+
   const handleItemClick = (item) => {
     if (onItemClick) {
       onItemClick(dataPopUp);
@@ -103,8 +125,8 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
   };
 
   const buttonText = title === "A fazer" ? "Colocar em produção"
-                    : title === "Possíveis devoluções" ? "Devolver"
-                    : "";
+    : title === "Possíveis devoluções" ? "Devolver"
+      : "";
   const isCurrentRoute = location.pathname === route;
 
   return (
@@ -173,7 +195,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
 
       {showButton && (
         <button className="colocar-em-producao show" onClick={onButtonClick || goToProduction}>
-        {buttonText}
+          {buttonText}
 
         </button>
       )}
