@@ -7,7 +7,7 @@ import "../styles/Inventario.css";
 export default function Inventario() {
  
     return (
-        <div className="fitaMedicamentos">
+        <div className="inventario">
          
             <div className="conteudo">
                 <PageHeader title="Inventário" />
