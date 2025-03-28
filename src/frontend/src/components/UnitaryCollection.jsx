@@ -3,12 +3,14 @@ import "../styles/UnitaryCollection.css";
 import adicionar from "../assets/icones/adicionar.svg";
 import pillIcon from "../assets/icones/medicamento.svg";
 import nurseIcon from "../assets/icones/enfermeira.svg";
+import SucessModal from "../components/SucessModal";
 
 const UnitaryCollection = () => {
     const [showForm, setShowForm] = useState(false);
     const [medicationName, setMedicationName] = useState("");
     const [nurseName, setNurseName] = useState("");
     const [isValidMedication, setIsValidMedication] = useState(true);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
     const formRef = useRef(null);
 
     const medications = [
@@ -29,6 +31,8 @@ const UnitaryCollection = () => {
 
         console.log("Form submitted:", { medicationName, nurseName });
         setIsValidMedication(true);
+
+        setShowSuccessModal(true);
     };
 
     useEffect(() => {
@@ -100,6 +104,13 @@ const UnitaryCollection = () => {
                     </form>
                 </div>
             </div>
+
+            {showSuccessModal && (
+                <SucessModal
+                    message="Registro salvo com sucesso!"
+                    onClose={() => setShowSuccessModal(false)}
+                />
+            )}
         </div>
     );
 };
