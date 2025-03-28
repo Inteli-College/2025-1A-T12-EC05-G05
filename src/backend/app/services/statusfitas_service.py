@@ -57,5 +57,5 @@ class FitaService:
             db.session.commit()
             return jsonify({"message": "Fita criada com sucesso", "id": nova_fita.id}), 201
         except Exception as e:
-            db.session.rollback()
+            db.session.rollback() 
             return jsonify({"error": str(e)}), 500

@@ -13,5 +13,5 @@ def get_historico():
     if resultado:
         return resultado
     else:
-        return jsonify({"message": "Nenhuma fita encontrada."}), 404
+        return jsonify({"message": "Nenhuma fita encontrada."}), 404 
 

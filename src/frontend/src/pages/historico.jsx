@@ -22,7 +22,6 @@ export default function Historico() {
                         }
                         novoHistorico[fita.data].push({
                             nome: fita.nome,
-                            descricao: fita.descricao,
                         });
                     });
 
@@ -45,8 +44,8 @@ export default function Historico() {
         if (fitasEntregues.length === 0) return;
 
         const csvContent = [
-            ["Nome", "Descrição"],
-            ...fitasEntregues.map(fita => [fita.nome, fita.descricao])
+            ["Nome"],
+            ...fitasEntregues.map(fita => [fita.nome])
         ]
         .map(e => e.join(","))
         .join("\n");
@@ -80,10 +79,10 @@ export default function Historico() {
                                         <button 
                                             key={index} 
                                             className="fita-item"
-                                            onClick={() => console.log(`Fita selecionada: ${fita.nome}`)}
+                                            onClick={() => console.log(`Fita selecionada:  ${fita.nome}`)}
                                         >
-                                            <h3>{fita.nome}</h3>
-                                            <p>{fita.descricao}</p>
+                                            <h3>Fita {fita.nome}</h3>
+                                            <p>abcdefg</p>
                                             {index !== fitasEntregues.length - 1 && <hr />}
                                         </button>
                                     ))
