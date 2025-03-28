@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import "../styles/PopUpFitas.css";
-import SucessModal from "../components/SucessModal"; // ✅ Import do modal
+import SucessModal from "../components/SucessModal";
 
 export default function PopUpDevolucao({ data, closePopUp }) {
     const [estadoDevolucao, setEstadoDevolucao] = useState(1);
     const [fitaData, setFitaData] = useState(null);
     const [medicamentosDevolvidos, setMedicamentosDevolvidos] = useState([]);
-    const [showSuccessModal, setShowSuccessModal] = useState(false); // ✅ Estado para modal de sucesso
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     if (!data) return null;
 
@@ -49,7 +49,7 @@ export default function PopUpDevolucao({ data, closePopUp }) {
     };
 
     const terminarDevolucao = () => {
-        setShowSuccessModal(true); // ✅ Exibe modal de sucesso
+        setShowSuccessModal(true);
     };
 
     return (
@@ -119,14 +119,12 @@ export default function PopUpDevolucao({ data, closePopUp }) {
                     </div>
                 </div>
             </div>
-
-            {/* ✅ Modal de sucesso */}
             {showSuccessModal && (
                 <SucessModal
                     message="Devolução registrada com sucesso!"
                     onClose={() => {
                         setShowSuccessModal(false);
-                        closePopUp(); // Fecha o popup junto com o modal
+                        closePopUp(); 
                     }}
                 />
             )}
