@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/Table.css";
 import seta from "../assets/icones/seta.svg";
 import httpClient from "../httpClient";
+import SucessModal from "./SucessModal";
+import FairModal from "./FairModal";
 
 const dataPopUp = {
   nome: 'Fita 1',
@@ -26,6 +28,10 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [showButton, setShowButton] = useState(false);
+  const [showFairModal, setShowFairModal] = useState(false);
+  const [showSucessModal, setShowSucessModal] = useState(false);
+  const [fairMessage, setFairMessage] = useState("Algo deu errado");
+  const [sucessMessage, setSucessMessage]  = useState("Deu tudo certo");
 
   useEffect(() => {
     const hasSelected = selectedItems.length > 0;
@@ -91,22 +97,24 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
         .filter(bin => bin !== undefined);
 
       if (bins.length === 0) {
-        alert("Nenhum medicamento selecionado.");
+        setFairMessage("Nenhum medicamento selecionado.")
+        setShowFairModal(true);
         return;
       }
 
-      const mockResponse = { data: { bins } };
+      const Response = { data: { bins } };
 
-      setTimeout(() => {
-        alert("Medicamentos colocados em produção com sucesso!");
-      }, 1000);
+      await httpClient.post("http://localhost:5000/robot/collect", Response.data);
+      setSucessMessage("Medicamentos colocados em produção com sucesso!");
+      setShowSucessModal(true);
 
-      await httpClient.post("http://localhost:5000/robot/collect", mockResponse.data);
     } catch (error) {
       if (error.response?.status === 401) {
-        alert("Nenhum medicamento selecionado.");
+        setFairMessage("Nenhum medicamento selecionado.");
+        setShowFairModal(true);
       } else {
-        alert("Ocorreu um erro, tente novamente mais tarde.");
+        setFairMessage("Ocorreu um erro, tente novamente mais tarde.");
+        setShowFairModal(true);
       }
     }
   }
@@ -118,31 +126,38 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
     }
   };
 
-  const handleButtonClick = () => {
-    if (onButtonClick) {
-      const selectedIndex = selectedItems.findIndex(item => item);
-      if (selectedIndex !== -1) {
-        onButtonClick(data[selectedIndex]);
-      }
-    }
-  };
-
   const buttonText = title === "A fazer" ? "Colocar em produção"
     : title === "Possíveis devoluções" ? "Devolver"
       : "";
   const isCurrentRoute = location.pathname === route;
 
+  const handleCloseFairModal = () => setShowFairModal(false);
+  const handleCloseSucessModal = () => setShowSucessModal(false);
+
   return (
-    <div className={`table ${showButton ? "with-button" : ""}`}>
-      <div className="table-content">
-        <div className="title">
-          <div className="title-left">
-            <button className="table-title-button" onClick={handleTitleClick}>
-              {title}
-            </button>
-            {!isCurrentRoute && <img src={seta} alt="seta para a direita" />}
-          </div>
-          {/* {title === "A fazer" && (
+    <>
+      {showFairModal && (
+        <FairModal
+          message={fairMessage}
+          onClose={handleCloseFairModal}
+        />
+      )}
+      {showSucessModal && (
+        <SucessModal
+          message={sucessMessage}
+          onClose={handleCloseSucessModal}
+        />
+      )}
+      <div className={`table ${showButton ? "with-button" : ""}`}>
+        <div className="table-content">
+          <div className="title">
+            <div className="title-left">
+              <button className="table-title-button" onClick={handleTitleClick}>
+                {title}
+              </button>
+              {!isCurrentRoute && <img src={seta} alt="seta para a direita" />}
+            </div>
+            {/* {title === "A fazer" && (
               <label className="select-all">
                 Selecionar tudo
                 <input
@@ -152,56 +167,57 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
                 />
               </label>
           )} */}
-        </div>
+          </div>
 
-        <div className="itens">
-          {visibleItems.map((item, index) => (
-            <React.Fragment key={index}>
-              <div className="item-container">
-                <button
-                  className="item"
-                  onClick={() => handleItemClick(item)}
-                >
-                  <div className="item-content">
-                    <h2>{item.nome}</h2>
-                    <p>{item.descricao}</p>
-                  </div>
-                  {item.separando && (
-                    <span className="status-tag">Separando</span>
-                  )}
-                </button>
-
-                {(title === "A fazer" || title === "Possíveis devoluções") && (
-                  <div className="checkbox-container">
-                    {(title === "A fazer" || title === "Possíveis devoluções") ? (
-                      <input
-                        type="radio"
-                        checked={selectedItems[index]}
-                        onChange={() => handleSelectItem(index)}
-                        name="possible-return"
-                      />
-                    ) : (
-                      <input
-                        type="checkbox"
-                        checked={selectedItems[index]}
-                        onChange={() => handleSelectItem(index)}
-                      />
+          <div className="itens">
+            {visibleItems.map((item, index) => (
+              <React.Fragment key={index}>
+                <div className="item-container">
+                  <button
+                    className="item"
+                    onClick={() => handleItemClick(item)}
+                  >
+                    <div className="item-content">
+                      <h2>{item.nome}</h2>
+                      <p>{item.descricao}</p>
+                    </div>
+                    {item.separando && (
+                      <span className="status-tag">Separando</span>
                     )}
-                  </div>
-                )}
-              </div>
-              {index !== visibleItems.length - 1 && <hr />}
-            </React.Fragment>
-          ))}
+                  </button>
+
+                  {(title === "A fazer" || title === "Possíveis devoluções") && (
+                    <div className="checkbox-container">
+                      {(title === "A fazer" || title === "Possíveis devoluções") ? (
+                        <input
+                          type="radio"
+                          checked={selectedItems[index]}
+                          onChange={() => handleSelectItem(index)}
+                          name="possible-return"
+                        />
+                      ) : (
+                        <input
+                          type="checkbox"
+                          checked={selectedItems[index]}
+                          onChange={() => handleSelectItem(index)}
+                        />
+                      )}
+                    </div>
+                  )}
+                </div>
+                {index !== visibleItems.length - 1 && <hr />}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
+
+        {showButton && (
+          <button className="colocar-em-producao show" onClick={onButtonClick || goToProduction}>
+            {buttonText}
+
+          </button>
+        )}
       </div>
-
-      {showButton && (
-        <button className="colocar-em-producao show" onClick={onButtonClick || goToProduction}>
-          {buttonText}
-
-        </button>
-      )}
-    </div>
+    </>
   );
 }
