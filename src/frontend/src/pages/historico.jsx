@@ -4,10 +4,27 @@ import "react-calendar/dist/Calendar.css";
 import "../styles/Historico.css";
 import PageHeader from "../components/PageHeader";
 import SucessModal from "../components/SucessModal";
+import PopUpFitas from "../components/PopUpFitas";
+
+const dataPopUp = {
+    nome: 'Fita 1',
+    estado: 'Pronta',
+    paciente: 'João da Silva',
+    leito: 'Leito 07',
+    ultimaAtualizacao: '26/02/2025 - 18:34',
+    aprovadoPor: 'Maria Souza - 25/02/2025 - 08:15',
+    medicamentos: [
+        { nome: 'Paracetamol 500mg', tipo: 'Comprimido', validade: '12/2026', status: 'Em estoque', quantidade: 1 },
+        { nome: 'Amoxicilina 500mg', tipo: 'Cápsula', validade: '08/2025', status: 'Em falta', quantidade: 2 },
+        { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 },
+        { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 }
+    ]
+};
 
 export default function Historico() {
     const [date, setDate] = useState(new Date());
     const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [selectedFita, setSelectedFita] = useState(null);
 
     const fitasPorData = {
         "2025-03-12": [
@@ -37,13 +54,13 @@ export default function Historico() {
 
     const exportarCSV = () => {
         if (fitasEntregues.length === 0) return;
-        
+
         const csvContent = [
             ["Nome", "Descrição"],
             ...fitasEntregues.map(fita => [fita.nome, fita.descricao])
         ]
-        .map(e => e.join(","))
-        .join("\n");
+            .map(e => e.join(","))
+            .join("\n");
 
         const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
         const link = document.createElement("a");
@@ -54,6 +71,14 @@ export default function Historico() {
         document.body.removeChild(link);
 
         setShowSuccessModal(true);
+    };
+
+    const openPopUp = () => {
+        setSelectedFita(dataPopUp);
+    };
+
+    const closePopUp = () => {
+        setSelectedFita(null);
     };
 
     return (
@@ -74,10 +99,10 @@ export default function Historico() {
                             <div className="fitas-lista">
                                 {fitasEntregues.length > 0 ? (
                                     fitasEntregues.map((fita, index) => (
-                                        <button 
-                                            key={index} 
+                                        <button
+                                            key={index}
                                             className="fita-item"
-                                            onClick={() => console.log(`Fita selecionada: ${fita.nome}`)}
+                                            onClick={openPopUp}
                                         >
                                             <h3>{fita.nome}</h3>
                                             <p>{fita.descricao}</p>
@@ -90,9 +115,9 @@ export default function Historico() {
                             </div>
                         </div>
 
-                        <button 
-                            className={`exportar-csv ${fitasEntregues.length === 0 ? "desativado" : ""}`} 
-                            onClick={exportarCSV} 
+                        <button
+                            className={`exportar-csv ${fitasEntregues.length === 0 ? "desativado" : ""}`}
+                            onClick={exportarCSV}
                             disabled={fitasEntregues.length === 0}
                         >
                             Exportar CSV
@@ -107,6 +132,7 @@ export default function Historico() {
                     onClose={() => setShowSuccessModal(false)}
                 />
             )}
+            {selectedFita && <PopUpFitas data={selectedFita} closePopUp={closePopUp} />}
         </div>
     );
 }
