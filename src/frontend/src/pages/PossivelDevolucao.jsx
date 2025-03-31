@@ -35,7 +35,6 @@ export default function PossivelDevolucao() {
   return (
       <div className="possivel-devolucao">
           <div className="conteudo-possivel-devolucao">
-              <PageHeader title="PossivelDevolucao" />
               <Table title="PossivelDevolucao" data={currentPossivelDevolucao} route="/devolucao/possivel-devolucao" />
              
               <Pagination

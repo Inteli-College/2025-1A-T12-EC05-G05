@@ -56,8 +56,7 @@ export default function AFazer() {
    return (
      
        <div className="a-fazer">
-       <div className="conteudo-AFazer">
-           <PageHeader title="A Fazer" />           
+       <div className="conteudo-AFazer">         
            <Table title="A fazer" data={currentAFazer} route="/tela-medicamentos/a-fazer" />
            <Pagination
                totalItems={totalAFazer}

@@ -61,8 +61,7 @@ return (
 
 <div className="em-progesso">
 <div className="conteudo-AFazer">
-   <PageHeader title="Em Progresso" />
-   <Table title="Em Progresso" data={currentEmProgresso} route="/tela-medicamentos/em-progresso" />
+      <Table title="Em Progresso" data={currentEmProgresso} route="/tela-medicamentos/em-progresso" />
    <Pagination
        totalItems={totalEmProgresso}
        itemsPerPage={emProgressoPerPage}

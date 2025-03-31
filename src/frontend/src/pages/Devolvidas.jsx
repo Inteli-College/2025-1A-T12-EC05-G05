@@ -34,7 +34,6 @@ export default function Devolvidas() {
   return (
       <div className="devolvidas">
           <div className="conteudo-devolvidas">
-              <PageHeader title="Devolvidas" />
               <Table title="Devolvidas" data={currentDevolvidas} route="/devolucao/devolvidas" />
              
               <Pagination
