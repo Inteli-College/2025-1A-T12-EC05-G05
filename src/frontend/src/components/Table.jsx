@@ -105,6 +105,9 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
       const Response = { data: { bins } };
 
       await httpClient.post("http://localhost:5000/robot/collect", Response.data);
+      for (const fita of selectedMedicamentos) {
+        await httpClient.patch(`http://localhost:5000/api/fitas/${fita.id}`, { "status":"em_progresso" });
+      }
       setSucessMessage("Medicamentos colocados em produção com sucesso!");
       setShowSucessModal(true);
 
