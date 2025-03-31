@@ -64,9 +64,10 @@ export default function FitaMedicamentos() {
         const fitaId = parseInt(fitaData.nome.replace('Fita ', ''));
         
         try {
-            const response = await fetch(`http://localhost:5000/api/fitas/${fitaId}`); // Passando o ID diretamente
+            const response = await fetch(`http://localhost:5000/api/fitas/${fitaId}`);
             if (response.ok) {
                 const data = await response.json();
+                console.log("Dados da fita recebidos:", data); // DEBUG
                 setSelectedFita(data);
             } else {
                 console.error('Erro ao buscar os detalhes da fita. Status:', response.status);
@@ -75,6 +76,7 @@ export default function FitaMedicamentos() {
             console.error('Erro ao buscar detalhes da fita:', error);
         }
     };
+    
     const closePopUp = () => {
         setSelectedFita(null);
     };
