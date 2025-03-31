@@ -1,13 +1,14 @@
 import React from 'react';
 import "../styles/PopUpFitas.css";
 
-export default function PopUpFitas({data, closePopUp }) {
+export default function PopUpFitas({ data, closePopUp }) {
     if (!data) return null;
 
     console.log('Dados do popup:', data);
 
     const { nome, status, paciente, leito, ultimaAtualizacao, aprovadoPor, medicamentos } = data || {};
     const medicamentosDisponiveis = medicamentos?.length > 0;
+    const ocultarValidade = status === "Pendente" || status === "Em Progresso";
 
     return (
         <div className="popup-container">
@@ -55,7 +56,9 @@ export default function PopUpFitas({data, closePopUp }) {
                                             <div className="medicamento-info">
                                                 <h3>{medicamento.nome}</h3>
                                                 <p>{medicamento.tipo}</p>
-                                                <p className="validade">Válido até {medicamento.validade}</p>
+                                                {!ocultarValidade && (
+                                                    <p className="validade">Válido até {medicamento.validade}</p>
+                                                )}
                                             </div>
                                             <div className="medicamento-status">
                                                 <span className={`status-badge ${medicamento.status.toLowerCase().replace(/\s+/g, '-')}`}>
