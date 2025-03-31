@@ -282,7 +282,7 @@ def wait_before_suction(delay_time: float = 2.5):
 def request_bip(timeout: int = 10):
     print("\U0001F551 Solicitando bipagem via HTTP...")
     try:
-        response = requests.get("http://127.0.0.1:5000/qrcode-response", timeout=timeout)
+        response = requests.get("http://localhost:5000/qrcode-response", timeout=timeout)
         response.raise_for_status()
         scanned_medicine = response.json()
         print(f"\U0001F4E1 Medicamento bipado recebido: {scanned_medicine}")
@@ -394,11 +394,11 @@ def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos
         take_medicine(f'bin_{bin_num}', bin_num)
 
 def main():
-    # available_ports = list_ports.comports()
-    # print(f'available ports: {[x.device for x in available_ports]} \n')
-    # port_input = input("Desired port number: ")
-    # port = available_ports[int(port_input)].device
-    port = '/dev/ttyACM0'
+    available_ports = list_ports.comports()
+    print(f'available ports: {[x.device for x in available_ports]} \n')
+    port_input = input("Desired port number: ")
+    port = available_ports[int(port_input)].device
+    # port = available_ports[-1].device
     spinner = yaspin(text=f"Connecting with port {port}...")
     spinner.start()
     dobot.connect(port)
