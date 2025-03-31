@@ -16,7 +16,7 @@ port = "/dev/ttyAMA0"
 baudrate = 9600
 
 load_dotenv()
-ip_pc = os.environ["IP_PC"]
+ip_pc = os.getenv("IP_PC")
 def ler(ser):
     try:
         # Ler GPIO
