@@ -37,6 +37,7 @@ export default function Devolucao() {
   const openPopUpDevolucao = (fitaData) => {
     setPopupDevolucaoData({
       ...fitaData,
+      nome: "Fita 1",
       estado: "Fazer devolução"
     });
   };
@@ -66,6 +67,7 @@ export default function Devolucao() {
               data={dataDevolvidas}
               maxItems={4}
               route="/devolucao/devolvidas"
+              onItemClick={openPopUpFitas}
             />
           </>
         ) : (

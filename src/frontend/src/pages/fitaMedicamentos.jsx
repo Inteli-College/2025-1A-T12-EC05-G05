@@ -72,7 +72,6 @@ export default function FitaMedicamentos() {
         setSelectedFita(null);
     };
 
-    const handleShowModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
 
     return (
