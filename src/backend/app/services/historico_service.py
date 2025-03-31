@@ -1,23 +1,16 @@
 from flask import jsonify
-from models import db, Fita, FitaRemedio, Remedio
+from models import db, Historico
 
 class HistoricoService:
-    def get_historico(self):
-        fitas = Fita.query.all()
+    def listar_historico(self, data):
+        if not data:
+            return jsonify({"error": "Data não fornecida"}), 400
 
-        if not fitas:
-            return None
+        historico = Historico.query.filter_by(data=data).all()
 
-        resultado = []
-        for fita in fitas:
-            # Buscar os remédios associados diretamente através da relação definida no modelo
-            remedios = [r.nome_do_remedio_com_gramagem for r in fita.remedios]
-
-            resultado.append({
-                "data": fita.data.strftime("%Y-%m-%d"),
-                "nome": fita.id,
-                "descricao": fita.status,
-                "medicamentos": remedios  
-            })
+        resultado = [
+            {"nome": h.id, "descricao": h.status}
+            for h in historico
+        ]
 
         return jsonify(resultado)
