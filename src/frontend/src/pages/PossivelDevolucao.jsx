@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Table from "../components/Table";
-import PageHeader from "../components/PageHeader";
 import Pagination from "../components/Pagination";
 
 

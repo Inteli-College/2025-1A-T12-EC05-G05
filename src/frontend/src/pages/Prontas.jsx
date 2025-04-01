@@ -1,6 +1,5 @@
 import React,{ useState, useEffect } from "react";
 import Table from "../components/Table";
-import PageHeader from "../components/PageHeader";
 import Pagination from "../components/Pagination";
 
 
@@ -59,9 +58,9 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
 return (
 
 
-<div className="em-progesso">
-<div className="conteudo-AFazer">
-<Table title="Em Progresso" data={currentProntas} route="/tela-medicamentos/em-progresso" />
+<div className="prontas">
+<div className="conteudo-prontas">
+<Table title="Prontas" data={currentProntas} route="/tela-medicamentos/prontas" />
 <Pagination
    totalItems={totalProntas}
    itemsPerPage={prontasPerPage}

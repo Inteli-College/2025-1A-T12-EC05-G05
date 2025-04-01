@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Table from "../components/Table";
-import PageHeader from "../components/PageHeader";
 import Pagination from "../components/Pagination";
 
 
@@ -60,7 +59,7 @@ return (
 
 
 <div className="em-progesso">
-<div className="conteudo-AFazer">
+<div className="conteudo-EmProgresso">
       <Table title="Em Progresso" data={currentEmProgresso} route="/tela-medicamentos/em-progresso" />
    <Pagination
        totalItems={totalEmProgresso}
