@@ -184,22 +184,14 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 
 ## 🎞️ Overview do Front-end em Ação
 
-Abaixo, está um GIF demonstrando o funcionamento das principais funcionalidades da plataforma já implementadas no front-end:
+Abaixo, está um vídeo demonstrando o funcionamento das principais funcionalidades da plataforma já implementadas no front-end:
 
 <div align="center">
   <sub>🎬 Overview do Front-end em React.js</sub>
-</div>
 
-<iframe width="560" height="315" 
-    src="https://www.youtube.com/embed/CH8m1hx7Zac" 
-    title="YouTube video player" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen 
-    sandbox="allow-same-origin allow-scripts allow-popups">
-</iframe>
-
-<div align="center">
+  <br/>  
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/CH8m1hx7Zac" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups"></iframe>
+  <br/>
   <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
 
