@@ -30,15 +30,7 @@ export default function PageHeader({ title, isSingleFita = false }) {
                 )}
                 <h1 id="title">{title}</h1>
             </div>
-            <div className="search-container">
-                <img src={lupa} className="search-icon" alt="Buscar" />
-                <input 
-                    type="text"
-                    className="search-input"
-                    value={query}
-                    onChange={handleChange}
-                />
-            </div>
+         
         </div>
     );
 }
