@@ -151,7 +151,7 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 <sub>Figura 8 - Pop-up de Início de Devolução</sub>
 </div>
 
-<img src="../img/altafid_card_devolucao.png"/>
+<img src="../../img/altafid_card_devolucao.png"/>
 
 🔹 Permite iniciar o processo de devolução de uma fita específica.  
 🔹 Confirma a operação e ativa o modo de retorno ao bin pelo robô.
@@ -190,7 +190,14 @@ Abaixo, está um GIF demonstrando o funcionamento das principais funcionalidades
   <sub>🎬 Overview do Front-end em React.js</sub>
 </div>
 
-<img src="../img/overview_front.gif"/>
+<iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/8u6nCybWm3U" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen 
+    sandbox="allow-same-origin allow-scripts allow-popups">
+</iframe>
 
 <div align="center">
   <sup>Fonte: Material produzido pelos autores (2025)</sup>
