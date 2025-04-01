@@ -38,17 +38,17 @@ export default function FitaMedicamentos() {
 
                 setFitas({
                     aFazer: aFazer.map(fita => ({
-                        id: `${fita.id}`,
+                        id: fita.id,
                         nome: `Fita ${fita.id}`,
                         descricao: formatarRemedios(fita.remedios)
                     })),
                     emProgresso: emProgresso.map(fita => ({
-                        id: `${fita.id}`,
+                        id: fita.id,
                         nome: `Fita ${fita.id}`,
                         descricao: formatarRemedios(fita.remedios)
                     })),
                     prontas: prontas.map(fita => ({
-                        id: `${fita.id}`,
+                        id: fita.id,
                         nome: `Fita ${fita.id}`,
                         descricao: formatarRemedios(fita.remedios)
                     }))
@@ -64,10 +64,23 @@ export default function FitaMedicamentos() {
         fetchFitas();
     }, []);
 
-    const openPopUp = (fitaData) => {
-        setSelectedFita(fitaData);
+    const openPopUp = async (fitaData) => {
+        const fitaId = parseInt(fitaData.nome.replace('Fita ', ''));
+        
+        try {
+            const response = await fetch(`http://localhost:5000/api/fitas/${fitaId}`);
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Dados da fita recebidos:", data);
+                setSelectedFita(data);
+            } else {
+                console.error('Erro ao buscar os detalhes da fita. Status:', response.status);
+            }
+        } catch (error) {
+            console.error('Erro ao buscar detalhes da fita:', error);
+        }
     };
-
+    
     const closePopUp = () => {
         setSelectedFita(null);
     };
@@ -82,9 +95,36 @@ export default function FitaMedicamentos() {
                 <PageHeader title="Fitas de medicamentos" isSingleFita={isSingleFita} />
                 {location.pathname === "/tela-medicamentos" ? (
                     <>
-                        <Table title="A fazer" data={fitas.aFazer} maxItems={2} onItemClick={openPopUp} route="/tela-medicamentos/a-fazer" />
-                        <Table title="Em progresso" data={fitas.emProgresso} maxItems={1} onItemClick={openPopUp} route="/tela-medicamentos/em-progresso" />
-                        <Table title="Prontas" data={fitas.prontas} maxItems={2} onItemClick={openPopUp} route="/tela-medicamentos/prontas" />
+                        <Table 
+                            title="A fazer" 
+                            data={fitas.aFazer} 
+                            maxItems={3} 
+                            route="/tela-medicamentos/a-fazer"
+                            onItemClick={(fita) => {
+                                console.log("Fita clicada:", fita); 
+                                openPopUp(fita);
+                            }}
+                        />
+                        <Table 
+                            title="Em progresso" 
+                            data={fitas.emProgresso} 
+                            maxItems={3} 
+                            route="/tela-medicamentos/em-progresso"
+                            onItemClick={(fita) => {
+                                console.log("Fita clicada:", fita); 
+                                openPopUp(fita);
+                            }}
+                        />
+                        <Table 
+                            title="Prontas" 
+                            data={fitas.prontas} 
+                            maxItems={3} 
+                            route="/tela-medicamentos/prontas"
+                            onItemClick={(fita) => {
+                                console.log("Fita clicada:", fita); 
+                                openPopUp(fita);
+                            }}
+                        />
                     </>
                 ) : (
                     <Outlet />

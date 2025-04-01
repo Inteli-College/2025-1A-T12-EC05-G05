@@ -15,7 +15,6 @@ export default function AFazer() {
             try {
                 const response = await fetch('http://localhost:5000/api/fitas');
                 const data = await response.json();
-
                 const fitasAFazer = data
                     .filter(fita => fita.status === "pendente")
                     .map(fita => ({
@@ -29,29 +28,43 @@ export default function AFazer() {
                 setFitas(fitasAFazer);
                 setIsLoading(false);
             } catch (error) {
-                console.error('Erro ao buscar fitas em progresso:', error);
+                console.error('Erro ao buscar fitas a fazer:', error);
                 setIsLoading(false);
                 setShowModal(true);
             }
         };
-
         fetchFitasAFazer();
     }, []);
 
-    const openPopUp = (fitaData) => {
-        setSelectedFita(fitaData);
+    const openPopUp = async (fitaId) => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/fitas/${fitaId}`);
+            if (response.ok) {
+                const data = await response.json();
+                setSelectedFita(data);
+            } else {
+                console.error('Erro ao buscar detalhes da fita. Status:', response.status);
+            }
+        } catch (error) {
+            console.error('Erro ao buscar detalhes da fita:', error);
+        }
     };
 
     const closePopUp = () => {
         setSelectedFita(null);
     };
 
-    const handleCloseModal = () => setShowModal(false);
-
+  const handleCloseModal = () => setShowModal(false);
     return (
-        <>
+        <div>
+
             {selectedFita && <PopUpFitas data={selectedFita} closePopUp={closePopUp} />}
-            <Table title="A fazer" data={fitas} onItemClick={openPopUp} route="/tela-medicamentos/a-fazer" />
+            <Table 
+                title="A fazer" 
+                data={fitas} 
+                route="/tela-medicamentos/a-fazer"
+                onItemClick={(fita) => openPopUp(fita.id)} 
+            />
             <LoadingModal isLoading={isLoading} />
             {showModal && (
                 <FairModal
@@ -59,6 +72,6 @@ export default function AFazer() {
                     onClose={handleCloseModal}
                 />
             )}
-        </>
+        </div>
     );
 }

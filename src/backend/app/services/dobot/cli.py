@@ -30,7 +30,6 @@ with open(file_path_med, "r") as file:
 
 deliver_value = 1
 add_height = 0
-home_position = Position(x=0, y=0, z=0, r=0)
 
 def identidade_visual():
     print(colored("""
@@ -282,7 +281,7 @@ def wait_before_suction(delay_time: float = 2.5):
 def request_bip(timeout: int = 10):
     print("\U0001F551 Solicitando bipagem via HTTP...")
     try:
-        response = requests.get("http://127.0.0.1:5000/qrcode-response", timeout=timeout)
+        response = requests.get("http://localhost:5000/qrcode-response", timeout=timeout)
         response.raise_for_status()
         scanned_medicine = response.json()
         print(f"\U0001F4E1 Medicamento bipado recebido: {scanned_medicine}")
@@ -321,7 +320,6 @@ def validate(bin_n):
     
     else:
         print("⚠️ Medicamento inválido! Retornando ao home.")
-        return_to_home()
         return False
 
 def check_suction(
@@ -350,11 +348,6 @@ def take_medicine(
             check_suction(position)
             execute_movement(position)
         deliver()
-
-def return_to_home():
-    print("\U0001F3E0 Retornando à posição padrão...")
-    dobot.move_l_to(home_position, wait=True)
-    print("✅ Robô na posição padrão.")
 
 def deliver():
     global deliver_value
@@ -388,17 +381,21 @@ def collect_bin(
 
 @cli.command()
 def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos bins a coletar")]):
+    global deliver_value
+    deliver_value = 1
     main()
+    positions = data.get('home')
     ordered_list = sorted(input_list)
     for bin_num in ordered_list:
         take_medicine(f'bin_{bin_num}', bin_num)
+    execute_movement(positions[0])
 
 def main():
-    # available_ports = list_ports.comports()
-    # print(f'available ports: {[x.device for x in available_ports]} \n')
-    # port_input = input("Desired port number: ")
-    # port = available_ports[int(port_input)].device
-    port = '/dev/ttyACM0'
+    available_ports = list_ports.comports()
+    print(f'available ports: {[x.device for x in available_ports]} \n')
+    port_input = input("Desired port number: ")
+    port = available_ports[int(port_input)].device
+    # port = available_ports[-1].device
     spinner = yaspin(text=f"Connecting with port {port}...")
     spinner.start()
     dobot.connect(port)

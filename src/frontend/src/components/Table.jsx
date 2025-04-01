@@ -6,27 +6,12 @@ import httpClient from "../httpClient";
 import SucessModal from "./SucessModal";
 import FairModal from "./FairModal";
 
-const dataPopUp = {
-  nome: 'Fita 1',
-  estado: 'Pronta',
-  paciente: 'João da Silva',
-  leito: 'Leito 07',
-  ultimaAtualizacao: '26/02/2025 - 18:34',
-  aprovadoPor: 'Maria Souza - 25/02/2025 - 08:15',
-  medicamentos: [
-    { nome: 'Paracetamol 500mg', tipo: 'Comprimido', validade: '12/2026', status: 'Em estoque', quantidade: 1 },
-    { nome: 'Amoxicilina 500mg', tipo: 'Cápsula', validade: '08/2025', status: 'Em falta', quantidade: 2 },
-    { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 },
-    { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 }
-  ]
-};
-
 export default function Table({ title, data, maxItems = data.length, route, onItemClick, onButtonClick }) {
   const navigate = useNavigate();
   const location = useLocation();
   const visibleItems = data.slice(0, maxItems);
   const [selectedItems, setSelectedItems] = useState([]);
-  const [selectAll, setSelectAll] = useState(false);
+  // const [selectAll, setSelectAll] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [showFairModal, setShowFairModal] = useState(false);
   const [showSucessModal, setShowSucessModal] = useState(false);
@@ -36,7 +21,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
   useEffect(() => {
     const hasSelected = selectedItems.length > 0;
     setShowButton(hasSelected);
-    setSelectAll(selectedItems.length === visibleItems.length && selectedItems.length > 0);
+    // setSelectAll(selectedItems.length === visibleItems.length && selectedItems.length > 0);
   }, [selectedItems, visibleItems.length]);
 
   // const handleSelectAll = () => {
@@ -105,7 +90,13 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
       const Response = { data: { bins } };
 
       await httpClient.post("http://localhost:5000/robot/collect", Response.data);
+      for (const fita of selectedMedicamentos) {
+        await httpClient.patch(`http://localhost:5000/api/fitas/${fita.id}`, { "status":"em_progresso" });
+      }
       setSucessMessage("Medicamentos colocados em produção com sucesso!");
+      for (const fita of selectedMedicamentos) {
+        await httpClient.patch(`http://localhost:5000/api/fitas/${fita.id}`, { "status":"finalizada" });
+      }
       setShowSucessModal(true);
 
     } catch (error) {
@@ -122,7 +113,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
 
   const handleItemClick = (item) => {
     if (onItemClick) {
-      onItemClick(dataPopUp);
+      onItemClick(item);
     }
   };
 
