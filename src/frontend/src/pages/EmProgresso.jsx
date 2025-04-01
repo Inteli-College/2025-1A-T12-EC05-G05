@@ -1,46 +1,36 @@
 import React, { useState, useEffect } from "react";
 import Table from "../components/Table";
-import LoadingModal from "../components/LoadingModal";
+import Pagination from "../components/Pagination";
+
 
 export default function EmProgresso() {
-    const [fitas, setFitas] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+  const [fitas, setFitas] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  const [currentPage, setCurrentPage] = useState(1);
+   const emProgressoPerPage = 8;
+   const totalEmProgresso = fitas.length;
+   const indexOfLastEmProgresso = currentPage * emProgressoPerPage;
+   const indexOfFirstEmProgresso = indexOfLastEmProgresso - emProgressoPerPage;
+   const currentEmProgresso = fitas.slice(indexOfFirstEmProgresso, indexOfLastEmProgresso);
 
-    useEffect(() => {
-        const fetchFitasEmProgresso = async () => {
-            try {
-                const response = await fetch('http://localhost:5000/api/fitas');
-                const data = await response.json();
-                
-                const fitasEmProgresso = data
-                    .filter(fita => fita.status === "em_progresso")
-                    .map(fita => ({
-                        nome: `Fita ${fita.id}`,
-                        descricao: fita.remedios 
-                            ? `Remédios: ${fita.remedios.join(', ')}` 
-                            : 'Sem remédios',
-                        separando: true
-                    }));
 
-                setFitas(fitasEmProgresso);
-                setIsLoading(false);
-            } catch (error) {
-                console.error('Erro ao buscar fitas em progresso:', error);
-                setIsLoading(false);
-            }
-        };
+   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  
+  return (
 
-        fetchFitasEmProgresso();
-    }, []);
 
-    return (
-        <>
-            <LoadingModal isLoading={isLoading} />
-            <Table 
-                title="Em progresso" 
-                data={fitas} 
-                route="/tela-medicamentos/em-progresso" 
-            />
-        </>
-    );
+<div className="em-progesso">
+<div className="conteudo-EmProgresso">
+      <Table title="Em Progresso" data={currentEmProgresso} route="/tela-medicamentos/em-progresso" />
+   <Pagination
+       totalItems={totalEmProgresso}
+       itemsPerPage={emProgressoPerPage}
+       currentPage={currentPage}
+       paginate={paginate}
+   />
+</div>
+<LoadingModal isLoading={isLoading} />
+</div>
+);
 }

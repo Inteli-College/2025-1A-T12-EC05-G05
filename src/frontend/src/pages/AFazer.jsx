@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Table from "../components/Table";
+import Pagination from "../components/Pagination";
 import LoadingModal from "../components/LoadingModal";
 
 export default function AFazer() {
-    const [fitas, setFitas] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
+   const [fitas, setFitas] = useState([]);
+           const [isLoading, setIsLoading] = useState(true);
+      
+       useEffect(() => {
         const fetchFitasAFazer = async () => {
             try {
                 const response = await fetch('http://localhost:5000/api/fitas');
@@ -31,10 +32,34 @@ export default function AFazer() {
 
         fetchFitasAFazer();
     }, []);
-    return (
-        <>
-            <Table title="A fazer" data={fitas} route="/tela-medicamentos/a-fazer" />
-            <LoadingModal isLoading={isLoading}/>
-        </>
-    );
+
+       const [currentPage, setCurrentPage] = useState(1);
+       const aFazerPerPage = 8;
+       const totalAFazer = fitas.length;
+       
+       const indexOfLastAFazer = currentPage * aFazerPerPage;
+       const indexOfFirstAFazer = indexOfLastAFazer - aFazerPerPage;
+       const currentAFazer = fitas.slice(indexOfFirstAFazer, indexOfLastAFazer);
+      
+       const paginate = (pageNumber) => setCurrentPage(pageNumber);
+          
+   return (
+     
+       <div className="a-fazer">
+       <div className="conteudo-AFazer">         
+           <Table title="A fazer" data={currentAFazer} route="/tela-medicamentos/a-fazer" />
+           <Pagination
+               totalItems={totalAFazer}
+               itemsPerPage={aFazerPerPage}
+               currentPage={currentPage}
+               paginate={paginate}
+           />
+       </div>
+       <LoadingModal isLoading={isLoading}/>
+   </div>
+   );
 }
+
+
+
+
