@@ -11,7 +11,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
   const location = useLocation();
   const visibleItems = data.slice(0, maxItems);
   const [selectedItems, setSelectedItems] = useState([]);
-  const [selectAll, setSelectAll] = useState(false);
+  // const [selectAll, setSelectAll] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [showFairModal, setShowFairModal] = useState(false);
   const [showSucessModal, setShowSucessModal] = useState(false);
@@ -21,18 +21,18 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
   useEffect(() => {
     const hasSelected = selectedItems.length > 0;
     setShowButton(hasSelected);
-    setSelectAll(selectedItems.length === visibleItems.length && selectedItems.length > 0);
+    // setSelectAll(selectedItems.length === visibleItems.length && selectedItems.length > 0);
   }, [selectedItems, visibleItems.length]);
 
-  const handleSelectAll = () => {
-    const newState = !selectAll;
-    if (newState) {
-      setSelectedItems(visibleItems.map(item => Number(item.id)));
-    } else {
-      setSelectedItems([]);
-    }
-    setSelectAll(newState);
-  };
+  // const handleSelectAll = () => {
+  //   const newState = !selectAll;
+  //   if (newState) {
+  //     setSelectedItems(visibleItems.map(item => Number(item.id)));
+  //   } else {
+  //     setSelectedItems([]);
+  //   }
+  //   setSelectAll(newState);
+  // };
 
   const handleSelectItem = (index) => {
     const selectedItemId = Number(visibleItems[index].id);
