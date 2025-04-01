@@ -3,12 +3,15 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from datetime import datetime, timezone
 import os
+from datetime import datetime, timedelta, timezone
+import random
+
 
 app = Flask(__name__)
 
 # Caminho absoluto para o banco de dados
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(basedir, 'db.sqlite')}"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(basedir, '.', 'instance', 'db.sqlite')}"
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -81,21 +84,37 @@ class Log(db.Model):
     responsavel = db.Column(db.Boolean, nullable=False)
     paciente_id = db.Column(db.Integer, db.ForeignKey('pacientes.id'), nullable=False)
 
-# Função para popular o banco com dados
+
 def popular_banco():
     with app.app_context():
-        # Cria as tabelas no banco de dados
         db.create_all()
 
-        # Criando Usuário se não existir
-        usuario_existente = Usuario.query.filter_by(email="gabrielhenrique@gmail.com").first()
-        if not usuario_existente:
+        try:
+            # Limpar todas as tabelas antes de popular novamente
+            Historico.query.delete()
+            Log.query.delete()
+            Fita.query.delete()
+            Bin.query.delete()
+            Remedio.query.delete() 
+            Descricao.query.delete()
+            Paciente.query.delete()
+            Usuario.query.delete()
+            db.session.commit()
+            print("Tabelas limpas com sucesso!")
+        except Exception as e:
+            db.session.rollback()
+            print(f"Erro ao limpar tabelas: {e}")
+            return
+
+        try:
+            # Criando Usuário
             senha_hash = bcrypt.generate_password_hash("123456").decode('utf-8')
             usuario = Usuario(nome="Gabriel Henrique", email="gabrielhenrique@gmail.com", senha=senha_hash)
             db.session.add(usuario)
-
-        # Criando Pacientes de exemplo
-        if not Paciente.query.first():
+            db.session.flush()  # Garante que o ID seja gerado sem fazer commit
+            
+            # Criando Pacientes de exemplo
+            pacientes_criados = []
             pacientes = [
                 {"nome": "João Silva", "leito": 101},
                 {"nome": "Maria Oliveira", "leito": 102},
@@ -105,32 +124,34 @@ def popular_banco():
             for paciente_data in pacientes:
                 paciente = Paciente(nome=paciente_data["nome"], leito=paciente_data["leito"])
                 db.session.add(paciente)
-
-        # Criando Remédios de exemplo
-        if not Remedio.query.first():
+                pacientes_criados.append(paciente)
+            db.session.flush()  # Apenas flush para obter IDs
+            
+            # Criando Remédios de exemplo
             remedios = [
                 {"nome_do_remedio_com_gramagem": "Paracetamol 500mg", "validade": datetime(2025, 5, 15)},
                 {"nome_do_remedio_com_gramagem": "Amoxicilina 250mg", "validade": datetime(2025, 12, 1)},
                 {"nome_do_remedio_com_gramagem": "Ibuprofeno 200mg", "validade": datetime(2025, 10, 1)}
             ]
+            remedios_criados = []
             for remedio_data in remedios:
                 remedio = Remedio(nome_do_remedio_com_gramagem=remedio_data["nome_do_remedio_com_gramagem"],
-                                  validade=remedio_data["validade"])
+                                validade=remedio_data["validade"])
                 db.session.add(remedio)
-
-        # Criando Bins de exemplo
-        if not Bin.query.first():
-            bins = [
-                {"id_remedio": 1, "localizacao": 45.123, "quantidade": 100},
-                {"id_remedio": 2, "localizacao": 45.124, "quantidade": 50},
-                {"id_remedio": 3, "localizacao": 45.125, "quantidade": 150}
-            ]
-            for bin_data in bins:
-                bin = Bin(id_remedio=bin_data["id_remedio"], localizacao=bin_data["localizacao"], quantidade=bin_data["quantidade"])
+                remedios_criados.append(remedio)
+            db.session.flush()
+            
+            # Criando Bins de exemplo
+            for i, remedio in enumerate(remedios_criados):
+                bin = Bin(
+                    id_remedio=remedio.id, 
+                    localizacao=45.123 + i*0.001, 
+                    quantidade=50 + i*50
+                )
                 db.session.add(bin)
-
-        # Criando Fitas de exemplo
-        if not Fita.query.first():
+            db.session.flush()
+            
+            # Criando Fitas de exemplo
             fitas = [
                 {"qr_code": "qr123", "hc": 12345, "id_prescricao": 1, "status": "prescrição enviada"},
                 {"qr_code": "qr124", "hc": 12346, "id_prescricao": 2, "status": "separando fita"},
@@ -139,9 +160,10 @@ def popular_banco():
             for fita_data in fitas:
                 fita = Fita(qr_code=fita_data["qr_code"], hc=fita_data["hc"], id_prescricao=fita_data["id_prescricao"], status=fita_data["status"])
                 db.session.add(fita)
-
-        # Criando Descrições se não existirem
-        if not Descricao.query.first():
+            db.session.flush()
+            
+            # Criando Descrições e armazenando suas referências
+            descricoes_criadas = []
             descricoes = [
                 "prescrição enviada --> esperando autorização",
                 "autorizar a separação --> pronto para separação",
@@ -163,21 +185,82 @@ def popular_banco():
             for descricao in descricoes:
                 nova_descricao = Descricao(descricao=descricao)
                 db.session.add(nova_descricao)
+                descricoes_criadas.append(nova_descricao)
+            db.session.flush() 
 
-        # Criando Logs de exemplo
-        if not Log.query.first():
-            logs = [
-                {"descricao_id": 1, "responsavel": True, "paciente_id": 1},
-                {"descricao_id": 3, "responsavel": False, "paciente_id": 2},
-                {"descricao_id": 5, "responsavel": True, "paciente_id": 3}
-            ]
-            for log_data in logs:
-                log = Log(descricao_id=log_data["descricao_id"], responsavel=log_data["responsavel"], paciente_id=log_data["paciente_id"])
-                db.session.add(log)
+            def gerar_datas_iniciais(inicio, quantidade):
+                return [inicio - timedelta(days=i) for i in range(quantidade)]
 
-        # Commit todas as mudanças no banco
-        db.session.commit()
-        print("Banco de dados populado com sucesso!")
+            def gerar_fitas_para_data(data_registro):
+                nomes_fitas = [f"Fita {i}" for i in range(1, 11)]
+                descricoes_fitas = [
+                    "Paciente retirou na UBS Central.",
+                    "Entregue na Farmácia Popular.",
+                    "Retirada na Unidade Móvel.",
+                    "Entregue no Hospital Municipal.",
+                    "Entregue na Farmácia Comunitária.",
+                    "Retirada no Centro de Saúde.",
+                    "Entregue na Unidade Básica de Saúde.",
+                    "Paciente retirou na Clínica Especializada.",
+                    "Entregue na UBS Bairro Novo.",
+                    "Retirada na Unidade de Saúde Familiar."
+                ]
+                
+                numero_fitas = random.randint(3, 10)
+                
+                fitas = []
+                for i in range(numero_fitas):
+                    nome_fita = random.choice(nomes_fitas)
+                    descricao_fita = random.choice(descricoes_fitas)
+                    fitas.append({
+                        "nome": nome_fita,
+                        "descricao": descricao_fita,
+                        "data_registro": data_registro
+                    })
+                    
+                return fitas
+
+            datas = gerar_datas_iniciais(datetime.now(timezone.utc), 60)
+
+            for data_registro in datas:
+                fitas_para_data = gerar_fitas_para_data(data_registro)
+                for fita in fitas_para_data:
+                    historico = Historico(
+                        nome=fita["nome"],
+                        descricao=fita["descricao"],
+                        data_registro=fita["data_registro"]
+                    )
+                    db.session.add(historico)
+
+            db.session.flush()
+
+                
+            # Finalmente, commit de todas as alterações
+            db.session.commit()
+            
+            # Verificação das tabelas após o commit
+            pacientes_count = Paciente.query.count()
+            descricoes_count = Descricao.query.count()
+            logs_count = Log.query.count()
+            historicos_count = Historico.query.count()
+            
+            print(f"Pacientes: {pacientes_count}")
+            print(f"Descrições: {descricoes_count}")
+            print(f"Logs: {logs_count}")
+            print(f"Históricos: {historicos_count}")
+            
+            if logs_count == 0:
+                print("ATENÇÃO: Nenhum registro criado na tabela Logs!")
+            if historicos_count == 0:
+                print("ATENÇÃO: Nenhum registro criado na tabela Histórico!")
+                
+            print("Banco de dados populado com sucesso!")
+            
+        except Exception as e:
+            db.session.rollback()
+            print(f"Erro ao popular banco: {e}")
+            import traceback
+            traceback.print_exc()
 
 # Rodar as funções
 if __name__ == "__main__":

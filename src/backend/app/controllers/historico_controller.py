@@ -8,5 +8,4 @@ historico_service = HistoricoService()
 @historico_blueprint.route("/historico", methods=["GET"])
 @cross_origin(supports_credentials=True)
 def listar_historico():
-    data = request.args.get("data")
-    return historico_service.listar_historico(data)
+    return historico_service.listar_historico()
