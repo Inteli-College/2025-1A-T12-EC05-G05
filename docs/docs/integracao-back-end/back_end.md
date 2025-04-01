@@ -22,23 +22,23 @@ Essas rotas estão diretamente ligadas ao fluxo de separação:
 
 - **Obter Fita (completa):**
   ```http
-  GET /fita/:id
+  GET /fitas/<fita_id>
   ```
   Retorna todas as informações da fita, incluindo paciente, enfermeiro, data, status e medicamentos. Essa rota é utilizada, por exemplo, no *pop-up* de separação unitária na interface.
 
 - **Resumo da Fita:**
   ```http
-  GET /fita/:id/resumo
+  GET /fitas
   ```
   Retorna apenas os campos essenciais para o robô realizar a coleta: `id_fita` e lista de medicamentos.
 
 - **Atualizar Status da Fita:**
   ```http
-  PUT /fita/:id/status
+  PUT /fitas/<fita_id>
   Body:
   {
-    "status": "em progresso"
-  }
+    "status": "em_progresso"
+  }
   ```
   Permite atualizar o status da fita entre os estados: *a seguir*, *em progresso* e *pronta*.
 
