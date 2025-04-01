@@ -39,15 +39,15 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
     setSelectAll(selectedItems.length === visibleItems.length && selectedItems.length > 0);
   }, [selectedItems, visibleItems.length]);
 
-  const handleSelectAll = () => {
-    const newState = !selectAll;
-    if (newState) {
-      setSelectedItems(visibleItems.map(item => Number(item.id)));
-    } else {
-      setSelectedItems([]);
-    }
-    setSelectAll(newState);
-  };
+  // const handleSelectAll = () => {
+  //   const newState = !selectAll;
+  //   if (newState) {
+  //     setSelectedItems(visibleItems.map(item => Number(item.id)));
+  //   } else {
+  //     setSelectedItems([]);
+  //   }
+  //   setSelectAll(newState);
+  // };
 
   const handleSelectItem = (index) => {
     const selectedItemId = Number(visibleItems[index].id);
