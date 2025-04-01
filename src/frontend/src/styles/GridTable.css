@@ -7,7 +7,7 @@
 
 .grid-table-header {
     display: grid;
-    grid-template-columns: 4fr 3fr 3fr;
+    grid-template-columns: 4fr 3fr 3fr 3fr;
     background-color: #5ce1e6;
     border-radius: 10px 10px 0 0;
     padding: 10px 15px;
@@ -19,7 +19,7 @@
 
 .grid-table-row {
     display: grid;
-    grid-template-columns: 4fr 3fr 3fr;
+    grid-template-columns: 4fr 3fr 3fr 3fr;
     padding: 10px 0;
     border-bottom: 1px solid #cac4d0;
     align-items: center;
@@ -62,7 +62,8 @@
 }
 
 .grid-table-cell:nth-child(2),
-.grid-table-cell:nth-child(3) {
+.grid-table-cell:nth-child(3),
+.grid-table-cell:nth-child(4) {
     text-align: center;
 }
 

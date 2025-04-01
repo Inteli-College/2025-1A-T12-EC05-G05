@@ -9,6 +9,7 @@ export default function GridTable({ data, title }) {
                 <div className="grid-table-cell grid-table-header-cell">Detalhes</div>
                 <div className="grid-table-cell grid-table-header-cell">Tipo</div>
                 <div className="grid-table-cell grid-table-header-cell">Status</div>
+                <div className="grid-table-cell grid-table-header-cell">Data</div>
             </div>
             <div className="grid-table-content">
                 {data.length === 0 ? (
@@ -25,6 +26,7 @@ export default function GridTable({ data, title }) {
                             </div>
                             <div className="grid-table-cell">{item.tipo}</div>
                             <div className="grid-table-cell">{item.status}</div>
+                            <div className="grid-table-cell">{item.data}</div>
                         </div>
                     ))
                 )}
