@@ -120,12 +120,13 @@ def popular_banco():
             db.session.flush()
 
             remedios = [
-                {"nome_do_remedio_com_gramagem": "Paracetamol 500mg", "validade": datetime(2025, 5, 15)},
-                {"nome_do_remedio_com_gramagem": "Amoxicilina 250mg", "validade": datetime(2025, 12, 1)},
-                {"nome_do_remedio_com_gramagem": "Ibuprofeno 200mg", "validade": datetime(2025, 10, 1)},
-                {"nome_do_remedio_com_gramagem": "Dipirona 1g", "validade": datetime(2025, 7, 10)},
-                {"nome_do_remedio_com_gramagem": "Omeprazol 20mg", "validade": datetime(2025, 11, 21)}
+                {"nome_do_remedio_com_gramagem": "Ibuprofeno 400mg", "validade": datetime(2027, 5, 18), "qr_code": "MNO77889"},
+                {"nome_do_remedio_com_gramagem": "Dorflex 300mg", "validade": datetime(2025, 9, 30), "qr_code": "JKL44556"},
+                {"nome_do_remedio_com_gramagem": "Buscopan 10mg", "validade": datetime(2026, 11, 22), "qr_code": "GHI11223"},
+                {"nome_do_remedio_com_gramagem": "Dipirona 1g", "validade": datetime(2027, 1, 10), "qr_code": "DEF67890"},
+                {"nome_do_remedio_com_gramagem": "Paracetamol 500mg", "validade": datetime(2026, 8, 15), "qr_code": "ABC12345"}
             ]
+
             remedios_criados = []
             for remedio_data in remedios:
                 remedio = Remedio(nome_do_remedio_com_gramagem=remedio_data["nome_do_remedio_com_gramagem"],
