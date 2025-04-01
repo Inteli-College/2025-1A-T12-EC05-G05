@@ -1,5 +1,6 @@
 ---
 sidebar_label: "Inicialização"
+sidebar_position: 11
 ---
 
 # Inicializando a Aplicação Localmente

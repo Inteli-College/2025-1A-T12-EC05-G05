@@ -1,7 +1,7 @@
 ---
 title: "🤖 Robô"
 sidebar_label: "Robô"
-sidebar_position: 2
+sidebar_position: 6
 ---
 
 ## 🔍 O que é?
