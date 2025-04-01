@@ -4,7 +4,7 @@
     padding: 20px;
     height: 100vh;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    transition: width 0.5s ease;
+    transition: width 0.4s ease;
     overflow: hidden;
     position: relative;
   }
@@ -17,7 +17,7 @@
     width: 50%;
     display: block;
     margin: 0 auto 20px;
-    transition: width 0.5s ease;
+    transition: width 0.4s ease;
   }
   
   #stripsIcon,
@@ -30,7 +30,7 @@
     width: 20px;
     height: auto;
     margin-right: 1rem;
-    transition: margin 0.5s ease;
+    transition: margin 0.4s ease;
   }
   
   .sidebar:hover #stripsIcon,
@@ -65,7 +65,7 @@
     font-size: 18px;
     padding: 10px;
     padding-left: 10px;
-    transition: padding-left 0.5s ease, all 0.5s ease;
+    transition: padding-left 0.4s ease, all 0.4s ease;
   }
   
   .sidebar:hover li a {
@@ -84,7 +84,7 @@
     max-width: 0;
     overflow: hidden;
     white-space: nowrap;
-    transition: opacity 0.5s ease, transform 0.5s ease, max-width 0.5s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease, max-width 0.4s ease;
   }
   
   .sidebar:hover .linkText {
@@ -108,7 +108,7 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.5s ease, padding-left 0.5s ease;
+    transition: background-color 0.4s ease, padding-left 0.4s ease;
     display: flex;
     align-items: center;
     padding-left: 10px;

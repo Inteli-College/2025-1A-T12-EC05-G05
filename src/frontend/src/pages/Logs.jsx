@@ -1,57 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
 import "../styles/Logs.css";
 import GridTable from "../components/GridTable";
 import Filter from "../components/Filter";
 import Pagination from "../components/Pagination";
-
-
-const dataLogs = [
-    {
-        "nome": "Fita 2",
-        "descricao": "Supporting line text lorem ipsum dolor sit amet, consectetur.",
-        "tipo": "Ações do Robô",
-        "status": "Em uso",
-        "data": "2025-03-31T12:00:00"
-    },
-    {
-        "nome": "Fita 2",
-        "descricao": "Supporting line text lorem ipsum dolor sit amet, consectetur.",
-        "tipo": "Fita de medicamento",
-        "status": "Separado",
-        "data": "2025-03-31T12:00:00"
-    },
-    {
-        "nome": "Fita 2",
-        "descricao": "Supporting line text lorem ipsum dolor sit amet, consectetur.",
-        "tipo": "Medicamentos",
-        "status": "Pronto para separação",
-        "data": "2025-03-31T12:00:00"
-    },
-    {
-        "nome": "Fita 2",
-        "descricao": "Supporting line text lorem ipsum dolor sit amet, consectetur.",
-        "tipo": "Ações do Robô",
-        "status": "Cancelada",
-        "data": "2025-03-31T12:00:00"
-    },
-    {
-        "nome": "Fita 2",
-        "descricao": "Supporting line text lorem ipsum dolor sit amet, consectetur.",
-        "tipo": "Medicamentos",
-        "status": "Em progresso",
-        "data": "2025-03-31T12:00:00"
-    }
-];
+import axios from "axios";
 
 export default function Logs() {
+    const [logs, setLogs] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(true);
+
     const logsPerPage = 8;
-    const totalLogs = dataLogs.length;
+
+    useEffect(() => {
+        const fetchLogs = async () => {
+            try {
+                const response = await axios.get("http://127.0.0.1:5000/api/logs");
+                setLogs(response.data.logs);
+                setLoading(false);
+            } catch (error) {
+                console.error("Erro ao carregar os logs:", error);
+                setLoading(false);
+            }
+        };
+        fetchLogs();
+    }, []);
+
+    const totalLogs = logs.length;
 
     const indexOfLastLog = currentPage * logsPerPage;
     const indexOfFirstLog = indexOfLastLog - logsPerPage;
-    const currentLogs = dataLogs.slice(indexOfFirstLog, indexOfLastLog);
+    const currentLogs = logs.slice(indexOfFirstLog, indexOfLastLog);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -60,7 +40,18 @@ export default function Logs() {
             <div className="conteudo-logs">
                 <PageHeader title="Histórico" />
                 <Filter />
-                <GridTable title="Logs" data={currentLogs} route="/logs" />
+                <GridTable
+                    title="Logs"
+                    data={currentLogs}
+                    route="/logs"
+                    columns={[
+                        { title: "Nome", key: "nome" },
+                        { title: "Descrição", key: "descricao" },
+                        { title: "Tipo", key: "tipo" },
+                        { title: "Status", key: "status" },
+                        { title: "Data", key: "data" }
+                    ]}
+                />
 
                 <Pagination
                     totalItems={totalLogs}
