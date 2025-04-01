@@ -22,7 +22,7 @@ export default function EmProgresso() {
                         descricao: fita.remedios
                             ? `${fita.remedios.join(', ')}`
                             : 'Sem remédios',
-                        id: fita.id 
+                        id: fita.id,
                         separando: true
                     }));
 
@@ -37,7 +37,7 @@ export default function EmProgresso() {
 
         fetchFitasEmProgresso();
     }, []);
-  
+
     const openPopUp = async (fitaId) => {
         try {
             const response = await fetch(`http://localhost:5000/api/fitas/${fitaId}`);
@@ -57,22 +57,11 @@ export default function EmProgresso() {
     };
 
     const handleCloseModal = () => setShowModal(false);
-  
+
     return (
         <>
             {selectedFita && <PopUpFitas data={selectedFita} closePopUp={closePopUp} />}
             <LoadingModal isLoading={isLoading} />
-               {showModal && (
-                <FairModal
-                    message="Algo deu errado. Por favor, tente novamente!"
-                    onClose={handleCloseModal}
-                />
-            )}
-            <Table 
-                title="Em progresso" 
-                data={fitas}
-                route="/tela-medicamentos/em-progresso"
-                onItemClick={(fita) => openPopUp(fita.id)} 
             {showModal && (
                 <FairModal
                     message="Algo deu errado. Por favor, tente novamente!"
@@ -83,8 +72,13 @@ export default function EmProgresso() {
                 title="Em progresso"
                 data={fitas}
                 route="/tela-medicamentos/em-progresso"
-                onItemClick={openPopUp}
-            />
+                onItemClick={(fita) => openPopUp(fita.id)} />
+            {showModal && (
+                <FairModal
+                    message="Algo deu errado. Por favor, tente novamente!"
+                    onClose={handleCloseModal}
+                />
+            )}
         </>
     );
 }
