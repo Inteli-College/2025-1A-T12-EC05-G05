@@ -32,11 +32,11 @@ export default function LoginPage() {
     if (!validateForm()) return;
     setIsLoading(true);
     try {
-      await httpClient.post("http://localhost:5000/login", {
+      await httpClient.post("http://localhost:5000/auth/login", {
         email: formData.email,
         password: formData.password,
       });
-      window.location.href = "/";
+      window.location.href = "/tela-medicamentos";
     } catch (error) {
       if (error.response?.status === 401) setErrors({ submit: "Email ou senha incorretos" });
       else setErrors({ submit: "Ocorreu um erro, tente novamente mais tarde." });

@@ -1,7 +1,7 @@
 ---
 title: User flow
 sidebar_label: User flow
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # 🔁 User Flow

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import httpClient from "../httpClient";
+import LoadingModal from "./LoadingModal";
 
 const PrivateRoute = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -9,7 +10,7 @@ const PrivateRoute = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        await httpClient.get("http://localhost:5000/@me");
+        await httpClient.get("http://localhost:5000/auth/@me");
         setIsAuthenticated(true);
       } catch (error) {
         setIsAuthenticated(false);
@@ -22,7 +23,7 @@ const PrivateRoute = () => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingModal isLoading={isLoading} />
   }
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;

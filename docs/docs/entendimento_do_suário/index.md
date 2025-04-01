@@ -1,7 +1,7 @@
 ---
 title: "🔎 Entendimento do Usuário"
 sidebar_label: "Entendimento do Usuário"
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 &emsp;No desenvolvimento de qualquer projeto, compreender o usuário é essencial para garantir que a solução atenda às suas necessidades. Esse entendimento permite identificar suas dores, expectativas e rotina, assegurando que a solução seja útil e se integre ao seu dia a dia. Para isso, foram desenvolvidas personas e a jornada do usuário, permitindo uma visão mais clara de quem usará o sistema.
