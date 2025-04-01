@@ -50,13 +50,13 @@ Essas rotas servem para alimentar a interface com dados gerados pelas ações no
 
 - **Obter Histórico de Fitas:**
   ```http
-  GET /historico/fitas
+  GET /api/historico
   ```
   Retorna todas as fitas que já passaram pelo sistema, permitindo filtragem por período e exportação.
 
 - **Obter Logs do Sistema:**
   ```http
-  GET /logs
+  GET /api/logs
   ```
   Retorna os registros de ações do sistema (movimentações do robô, operações realizadas, interações com a interface etc.), exibidos diretamente na tela de *Logs* da plataforma.
 

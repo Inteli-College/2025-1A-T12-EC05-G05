@@ -22,11 +22,8 @@ sidebar_position: 8
 
   É possível verificar o funcionamento dessa funcionalidade no vídeo abaixo:
 
-  <div>
-  
-    <img src="assets/prescript-branding.gif" alt="Branding Prescript Animation" />
-  
-  </div>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/8u6nCybWm3U" title="YouTube video player"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups">
+  </iframe>
 
 - 🤖 **Integração do Robô com o Back-end:**  
   A CLI do robô realiza requisições `GET` para obter os medicamentos da prescrição atual, permitindo que o braço robótico realize os movimentos de separação de forma automatizada.
