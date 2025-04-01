@@ -1,7 +1,7 @@
 ---
 title: "💻 Command-line interface"
 sidebar_label: "CLI"
-sidebar_position: 1
+sidebar_position: 7
 ---
 
 ## 🔍 O que é?

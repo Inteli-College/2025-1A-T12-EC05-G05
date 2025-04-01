@@ -1,7 +1,7 @@
 --- 
 title: User flow Farmacêutico
 sidebar_label: User flow Farmacêutico
-sidebar_position: 6
+sidebar_position: 8
 ---
 
 # 👨‍⚕️ User flow Farmacêutico
