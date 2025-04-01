@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/Table.css";
 import seta from "../assets/icones/seta.svg";
 
@@ -11,15 +11,16 @@ const dataPopUp = {
   ultimaAtualizacao: '26/02/2025 - 18:34',
   aprovadoPor: 'Maria Souza - 25/02/2025 - 08:15',
   medicamentos: [
-      { nome: 'Paracetamol 500mg', tipo: 'Comprimido', validade: '12/2026', status: 'Em estoque', quantidade: 1 },
-      { nome: 'Amoxicilina 500mg', tipo: 'Cápsula', validade: '08/2025', status: 'Em falta', quantidade: 2 },
-      { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 },
-      { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 }
+    { nome: 'Paracetamol 500mg', tipo: 'Comprimido', validade: '12/2026', status: 'Em estoque', quantidade: 1 },
+    { nome: 'Amoxicilina 500mg', tipo: 'Cápsula', validade: '08/2025', status: 'Em falta', quantidade: 2 },
+    { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 },
+    { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 }
   ]
 };
 
-export default function Table({ title, data, maxItems = data.length, route, onItemClick }) {
+export default function Table({ title, data, maxItems = data.length, route, onItemClick, onButtonClick }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const visibleItems = data.slice(0, maxItems);
   const [selectedItems, setSelectedItems] = useState(Array(visibleItems.length).fill(false));
   const [selectAll, setSelectAll] = useState(false);
@@ -40,7 +41,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
   const handleSelectItem = (index) => {
     const newSelectedItems = [...selectedItems];
 
-    if (title === "Possíveis devoluções") {
+    if (title === "Possíveis devoluções" | title === "A fazer") {
       newSelectedItems.fill(false);
       newSelectedItems[index] = true;
     } else {
@@ -54,13 +55,25 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
     navigate(route);
   };
 
-  const buttonText = title === "A fazer" ? "Colocar em produção" :
-    title === "Possíveis devoluções" ? "Devolver" : "";
   const handleItemClick = (item) => {
     if (onItemClick) {
       onItemClick(dataPopUp);
     }
   };
+
+  const handleButtonClick = () => {
+    if (onButtonClick) {
+      const selectedIndex = selectedItems.findIndex(item => item);
+      if (selectedIndex !== -1) {
+        onButtonClick(data[selectedIndex]);
+      }
+    }
+  };
+
+  const buttonText = title === "A fazer" ? "Colocar em produção"
+                    : title === "Possíveis devoluções" ? "Devolver"
+                    : "";
+  const isCurrentRoute = location.pathname === route;
 
   return (
     <div className={`table ${showButton ? "with-button" : ""}`}>
@@ -70,9 +83,9 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
             <button className="table-title-button" onClick={handleTitleClick}>
               {title}
             </button>
-            <img src={seta} alt="seta para a direita" />
+            {!isCurrentRoute && <img src={seta} alt="seta para a direita" />}
           </div>
-          {title === "A fazer" && (
+          {/* {title === "A fazer" && (
               <label className="select-all">
                 Selecionar tudo
                 <input
@@ -81,25 +94,29 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
                   onChange={handleSelectAll}
                 />
               </label>
-          )}
+          )} */}
         </div>
+
         <div className="itens">
           {visibleItems.map((item, index) => (
             <React.Fragment key={index}>
               <div className="item-container">
-                <button 
-                  className="item" 
-                  onClick={() => handleItemClick(item)} 
+                <button
+                  className="item"
+                  onClick={() => handleItemClick(item)}
                 >
                   <div className="item-content">
                     <h2>{item.nome}</h2>
                     <p>{item.descricao}</p>
                   </div>
-                  {item.separando && <span className="status-tag">Separando</span>}
+                  {item.separando && (
+                    <span className="status-tag">Separando</span>
+                  )}
                 </button>
+
                 {(title === "A fazer" || title === "Possíveis devoluções") && (
                   <div className="checkbox-container">
-                    {title === "Possíveis devoluções" ? (
+                    {(title === "A fazer" || title === "Possíveis devoluções") ? (
                       <input
                         type="radio"
                         checked={selectedItems[index]}
@@ -121,8 +138,9 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
           ))}
         </div>
       </div>
+
       {showButton && (
-        <button className="colocar-em-producao show">
+        <button className="colocar-em-producao show" onClick={handleButtonClick}>
           {buttonText}
         </button>
       )}

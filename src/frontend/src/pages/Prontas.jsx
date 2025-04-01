@@ -1,46 +1,40 @@
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Table from "../components/Table";
 import Pagination from "../components/Pagination";
-
+import LoadingModal from "../components/LoadingModal";
 
 export default function Prontas() {
-   const [fitas, setFitas] = useState([]);
-       const [isLoading, setIsLoading] = useState(true);
-  
-       useEffect(() => {
-           const fetchFitasProntas = async () => {
-               try {
-                   const response = await fetch('http://localhost:5000/api/fitas');
-                   const data = await response.json();
-                  
-                   const fitasProntas = data
-                       .filter(fita => fita.status === "finalizada")
-                       .map(fita => ({
-                           nome: `Fita ${fita.id}`,
-                           descricao: fita.remedios
-                               ? `Remédios: ${fita.remedios.join(', ')}`
-                               : 'Sem remédios',
-                           separando: false
-                       }));
-  
-                   setFitas(fitasProntas);
-                   setIsLoading(false);
-               } catch (error) {
-                   console.error('Erro ao buscar fitas em progresso:', error);
-                   setIsLoading(false);
-               }
-           };
-  
-           fetchFitasProntas();
-       }, []);
-  
-  useEffect(() => {
-           console.log("isLoading:", isLoading);
-       }, [isLoading]);
-       
+    const [fitas, setFitas] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
+    useEffect(() => {
+        const fetchFitasProntas = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/fitas');
+                const data = await response.json();
 
-const [currentPage, setCurrentPage] = useState(1);
+                const fitasProntas = data
+                    .filter(fita => fita.status === "finalizada")
+                    .map(fita => ({
+                        nome: `Fita ${fita.id}`,
+                        descricao: fita.remedios
+                            ? `Remédios: ${fita.remedios.join(', ')}`
+                            : 'Sem remédios',
+                        separando: false
+                    }));
+
+                setFitas(fitasProntas);
+                setIsLoading(false);
+            } catch (error) {
+                console.error('Erro ao buscar fitas em progresso:', error);
+                setIsLoading(false);
+            }
+        };
+
+        fetchFitasProntas();
+    }, []);
+  
+  const [currentPage, setCurrentPage] = useState(1);
 const prontasPerPage = 8;
 const totalProntas = fitas.length;
 
@@ -52,22 +46,17 @@ const currentProntas = fitas.slice(indexOfFirstProntas, indexOfLastProntas);
 
 const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-
-
-
-return (
-
-
-<div className="prontas">
-<div className="conteudo-prontas">
-<Table title="Prontas" data={currentProntas} route="/tela-medicamentos/prontas" />
-<Pagination
-   totalItems={totalProntas}
-   itemsPerPage={prontasPerPage}
-   currentPage={currentPage}
-   paginate={paginate}
-/>
+    return (
+        <div className="prontas">
+        <div className="conteudo-prontas">
+        <Table title="Prontas" data={currentProntas} route="/tela-medicamentos/prontas" />
+        <Pagination
+         totalItems={totalProntas}
+         itemsPerPage={prontasPerPage}
+         currentPage={currentPage}
+         paginate={paginate}
+      />
+    </div>
+    <LoadingModal isLoading={isLoading} />
 </div>
-</div>
-);
-}
+    );}
