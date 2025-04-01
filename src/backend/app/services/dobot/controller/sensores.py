@@ -3,6 +3,8 @@ import RPi.GPIO as GPIO
 import time
 import requests
 import json
+from dotenv import load_dotenv
+import os
 
 # Configuração do GPIO
 GPIO.setmode(GPIO.BCM)
@@ -13,6 +15,8 @@ GPIO.setup(GPIO_PIN, GPIO.IN)
 port = "/dev/ttyAMA0"
 baudrate = 9600
 
+load_dotenv()
+ip_pc = os.getenv("IP_PC")
 def ler(ser):
     try:
         # Ler GPIO
@@ -28,7 +32,7 @@ def ler(ser):
             payload = json.dumps({"qr_code": line})
             headers = {'Content-Type': 'application/json'}
             try:
-                response = requests.post('http://10.128.0.194:5000/qrcode-response', data=payload, headers=headers)
+                response = requests.post(f'http://{ip_pc}:5000/qrcode-response', data=payload, headers=headers)
                 print(f"Enviado por HTTP: status {response.status_code}")
             except Exception as e:
                 print(f"Erro ao enviar por HTTP: {e}")
