@@ -391,11 +391,11 @@ def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos
     execute_movement(positions[0])
 
 def main():
-    # available_ports = list_ports.comports()
-    # print(f'available ports: {[x.device for x in available_ports]} \n')
-    # port_input = input("Desired port number: ")
-    # port = available_ports[int(port_input)].device
-    port = '/dev/ttyACM0'
+    available_ports = list_ports.comports()
+    print(f'available ports: {[x.device for x in available_ports]} \n')
+    port_input = input("Desired port number: ")
+    port = available_ports[int(port_input)].device
+    # port = available_ports[-1].device
     spinner = yaspin(text=f"Connecting with port {port}...")
     spinner.start()
     dobot.connect(port)
