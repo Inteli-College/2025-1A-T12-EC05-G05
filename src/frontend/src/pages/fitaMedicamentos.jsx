@@ -5,6 +5,8 @@ import PageHeader from "../components/PageHeader";
 import "../styles/fitaMedicamentos.css";
 import UnitaryCollection from "../components/UnitaryCollection";
 import PopUpFitas from "../components/PopUpFitas";
+import FairModal from "../components/FairModal";
+import LoadingModal from "../components/LoadingModal";
 
 export default function FitaMedicamentos() {
     const [fitas, setFitas] = useState({
@@ -16,6 +18,7 @@ export default function FitaMedicamentos() {
     const [selectedFita, setSelectedFita] = useState(null);
     const location = useLocation();
     const isSingleFita = location.pathname !== "/tela-medicamentos";
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         const fetchFitas = async () => {
@@ -24,8 +27,8 @@ export default function FitaMedicamentos() {
                 const data = await response.json();
 
                 const formatarRemedios = (remedios) => {
-                    return remedios && remedios.length > 0 
-                        ? `${remedios.join(', ')}` 
+                    return remedios && remedios.length > 0
+                        ? `${remedios.join(', ')}`
                         : 'Sem remédios';
                 };
 
@@ -54,6 +57,7 @@ export default function FitaMedicamentos() {
             } catch (error) {
                 console.error('Erro ao buscar fitas:', error);
                 setIsLoading(false);
+                setShowModal(true);
             }
         };
 
@@ -67,7 +71,7 @@ export default function FitaMedicamentos() {
             const response = await fetch(`http://localhost:5000/api/fitas/${fitaId}`);
             if (response.ok) {
                 const data = await response.json();
-                console.log("Dados da fita recebidos:", data); // DEBUG
+                console.log("Dados da fita recebidos:", data);
                 setSelectedFita(data);
             } else {
                 console.error('Erro ao buscar os detalhes da fita. Status:', response.status);
@@ -80,6 +84,8 @@ export default function FitaMedicamentos() {
     const closePopUp = () => {
         setSelectedFita(null);
     };
+
+    const handleCloseModal = () => setShowModal(false);
 
     return (
         <div className="fitaMedicamentos">
@@ -124,6 +130,13 @@ export default function FitaMedicamentos() {
                     <Outlet />
                 )}
             </div>
+            <LoadingModal isLoading={isLoading}/>
+            {showModal && (
+                <FairModal
+                    message="Algo deu errado. Por favor, tente novamente!"
+                    onClose={handleCloseModal}
+                />
+            )}
         </div>
     );
 }

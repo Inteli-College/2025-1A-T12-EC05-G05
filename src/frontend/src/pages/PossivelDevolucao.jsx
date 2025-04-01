@@ -1,5 +1,7 @@
 import React from "react";
 import Table from "../components/Table";
+import { useState } from "react";
+import PopUpFitas from "../components/PopUpFitas";
 
 
 const dataPossivelDevolucao = [
@@ -11,8 +13,20 @@ const dataPossivelDevolucao = [
 
 
 export default function PossivelDevolucao() {
+   const [selectedFita, setSelectedFita] = useState(null);
+
+   const openPopUpFitas = (fitaData) => {
+      setSelectedFita(fitaData);
+   };
+   const closePopUp = () => {
+      setSelectedFita(null);
+   };
+
    return (
-       <Table title="Possíveis devoluções" data={dataPossivelDevolucao} route="/devolucao/possivel-devolucao" />
+      <>
+         {selectedFita && <PopUpFitas data={selectedFita} closePopUp={closePopUp} />}
+         <Table title="Possíveis devoluções" data={dataPossivelDevolucao} route="/devolucao/possivel-devolucao" onItemClick={openPopUpFitas} />
+      </>
    );
 }
 

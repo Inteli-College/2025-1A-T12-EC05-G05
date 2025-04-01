@@ -1,6 +1,4 @@
-// src/Router.jsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LandingPage from "./pages/landingPage.jsx";
 import LoginPage from "./pages/login.jsx";
 import RegisterPage from "./pages/registerPage.jsx";
 import NotFound from "./pages/notFound.jsx";
@@ -15,6 +13,7 @@ import Logs from "./pages/Logs.jsx";
 import Devolucao from "./pages/Devolucao.jsx";
 import PossivelDevolucao from "./pages/PossivelDevolucao.jsx";
 import Devolvidas from "./pages/Devolvidas.jsx";
+import Inventario from "./pages/inventario.jsx";
 
 
 const Router = () => {
@@ -22,35 +21,30 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         {/* Rota de login, sem sidebar */}
-        <Route path="/login" element={<LoginPage />} />
-
-        {/* Rotas protegidas */}
-        <Route element={<PrivateRoute />}>
-          <Route path="/register" element={<RegisterPage />} />
-        </Route>
+        <Route path="/" element={<LoginPage />} />
 
         {/* Rota para não encontrado */}
         <Route path="*" element={<NotFound />} />
 
         {/* Rotas que terão o layout com sidebar */}
         <Route element={<Layout />}>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/tela-medicamentos" element={<FitaMedicamentos />}>
-            <Route path="a-fazer" element={<AFazer />} />
-            <Route path="em-progresso" element={<EmProgresso />} />
-            <Route path="prontas" element={<Prontas />} />
-          </Route>
-          <Route path="/historico" element={<Historico />} />
-          <Route path="/logs" element={<Logs />} />
-          <Route path="/devolucao" element={<Devolucao />}>
-          <Route path="possivel-devolucao" element={<PossivelDevolucao />} />
-          <Route path="devolvidas" element={<Devolvidas />} />
-          </Route>
-
-
           {/* Rotas protegidas */}
           <Route element={<PrivateRoute />}>
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/tela-medicamentos" element={<FitaMedicamentos />}>
+              <Route path="a-fazer" element={<AFazer />} />
+              <Route path="em-progresso" element={<EmProgresso />} />
+              <Route path="prontas" element={<Prontas />} />
+            </Route>
+            <Route path="/historico" element={<Historico />} />
+            <Route path="/logs" element={<Logs />} />
+            <Route path="/inventario" element={<Inventario />} />
+            {/* Rotas aninhadas para devolução */}
+            <Route path="/devolucao" element={<Devolucao />}>
+              <Route path="possivel-devolucao" element={<PossivelDevolucao />} />
+              <Route path="devolvidas" element={<Devolvidas />} />
+            </Route>
+
           </Route>
         </Route>
       </Routes>

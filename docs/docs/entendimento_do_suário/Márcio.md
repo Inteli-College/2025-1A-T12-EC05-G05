@@ -38,3 +38,22 @@ sidebar_position: 1
 
 </div>
 
+#### 📌 Atualizações (Sprint 4)
+
+&emsp;A jornada do usuário é considerada um instrumento iterativo, já que, na metodologia Scrum, pontos podem ser realinhados conforme o fluxo do projeto. Nesse sentido, visando adaptar o instrumento às noções da Sprint 4, a jornada do usuário foi revista e pode ser encontrada na imagem abaixo.
+
+<div align="center">
+
+  <sub>Figura X - Jornada do Usuário do Márcio Atualizada</sub>
+
+  <img src="../../img/jornada-usuario-marcio-atualizada.png"/>
+
+  <sup>Fonte: Material produzido pelos autores (2025).</sup>
+
+</div>
+
+&emsp;Na nova versão da jornada do usuário, simplificamos a etapa inicial: o farmacêutico não é mais responsável por validar manualmente as prescrições. Agora, ele recebe as prescrições já triadas e prontas para separação diretamente na plataforma, onde todas são automaticamente colocadas na categoria “Em Progresso”. A partir disso, o robô inicia a separação de medicamentos, processando um por um, e marcando cada um com a tag “Separando” até concluir a montagem da fita médica.
+
+&emsp;Além disso, implementamos novas funcionalidades na interface da plataforma, incluindo uma tela de Histórico, que permite ao farmacêutico visualizar todas as fitas entregues pelo robô em um dia específico, e uma tela dedicada para Logs, onde ele acompanha informações detalhadas sobre movimentações e funções executadas pelo sistema e pelo robô. Também foi adicionado um modo de devolução, onde o farmacêutico ativa manualmente pela interface para que medicamentos devolvidos possam ser escaneados e retornados corretamente aos bins, garantindo atualização automática do estoque.
+
+&emsp;Agora a jornada representa mais fielmente o entendimento dos fluxos do projeto a nível de Sprint 4.

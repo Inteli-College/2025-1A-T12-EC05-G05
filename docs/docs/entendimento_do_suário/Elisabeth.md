@@ -38,3 +38,6 @@ sidebar_position: 2
 
 </div>
 
+#### 📌 Atualizações (Sprint 4)
+
+&emsp;A nível de Sprint 4, embora Elizabeth continue sendo uma persona relevante no contexto hospitalar, ela não é mais considerada diretamente como usuária da plataforma, pois suas interações ocorrem indiretamente após a etapa de separação automatizada. A solução foi focada especificamente no fluxo e nas demandas operacionais do farmacêutico, que é quem interage ativamente com a interface e com o robô, enquanto Elizabeth se beneficia dos resultados do processo otimizado.
