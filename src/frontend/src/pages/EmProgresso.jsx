@@ -15,7 +15,6 @@ export default function EmProgresso() {
             try {
                 const response = await fetch('http://localhost:5000/api/fitas');
                 const data = await response.json();
-
                 const fitasEmProgresso = data
                     .filter(fita => fita.status === "em_progresso")
                     .map(fita => ({
@@ -23,6 +22,7 @@ export default function EmProgresso() {
                         descricao: fita.remedios
                             ? `${fita.remedios.join(', ')}`
                             : 'Sem remédios',
+                        id: fita.id 
                         separando: true
                     }));
 
@@ -37,9 +37,19 @@ export default function EmProgresso() {
 
         fetchFitasEmProgresso();
     }, []);
-
-    const openPopUp = (fitaData) => {
-        setSelectedFita(fitaData);
+  
+    const openPopUp = async (fitaId) => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/fitas/${fitaId}`);
+            if (response.ok) {
+                const data = await response.json();
+                setSelectedFita(data);
+            } else {
+                console.error('Erro ao buscar detalhes da fita. Status:', response.status);
+            }
+        } catch (error) {
+            console.error('Erro ao buscar detalhes da fita:', error);
+        }
     };
 
     const closePopUp = () => {
@@ -47,11 +57,22 @@ export default function EmProgresso() {
     };
 
     const handleCloseModal = () => setShowModal(false);
-
+  
     return (
         <>
             {selectedFita && <PopUpFitas data={selectedFita} closePopUp={closePopUp} />}
             <LoadingModal isLoading={isLoading} />
+               {showModal && (
+                <FairModal
+                    message="Algo deu errado. Por favor, tente novamente!"
+                    onClose={handleCloseModal}
+                />
+            )}
+            <Table 
+                title="Em progresso" 
+                data={fitas}
+                route="/tela-medicamentos/em-progresso"
+                onItemClick={(fita) => openPopUp(fita.id)} 
             {showModal && (
                 <FairModal
                     message="Algo deu errado. Por favor, tente novamente!"

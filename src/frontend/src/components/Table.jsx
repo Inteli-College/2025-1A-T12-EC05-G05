@@ -6,21 +6,6 @@ import httpClient from "../httpClient";
 import SucessModal from "./SucessModal";
 import FairModal from "./FairModal";
 
-const dataPopUp = {
-  nome: 'Fita 1',
-  estado: 'Pronta',
-  paciente: 'João da Silva',
-  leito: 'Leito 07',
-  ultimaAtualizacao: '26/02/2025 - 18:34',
-  aprovadoPor: 'Maria Souza - 25/02/2025 - 08:15',
-  medicamentos: [
-    { nome: 'Paracetamol 500mg', tipo: 'Comprimido', validade: '12/2026', status: 'Em estoque', quantidade: 1 },
-    { nome: 'Amoxicilina 500mg', tipo: 'Cápsula', validade: '08/2025', status: 'Em falta', quantidade: 2 },
-    { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 },
-    { nome: 'Enoxaparina 40mg', tipo: 'Seringa', validade: '08/2025', status: 'Em estoque', quantidade: 1 }
-  ]
-};
-
 export default function Table({ title, data, maxItems = data.length, route, onItemClick, onButtonClick }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -122,7 +107,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
 
   const handleItemClick = (item) => {
     if (onItemClick) {
-      onItemClick(dataPopUp);
+      onItemClick(item);
     }
   };
 
