@@ -5,16 +5,19 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 
-
 app = Flask(__name__)
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(basedir, '.', 'instance', '2db.sqlite')}"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(basedir, '.', 'instance', 'db.sqlite')}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
+fita_remedio = db.Table('fita_remedio',
+    db.Column('fita_id', db.Integer, db.ForeignKey('fitas.id'), primary_key=True),
+    db.Column('remedio_id', db.Integer, db.ForeignKey('remedios.id'), primary_key=True)
+)
 
 class Historico(db.Model):
     __tablename__ = 'historico'
@@ -63,7 +66,7 @@ class Fita(db.Model):
     hc = db.Column(db.Integer, nullable=False)
     id_prescricao = db.Column(db.Integer, nullable=False)
     status = db.Column(db.Text, nullable=False)
-    data = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    remedios = db.relationship('Remedio', secondary=fita_remedio, lazy='subquery', backref=db.backref('fitas', lazy=True))
 
 class Log(db.Model):
     __tablename__ = 'logs'
@@ -73,9 +76,9 @@ class Log(db.Model):
     responsavel = db.Column(db.Boolean, nullable=False)
     paciente_id = db.Column(db.Integer, db.ForeignKey('pacientes.id'), nullable=False)
 
-
 def popular_banco():
     with app.app_context():
+        db.drop_all()
         db.create_all()
 
         try:
@@ -120,17 +123,16 @@ def popular_banco():
             db.session.flush()
 
             remedios = [
-                {"nome_do_remedio_com_gramagem": "Ibuprofeno 400mg", "validade": datetime(2027, 5, 18), "qr_code": "MNO77889"},
-                {"nome_do_remedio_com_gramagem": "Dorflex 300mg", "validade": datetime(2025, 9, 30), "qr_code": "JKL44556"},
-                {"nome_do_remedio_com_gramagem": "Buscopan 10mg", "validade": datetime(2026, 11, 22), "qr_code": "GHI11223"},
-                {"nome_do_remedio_com_gramagem": "Dipirona 1g", "validade": datetime(2027, 1, 10), "qr_code": "DEF67890"},
-                {"nome_do_remedio_com_gramagem": "Paracetamol 500mg", "validade": datetime(2026, 8, 15), "qr_code": "ABC12345"}
+                {"nome_do_remedio_com_gramagem": "Ibuprofeno 400mg", "validade": datetime(2025, 5, 15)},
+                {"nome_do_remedio_com_gramagem": "Dorflex 300mg", "validade": datetime(2025, 12, 1)},
+                {"nome_do_remedio_com_gramagem": "Buscopan 10mg", "validade": datetime(2025, 10, 1)},
+                {"nome_do_remedio_com_gramagem": "Dipirona 1g", "validade": datetime(2025, 7, 10)},
+                {"nome_do_remedio_com_gramagem": "Paracetamol 500mg", "validade": datetime(2025, 11, 21)}
             ]
-
             remedios_criados = []
             for remedio_data in remedios:
                 remedio = Remedio(nome_do_remedio_com_gramagem=remedio_data["nome_do_remedio_com_gramagem"],
-                                validade=remedio_data["validade"])
+                                  validade=remedio_data["validade"])
                 db.session.add(remedio)
                 remedios_criados.append(remedio)
             db.session.flush()
@@ -138,21 +140,30 @@ def popular_banco():
             for i, remedio in enumerate(remedios_criados):
                 bin = Bin(
                     id_remedio=remedio.id, 
-                    localizacao=45.123 + i*0.001, 
-                    quantidade=50 + i*50
+                    localizacao=45.123 + i * 0.001, 
+                    quantidade=50 + i * 50
                 )
                 db.session.add(bin)
             db.session.flush()
 
             fitas = [
-                {"qr_code": "qr123", "hc": 12345, "id_prescricao": 1, "status": "prescrição enviada"},
-                {"qr_code": "qr124", "hc": 12346, "id_prescricao": 2, "status": "separando fita"},
-                {"qr_code": "qr125", "hc": 12347, "id_prescricao": 3, "status": "remédio separado"},
-                {"qr_code": "qr126", "hc": 12348, "id_prescricao": 4, "status": "prescrição enviada"},
-                {"qr_code": "qr127", "hc": 12349, "id_prescricao": 5, "status": "separando fita"}
+                {"qr_code": "qr123", "hc": 12345, "id_prescricao": 1, "status": "finalizada"},
+                {"qr_code": "qr124", "hc": 12346, "id_prescricao": 2, "status": "finalizada"},
+                {"qr_code": "qr125", "hc": 12347, "id_prescricao": 3, "status": "em_progresso"},
+                {"qr_code": "qr126", "hc": 12348, "id_prescricao": 4, "status": "finalizada"},
+                {"qr_code": "qr127", "hc": 12349, "id_prescricao": 5, "status": "finalizada"},
+                {"qr_code": "qr128", "hc": 12350, "id_prescricao": 6, "status": "pendente"},
+                {"qr_code": "qr129", "hc": 12351, "id_prescricao": 7, "status": "pendente"},
+                {"qr_code": "qr130", "hc": 12352, "id_prescricao": 8, "status": "pendente"},
+                {"qr_code": "qr131", "hc": 12353, "id_prescricao": 9, "status": "pendente"},
+                {"qr_code": "qr132", "hc": 12354, "id_prescricao": 10, "status": "pendente"}
             ]
             for fita_data in fitas:
+                num_remedios = random.randint(1, 5)
+                remedios_selecionados = random.sample(remedios_criados, num_remedios)
                 fita = Fita(qr_code=fita_data["qr_code"], hc=fita_data["hc"], id_prescricao=fita_data["id_prescricao"], status=fita_data["status"])
+                for remedio in remedios_selecionados:
+                    fita.remedios.append(remedio)
                 db.session.add(fita)
             db.session.flush()
 
@@ -174,7 +185,6 @@ def popular_banco():
                 "alerta de manutenção",
                 "não conseguiu ler o QRCode"
             ]
-            
             descricoes_criadas = []
             for descricao in descricoes:
                 nova_descricao = Descricao(descricao=descricao)
@@ -193,21 +203,15 @@ def popular_banco():
                         )
                         db.session.add(log)
                         logs_criados.append(log)
-
             db.session.flush()
 
             def gerar_datas_iniciais(inicio, quantidade):
-                return [inicio - timedelta(days=random.randint(1, 60)) for i in range(quantidade)]
+                return [inicio + timedelta(days=random.randint(-30, 30)) for _ in range(quantidade)]
 
             datas = gerar_datas_iniciais(datetime.now(timezone.utc), len(logs_criados))
-
             for i, log in enumerate(logs_criados):
                 log.datetime = datas[i]
-
             db.session.flush()
-
-            def gerar_datas_iniciais(inicio, quantidade):
-                return [inicio - timedelta(days=i) for i in range(quantidade)]
 
             def gerar_fitas_para_data(data_registro):
                 nomes_fitas = [f"Fita {i}" for i in range(1, 11)]
@@ -234,9 +238,7 @@ def popular_banco():
                         "data_registro": data_registro
                     })
                 return fitas
-
             datas = gerar_datas_iniciais(datetime.now(timezone.utc), 60)
-
             for data_registro in datas:
                 fitas_para_data = gerar_fitas_para_data(data_registro)
                 for fita in fitas_para_data:
@@ -246,7 +248,6 @@ def popular_banco():
                         data_registro=fita["data_registro"]
                     )
                     db.session.add(historico)
-
             db.session.flush()
 
             db.session.commit()
@@ -260,15 +261,12 @@ def popular_banco():
             print(f"Descrições: {descricoes_count}")
             print(f"Logs: {logs_count}")
             print(f"Históricos: {historicos_count}")
-
             print("Banco de dados populado com sucesso!")
-
         except Exception as e:
             db.session.rollback()
             print(f"Erro ao popular banco: {e}")
             import traceback
             traceback.print_exc()
-
 
 if __name__ == "__main__":
     popular_banco()
