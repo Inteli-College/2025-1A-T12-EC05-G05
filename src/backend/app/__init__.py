@@ -11,6 +11,7 @@ import controllers.qrcode_controller as qrcode_blueprint
 import controllers.robot_controller as robot_blueprint
 import controllers.historico_controller as historico_blueprint
 import controllers.logs_controller as logs_blueprint
+import controllers.sensores_controller as sensores_blueprint
 
 
 
@@ -37,6 +38,7 @@ app.register_blueprint(qrcode_blueprint.qrcode_blueprint)
 app.register_blueprint(robot_blueprint.robot_blueprint, url_prefix="/robot")
 app.register_blueprint(historico_blueprint.historico_blueprint, url_prefix="/api")
 app.register_blueprint(logs_blueprint.logs_blueprint, url_prefix="/api")
+app.register_blueprint(sensores_blueprint.sensors_blueprint, url_prefix="/api")
 
 # Função para criar o banco de dados
 with app.app_context():
