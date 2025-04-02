@@ -48,6 +48,11 @@ def ler(ser):
                 print(f"Erro ao enviar por HTTP: {e}")
 
         time.sleep(0.5)
+    except serial.SerialException as e:
+        print(f"Erro ao acessar a porta serial: {e}")
+    except KeyboardInterrupt:
+        print("Encerrando leitura.")
+        GPIO.cleanup()
 
 if __name__ == "__main__":
     try:
@@ -58,8 +63,6 @@ if __name__ == "__main__":
             while True:
                 ler(ser)
 
-    except serial.SerialException as e:
-        print(f"Erro ao acessar a porta serial: {e}")
     except KeyboardInterrupt:
         print("Encerrando programa...")
     finally:
