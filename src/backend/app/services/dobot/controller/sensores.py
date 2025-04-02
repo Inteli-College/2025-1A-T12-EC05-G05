@@ -27,8 +27,8 @@ def ler(ser):
 
         if estado:
             print(f"Estado do pino {GPIO_PIN}: {'Alto' if estado else 'Baixo'}")
-            
-            payload = json.dumps({"IR": estado})
+            ir_estado = {"Alto" if estado else "Baixo"}
+            payload = json.dumps({"IR": ir_estado})
             headers = {'Content-Type': 'application/json'}
             try:
                 response = requests.post(f'http://{ip_pc}:5000/sensores', data=payload, headers=headers)
