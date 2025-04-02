@@ -4,25 +4,27 @@ import { FaFilter } from "react-icons/fa";
 import remove from "../assets/icones/remove.svg";
 import checkIcon from "../assets/icones/check.svg";
 
-export default function Filter() {
-    const [filters, setFilters] = useState([]);
+export default function Filter({ onFilterChange }) {
     const [showMenu, setShowMenu] = useState(false);
-    const availableFilters = ["Ações do robô", "Medicamentos", "Usuário", "Fitas de medicamento"];
+    const availableFilters = ["Ações do Robô", "Medicamentos", "Ações do Usuário", "Fitas de Medicamento"];
+    const [filters, setFilters] = useState([]);
 
     const handleToggleMenu = () => {
         setShowMenu(!showMenu);
     };
 
     const handleToggleFilter = (filter) => {
-        if (filters.includes(filter)) {
-            setFilters(filters.filter((f) => f !== filter));
-        } else {
-            setFilters((prevFilters) => [...prevFilters, filter]);
-        }
+        const newFilterValue = filters.includes(filter) ? "" : filter; // Toggle filter value
+        setFilters((prevFilters) => {
+            const updatedFilters = newFilterValue ? [...prevFilters, newFilterValue] : prevFilters.filter(f => f !== filter);
+            onFilterChange(updatedFilters); // Pass the updated filters to parent
+            return updatedFilters;
+        });
     };
 
     const handleRemoveFilter = (filter) => {
-        setFilters(filters.filter((f) => f !== filter));
+        setFilters(filters.filter(f => f !== filter));
+        onFilterChange(filters.filter(f => f !== filter)); // Update filters in parent
     };
 
     return (
