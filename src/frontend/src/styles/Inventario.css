@@ -8,21 +8,23 @@
     background-position: center;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh;
-    max-height: 100vh;
+    min-height: 120vh;
+    max-height: 120vh;
     overflow-y: auto;
     box-sizing: border-box;
 }
 
 .inventario-content {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-start;  /* Alinha os bins no início da linha */
   background: #f0f0f0;
-  padding: 10px 40px;
+  padding: 58px 50px;
   border-radius: 10px;
   font-family: "Roboto", sans-serif;
   align-items: center;
   width: 92%;
+  gap: 50px;  /* Espaçamento entre os bins */
 }
 
 .conteudo {
@@ -34,6 +36,4 @@
     margin: 15px 0 30px 0; 
 }
 
-.conteudo p {
-    font-size: 18px;
-}
+

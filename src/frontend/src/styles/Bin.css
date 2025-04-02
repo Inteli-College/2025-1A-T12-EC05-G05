@@ -5,12 +5,19 @@
   padding: 20px;
   text-align: left;
   width: 171px;
+  height: 138px;
+  cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.bin-content:hover {
+  background: #2f2f36; /* Fundo claro ao passar o mouse */ /* Efeito de aumento ao passar o mouse */
 }
 
 
 .bin-body {
-  margin-top: 20px;
+  margin-top: 6px;
 }
 
 .bin-icon {
@@ -21,7 +28,7 @@
 
 .bin-body h4 {
   margin: 0;
-  font-size: 20px;
+  font-size: 18px;
   color: #ffffff;
   font-weight: bold;
 }
@@ -29,5 +36,5 @@
 .bin-body p {
   font-size: 16px;
   color: #ffffff;
-  margin-top: 20px;
+  margin-top: 16px;
 }
