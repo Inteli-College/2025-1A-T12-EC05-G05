@@ -26,15 +26,19 @@ def ler(ser):
         qr_code = ser.readline().decode('utf-8', errors='ignore').strip()
 
         if estado:
-            print(f"Estado do pino {GPIO_PIN}: {'Alto' if estado else 'Baixo'}")
-            ir_estado = {"Alto" if estado else "Baixo"}
-            payload = json.dumps({"IR": ir_estado})
-            headers = {'Content-Type': 'application/json'}
-            try:
-                response = requests.post(f'http://{ip_pc}:5000/sensores', data=payload, headers=headers)
-                print(f"Enviado por HTTP: status {response.status_code}")
-            except Exception as e:
-                print(f"Erro ao enviar por HTTP: {e}")
+            ir_estado = 'Alto'
+        else: 
+            ir_estado = 'Baixo'
+
+        print(f"Estado do pino {GPIO_PIN}: {ir_estado}")
+        
+        payload = json.dumps({"IR": ir_estado})
+        headers = {'Content-Type': 'application/json'}
+        try:
+            response = requests.post(f'http://{ip_pc}:5000/sensores', data=payload, headers=headers)
+            print(f"Enviado por HTTP: status {response.status_code}")
+        except Exception as e:
+            print(f"Erro ao enviar por HTTP: {e}")
             
         if qr_code:
             print(f"QR Code recebido: {qr_code}")
