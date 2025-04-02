@@ -14,6 +14,17 @@
     box-sizing: border-box;
 }
 
+.inventario-content {
+  display: flex;
+  justify-content: space-between;
+  background: #f0f0f0;
+  padding: 10px 40px;
+  border-radius: 10px;
+  font-family: "Roboto", sans-serif;
+  align-items: center;
+  width: 92%;
+}
+
 .conteudo {
     width: 80vw;
     display: flex;
