@@ -1,0 +1,135 @@
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: white;
+  border-radius: 8px;
+  width: 80%;
+  padding: 56px;
+  max-width: 900px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Caso o conteúdo exceda a altura, permitir rolagem */
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.popup-body {
+  display: flex; /* Espaço entre as colunas */
+  justify-content: space-between;
+}
+
+.popup-body .row {
+  display: flex;
+  flex-wrap: wrap; /* Permite que as colunas se ajustem quando a largura da tela for pequena */
+  gap: 102px; /* Define o espaço entre as colunas */
+}
+
+.popup-body .column {
+  flex: 1; /* Faz com que as colunas tenham a mesma largura e ocupem todo o espaço disponível */
+  min-width: 100px; /* Define a largura mínima de cada coluna, ajustando conforme necessário */
+}
+
+.column h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+.form-group-info {
+  margin-bottom: 10px;
+}
+
+.form-group-info label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 3px;
+  color: black;
+}
+
+.form-group-info input {
+  width: 127px;
+  height: 18px;
+  padding: 4px;
+  font-size: 14px;
+  border: 0.5px solid #ddd;
+  background-color: #fff; 
+  border-radius: 4px;
+
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;  /* Coloca os elementos (label e input) na mesma linha */
+  align-items: center;  /* Alinha verticalmente no centro */
+  margin-bottom: 8px;
+  justify-content: flex-end;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: black;
+}
+
+.form-group input {
+  width: 127px;
+  height: 28px;
+  padding: 4px;
+  font-size: 14px;
+  border: 0.5px solid #ddd;
+  background-color: #fff; 
+  border-radius: 4px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start;  /* Alinha o botão à esquerda, pode mudar conforme o seu layout */
+  margin-top: 17px; /* Se precisar de algum espaçamento entre o botão e os outros campos */
+  align-self: flex-end; /* Alinha o botão à parte inferior da coluna */
+}
+
+.salvar-btn {
+  background-color: #373643; 
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: flex-end;
+  height: auto;
+  overflow: hidden; 
+  transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.form-group input:focus, .form-group-info input:focus {
+  outline: none;
+  border-color: #5ce1e6;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}

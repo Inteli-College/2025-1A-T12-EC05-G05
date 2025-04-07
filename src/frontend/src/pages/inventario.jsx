@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import PageHeader from "../components/PageHeader";
 import "../styles/Inventario.css";
+import PopUpInventario from '../components/PopUpInventario';
 
 
 
 export default function Inventario() {
- 
+    const [showPopUp, setShowPopUp] = useState(false);
+
+    const togglePopUp = () => setShowPopUp(!showPopUp);
     return (
         <div className="inventario">
          
@@ -15,6 +18,11 @@ export default function Inventario() {
             
                 
             </div>
+            <div>
+              <button onClick={togglePopUp}>Abrir Inventário</button>
+
+              {showPopUp && <PopUpInventario closePopUp={togglePopUp} />}
+          </div>
         </div>
     );
 }
