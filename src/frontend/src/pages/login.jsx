@@ -39,6 +39,7 @@ export default function LoginPage() {
       await httpClient.post("http://localhost:5000/api/logs", {
         responsavel:"0",
         descricao:"17",
+        status:"1",
     });
       window.location.href = "/tela-medicamentos";
     } catch (error) {

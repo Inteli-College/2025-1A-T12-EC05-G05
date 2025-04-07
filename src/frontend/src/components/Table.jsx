@@ -97,6 +97,11 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
       for (const fita of selectedMedicamentos) {
         await httpClient.patch(`http://localhost:5000/api/fitas/${fita.id}`, { "status":"finalizada" });
       }
+      await httpClient.post("http://localhost:5000/api/logs", {
+          responsavel:"0",
+          descricao:"3",
+          status:"1",
+      });
       setShowSucessModal(true);
 
     } catch (error) {

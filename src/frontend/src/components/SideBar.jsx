@@ -15,6 +15,7 @@ const logoutUser = async () => {
   await httpClient.post("http://localhost:5000/api/logs", {
     responsavel:"0",
     descricao:"18",
+    status:"1",
 });
   window.location.href = "/";
 };
