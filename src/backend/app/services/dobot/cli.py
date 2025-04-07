@@ -364,7 +364,6 @@ def take_medicine(
             
             time.sleep(1.5)
             done = ir_sensor()
-            print(done)
             if done:
                 deliver()
                 break        
