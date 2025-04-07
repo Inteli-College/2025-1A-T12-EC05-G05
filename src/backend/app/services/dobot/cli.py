@@ -364,9 +364,9 @@ def take_medicine(
             if not ir_sensor():
                 done = False
             else:
+                deliver()
                 done = True
                 break        
-    deliver()
 
 def deliver():
     global deliver_value
