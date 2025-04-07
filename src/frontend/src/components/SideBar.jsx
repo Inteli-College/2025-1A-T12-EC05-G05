@@ -12,6 +12,10 @@ import devolucao from "../assets/icones/devolucao.svg";
 
 const logoutUser = async () => {
   await httpClient.post("http://localhost:5000/auth/logout");
+  await httpClient.post("http://localhost:5000/api/logs", {
+    responsavel:"0",
+    descricao:"18",
+});
   window.location.href = "/";
 };
 

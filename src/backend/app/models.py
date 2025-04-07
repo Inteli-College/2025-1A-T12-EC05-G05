@@ -183,7 +183,9 @@ def popular_banco():
                 "sem sinal de wifi",
                 "desligamento (sem luz)",
                 "alerta de manutenção",
-                "não conseguiu ler o QRCode"
+                "não conseguiu ler o QRCode",
+                "usuário fez login",
+                "usuário fez logout",
             ]
             descricoes_criadas = []
             for descricao in descricoes:
