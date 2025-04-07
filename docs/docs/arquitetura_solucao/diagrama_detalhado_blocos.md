@@ -85,13 +85,12 @@ O **frontend** fornece uma interface intuitiva para os **farmacêuticos** intera
 - Exibe alertas de falhas ou erros na seleção dos medicamentos;
 - Observar a exibição de dados em tempo real.
 
-## 📌 Diagrama em blocos Atualuzada
-&emsp;À medida que o projeto evolui, é fundamental manter o diagrama em blocos sempre atualizado para refletir com precisão a arquitetura do sistema. Isso garante que qualquer modificação, adição ou remoção de componentes durante o desenvolvimento seja registrada. Para melhorar a representação das interações entre os componentes, foram adicionadas indicações de entrada e saída (input e output), tornando o diagrama mais claro e fiel ao funcionamento do projeto.
-&emsp; 
+## 📌 Diagrama em blocos Atualizada
+&emsp; À medida que o projeto evolui, é fundamental manter o diagrama em blocos sempre atualizado para refletir com precisão a arquitetura do sistema. Isso garante que qualquer modificação, adição ou remoção de componentes durante o desenvolvimento seja devidamente registrada. Para melhorar a representação das interações entre os componentes, foram adicionados os tipos de comunicação entre o robô, o sensor infravermelho e o leitor de QR Code com o minicomputador, tornando o diagrama mais claro e fiel ao funcionamento do projeto.
 
 <div align="center">
 
-  <sub>Figura 1 - Diagrama de Blocos </sub>
+  <sub>Figura 1 - Diagrama de Blocos atualizada</sub>
 
   <img src="../../img/diagrama_de_blocos.png"/>
 
@@ -100,12 +99,12 @@ O **frontend** fornece uma interface intuitiva para os **farmacêuticos** intera
 </div>
 
 
- &emsp; **Componentes e Interações**
+ ## 📌 Interações e Tipos de Comunicação
 
-- **Minicomputador:**  Atua como o cérebro e o controlador central do sistema. Ele recebe requisições via protocolo HTTP e, com base nelas, envia comandos (inputs) para o robô, o sensor infravermelho ou o leitor de QR Code, coordenando suas ações. Além disso, processa os outputs recebidos desses componentes para garantir a execução correta das tarefas.
-- **Robô:** Recebe comandos do minicomputador (input), como, por exemplo, pegar um medicamento do bin 1. Após executar a ação, o robô envia um feedback (output) ao minicomputador para confirmar se a tarefa foi realizada com sucesso.
-- **Leitor de QR Code:** Recebe um comando (input) para escanear um QR Code. Após a leitura, envia um sinal (output) para o minicomputador confirmando a leitura e repassando as informações obtidas.
-- **Sensor infravermelho:** Recebe um comando (input) para medir a distância do leitor até a superfície para verificar a presença do medicamento. Em seguida, envia um sinal (output) informando a distância medida e indicando se há ou não um medicamento no local.
+ &emsp;Para a coordenação eficiente entre os componentes do sistema, diferentes tipos de comunicação foram implementados de acordo com as necessidades de cada dispositivo. O sensor infravermelho utiliza comunicação via sinais digitais de entrada e saída (input/output), permitindo que o minicomputador envie comandos para medir distâncias e, em resposta, receba os dados obtidos para verificar a presença ou ausência de um medicamento. Já o braço robótico e o leitor de QR Code se comunicam com o minicomputador por meio de comunicação serial, o que possibilita uma troca de dados estruturada e confiável. Essa comunicação é essencial para enviar comandos específicos — como movimentar o braço para um determinado compartimento ou iniciar a leitura de um QR Code — e receber respostas confirmando a execução das ações. Essa organização das interfaces de comunicação contribui para o controle eficiente do sistema como um todo, assegurando precisão e sincronização entre os módulos.
+
+
+
 
 ## ✅ Conclusão
 O sistema automatizado de separação de medicamentos integra diversos componentes para otimizar o fluxo de trabalho da farmácia hospitalar, garantindo **precisão, segurança e agilidade** no manuseio dos medicamentos.
