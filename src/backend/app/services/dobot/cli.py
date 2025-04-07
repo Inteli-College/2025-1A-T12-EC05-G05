@@ -360,12 +360,13 @@ def take_medicine(
         while (not done):
             for position in positions[1:]:
                 check_suction(position)
-                execute_movement(position)
-            if not ir_sensor():
-                done = False
-            else:
+                execute_movement(position)    
+            
+            time.sleep(1.5)
+            done = ir_sensor()
+            print(done)
+            if done:
                 deliver()
-                done = True
                 break        
 
 def deliver():
