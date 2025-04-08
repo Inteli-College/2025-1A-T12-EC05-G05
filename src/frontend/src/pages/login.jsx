@@ -36,6 +36,11 @@ export default function LoginPage() {
         email: formData.email,
         password: formData.password,
       });
+      await httpClient.post("http://localhost:5000/api/logs", {
+        responsavel:"0",
+        descricao:"17",
+        status:"1",
+    });
       window.location.href = "/tela-medicamentos";
     } catch (error) {
       if (error.response?.status === 401) setErrors({ submit: "Email ou senha incorretos" });
