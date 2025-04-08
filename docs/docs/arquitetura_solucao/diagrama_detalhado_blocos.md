@@ -85,26 +85,6 @@ O **frontend** fornece uma interface intuitiva para os **farmacêuticos** intera
 - Exibe alertas de falhas ou erros na seleção dos medicamentos;
 - Observar a exibição de dados em tempo real.
 
-
-## 📌 Diagrama em blocos Atualuzada
-&emsp;À medida que o projeto evolui, é fundamental manter o diagrama em blocos sempre atualizado para refletir com precisão a arquitetura do sistema. Isso garante que qualquer modificação, adição ou remoção de componentes durante o desenvolvimento seja registrada. Para melhorar a representação das interações entre os componentes, foram adicionadas indicações de entrada e saída (input e output), tornando o diagrama mais claro e fiel ao funcionamento do projeto.
-&emsp; 
-
-<div align="center">
-
-  <sub>Figura 1 - Diagrama de Blocos </sub>
-
-  <img src="../../img/diagrama_de_blocos.png"/>
-
-  <sup>Fonte: Material produzido pelos autores (2025).</sup>
-
-</div>
-
-- **Robô:** 
-- **Minicomputador:**
-- **Leitor de QR Code:** 
-- **Sensor infravermelho:**
-
 ## ✅ Conclusão
 &emsp;O sistema automatizado de separação de medicamentos integra diversos componentes para otimizar o fluxo de trabalho da farmácia hospitalar, garantindo **precisão, segurança e agilidade** no manuseio dos medicamentos.   
 &emsp;A presença do **Raspberry Pi**, dos sensores **infravermelhos** e do **Leitor de QR Code** aprimoram a segurança e a confiabilidade do sistema, reduzindo falhas humanas e garantindo que os medicamentos sejam corretamente identificados e entregues.
