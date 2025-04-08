@@ -5,7 +5,7 @@
 </p>
 <br>
 
-# Sistema Automatizado de Separação de Remédios em Ambiente Farmacêutico
+# Sistema Automatizado para a Separação de Remédios em Ambiente Farmacêutico
 <br>
 
 <div style="width: 100%; max-width: 100%; text-align: center; margin: 0; padding: 0;">
@@ -87,15 +87,15 @@
 
 ## 📜 Descrição
 
-&emsp;A solução Prescript é um projeto inovador desenvolvido pelos alunos do 5º módulo de Automação com Garra Robôtica do 2º ano da faculdade Inteli, em parceria com o Hospital de Clínicas da Unicamp. O sistema visa resolver o desafio crítico da separação manual de medicamentos para pacientes internados, que é suscetível a erros humanos, como duplicidade, falhas de separação e desperdício. O sistema automatiza todo o processo, garantindo maior segurança, agilidade e precisão na entrega dos medicamentos.
+&emsp; A solução Prescript é um projeto inovador de automação com braço robótico, desenvolvido pelos alunos do 5º módulo de Engenharia da Computação da turma 24.1 da faculdade Inteli, em parceria com o Hospital de Clínicas da Unicamp. A proposta busca solucionar o desafio crítico da separação manual de medicamentos para pacientes internados — um processo suscetível a erros humanos, como duplicidade, falhas na separação e desperdício. A automação de todas as etapas garante maior segurança, agilidade e precisão na entrega dos medicamentos.
 
-&emsp;O sistema utiliza uma interface por aplicação web, permitindo sua operação através de um fluxo simples. A integração com o leitor de QR Code é um ponto chave da solução, pois permite a validação automática dos medicamentos antes da coleta. O robô, então, utiliza essas informações para identificar e conferir os produtos, garantindo que cada item seja o correto antes de ser incluído no kit de medicamentos do paciente.
+&emsp;A plataforma conta com uma interface via aplicação web, permitindo sua operação por meio de um fluxo simples. A integração com o leitor de QR Code é um ponto-chave da solução, pois possibilita a validação automática dos medicamentos antes da coleta. O robô, então, utiliza essas informações para identificar e conferir os produtos, garantindo que cada item seja o correto antes de ser incluído no kit de medicamentos do paciente.
 
-&emsp;A movimentação do robô Dobot foi otimizada continuamente para garantir precisão e eficiência durante o processo de coleta e movimentação dos medicamentos. O sistema permite que o robô execute o movimento de coleta com alta precisão, reduzindo significativamente o tempo necessário para a montagem das Fitas de Medicamentos. Isso permite que a equipe farmacêutica se concentre em tarefas mais críticas, como a revisão de protocolos e assistência farmacêutica direta.
+&emsp; A movimentação do robô Dobot foi continuamente otimizada para assegurar precisão e eficiência durante o processo de coleta e manipulação dos medicamentos. A automação permite que o robô execute os movimentos com alta exatidão, reduzindo significativamente o tempo necessário para a montagem das fitas de medicamentos. Com isso, a equipe farmacêutica pode se concentrar em tarefas mais críticas, como a revisão de protocolos e a assistência direta aos pacientes.
 
-&emsp;A principal funcionalidade do sistema é a automação do processo de separação de medicamentos, o que não só facilita a operação em ambientes farmacêuticos e hospitalares, mas também minimiza os erros humanos e melhora a eficiência do processo. O robô é capaz de validar os medicamentos automaticamente, coletá-los e movê-los com precisão, garantindo a segurança e a agilidade do processo de entrega.
+&emsp; A principal funcionalidade da solução é a automação do processo de separação de medicamentos, o que não apenas facilita a operação em ambientes farmacêuticos e hospitalares, mas também minimiza os erros humanos e aumenta a eficiência operacional. O robô é capaz de validar, coletar e movimentar os medicamentos com precisão, garantindo segurança e agilidade na entrega.
 
-&emsp;Com o objetivo de melhorar a produtividade, a segurança e a confiabilidade dos processos de separação de medicamentos, a solução Prescript se apresenta como uma inovação tecnológica no mercado farmacêutico, estabelecendo um novo padrão para a gestão automatizada de medicamentos em ambientes hospitalares.
+&emsp; Com o objetivo de aprimorar a produtividade, a segurança e a confiabilidade dos processos de separação de medicamentos, a solução Prescript se destaca como uma inovação tecnológica no mercado farmacêutico, estabelecendo um novo padrão para a gestão automatizada de medicamentos em ambientes hospitalares.
 
 
 
@@ -103,11 +103,11 @@
 
 Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
-- <b>assets</b>: aqui estão os arquivos relacionados à parte gráfica da visualização inicial do projeto, através desse material em markdown.
+- <b>Assets</b>: aqui estão os arquivos relacionados à parte gráfica da visualização inicial do projeto, através desse material em _markdown_.
 
-- <b>document</b>: aqui estão todos os documentos do projeto, incluindo a documentação desenvolvida em docusaurus. Há também outros documentos complementares e os recursos visuais aplicados na documentação.
+- <b>Document</b>: aqui estão todos os documentos do projeto, incluindo a documentação desenvolvida em docusaurus. Há também outros documentos complementares e os recursos visuais aplicados na documentação.
 
-- <b>src</b>: Todo o código fonte criado para o desenvolvimento do projeto, incluindo o código desenvolvido para o robô e para a aplicação web.
+- <b>src</b>: todo o código fonte criado para o desenvolvimento do projeto, incluindo o código desenvolvido para o robô e para a aplicação web.
 
 - <b>README.md</b>: arquivo que serve como guia e explicação geral sobre o projeto.
 
