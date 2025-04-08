@@ -38,7 +38,7 @@ export default function Logs() {
     return (
         <div className="logs">
             <div className="conteudo-logs">
-                <PageHeader title="Histórico" />
+                <PageHeader title="Logs" />
                 <Filter />
                 <GridTable
                     title="Logs"
