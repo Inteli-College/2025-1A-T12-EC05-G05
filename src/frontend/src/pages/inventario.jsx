@@ -62,14 +62,13 @@ export default function Inventario() {
               quantidade="10"
             />
             <AddBin />
+            <div>
+              <button onClick={togglePopUp}>Abrir Inventário</button>
+
+              {showPopUp && <PopUpInventario closePopUp={togglePopUp} />}
+            </div>
           </div>
         )}
-      </div>
-
-      <div>
-        <button onClick={togglePopUp}>Abrir Inventário</button>
-
-        {showPopUp && <PopUpInventario closePopUp={togglePopUp} />}
       </div>
     </div>
   );
