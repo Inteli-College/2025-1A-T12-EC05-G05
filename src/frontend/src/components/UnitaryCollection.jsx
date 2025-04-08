@@ -10,29 +10,64 @@ const UnitaryCollection = () => {
     const [medicationName, setMedicationName] = useState("");
     const [nurseName, setNurseName] = useState("");
     const [isValidMedication, setIsValidMedication] = useState(true);
+    const [isValidNurse, setIsValidNurse] = useState(true);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const formRef = useRef(null);
 
-    const medications = [
-        "Ibuprofeno 500mg",
-        "Dipirona 1g",
-        "Paracetamol 500mg",
-        "Amoxicilina 500mg",
-        "Azitromicina 500mg"
-    ];
+    const medicationToBin = {
+        "Ibuprofeno 400mg": "1",
+        "Dorflex 300mg": "2",
+        "Buscopan 10mg": "3",
+        "Dipirona 1g": "4",
+        "Paracetamol 500mg": "5"
+    };
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        if (!medications.includes(medicationName)) {
-            setIsValidMedication(false);
+        const isMedicationValid = medicationName in medicationToBin;
+        const isNurseValid = nurseName.trim() !== "";
+
+        setIsValidMedication(isMedicationValid);
+        setIsValidNurse(isNurseValid);
+
+        if (!isMedicationValid || !isNurseValid) {
             return;
         }
 
         console.log("Form submitted:", { medicationName, nurseName });
-        setIsValidMedication(true);
-
         setShowSuccessModal(true);
+    };
+
+    const handleAutomatedCollection = async (e) => {
+        e.preventDefault();
+
+        const isMedicationValid = medicationName in medicationToBin;
+        const isNurseValid = nurseName.trim() !== "";
+
+        setIsValidMedication(isMedicationValid);
+        setIsValidNurse(isNurseValid);
+
+        if (!isMedicationValid || !isNurseValid) {
+            return;
+        }
+
+        const bin = medicationToBin[medicationName];
+
+        try {
+            const response = await fetch("http://localhost:5000/robot/collect", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ bins: [bin] })
+            });
+
+            if (!response.ok) throw new Error("Erro na coleta automatizada");
+
+            console.log("Coleta automatizada realizada com sucesso");
+            setShowSuccessModal(true);
+        } catch (error) {
+            console.error("Erro ao coletar automaticamente:", error);
+        }
     };
 
     useEffect(() => {
@@ -43,10 +78,7 @@ const UnitaryCollection = () => {
         };
 
         document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
+        return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     return (
@@ -74,12 +106,14 @@ const UnitaryCollection = () => {
                                     required
                                 />
                                 <datalist id="medications">
-                                    {medications.map((med, index) => (
+                                    {Object.keys(medicationToBin).map((med, index) => (
                                         <option key={index} value={med} />
                                     ))}
                                 </datalist>
                             </div>
-                            {!isValidMedication && <span className="error-text">Por favor, escolha um medicamento válido da lista.</span>}
+                            {!isValidMedication && (
+                                <span className="error-text">Por favor, escolha um medicamento válido da lista.</span>
+                            )}
                         </div>
 
                         <div className="form-group">
@@ -96,11 +130,19 @@ const UnitaryCollection = () => {
                                     required
                                 />
                             </div>
+                            {!isValidNurse && (
+                                <span className="error-text">Por favor, preencha o nome da enfermeira.</span>
+                            )}
                         </div>
 
-                        <button type="submit" className="submit-btn">
-                            Salvar registro
-                        </button>
+                        <div className="unitary-button-group">
+                            <button type="submit" className="submit-btn">
+                                Fazer Coleta Manual
+                            </button>
+                            <button className="submit-btn" onClick={handleAutomatedCollection}>
+                                Fazer Coleta Automatizada
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
