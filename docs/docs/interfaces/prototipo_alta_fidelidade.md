@@ -166,7 +166,7 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 
 <img src="../../img/filtro.png"/>
 
-🔹Permite encontrar rapidamente registros específicos, ao utilizar as filtragens disponíveis:
+🔹 Permite encontrar rapidamente registros específicos, ao utilizar as filtragens disponíveis:
 - **Ações do Robô**
 - **Medicamentos**
 - **Usuário**
@@ -186,8 +186,8 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 <img src="../../img/tela_de_inventario.png"/>
 
 
-🔹Permite adicionar bins  
-🔹Permite acessar informações de todos os bins em uso:
+🔹 Permite adicionar bins  
+🔹 Permite acessar informações de todos os bins em uso:
 - nome do medicamento junto com a dosagem
 - validade
 - lote
