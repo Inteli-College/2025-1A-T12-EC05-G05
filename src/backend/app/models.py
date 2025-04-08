@@ -233,15 +233,15 @@ def popular_banco():
             db.session.flush()
 
             descricoes_data = [
-                "prescrição enviada --> esperando autorização",
-                "autorizar a separação --> pronto para separação",
-                "separando fita --> separando",
+                "prescrição enviada",
+                "autorizar a separação",
+                "separando fita",
                 "remédio separado",
-                "fita separada --> separada",
-                "cancelamento da separação --> fita pausada",
-                "fita em uso --> em uso",
-                "fita devolvida (ao menos o qrcode) --> fita finalizada",
-                "fita não entregue no prazo --> fita atrasada",
+                "fita separada",
+                "cancelamento da separação",
+                "fita em uso",
+                "fita devolvida",
+                "fita não entregue no prazo",
                 "bin com lote vencido",
                 "bin vazio",
                 "reabastecimento do bin",
