@@ -175,6 +175,8 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 🔹 Permite filtrar um ou mais registros.  
 🔹 Facilita o rastreamento de processos e suporte técnico.
 
+---
+
 ### **🔟 Tela de Inventário**
 
 <div align='center'>
@@ -184,14 +186,16 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 <img src="../../img/tela_de_inventario.png"/>
 
 
-🔹Permite adicionar bins
+🔹Permite adicionar bins  
 🔹Permite acessar informações de todos os bins em uso:
 - nome do medicamento junto com a dosagem
 - validade
 - lote
 - quantidade
 
-### **🔟 Tela de Inventário**
+---
+
+### **1️⃣1️⃣ Pop-up Cadastro de Bin**
 
 <div align='center'>
 <sub>Figura 11 - Pop-up de Cadastro de Bin</sub>
@@ -199,41 +203,39 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 
 <img src="../../img/popup_cadastro_bin.png"/>
 
-🔹Pop-up para adição do novo bin
-🔹forms para preencher as informações do novo bin a ser adicionado:
+🔹Pop-up para adição do novo bin  
+🔹forms para preencher as informações do novo bin a ser adicionado: 
 - nome do medicamento 
 - lote
 - validade
 - quantidade
-- posições 
-🔹 botão para adicionar o bin
+- posições  
 
+🔹 botão para adicionar o bin 
 
+---
 
 
 ## 💻 Desenvolvimento do Front-end (React.js)
 
-&emsp;O front-end da aplicação está sendo desenvolvido em **React.js**, com base direta no protótipo de alta fidelidade descrito acima. O objetivo é garantir uma interface funcional, fluida e fiel ao que foi planejado na prototipação.
+&emsp;O front-end da aplicação foi desenvolvido em **React.js**, com base direta no protótipo de alta fidelidade descrito acima. O objetivo é garantir uma interface funcional, fluida e fiel ao que foi planejado na prototipação.
 
-### 📦 Funcionalidades já em desenvolvimento:
+### 📦 Funcionalidades :
 
-- Visualização de **filtros de fitas por status** (A seguir, Em progresso, Pronta).
+- Visualização de **filtros de fitas por status**: A seguir, Em progresso, Pronta.
 - Avanço de status para fitas colocadas em produção.
-- **Card detalhado da fita**, com QR code e informações dos medicamentos.
-- **Tabela de histórico** com exportação filtrada por data.
-- **Tabela de logs do sistema**, com registros de operação e falhas.
-- Componente de **pop-up de coleta unitária** funcional com formulário dinâmico.
+- **Card detalhado da fita**, com QR code e informações dos medicamentos associados.
+- **Tabela de histórico** com possibilidade de exportação filtrada por data.
+- **Tabela de logs do sistema**, com registros de operação e falhas ocorridas.
+- Componente de **pop-up de coleta unitária** com formulário dinâmico.
 - **Integração parcial com o back-end e CLI do robô**.
-- Modo de **devolução ativado** a partir da interface da tela de devoluções.
+- Modo de **devolução ativado** diretamente pela interface da tela de devoluções.
+- Tela de **cadastro de bin**. 
+- Funcionalidade de **filtro nos logs** do sistema.
 
 ---
 
-### 📲 Funcionalidades a serem adicionadas:
-
-- Tela de **cadastro de bin**
-- Funcionamento da filtragem dos logs
-
----
+&emsp;Com esse conjunto de funcionalidades, o sistema oferece ao farmacêutico a gestão completa de todo o processo — desde a separação dos medicamentos até a etapa de devolução. Também é possível realizar o cadastro de novos bins, além de controlar o estoque e a validade dos medicamentos, tudo de forma centralizada na plataforma Prescript.
 
 ## 🎞️ Overview do Front-end em Ação
 
