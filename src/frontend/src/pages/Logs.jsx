@@ -59,6 +59,7 @@ export default function Logs() {
             <div className="conteudo-logs">
                 <PageHeader title="Histórico" />
                 <Filter onFilterChange={handleFilterChange} />  {/* Passando a função para o Filter */}
+
                 <GridTable
                     title="Logs"
                     data={currentLogs}

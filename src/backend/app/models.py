@@ -74,7 +74,8 @@ class Log(db.Model):
     datetime = db.Column(db.DateTime, default=datetime.now(timezone.utc), nullable=False)
     descricao_id = db.Column(db.Integer, db.ForeignKey('descricoes.id'), nullable=False)
     responsavel = db.Column(db.Boolean, nullable=False)
-    paciente_id = db.Column(db.Integer, db.ForeignKey('pacientes.id'), nullable=False)
+    paciente_id = db.Column(db.Integer, db.ForeignKey('pacientes.id'))
+    status = db.Column(db.Integer, nullable=False)
 
 def popular_banco():
     with app.app_context():
@@ -181,9 +182,11 @@ def popular_banco():
                 "bin vazio",
                 "reabastecimento do bin",
                 "sem sinal de wifi",
-                "desligamento (sem luz)",
+                "CSV exportado",
                 "alerta de manutenção",
-                "não conseguiu ler o QRCode"
+                "não conseguiu ler o QRCode",
+                "usuário fez login",
+                "usuário fez logout",
             ]
             descricoes_criadas = []
             for descricao in descricoes:
@@ -193,17 +196,17 @@ def popular_banco():
             db.session.flush()
 
             logs_criados = []
-            for paciente in pacientes_criados:
-                for descricao in descricoes_criadas:
-                    for _ in range(random.randint(5, 15)):
-                        log = Log(
-                            descricao_id=descricao.id,
-                            responsavel=random.choice([True, False]),
-                            paciente_id=paciente.id
-                        )
-                        db.session.add(log)
-                        logs_criados.append(log)
-            db.session.flush()
+            # for paciente in pacientes_criados:
+            #     for descricao in descricoes_criadas:
+            #         for _ in range(random.randint(5, 15)):
+            #             log = Log(
+            #                 descricao_id=descricao.id,
+            #                 responsavel=random.choice([True, False]),
+            #                 paciente_id=paciente.id
+            #             )
+            #             db.session.add(log)
+            #             logs_criados.append(log)
+            # db.session.flush()
 
             def gerar_datas_iniciais(inicio, quantidade):
                 return [inicio + timedelta(days=random.randint(-30, 30)) for _ in range(quantidade)]

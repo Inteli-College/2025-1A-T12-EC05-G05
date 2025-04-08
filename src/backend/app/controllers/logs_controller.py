@@ -9,3 +9,15 @@ logs_service = LogsService()
 @cross_origin(supports_credentials=True)
 def listar_logs():
     return logs_service.listar_logs()
+
+@logs_blueprint.route("/logs", methods=["POST"])
+@cross_origin(supports_credentials=True)
+def criar_log():
+    descricao = request.get_json().get("descricao")
+    responsavel = request.get_json().get("responsavel")
+    status = request.get_json().get("status")
+    try:
+        logs_service.adicionar_log(descricao, responsavel, status)
+        return jsonify({"message": "Log criado com sucesso!"}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
