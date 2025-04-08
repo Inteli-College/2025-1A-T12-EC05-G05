@@ -366,6 +366,12 @@ def deliver():
             execute_movement(position, add_height)
     deliver_value += 1
 
+def devolution():
+    positions = data.get("devolution", [])
+    for positions in positions:
+        check_suction(positions)
+        execute_movement(positions)
+
 @cli.command()
 def collect_bin(
     bin_1: Annotated[int, typer.Argument(help="Quantidade do bin 1")] = 0,
