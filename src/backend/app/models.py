@@ -84,7 +84,8 @@ class Log(db.Model):
     datetime = db.Column(db.DateTime, default=datetime.now(timezone.utc), nullable=False)
     descricao_id = db.Column(db.Integer, db.ForeignKey("descricoes.id"), nullable=False)
     responsavel = db.Column(db.Boolean, nullable=False)
-    paciente_id = db.Column(db.Integer, db.ForeignKey("pacientes.id"))
+    paciente_id = db.Column(db.Integer, db.ForeignKey('pacientes.id'))
+    status = db.Column(db.Integer, nullable=False)
 
 def popular_banco():
     with app.app_context():
@@ -245,9 +246,11 @@ def popular_banco():
                 "bin vazio",
                 "reabastecimento do bin",
                 "sem sinal de wifi",
-                "desligamento (sem luz)",
+                "CSV exportado",
                 "alerta de manutenção",
-                "não conseguiu ler o QRCode"
+                "não conseguiu ler o QRCode",
+                "usuário fez login",
+                "usuário fez logout",
             ]
             
             descricoes_criadas = []
