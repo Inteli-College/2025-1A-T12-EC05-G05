@@ -273,29 +273,44 @@ def popular_banco():
                     db.session.add(log)
             db.session.flush()
 
-            for i in range(30):
-                historico_date = now - timedelta(days=random.randint(1, 45))
-                evento = random.choice([
-                    "Manutenção do Sistema",
-                    "Atualização de Software",
-                    "Reabastecimento Completo",
-                    "Verificação de Inventário",
-                    "Relatório Diário",
-                    "Problema Técnico Resolvido",
-                    "Falha na Leitura de QR",
-                    "Alerta de Estoque Baixo"
-                ])
-                detalhes = random.choice([
-                    "Concluído",
-                    "Em Progresso",
-                ])
-                
-                historico = Historico(
-                    nome=evento,
-                    descricao=f"{evento}: {detalhes}",
-                    data_registro=historico_date
-                )
-                db.session.add(historico)
+            def gerar_datas_iniciais(inicio, quantidade):
+                return [inicio + timedelta(days=random.randint(-30, 30)) for _ in range(quantidade)]
+
+            def gerar_fitas_para_data(data_registro):
+                nomes_fitas = [f"Fita {i}" for i in range(1, 11)]
+                descricoes_fitas = [
+                    "Paciente retirou na UBS Central.",
+                    "Entregue na Farmácia Popular.",
+                    "Retirada na Unidade Móvel.",
+                    "Entregue no Hospital Municipal.",
+                    "Entregue na Farmácia Comunitária.",
+                    "Retirada no Centro de Saúde.",
+                    "Entregue na Unidade Básica de Saúde.",
+                    "Paciente retirou na Clínica Especializada.",
+                    "Entregue na UBS Bairro Novo.",
+                    "Retirada na Unidade de Saúde Familiar."
+                ]
+                numero_fitas = random.randint(3, 10)
+                fitas = []
+                for i in range(numero_fitas):
+                    nome_fita = random.choice(nomes_fitas)
+                    descricao_fita = random.choice(descricoes_fitas)
+                    fitas.append({
+                        "nome": nome_fita,
+                        "descricao": descricao_fita,
+                        "data_registro": data_registro
+                    })
+                return fitas
+            datas = gerar_datas_iniciais(datetime.now(timezone.utc), 60)
+            for data_registro in datas:
+                fitas_para_data = gerar_fitas_para_data(data_registro)
+                for fita in fitas_para_data:
+                    historico = Historico(
+                        nome=fita["nome"],
+                        descricao=fita["descricao"],
+                        data_registro=fita["data_registro"]
+                    )
+                    db.session.add(historico)
             db.session.flush()
             
             db.session.commit()
