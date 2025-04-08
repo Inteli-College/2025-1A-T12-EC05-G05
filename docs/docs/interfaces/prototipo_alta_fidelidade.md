@@ -158,6 +158,59 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 
 ---
 
+### **9️⃣ Filtragem da tela de logs**
+
+<div align='center'>
+<sub>Figura 9 - Filtro da tela de logs</sub>
+</div>
+
+<img src="../../img/filtro.png"/>
+
+🔹Permite encontrar rapidamente registros específicos, ao utilizar as filtragens disponíveis:
+- **Ações do Robô**
+- **Medicamentos**
+- **Usuário**
+- **Fitas de medicamento**  
+
+🔹 Permite filtrar um ou mais registros.  
+🔹 Facilita o rastreamento de processos e suporte técnico.
+
+### **🔟 Tela de Inventário**
+
+<div align='center'>
+<sub>Figura 10 - Tela de inventário</sub>
+</div>
+
+<img src="../../img/tela_de_inventario.png"/>
+
+
+🔹Permite adicionar bins
+🔹Permite acessar informações de todos os bins em uso:
+- nome do medicamento junto com a dosagem
+- validade
+- lote
+- quantidade
+
+### **🔟 Tela de Inventário**
+
+<div align='center'>
+<sub>Figura 11 - Pop-up de Cadastro de Bin</sub>
+</div>
+
+<img src="../../img/popup_cadastro_bin.png"/>
+
+🔹Pop-up para adição do novo bin
+🔹forms para preencher as informações do novo bin a ser adicionado:
+- nome do medicamento 
+- lote
+- validade
+- quantidade
+- posições 
+🔹 botão para adicionar o bin
+
+
+
+
 ## 💻 Desenvolvimento do Front-end (React.js)
 
 &emsp;O front-end da aplicação está sendo desenvolvido em **React.js**, com base direta no protótipo de alta fidelidade descrito acima. O objetivo é garantir uma interface funcional, fluida e fiel ao que foi planejado na prototipação.
