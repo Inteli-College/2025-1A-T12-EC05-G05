@@ -134,6 +134,12 @@
     width: auto;
 }
 
+.unitary-button-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
 .submit-btn {
     background-color: #373643;
     color: #fff;
