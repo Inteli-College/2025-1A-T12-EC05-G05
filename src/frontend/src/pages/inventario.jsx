@@ -3,12 +3,15 @@ import PageHeader from "../components/PageHeader";
 import Bin from "../components/Bin";
 import "../styles/Inventario.css";
 import AddBin from "../components/AddBin";
+import PopUpInventario from "../components/PopUpInventario";
 import LoadingModal from "../components/LoadingModal";
 
 export default function Inventario() {
   const [loading, setLoading] = useState(true);
+  const [showPopUp, setShowPopUp] = useState(false);
 
-  // Simulação de carregamento
+  const togglePopUp = () => setShowPopUp(!showPopUp);
+
   useEffect(() => {
     const fetchData = async () => {
       setTimeout(() => {
@@ -23,42 +26,47 @@ export default function Inventario() {
     <div className="inventario">
       <div className="conteudo">
         <PageHeader title="Inventário" />
-        
+
         {loading ? (
           <LoadingModal />
         ) : (
           <div className="inventario-content">
-            <Bin 
+            <Bin
               medicamento="Ibuprofeno 400mg"
               validade="2025-12-31"
               lote="123456"
               quantidade="10"
             />
-            <Bin 
+            <Bin
               medicamento="Dorflex 300mg"
               validade="2025-12-31"
               lote="123456"
               quantidade="10"
             />
-            <Bin 
+            <Bin
               medicamento="Buscopan 10mg"
               validade="2025-12-31"
               lote="123456"
               quantidade="10"
             />
-            <Bin 
+            <Bin
               medicamento="Dipirona 1g"
               validade="2025-12-31"
               lote="123456"
               quantidade="10"
             />
-            <Bin 
+            <Bin
               medicamento="Paracetamol 500mg"
               validade="2025-12-31"
               lote="123456"
               quantidade="10"
             />
             <AddBin />
+            <div>
+              <button onClick={togglePopUp}>Abrir Inventário</button>
+
+              {showPopUp && <PopUpInventario closePopUp={togglePopUp} />}
+            </div>
           </div>
         )}
       </div>
