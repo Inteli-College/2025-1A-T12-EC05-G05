@@ -85,7 +85,7 @@ class Log(db.Model):
     descricao_id = db.Column(db.Integer, db.ForeignKey("descricoes.id"), nullable=False)
     responsavel = db.Column(db.Boolean, nullable=False)
     paciente_id = db.Column(db.Integer, db.ForeignKey('pacientes.id'))
-    status = db.Column(db.Integer, nullable=False)
+    status = db.Column(db.Integer, nullable=True)
 
 def popular_banco():
     with app.app_context():
