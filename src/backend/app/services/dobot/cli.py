@@ -101,7 +101,6 @@ def buscar_logs_usuario(conn, nome):
         if cursor:
             cursor.close()
 
-#Login
 def login(conn):
     time.sleep(1)
     print("\n👤 LOGIN")
@@ -118,7 +117,6 @@ def login(conn):
         print("⚠️ Acesso negado, tente novamente ⚠️")
         time.sleep(1)
 
-# Menu inicial
 def menu_inicial(conn, nome):
     while True:
         time.sleep(1)
@@ -154,8 +152,6 @@ def menu_inicial(conn, nome):
             time.sleep(1)
             menu_inicial(conn,)
 
-    
-# Menu de separação --> ADICIONAR COISAS DO ROBO
 def menu_de_separacao(conn, nome):
     medicamentos = {
         '1': 'Ibuprofeno',
@@ -322,6 +318,22 @@ def validate(bin_n):
         print("⚠️ Medicamento inválido! Retornando ao home.")
         return False
 
+def ir_sensor(timeout: int=10):
+    print("\U0001F551 Verificando coleta")
+    try:
+        response = requests.get("http://localhost:5000/api/sensores", timeout=timeout)
+        response.raise_for_status()
+        status_coleta = response.json().get("caught")
+
+        print(f"\U0001F4E1 Estado sensor IR: {status_coleta}")
+        if status_coleta == "ALTO":
+            return False
+        elif status_coleta == "BAIXO":
+            return True
+    except requests.exceptions.RequestException as e:
+        print(f"⏳ Falha ao obter leitura: {e}")
+        return None
+
 def check_suction(
     position: Annotated[Position, typer.Argument(help="Position data to check if suction should be enabled or disabled.")]
 ):
@@ -342,11 +354,17 @@ def take_medicine(
     
     first_position = positions[0]
     execute_movement(first_position)
-    
+
+    done = False
     if validate(bin_n):
-        for position in positions[1:]:
-            check_suction(position)
-            execute_movement(position)
+        while (not done):
+            for position in positions[1:]:
+                check_suction(position)
+                execute_movement(position)    
+            
+            time.sleep(1.5)
+            done = ir_sensor()
+                
         deliver()
 
 def deliver():
@@ -365,6 +383,48 @@ def deliver():
         else:
             execute_movement(position, add_height)
     deliver_value += 1
+
+def devolution():
+    positions = data.get("devolution", [])
+    for positions in positions:
+        check_suction(positions)
+        execute_movement(positions)
+
+def validate_fita():
+
+    wait_before_suction()
+    print("\U0001F551 Solicitando bipagem via HTTP...")
+    try:
+        response = requests.get("http://localhost:5000/qrcode-response")
+        response.raise_for_status()
+        scanned_medicine = response.json()
+        if scanned_medicine.get("qr_code", "").startswith("A"):
+            print(f"✅ Fita {scanned_medicine.get("qr_code")} validada. Descendo para coletar...")
+            return True
+        else:
+            print("⚠️ Fita inválida! Retornando ao home.")
+
+            return False
+    except requests.exceptions.RequestException as e:
+        print(f"⏳ Falha ao obter bipagem: {e}")
+        return None
+
+def get_qrcode():
+    positions = data.get("qrcode", [])    
+    first_position = positions[0]
+    execute_movement(first_position)
+    
+    if validate_fita():
+        for position in positions[1:]:
+            check_suction(position)
+            execute_movement(position)
+        delivery_qrcode()
+    
+def delivery_qrcode():
+    positions = data.get("delivery_qrcode", [])
+    for position in positions:
+            check_suction(position)
+            execute_movement(position)
 
 @cli.command()
 def collect_bin(
@@ -388,6 +448,7 @@ def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos
     ordered_list = sorted(input_list)
     for bin_num in ordered_list:
         take_medicine(f'bin_{bin_num}', bin_num)
+    get_qrcode()
     execute_movement(positions[0])
 
 def main():
@@ -410,4 +471,4 @@ if __name__ == "__main__":
      
     if conn:
         login(conn)
-        conn.close()  # Fecha a conexão ao final do programa
+        conn.close() 

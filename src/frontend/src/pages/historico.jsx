@@ -4,6 +4,8 @@ import "react-calendar/dist/Calendar.css";
 import "../styles/Historico.css";
 import PageHeader from "../components/PageHeader";
 import axios from "axios";
+import httpClient from "../httpClient";
+import LoadingModal from "../components/LoadingModal";
 
 export default function Historico() {
     const [date, setDate] = useState(new Date());
@@ -48,6 +50,11 @@ export default function Historico() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        httpClient.post("http://localhost:5000/api/logs", {
+            responsavel:"0",
+            descricao:"14",
+            status:"1",
+        });
     };
 
     return (
@@ -67,7 +74,7 @@ export default function Historico() {
                             </div>
                             <div className="fitas-lista">
                                 {loading ? (
-                                    <p>Carregando...</p>
+                                    <LoadingModal />
                                 ) : fitasEntregues.length > 0 ? (
                                     fitasEntregues.map((fita, index) => (
                                         <button 
