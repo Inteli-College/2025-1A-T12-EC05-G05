@@ -1,0 +1,28 @@
+.add-bin-content {
+  color: #373743;
+  border: 2px solid #CECECE; /* Adiciona o contorno */
+  border-radius: 10px;
+  padding: 20px;
+  text-align: left;
+  width: 167px;
+  height: 134px;
+  background: transparent; /* Remover o fundo */
+  cursor: pointer; /* Indica que o elemento é clicável */
+  transition: all 0.3s ease; /* Animação suave para o efeito de hover */
+}
+
+.add-bin-content:hover {
+  background: #e6e6e6; /* Fundo claro ao passar o mouse */ /* Efeito de aumento ao passar o mouse */
+}
+
+.add-bin-body {
+  display: flex;
+  justify-content: center;  /* Alinha horizontalmente */
+  align-items: center;      /* Alinha verticalmente */
+  height: 100%;          /* Alinha verticalmente */
+}
+
+.add-bin-icon {
+  width: 46px;
+  height: 46px;
+}
