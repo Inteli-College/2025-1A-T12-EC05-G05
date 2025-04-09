@@ -367,6 +367,7 @@ def take_medicine(
             
             if done:
                 deliver()
+                get_qrcode()
                 break        
 
 def deliver():
@@ -385,6 +386,48 @@ def deliver():
         else:
             execute_movement(position, add_height)
     deliver_value += 1
+
+def devolution():
+    positions = data.get("devolution", [])
+    for positions in positions:
+        check_suction(positions)
+        execute_movement(positions)
+
+def validate_fita():
+
+    wait_before_suction()
+    print("\U0001F551 Solicitando bipagem via HTTP...")
+    try:
+        response = requests.get("http://localhost:5000/qrcode-response")
+        response.raise_for_status()
+        scanned_medicine = response.json()
+        if scanned_medicine.get("qr_code") == "A1":
+            print(f"✅ Fita {scanned_medicine.get("qr_code")} validada. Descendo para coletar...")
+            return True
+        else:
+            print("⚠️ Fita inválida! Retornando ao home.")
+
+            return False
+    except requests.exceptions.RequestException as e:
+        print(f"⏳ Falha ao obter bipagem: {e}")
+        return None
+
+def get_qrcode():
+    positions = data.get("qrcode", [])    
+    first_position = positions[0]
+    execute_movement(first_position)
+    
+    if validate_fita():
+        for position in positions[1:]:
+            check_suction(position)
+            execute_movement(position)
+        delivery_qrcode()
+    
+def delivery_qrcode():
+    positions = data.get("delivery_qrcode", [])
+    for position in positions:
+            check_suction(position)
+            execute_movement(position)
 
 @cli.command()
 def collect_bin(
