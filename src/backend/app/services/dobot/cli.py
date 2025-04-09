@@ -364,11 +364,8 @@ def take_medicine(
             
             time.sleep(1.5)
             done = ir_sensor()
-            
-            if done:
-                deliver()
-                get_qrcode()
-                break        
+                
+        deliver()
 
 def deliver():
     global deliver_value
@@ -401,7 +398,7 @@ def validate_fita():
         response = requests.get("http://localhost:5000/qrcode-response")
         response.raise_for_status()
         scanned_medicine = response.json()
-        if scanned_medicine.get("qr_code") == "A1":
+        if scanned_medicine.get("qr_code", "").startswith("A"):
             print(f"✅ Fita {scanned_medicine.get("qr_code")} validada. Descendo para coletar...")
             return True
         else:
@@ -451,6 +448,7 @@ def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos
     ordered_list = sorted(input_list)
     for bin_num in ordered_list:
         take_medicine(f'bin_{bin_num}', bin_num)
+    get_qrcode()
     execute_movement(positions[0])
 
 def main():
