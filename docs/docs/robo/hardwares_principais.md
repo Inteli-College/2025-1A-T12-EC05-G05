@@ -4,68 +4,45 @@ sidebar_label: "Hardwares Principais"
 sidebar_position: 1
 ---
 
-## 🔍 O que é?
+## 🔍 O que são?
 
-&emsp; Hardware periférico é um dispositivo que se conecta ao hardware principal de um computador ou dispositivo móvel para fornecer funcionalidades adicionais. No nosso projeto, vamos utilizar o leitor de Qr code e o sensor infravermelho usando um Raspberry Pi 5 (micro processador) para fazer a integração no nosso sistema.
+&emsp; **Hardwares principais** são os componentes físicos centrais de um sistema computacional que desempenham funções essenciais para a execução das tarefas do projeto. Eles são responsáveis pelo processamento, controle e execução das operações, servindo como base para a integração de periféricos e sensores.
 
-## 🏷️ Leitor de QR code
+&emsp; Neste projeto, os hardwares principais são o **Dobot**, que realiza a manipulação física dos medicamentos, e o **Raspberry Pi 5**, que atua como o núcleo de controle, comunicação e leitura de sensores.
 
-&emsp; No nosso projeto, o leitor de QR code é utilizado para registrar as informações dos medicamentos que estão sendo separados para a produção das fitas. Esses dados incluem nome do medicamento, quantidade, validade e lote. Durante a operação, o braço robótico se posiciona acima do bin, realiza a leitura do QR code e, em seguida, continua o processo, pegando o medicamento e depositando-o na caixa para o embalo da fita.
+## 🦾 Robô Dobot
+
+&emsp; O **Dobot** utilizado no projeto é responsável pela coleta dos medicamentos nos "bins", a coleta dos QR codes de identificação de fita onde eles serão embalados. Ele é controlado via comandos enviados por uma interface de linha de comando (CLI) e pelo nosso backend, que orquestra as ações com base nas leituras realizadas (como o QR code e o sensor infravermelho).
 
 ### 🔗 Integração com o Sistema
 
-&emsp;O leitor de QR code, **MH-ET Live Scanner V3.0**, está fisicamente conectado a uma **Raspberry Pi**, que atua como intermediária no envio dos dados para o sistema. Após a leitura de um QR code, a Raspberry envia os dados via requisição HTTP (POST) para um servidor local, onde o robô Dobot realiza o consumo dessa informação.
+&emsp; O Dobot recebe comandos a partir de um sistema central que coleta os dados de entrada do QR code e infravermelho. Ao receber comandos de movimentação, eles são enviados para o robô, indicando a coordenada de coleta. Após chegar ao local de coleta, ocorre a leitura do QR code e validação dos medicamentos. Se o medicamento for validado, o robô inicia a coleta; caso contrário, o código passa para o próximo item da lista.
 
-<div align='center'>
-<sub>Figura 1 - Leitor de QR Code utilizado no projeto</sub>
-</div>
+&emsp; Para validar se a coleta ocorreu, antes de realizar a entrega do medicamento, o sistema analisa os dados do sensor infravermelho para saber se a coleta foi um sucesso. Após todas essas validações, o Dobot se movimenta para o destino de entrega. Por fim, depois de realizar esses processos com todos os medicamentos solicitados, ele escaneia um QR code de identificação das fitas, coleta e deposita ele na caixa de entrega, associando os medicamentos à fita correspondente.
 
-<div align='center'>
-<img src="../../img/qr_code_scanner.jpeg"/>
-</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/k93B4q2ITE8?si=GEAbHr1Njj3n_tua" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style={{display:"block", marginLeft:"auto", marginRight:"auto"}}></iframe>
+<br></br>
 
-<div align='center'>
-<sup>Fonte: Usinainfoo</sup>
-</div>
+&emsp; Além disso, o robô está preparado para integrar sensores auxiliares e responder a condições externas, como a ausência de um item, usando os dados enviados pela Raspberry Pi.
 
-&emsp;No lado do robô, a CLI realiza uma requisição GET para consumir a informação escaneada:
+## 🍓 Microcomputador Raspberry Pi 5
 
-```python
-rota_qrcode = "http://127.0.0.1:5000/qrcode-response"
+&emsp; O **Raspberry Pi 5** atua como o cérebro auxiliar do sistema, sendo responsável pela coleta de dados dos sensores e envio de informações ao servidor. Sua escolha se deu por sua capacidade de processamento, suporte a diversas interfaces de hardware e conectividade via rede.
 
-def request_bip(timeout: int = 10):
-    print("🕐 Solicitando bipagem via HTTP...")
+### 💻 Acesso Remoto via SSH
 
-    try:
-        response = requests.get(rota_qrcode, timeout=timeout)
-        response.raise_for_status()
-        scanned_medicine = response.json()
-        print(f"📡 Medicamento bipado recebido: {scanned_medicine}")
-        return scanned_medicine
+&emsp; Para facilitar o desenvolvimento e manutenção do sistema, o Raspberry Pi 5 pode ser acessado remotamente via SSH. Isso permite a execução de comandos, edição de arquivos e monitoramento em tempo real.
 
-    except requests.exceptions.RequestException as e:
-        print(f"⏳ Falha ao obter bipagem: {e}")
-        return None
+- **Comando de acesso SSH:**
+
+```bash
+ssh g5@10.128.0.191
 ```
 
-&emsp;Após a leitura do QR code, o sistema realiza uma **validação** comparando o medicamento bipado com o esperado, conforme o mapeamento da prescrição. Se a validação for bem-sucedida, o Dobot realiza a descida no eixo Z para coletar o medicamento. E depois prosseguir para a entrega na fita.
+- **Senha:**
 
-&emsp; A respeito de banco de dados, os dados dos medicamentos bipados são a**rmazenados em um banco de dados relacional** criado com **SQLite**, permitindo a realização das operações de **CRUD (Create, Read, Update, Delete)**. A API que recebe os dados escaneados realiza a criação de novos registros no banco, os quais podem ser:
+```bash
+grupo5
+```
 
-- Visualizados diretamente pela **interface de logs e histórico**.
-
-- Atualizados em caso de **correções manuais** por parte do farmacêutico.
-
-- Removidos se identificada uma **leitura incorreta**.
-
-&emsp;Com essa estrutura, o sistema de leitura de QR code atende plenamente aos critérios do projeto, ao garantir a rastreabilidade dos medicamentos por meio do armazenamento em banco de dados, possibilitar operações completas de CRUD sobre os dados registrados e expor essas informações de forma clara na interface de logs, permitindo o monitoramento e a verificação das leituras em tempo real. &
-
-&emsp;Dessa forma, o processo de separação automatizada se torna **seguro, validado e totalmente integrado ao fluxo da farmácia hospitalar**, contribuindo para maior precisão e confiabilidade nas operações.
-
-## ❗ Sensor infravermelho
-
-&emsp; O sensor infravermelho ainda está em fase de desenvolvimento. Ele já foi soldado a jumpers que estão conectados às entradas do Raspberry Pi 5, mas enfrentamos dificuldades na integração, e por isso essa tarefa foi realocada para a sprint 5.
-
-&emsp; Nosso objetivo com esse sensor é identificar a presença ou ausência do medicamento no compartimento. Durante o processo de separação, o robô realizará três tentativas de detecção. Se o sensor identificar a presença do medicamento, o robô continuará sua movimentação para pegá-lo. Caso contrário, ele passará para o próximo item. No estado atual do desenvolvimento, devido à falta de integração, o robô permanece parado nessa etapa.
-
-
+&emsp; Esse acesso é essencial para atualizações do sistema, testes dos sensores e depuração de problemas durante o funcionamento do projeto.
