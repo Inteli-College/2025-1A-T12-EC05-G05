@@ -16,22 +16,15 @@ sidebar_position: 2
 ```python
 @cli.command()
 def collect_bin(
-    bin_1: Annotated[int, typer.Argument(help="Quantidade de medicamentos do bin 1")] = 0,
-    bin_2: Annotated[int, typer.Argument(help="Quantidade de medicamentos do bin 2")] = 0,
-    bin_3: Annotated[int, typer.Argument(help="Quantidade de medicamentos do bin 3")] = 0,
-    bin_4: Annotated[int, typer.Argument(help="Quantidade de medicamentos do bin 4")] = 0,
-    bin_5: Annotated[int, typer.Argument(help="Quantidade de medicamentos do bin 5")] = 0,
+    bin_1: Annotated[int, typer.Argument(help="Quantidade do bin 1")] = 0,
+    bin_2: Annotated[int, typer.Argument(help="Quantidade do bin 2")] = 0,
+    bin_3: Annotated[int, typer.Argument(help="Quantidade do bin 3")] = 0,
+    bin_4: Annotated[int, typer.Argument(help="Quantidade do bin 4")] = 0,
+    bin_5: Annotated[int, typer.Argument(help="Quantidade do bin 5")] = 0,
 ):
-    bin_counts = {
-        1: bin_1,
-        2: bin_2,
-        3: bin_3,
-        4: bin_4,
-        5: bin_5,
-    }
-    
+    bin_counts = {1: bin_1, 2: bin_2, 3: bin_3, 4: bin_4, 5: bin_5}
     for bin_num in range(1, 6):
-        for _ in range(bin_counts[bin_num]):
+        for i in range(bin_counts[bin_num]):
             take_medicine(f"bin_{bin_num}")
 ```
 

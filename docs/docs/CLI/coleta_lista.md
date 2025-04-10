@@ -19,12 +19,16 @@ sidebar_position: 3
 &emsp; Pensando nessa possibilidade, desenvolvemos um código que organiza a lista enviada para ele e, em seguida, inicia a coleta de cada bin.
 
 ```python
-def collect_list(
-    input_list: Annotated[List[str], typer.Argument(help="List of bins to collect")],
-):
+@cli.command()
+def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos bins a coletar")]):
+    global deliver_value
+    deliver_value = 1
+    main()
+    positions = data.get('home')
     ordered_list = sorted(input_list)
     for bin_num in ordered_list:
-        take_medicine(f'bin_{bin_num}')
+        take_medicine(f'bin_{bin_num}', bin_num)
+    execute_movement(positions[0])
 ```
 
 &emsp; O código recebe a lista dos bins que precisam ser coletados, utiliza o método ```sorted()``` do Python para organizá-los em ordem crescente e, em seguida, executa um ```for``` para coletar todos os medicamentos solicitados, enviando os valores da lista para a função ```take_medicine()``` por meio do sistema de ```f-string```, que permite inserirmos valores dentro de uma ```string```.
