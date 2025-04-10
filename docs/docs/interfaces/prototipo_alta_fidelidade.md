@@ -8,7 +8,7 @@ sidebar_position: 6
 
 ## 🔍 O que é?
 
-&emsp; O **protótipo de alta fidelidade** representa a **versão final e interativa** da interface do sistema Prescript, sendo o resultado do refinamento visual e funcional dos wireframes elaborados nas etapas anteriores. Ao contrário do Wire Flow, esse protótipo apresenta **elementos visuais realistas, com cores, tipografia, botões e layouts finais**, além de permitir a navegação simulada pelos fluxos reais da plataforma.
+&emsp; O **protótipo de alta fidelidade** representa a **versão final e interativa** da interface do sistema Prescript, sendo o resultado do refinamento visual e funcional dos _wireframes_ elaborados nas etapas anteriores. Ao contrário do _wireflow_, esse protótipo apresenta **elementos visuais realistas, com cores, tipografia, botões e layouts finais**, além de permitir a navegação simulada pelos fluxos reais da plataforma.
 
 :::info
 O objetivo do protótipo é **validar a experiência completa do usuário** com uma interface fiel ao produto final, servindo como guia visual para o time de desenvolvimento e facilitando testes com usuários.
@@ -16,7 +16,7 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 
 &emsp; No caso do **Prescript**, plataforma desenvolvida para o **Hospital de Clínicas da UNICAMP**, o protótipo foi focado exclusivamente na **jornada do farmacêutico**, responsável pela operação do robô, empacotamento das fitas e gerenciamento de medicamentos.
 
-&emsp; As interfaces foram desenvolvidas no **Figma**, incorporando feedbacks da equipe técnica e considerando os desafios reais enfrentados no ambiente hospitalar.
+&emsp; As interfaces foram desenvolvidas no **Figma**, incorporando os _feedbacks_ da equipe técnica e considerando os desafios reais enfrentados no ambiente hospitalar.
 
 ---
 
@@ -24,8 +24,8 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 
 - Garantir **clareza e usabilidade** na navegação da plataforma;
 - Representar **fielmente os fluxos funcionais** do sistema;
-- Permitir **validação visual com stakeholders** e profissionais da saúde;
-- Servir como base para **implementação front-end** e testes com farmacêuticos.
+- Permitir a **validação visual com _stakeholders_** e profissionais da saúde;
+- Servir como base para **implementação do front-end** e testes com farmacêuticos.
 
 ---
 
@@ -34,7 +34,7 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 ### 1️⃣ Tela de Login
 
 <div align='center'>
-<sub>Figura 1 - Tela de Login (Alta Fidelidade)</sub>
+<sub>Figura 1 - Tela de Login</sub>
 </div>
 
 <img src="../../img/altafid_login.png"/>
@@ -58,8 +58,8 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 - **A seguir**: aguardando início de separação.
 - **Em progresso**: sendo separadas pelo robô.
 - **Prontas**: fitas já separadas.
-
-🔹 Permite selecionar uma fita e colocá-la em separação com um clique.  
+🔹 Permite selecionar uma e colocar em separação.
+🔹 Apresenta status visuais e indicadores de medicamentos pendentes.
 
 ---
 
@@ -71,7 +71,7 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 
 <img src="../../img/altafid_historico.png"/>
 
-🔹 Permite ao farmacêutico consultar fitas separadas por data.   
+🔹 Permite ao farmacêutico consultar fitas separadas por data.    
 🔹 Botão para exportar relatórios em diferentes períodos.  
 🔹 Visualização clara do histórico de produção do robô.
 

@@ -15,26 +15,26 @@ sidebar_position: 6
 
 
 ## 👨‍⚕️ User Stories do Farmacêutico
-&emsp; **Acesso seguro à plataforma**
+&emsp; **Acesso seguro à plataforma:**
 
 *"Como farmacêutico, quero acessar a plataforma com credenciais seguras para fazer a separação de fitas de medicamento."*
 
 Para garantir a segurança e evitar acessos não autorizados, o farmacêutico precisa fazer login com credenciais institucionais (e-mail e senha). Esse acesso permite que ele visualize e manipule as fitas de medicamento de maneira controlada e segura.
 
 
-&emsp; **Visualização detalhada das fitas de medicamentos**
+&emsp; **Visualização detalhada das fitas de medicamentos:**
 
 *"Como farmacêutico, quero visualizar os detalhes de uma fita de medicamentos para verificar sua composição e rastreabilidade."*
 
 Essa funcionalidade possibilita que o farmacêutico confira quais medicamentos compõem cada fita, garantindo que tudo esteja correto antes da separação. Além disso, a rastreabilidade permite monitorar quais medicamentos foram entregues e identificar eventuais problemas na produção.
 
-&emsp; **Alteração de status para indicar progresso**
+&emsp; **Alteração de status para indicar progresso:**
 
 *"Como farmacêutico, quero alterar o status de uma fita para 'Em progresso' para indicar que sua separação foi iniciada."*
 
 Com essa funcionalidade, o farmacêutico pode indicar no sistema que começou a separar uma determinada fita. Isso evita que outros profissionais tentem manipular a mesma fita ao mesmo tempo, garantindo um fluxo de trabalho mais organizado.
 
-&emsp;**Geração de relatórios para controle e eficiência**
+&emsp;**Geração de relatórios para controle e eficiência:**
 
 *"Como farmacêutico, quero exportar um relatório de fitas de medicamentos que ficaram prontas em determinado período para ter dados sobre eficiência do robô e controle sobre as saídas da farmácia."*
 
@@ -42,4 +42,4 @@ A possibilidade de gerar relatórios permite ao farmacêutico monitorar a efici�
 
 ## ✅ Conclusão
 
-&emsp;As User Stories do farmacêutico desempenham um papel fundamental no desenvolvimento da aplicação, pois garantem que as funcionalidades atendam às suas necessidades reais. O acesso seguro, a visualização detalhada, a atualização de status e a geração de relatórios são recursos importantes para um gerenciamento eficiente das fitas de medicamento.
+&emsp;As _User Stories_ do farmacêutico desempenham um papel fundamental no desenvolvimento da aplicação, pois garantem que as funcionalidades atendam às suas necessidades reais. O acesso seguro, a visualização detalhada, a atualização de _status_ e a geração de relatórios são recursos importantes para um gerenciamento eficiente das fitas de medicamento.

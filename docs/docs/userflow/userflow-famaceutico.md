@@ -10,7 +10,7 @@ sidebar_position: 8
 
   <sub>Figura X - User flow farmacêutico </sub>
 
-  <img src="/img/Userflow-farmaceutico.jpg"/>
+  <img src="../../img/Userflow-farmaceutico.jpg"/>
 
   <sup>Fonte: Material produzido pelos autores (2025).</sup>
 
