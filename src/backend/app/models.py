@@ -299,38 +299,52 @@ def popular_banco():
                     db.session.add(log)
             db.session.flush()
 
-            def gerar_datas_iniciais(inicio, quantidade):
-                return [inicio + timedelta(days=random.randint(-30, 30)) for _ in range(quantidade)]
+            for i in range(30):
+                historico_date = now - timedelta(days=random.randint(1, 45))
+                evento = random.choice([
+                    "Manutenção do Sistema",
+                    "Atualização de Software",
+                    "Reabastecimento Completo",
+                    "Verificação de Inventário",
+                    "Relatório Diário",
+                    "Problema Técnico Resolvido",
+                    "Falha na Leitura de QR",
+                    "Alerta de Estoque Baixo"
+                ])
+                detalhes = random.choice(["Concluído", "Em Progresso"])
+                historico = Historico(
+                    nome=evento,
+                    descricao=f"{evento}: {detalhes}",
+                    data_registro=historico_date
+                )
+                db.session.add(historico)
 
-            def gerar_fitas_para_data(data_registro):
-                nomes_fitas = [f"Fita {i}" for i in range(1, 11)]
-                descricoes_fitas = [
-                    "Paracetamol 500mg", "Dipirona 1g", "Ibuprofeno 400mg", "Dorflex 300mg", "Buscopan 10mg"
-                ]
-                numero_fitas = random.randint(3, 10)
-                fitas = []
-                for i in range(numero_fitas):
-                    nome_fita = random.choice(nomes_fitas)
-                    descricao_fita = random.choice(descricoes_fitas)
-                    fitas.append({
-                        "nome": nome_fita,
-                        "descricao": descricao_fita,
-                        "data_registro": data_registro
-                    })
-                return fitas
-
-            datas = gerar_datas_iniciais(datetime.now(timezone.utc), 60)
-            for data_registro in datas:
-                fitas_para_data = gerar_fitas_para_data(data_registro)
-                for fita in fitas_para_data:
-                    historico = Historico(
-                        nome=fita["nome"],
-                        descricao=fita["descricao"],
-                        data_registro=fita["data_registro"]
-                    )
-                    db.session.add(historico)
             db.session.flush()
-            
+
+            # ✅ Fita de teste com 3 remédios para devolução
+            fita_teste = Fita(
+                qr_code="FITA-DEV123",
+                hc=9999,
+                id_prescricao=999,
+                status="entregue",
+                paciente_id=pacientes_criados[0].id
+            )
+            db.session.add(fita_teste)
+            db.session.flush()
+
+            remedios_de_teste = [
+                Remedio(nome_do_remedio_com_gramagem="Amoxicilina 500mg", qr_code="QR-AMOX-500", validade=datetime(2026, 5, 10)),
+                Remedio(nome_do_remedio_com_gramagem="Losartana 50mg", qr_code="QR-LOS-50", validade=datetime(2026, 8, 20)),
+                Remedio(nome_do_remedio_com_gramagem="Omeprazol 20mg", qr_code="QR-OME-20", validade=datetime(2026, 7, 5))
+            ]
+            for r in remedios_de_teste:
+                db.session.add(r)
+            db.session.flush()
+
+            for r in remedios_de_teste:
+                assoc = FitaRemedio(fita_id=fita_teste.id, remedio_id=r.id)
+                db.session.add(assoc)
+
             db.session.commit()
             print(f"Usuários: {Usuario.query.count()}")
             print(f"Pacientes: {Paciente.query.count()}")
@@ -339,10 +353,11 @@ def popular_banco():
             print(f"Logs: {Log.query.count()}")
             print(f"Históricos: {Historico.query.count()}")
             print(f"Remédios (associações): {FitaRemedio.query.count()}")
-            print("Banco de dados populado com sucesso!")
+            print("✅ Banco de dados populado com sucesso!")
+
         except Exception as e:
             db.session.rollback()
-            print(f"Erro ao popular banco: {e}")
+            print(f"❌ Erro ao popular banco: {e}")
             import traceback
             traceback.print_exc()
 
