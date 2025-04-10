@@ -1,9 +1,13 @@
 import os
 import random
+import json
 from datetime import datetime, timedelta, timezone
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+
+with open(os.path.join(os.path.dirname(__file__), 'initialConfig.json'), 'r') as f:
+    initialConfig = json.load(f)
 
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -15,6 +19,14 @@ app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(instance_path,
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+
+CONFIG_FILE_PATH = os.path.join(os.path.dirname(__file__), 'services', 'dobot', 'config.json')
+config_dir = os.path.dirname(CONFIG_FILE_PATH)
+if not os.path.exists(config_dir):
+    os.makedirs(config_dir)
+if not os.path.exists(CONFIG_FILE_PATH):
+    with open(CONFIG_FILE_PATH, 'w') as f:
+        json.dump(initialConfig, f, indent=4)
 
 class Historico(db.Model):
     __tablename__ = "historico"
@@ -47,7 +59,7 @@ class Bin(db.Model):
     __tablename__ = "bins"
     id = db.Column(db.Integer, primary_key=True)
     id_remedio = db.Column(db.Integer, db.ForeignKey("remedios.id"), nullable=False)
-    localizacao = db.Column(db.Float, nullable=False)
+    lote = db.Column(db.Integer, nullable=False)
     quantidade = db.Column(db.Integer, nullable=False)
 
 class FitaRemedio(db.Model):
@@ -86,6 +98,20 @@ class Log(db.Model):
     responsavel = db.Column(db.Boolean, nullable=False)
     paciente_id = db.Column(db.Integer, db.ForeignKey('pacientes.id'))
     status = db.Column(db.Integer, nullable=True)
+
+class ConfigManager:
+    def __init__(self):
+        if not os.path.exists(CONFIG_FILE_PATH):
+            with open(CONFIG_FILE_PATH, 'w') as f:
+                json.dump(initialConfig, f, indent=4)
+
+    def save_config(self, config):
+        with open(CONFIG_FILE_PATH, 'w') as f:
+            json.dump(config, f, indent=4)
+        return config
+
+    def reset_config(self):
+        return self.save_config(initialConfig)
 
 def popular_banco():
     with app.app_context():
@@ -181,14 +207,14 @@ def popular_banco():
             db.session.flush()
 
             for remedio in remedios_criados:
-                for i in range(1, 4):
+                for i in range(1):
                     bin = Bin(
                         id_remedio=remedio.id,
-                        localizacao=float(f"{remedio.id}.{i}"),
+                        lote=random.randint(999, 99999),
                         quantidade=random.randint(10, 100)
                     )
                     db.session.add(bin)
-            db.session.flush()
+                    db.session.flush()
 
             status_options = ["pendente", "em_progresso", "separada", "em_uso", "finalizada", "atrasada", "pausada"]
             fitas_data = [
@@ -250,7 +276,7 @@ def popular_banco():
                 "alerta de manutenção",
                 "não conseguiu ler o QRCode",
                 "usuário fez login",
-                "usuário fez logout",
+                "usuário fez logout"
             ]
             
             descricoes_criadas = []
@@ -279,16 +305,7 @@ def popular_banco():
             def gerar_fitas_para_data(data_registro):
                 nomes_fitas = [f"Fita {i}" for i in range(1, 11)]
                 descricoes_fitas = [
-                    "Paciente retirou na UBS Central.",
-                    "Entregue na Farmácia Popular.",
-                    "Retirada na Unidade Móvel.",
-                    "Entregue no Hospital Municipal.",
-                    "Entregue na Farmácia Comunitária.",
-                    "Retirada no Centro de Saúde.",
-                    "Entregue na Unidade Básica de Saúde.",
-                    "Paciente retirou na Clínica Especializada.",
-                    "Entregue na UBS Bairro Novo.",
-                    "Retirada na Unidade de Saúde Familiar."
+                    "Paracetamol 500mg", "Dipirona 1g", "Ibuprofeno 400mg", "Dorflex 300mg", "Buscopan 10mg"
                 ]
                 numero_fitas = random.randint(3, 10)
                 fitas = []
@@ -301,6 +318,7 @@ def popular_banco():
                         "data_registro": data_registro
                     })
                 return fitas
+
             datas = gerar_datas_iniciais(datetime.now(timezone.utc), 60)
             for data_registro in datas:
                 fitas_para_data = gerar_fitas_para_data(data_registro)
@@ -329,4 +347,6 @@ def popular_banco():
             traceback.print_exc()
 
 if __name__ == "__main__":
+    config_manager = ConfigManager()
+    config_manager.reset_config()
     popular_banco()

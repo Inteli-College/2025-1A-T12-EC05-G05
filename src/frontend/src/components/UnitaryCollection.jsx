@@ -91,7 +91,7 @@ const UnitaryCollection = () => {
 
                 <div ref={formRef} className={`unitary-form ${showForm ? 'active' : ''}`}>
                     <form onSubmit={handleFormSubmit}>
-                        <div className="form-group">
+                        <div className="form-group-unitary">
                             <label>Nome do medicamento <span>*</span></label>
                             <div className="input-wrapper">
                                 <div className="input-icon">
@@ -116,7 +116,7 @@ const UnitaryCollection = () => {
                             )}
                         </div>
 
-                        <div className="form-group">
+                        <div className="form-group-unitary">
                             <label>Enfermeira responsável <span>*</span></label>
                             <div className="input-wrapper">
                                 <div className="input-icon">
