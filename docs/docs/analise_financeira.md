@@ -1,6 +1,6 @@
 ---
-title: "💵 Análise Financeria do Projeto"
-sidebar_label: "Análise Financeria do Projeto"
+title: "💵 Análise Financeira do Projeto"
+sidebar_label: "Análise Financeira do Projeto"
 sidebar_position: 12
 ---
 
@@ -29,11 +29,11 @@ sidebar_position: 12
 
 | Componentes          | Especificação                      | Valor (R$)         |
 |--------------------- |------------------------------------|--------------------|
-| Braço robótico       | Dobot Magician Lite                | R$ 7.025,55        |
+| Braço robótico       | Dobot Magician Lite                | R$ 12.000,00        |
 | Sensor Infravermelho | TCRT5000                           | R$ 6,30            |
 | Leitor de QR Code    | MH-ET Live Scanner V3.0            | R$ 260,00          |
 | Minicomputador       | Raspberry Pi 5 - 8GB RAM           | R$ 1200,00         |
-| **Total**            |                                    |  **R$ 8.491,85**   |
+| **Total**            |                                    |  **R$ 13.466,85**   |
 
 
 ### 🔍 Estimativa de Custos para Escopo Industrial
@@ -45,18 +45,18 @@ sidebar_position: 12
 
 | Componentes                          | Especificação                    | Valor (R$)        | Imposto Estimado (R$)  |
 |--------------------------------------|----------------------------------|-------------------|------------------------|
-| Braço robótico industrial            | Universal Robots UR5e            | R$ 25.000,00      | R$ 16.173,78           |
+| Braço robótico industrial            | Universal Robots UR5e            | R$ 226.341,70     | R$ 146.670,69          |
 | Sensor Infravermelho industrial      | Omron E3Z-T61                    | R$ 300,00         | R$ 194,09              |
 | Leitor de QR Code industrial         | Datalogic Matrix 320             | R$ 2.000,00       | R$ 1.293,90            |
 | Base móvel autônoma                  | Mobile Industrial Robots MiR250  | R$ 100.000,00     | R$ 64.695,12           |
-| **Total estimado**                   |                                  | **R$ 127.300,00** | **R$ 82.356,89**       |
+| **Total estimado**                   |                                  | **R$ 328.641,00** | **R$ 212.853,80**       |
 
-&emsp;A seguir estão links de referências dos componentes principais da tabela.
+&emsp;A seguir estão links de referências dos componentes principais da tabela acima.
                                        
 &emsp; **Universal Robots UR5e**
 - [Braço robótico](https://www.universal-robots.com/products/ur5e/)  
-- [Vídeo do braço robótico](https://www.universal-robots.com/)
-
+- [Vídeo do braço robótico](https://www.universal-robots.com/)  
+- [Valor do Braço Robótico](https://vention.io/parts/universal-robots-ur5e-collaborative-robot-arm-2445?srsltid=AfmBOoqqSRVA3UH5q0PNbsDYoBRl75ikFTt6hp5Tqtypah9oolz29HAU)
 
 &emsp; **Sensor Infravermelho Omron E3Z-T61**   
 - [Sensor Infravermelho](https://pahcautomacao.com.br/produto/sensor-fotoeletrico-e3z-t61-omron/)
@@ -74,23 +74,37 @@ sidebar_position: 12
 &emsp;Embora esses custos não façam parte diretamente da estrutura do produto final, eles são indispensáveis para a continuidade e estabilidade do sistema.
 
  
-## 📈 Análise de Investimentos  
+## 📈 Análise de Investimentos do Cenário Industrial
 &emsp;A seguir, os investimentos são divididos entre despesas de capital (CAPEX), voltadas à aquisição dos equipamentos e desenvolvimento inicial, e despesas operacionais (OPEX), relacionadas à manutenção e operação contínua do sistema.
 
 
 ### 🛠️ Despesas de Capital (CAPEX)
-&emsp;CAPEX (do inglês Capital Expenditure) representa os investimentos em bens de capital, ou seja, aqueles gastos voltados para a aquisição de ativos físicos ou o desenvolvimento de sistemas que terão uma vida útil prolongada.           
-&emsp;E no caso deste projeto, o CAPEX compreende a compra dos componentes eletrônicos, o braço robótico, o minicomputador, o leitor de QR Code, e o desenvolvimento da plataforma web. Todos esses itens constituem a base do sistema e permanecerão sendo utilizados ao longo do tempo.   
+&emsp;CAPEX (do inglês Capital Expenditure) representa os investimentos em bens de capital, ou seja, aqueles gastos voltados para a aquisição de ativos físicos ou o desenvolvimento de sistemas que terão uma vida útil prolongada.                
+&emsp;E no caso deste projeto, o CAPEX compreende a compra dos componentes eletrônicos, o braço robótico, o minicomputador, o leitor de QR Code, o desenvolvimento da plataforma web, e os custos com a equipe técnica envolvida no desenvolvimento.        
+&emsp;Considerando um grupo de 7 profissionais com dedicação integral ao longo de **12 meses**, e um salário médio de R$ 7.200 por mês, o custo total com mão de obra para o desenvolvimento do projeto é estimado em **R$ 604.800,00**. 
+
+| Tipo de Investimento                         | Valor (R$)         |
+|---------------------------------------------|--------------------|
+| Equipamentos Industriais                    | R$ 328.641,70      |
+| Impostos sobre Equipamentos                 | R$ 212.853,80      |
+| Mão de obra técnica (12 meses, 7 pessoas)   | R$ 588.000,00      |
+| **Total CAPEX**                             | **R$ 1.129.495,50**|
 
 
 ### 🛠️ Despesas Operacionais (OPEX)
-&emsp;OPEX (do inglês Operational Expenditure) refere-se às despesas operacionais recorrentes, ou seja, todos os gastos necessários para manter o sistema funcionando após sua implementação.   
-&emsp;Diferente do CAPEX, que trata de investimentos pontuais, o OPEX cobre os custos contínuos com manutenção, atualizações, treinamento, suporte técnico, hospedagem de servidores, e qualquer outro recurso que precise ser renovado ou mantido com frequência.  
-&emsp;No contexto deste projeto, o OPEX incluiria os custos com manutenção preventiva dos equipamentos, suporte técnico contínuo, e o treinamento da equipe farmacêutica para operar o sistema. São valores menores do que os investimentos de capital, mas que ocorrem periodicamente, sendo essenciais para a sustentabilidade do sistema no médio e longo prazo.
+&emsp;OPEX (do inglês Operational Expenditure) refere-se às despesas operacionais recorrentes, ou seja, todos os gastos necessários para manter o sistema funcionando após sua implementação. Diferente do CAPEX, que trata de investimentos pontuais durante o desenvolvimento, o OPEX cobre os custos contínuos com manutenção, atualizações, suporte técnico, hospedagem de servidores, entre outros.      
+&emsp;No contexto deste projeto, os custos operacionais não são vinculados ao período de desenvolvimento, mas sim à fase posterior de operação. Por esse motivo, os valores a seguir são apresentados de forma unitária, sem associação direta a um intervalo de tempo, já que esses custos podem variar conforme a frequência de uso, regime de manutenção e escala de implantação.
 
+| Categoria                      | Estimativa Mensal (R$) 
+|-------------------------------|------------------------|
+| Manutenção preventiva         | R$ 1.200,00            |
+| Suporte técnico e atualizações| R$ 1.000,00            |
+| Hospedagem e servidores       | R$ 400,00              | 
+| **Total OPEX**                | **R$ 2.600,00**        | 
+ 
 
 ## 💰 Receita e Lucro
-&emsp;A receita representa os ganhos gerados a partir do uso da solução, seja por economia de custos, aumento de produtividade ou redução de perdas. Em um projeto como este, onde o sistema automatiza uma atividade que antes era manual, a receita pode ser interpretada como o valor economizado com mão de obra, tempo e desperdícios.     
+&emsp;A receita representa os ganhos gerados a partir do uso da solução, seja por economia de custos, aumento de produtividade ou redução de perdas. Em um projeto como este, onde o sistema automatiza uma atividade que antes era manual, a receita pode ser interpretada como o valor economizado com mão de obra, tempo e desperdícios.       
 &emsp;O lucro, por sua vez, é o valor restante após a dedução dos custos operacionais (OPEX + custos indiretos) da receita obtida. Um projeto rentável é aquele que gera receita suficiente para cobrir os custos e ainda deixar um valor excedente, o lucro. 
 
 ### 📐 Como calcular a margem de lucro de um serviço?
@@ -104,7 +118,18 @@ Margem de Lucro (%) = (Lucro Bruto / Receita total) x 100
 
 
 ## ✅ Conclusão
-&emsp;A análise financeira realizada permite compreender com mais clareza a estrutura de custos envolvida no desenvolvimento do projeto Prescript, tanto em seu formato educacional quanto em uma possível aplicação industrial. A distinção entre custos diretos e indiretos, bem como entre despesas de capital (CAPEX) e operacionais (OPEX), fornece uma base sólida para o planejamento e a tomada de decisão em fases futuras do projeto.     
-&emsp;Além disso, a projeção de custos para um ambiente industrial ajuda a antecipar os investimentos necessários para adequação do sistema às exigências técnicas e regulatórias de um hospital, permitindo desde já uma visão estratégica de longo prazo. Com isso, o projeto avança não apenas como uma solução técnica, mas também na analise financeira da aplicação.
+&emsp;A análise financeira realizada permite compreender com mais clareza a estrutura de custos envolvida no desenvolvimento do projeto Prescript, tanto em seu formato educacional quanto em uma possível aplicação industrial.        
+&emsp;No cenário educacional, voltado à prototipagem e aprendizado, os custos foram limitados à compra de componentes acessíveis, totalizando cerca de R$ 13.466,85 (detalhados na seção de "Componentes do Protótipo Educacional").    
+&emsp;Já no cenário industrial, a projeção considera a substituição dos componentes por versões certificadas, além da inclusão de impostos, mão de obra técnica e despesas operacionais. O custo total estimado para 12 meses de implementação inclui:
+
+- CAPEX (aquisição + desenvolvimento): R$ 1.129.495,50  
+
+- OPEX (manutenção e operação): R$ 2.600,00    
+
+- Total do projeto industrial em 12 meses: R$ 1.132.095,50      
+
+&emsp;Essa comparação direta permite visualizar com clareza a evolução da solução: de um protótipo acessível para uma aplicação robusta e realista em ambiente hospitalar. A distinção entre custos diretos e indiretos, bem como entre despesas de capital (CAPEX) e operacionais (OPEX), fornece uma base sólida para o planejamento estratégico do projeto em longo prazo.
+
+
 
 
