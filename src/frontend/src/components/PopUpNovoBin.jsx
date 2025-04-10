@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/PopUpInventario.css";
 
 export default function PopUpInventario({ data, closePopUp, onSave }) {
@@ -12,49 +12,9 @@ export default function PopUpInventario({ data, closePopUp, onSave }) {
     { x: "", y: "", z: "", r: "", j1: "", j2: "", j3: "", j4: "", grip: false, suction: false, move: "" },
   ]);
 
-  useEffect(() => {
-    if (data) {
-      setMedicamento(data.medicamento || "");
-      setLote(data.lote || "");
-      setValidade(data.validade || "");
-      setQuantidade(data.quantidade || "");
-      
-      if (data.posicoes && Array.isArray(data.posicoes)) {
-        const posicoesArray = data.posicoes.slice(0, 3).map((pos) => ({
-          x: pos.x || "",
-          y: pos.y || "",
-          z: pos.z || "",
-          r: pos.r || "",
-          j1: pos.j1 || "",
-          j2: pos.j2 || "",
-          j3: pos.j3 || "",
-          j4: pos.j4 || "",
-          grip: pos.grip || false,
-          suction: pos.suction || false,
-          move: pos.move || "",
-        }));
-        setPosicoes(posicoesArray);
-      }
-    } else {
-      setMedicamento("");
-      setLote("");
-      setValidade("");
-      setQuantidade("");
-      setPosicoes([
-        { x: "", y: "", z: "", r: "", j1: "", j2: "", j3: "", j4: "", grip: false, suction: false, move: "" },
-        { x: "", y: "", z: "", r: "", j1: "", j2: "", j3: "", j4: "", grip: false, suction: false, move: "" },
-        { x: "", y: "", z: "", r: "", j1: "", j2: "", j3: "", j4: "", grip: false, suction: false, move: "" },
-      ]);
-    }
-  }, [data]);
-
   const handlePositionChange = (index, field, value) => {
     const updatedPosicoes = [...posicoes];
-    if (field === "grip" || field === "suction") {
-      updatedPosicoes[index] = { ...updatedPosicoes[index], [field]: value === "true" };
-    } else {
-      updatedPosicoes[index] = { ...updatedPosicoes[index], [field]: value };
-    }
+    updatedPosicoes[index] = { ...updatedPosicoes[index], [field]: value };
     setPosicoes(updatedPosicoes);
   };
 
@@ -108,7 +68,7 @@ export default function PopUpInventario({ data, closePopUp, onSave }) {
     <div className="popup-container">
       <div className="popup-content">
         <div className="popup-header">
-          <h1 className="popup-title">{data ? `Editar Bin ${data.id}` : "Novo Bin"}</h1>
+          <h1 className="popup-title">Novo Bin</h1>
           <button className="close-btn" onClick={closePopUp}>&times;</button>
         </div>
 
@@ -150,7 +110,6 @@ export default function PopUpInventario({ data, closePopUp, onSave }) {
                     required
                   />
                 </div>
-
                 <div className="form-group-info">
                   <label htmlFor="quantidade">Quantidade:</label>
                   <input
@@ -162,19 +121,16 @@ export default function PopUpInventario({ data, closePopUp, onSave }) {
                     required
                   />
                 </div>
-                <div className="button-container">
-                  <button type="submit" className="salvar-btn">Salvar Bin</button>
-                </div>
               </div>
 
               {posicoes.map((position, index) => (
                 <div key={index} className="column">
                   <h2>{`Posições ${index + 1}`}</h2>
-                  {["x", "y", "z", "r", "j1", "j2", "j3", "j4"].map((pos, idx) => (
+                  {["x", "y", "z", "r", "j1", "j2", "j3", "j4", "grip", "suction", "move"].map((pos, idx) => (
                     <div key={idx} className="form-group">
                       <label htmlFor={`pos-${index}-${pos}`}>{pos}:</label>
                       <input
-                        type="number"
+                        type="text"
                         id={`pos-${index}-${pos}`}
                         name={`pos-${index}-${pos}`}
                         value={position[pos]}
@@ -182,44 +138,11 @@ export default function PopUpInventario({ data, closePopUp, onSave }) {
                       />
                     </div>
                   ))}
-                  <div className="form-group">
-                    <label htmlFor={`pos-${index}-grip`}>Grip:</label>
-                    <select
-                      id={`pos-${index}-grip`}
-                      name={`pos-${index}-grip`}
-                      value={position.grip.toString()}
-                      onChange={(e) => handlePositionChange(index, "grip", e.target.value)}
-                    >
-                      <option value="true">True</option>
-                      <option value="false">False</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor={`pos-${index}-suction`}>Suction:</label>
-                    <select
-                      id={`pos-${index}-suction`}
-                      name={`pos-${index}-suction`}
-                      value={position.suction.toString()}
-                      onChange={(e) => handlePositionChange(index, "suction", e.target.value)}
-                    >
-                      <option value="true">True</option>
-                      <option value="false">False</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor={`pos-${index}-move`}>Move:</label>
-                    <select
-                      id={`pos-${index}-move`}
-                      name={`pos-${index}-move`}
-                      value={position.move}
-                      onChange={(e) => handlePositionChange(index, "move", e.target.value)}
-                    >
-                      <option value="move_j">move_j</option>
-                      <option value="move_l">move_l</option>
-                    </select>
-                  </div>
                 </div>
               ))}
+            </div>
+            <div className="button-container">
+              <button type="submit" className="salvar-btn">Salvar Bin</button>
             </div>
           </form>
         </div>

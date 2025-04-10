@@ -14,25 +14,18 @@ import controllers.logs_controller as logs_blueprint
 import controllers.sensores_controller as sensores_blueprint
 import controllers.devolucao_controller as devolucao_blueprint
 
-
-
-# Inicializando a aplicação
 app = Flask(__name__)
 
-# Configurações da aplicação
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config.from_object(ApplicationConfig)
 
-# Inicializando as extensões
 bcrypt = Bcrypt(app)
 CORS(app, supports_credentials=True)
 server_session = Session(app)
 
-# Inicializando o banco de dados
 db.init_app(app)
 
-# Registrando blueprints
 app.register_blueprint(auth_blueprint.auth_blueprint, url_prefix="/auth")
 app.register_blueprint(fita_blueprint.fita_blueprint, url_prefix="/api")
 app.register_blueprint(qrcode_blueprint.qrcode_blueprint)
@@ -41,10 +34,10 @@ app.register_blueprint(historico_blueprint.historico_blueprint, url_prefix="/api
 app.register_blueprint(logs_blueprint.logs_blueprint, url_prefix="/api")
 app.register_blueprint(sensores_blueprint.sensors_blueprint, url_prefix="/api")
 app.register_blueprint(devolucao_blueprint.devolucao_blueprint, url_prefix="/api")
-# Função para criar o banco de dados
-with app.app_context():
-    db.create_all()  # Criar todas as tabelas no banco
+app.register_blueprint(inventory_blueprint.inventory_blueprint, url_prefix="/api")
 
-# Executando a aplicação
+with app.app_context():
+    db.create_all() 
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)

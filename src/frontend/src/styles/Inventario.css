@@ -1,39 +1,28 @@
 .inventario {
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    background-image: url(../assets/fundo.svg);
-    background-size: cover;
-    background-position: center;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 120vh;
-    max-height: 120vh;
-    overflow-y: auto;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-image: url(../assets/fundo.svg);
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .inventario-content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;  /* Alinha os bins no início da linha */
+  justify-content: flex-start;
   background: #f0f0f0;
   padding: 58px 50px;
   border-radius: 10px;
   font-family: "Roboto", sans-serif;
   align-items: center;
   width: 92%;
-  gap: 50px;  /* Espaçamento entre os bins */
+  gap: 50px;
 }
-
-.conteudo {
-    width: 80vw;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 25px;
-    margin: 15px 0 30px 0; 
-}
-
-
