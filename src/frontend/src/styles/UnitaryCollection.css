@@ -72,13 +72,13 @@
     transition: opacity 0.3s ease;
 }
 
-.form-group {
+.form-group-unitary {
     margin-bottom: 20px;
     position: relative;
     transition: all 0.3s ease;
 }
 
-.form-group label {
+.form-group-unitary label {
     display: block;
     margin-bottom: 5px;
     font-size: 14px;
@@ -86,11 +86,11 @@
     color: white;
 }
 
-.form-group label span {
+.form-group-unitary label span {
     color: #5CE1E6;
 }
 
-.form-group input {
+.form-group-unitary input {
     width: 100%;
     padding-left: 40px;
     padding: 10px;
@@ -102,12 +102,12 @@
     transition: background-color 0.3s ease, border 0.3s ease;
 }
 
-.form-group input:focus {
+.form-group-unitary input:focus {
     outline: none;
     border: 1px solid #5CE1E6;
 }
 
-.form-group input::placeholder {
+.form-group-unitary input::placeholder {
     color: rgba(0, 0, 0, 0.3);
     font-size: 14px;
 }
@@ -117,7 +117,7 @@
     transition: all 0.3s ease;
 }
 
-.form-group .input-icon {
+.form-group-unitary .input-icon {
     background-color: #373643;
     width: 60px;
     height: 50px;
@@ -129,9 +129,15 @@
     justify-content: center;
 }
 
-.form-group .input-icon img {
+.form-group-unitary .input-icon img {
     height: 25px;
     width: auto;
+}
+
+.unitary-button-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
 }
 
 .submit-btn {

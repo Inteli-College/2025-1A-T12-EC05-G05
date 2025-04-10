@@ -26,3 +26,15 @@ def atualizar_fita(fita_id):
 def criar_fita():
     dados = request.get_json()
     return fita_service.criar_fita(dados)
+
+@fita_blueprint.route("/fitas/<int:fita_id>/registrarqr", methods=["PATCH"])
+@cross_origin(supports_credentials=True)
+def registrar_qrcode_fita(fita_id):
+    dados = request.get_json()
+    qr_code = dados.get("qr_code")
+
+    if not qr_code:
+        return jsonify({"error": "qr_code não fornecido"}), 400
+
+    return fita_service.registrar_qrcode(fita_id, qr_code)
+

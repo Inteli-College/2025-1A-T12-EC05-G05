@@ -13,7 +13,6 @@ export default function PopUpFitas({ data, closePopUp }) {
     return (
         <div className="popup-container">
             <div className="popup-content">
-                {/* Cabeçalho do Popup */}
                 <div className="popup-header">
                     <div className="popup-header-content">
                         <h1 className="popup-title">{nome || "Nome não disponível"}</h1>
@@ -22,7 +21,6 @@ export default function PopUpFitas({ data, closePopUp }) {
                     <button className="close-btn" onClick={closePopUp}>&times;</button>
                 </div>
 
-                {/* Corpo do Popup */}
                 <div className="popup-body">
                     <div className="patient-info">
                         <div>
@@ -43,7 +41,6 @@ export default function PopUpFitas({ data, closePopUp }) {
                         </div>
                     </div>
 
-                    {/* Medicamentos da Fita */}
                     <div className="medicamentos-container">
                         <div className={`medicamentos-header ${medicamentosDisponiveis ? "com-scroll" : ""}`}>
                             <h2>Medicamentos da Fita</h2>

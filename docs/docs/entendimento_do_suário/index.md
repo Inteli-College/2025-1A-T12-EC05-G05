@@ -23,7 +23,7 @@ sidebar_position: 4
 ## 🚶‍♀️‍➡️Jornada do Usuário
 
 &emsp;Segundo Gerry McGovern, o mapeamento da jornada do usuário é essencial para compreender os pontos de contato entre o usuário e o produto, permitindo a identificação de suas necessidades, expectativas e pensamentos ao longo de cada fase de interação. Esse processo é fundamental para orientar no desenvolvimento do projeto, garantindo que a solução atenda as demandas do usuário e proporcione uma boa experiência.  
-&emsp;Com isso em mente, foi desenvolvido um template para mapear a jornada do usuário das personas envolvidas no projeto: o farmacêutico e a enfermeira. Ambas as jornadas incluem o cenário, as expectativas, as oportunidades e as responsabilidades de cada persona.
+&emsp;Com isso em mente, foi desenvolvido um _template_ para mapear a jornada do usuário das personas envolvidas no projeto: o farmacêutico e a enfermeira. Ambas as jornadas incluem o cenário, as expectativas, as oportunidades e as responsabilidades de cada persona.
 
 - Cenário: Contextualiza o ambiente e as situações que a persona enfrenta.
 - Expectativas: Aponta as expectativas que a persona tem ao utilizar a solução.

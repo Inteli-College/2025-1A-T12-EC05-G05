@@ -5,11 +5,11 @@ sidebar_position: 2
 ---
  
 
-&emsp; Para direcionar um projeto de maneira eficiente, é essencial, antes de tudo, compreender de forma integral o problema, o cenário e o usuário. Por isso, iniciamos com uma pesquisa exploratória e uma pesquisa desk, etapa que chamamos de **Imersão Preliminar**.
+&emsp; Para direcionar um projeto de maneira eficiente, é essencial, antes de tudo, compreender de forma integral o problema, o cenário e o usuário. Por isso, iniciamos com uma pesquisa exploratória e uma _pesquisa desk_, etapa que chamamos de **Imersão Preliminar**.
 
 ## 📝 Pesquisa Exploratória
 
-&emsp; Para a pesquisa exploratória após o recebimento do Tapi, marcamos uma conversa por vídeo com o nosso parceiro de projeto onde junto aos outros grupos pudemos esclarecer algumas dúvidas.
+&emsp; Para a pesquisa exploratória após o recebimento do Tapi, marcamos uma conversa por vídeo com o nosso parceiro de projeto, onde, junto aos outros grupos, pudemos esclarecer algumas dúvidas.
 
 &emsp; Essa pesquisa foi conduzida como uma entrevista de perguntas e respostas, podemos ver todas elas na tabela abaixo:
 

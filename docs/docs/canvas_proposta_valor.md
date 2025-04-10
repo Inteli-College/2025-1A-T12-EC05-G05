@@ -6,13 +6,13 @@ sidebar_position: 2
 
 
 
-&emsp;O **Canvas Proposta de Valor** é uma ferramenta visual que auxilia na compreensão da relação entre a proposta de valor de uma empresa e as necessidades e desejos de seus clientes (Osterwalder _et al._, 2014). Ele divide essa relação em dois blocos principais: o **Perfil do Cliente** e o **Mapa de Valor**.
+&emsp;O **Canvas Proposta de Valor** é uma ferramenta visual que auxilia na compreensão da relação entre a proposta de valor de uma empresa, e, as necessidades e desejos de seus clientes (Osterwalder _et al._, 2014). Ele divide essa relação em dois blocos principais: o **Perfil do Cliente** e o **Mapa de Valor**.
 
 ## 🧩 Definições
 :::info
 <ul>
 <li><b>Perfil do Cliente:</b> detalha as tarefas, dores e ganhos do cliente, ou seja, o que ele busca realizar, os problemas que enfrenta e os benefícios que espera obter.</li>
-<li><b>Mapa de Valor:</b> descreve os produtos e serviços oferecidos, os aliviadores de dores e os criadores de ganhos, mostrando como a empresa pretende solucionar os problemas do cliente e gerar valor para ele.</li>
+<li><b>Mapa de Valor:</b> descreve os produtos e serviços oferecidos, os aliviadores de dores e os criadores de ganhos, mostrando como a empresa solucionará os problemas do cliente e gerar valor para ele.</li>
 </ul>
 :::
 
@@ -23,13 +23,13 @@ sidebar_position: 2
 &emsp;Com base nas definições apresentadas anteriormente, foi desenvolvido um Canvas Proposta de Valor para sintetizar o valor que se quer agregar com a solução desenvolvida. Ele pode ser visualizado abaixo:
 
 <div align='center'>
-<sub>Figura 1 - Canvas Proposta de Valor</sub>
+<sub>Figura 1 - Canvas Proposta de Valor.</sub>
 </div>
 
 <img src="../img/canvas_proposta_valor.png"/>
 
 <div align ='center'>
-<sup>Fonte: Material produzido pelos autores (2025)</sup>
+<sup>Fonte: Material produzido pelos autores (2025).</sup>
 </div>
 
 &emsp;Este Canvas Proposta de Valor serve como um guia para o **_Prescript_**, garantindo que ele esteja sempre alinhado com as necessidades dos profissionais de saúde, tanto os **farmacêuticos** quanto as **enfermeiras**. Ele destaca de maneira objetiva e direta as funcionalidades essenciais do sistema, como a **automação inteligente da separação de medicamentos**, a **rastreabilidade dos medicamentos** e a **redução dos custos operacionais**.

@@ -1,0 +1,44 @@
+.bin-content {
+  background: #373743;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 171px;
+  height: 180px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bin-content:hover {
+  background: #2f2f36; 
+  transform: scale(1.05);
+}
+
+.bin-body {
+  margin-top: 10px;
+}
+
+.bin-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.bin-body h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.bin-body p {
+  font-size: 16px;
+  color: #ffffff;
+  margin-top: 10px;
+}

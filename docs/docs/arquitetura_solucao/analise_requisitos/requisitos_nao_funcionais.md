@@ -11,20 +11,16 @@ sidebar_position: 2
 ## 📋 Lista de Requisitos Não Funcionais 
 | RNF# | Descrição | Categoria | 
 |------|-----------|-----------| 
-| RNF01 | Deve haver um pop-up para questionar a ociosidade do usuário após 5 minutos de inatividade. | Usabilidade |
-| RNF02 | Caso o pop-up não receba interação dentro de 1 minuto após seu surgimento, deve haver um logout automático do usuário. | Usabilidade |
-| RNF03 | O robô deve conseguir coletar cada componente necessário para a fita em um tempo menor que 30 segundos. | Desempenho |
-
-
+| RNF01 | O robô deve conseguir coletar cada componente necessário para a fita em um tempo menor que 30 segundos. | Desempenho |
+| RNF02 | O sistema deve ter um tempo de resposta menor do que 30 segundos para enviar os comandos para o robô. | Disponibilidade | 
+| RNF03 | O sistema deve garantir uma precisão de 98% na coleta dos componentes. | Confiabilidade |
 <details> 
     <summary>🔍 Ver mais requisitos</summary> 
     | RNF# | Descrição | Categoria | 
-    |------|-----------|-----------| 
-    | RNF04 | O sistema deve ter um tempo de resposta menor do que 30 segundos para enviar os comandos para o robô. | Disponibilidade | 
-    | RNF05 | O sistema deve garantir uma precisão de 98% na coleta dos componentes. | Confiabilidade | 
-    | RNF06 | O sistema deve garantir uma precisão de 98% na devolução dos componentes em seus respectivos bins. | Confiabilidade | 
-    | RNF07 | O tempo de requisição não deve exceder 750 milissegundos. | Desempenho | 
-    | RNF08 | O software deve apresentar o histórico de fitas médicas dos últimos 2 meses. | Usabilidade | 
+    |------|-----------|-----------|  
+    | RNF04 | O tempo de requisição não deve exceder 750 milissegundos. | Desempenho | 
+    | RNF05 | O software deve apresentar o histórico de fitas médicas dos últimos 2 meses. | Usabilidade |
+    | RNF06 | O sistema deve armazenar os registros de devolução de fitas por pelo menos 6 meses para fins de auditoria. | Manutenibilidade | 
 </details> 
     
 ## ✅ Conclusão 

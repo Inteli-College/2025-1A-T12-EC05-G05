@@ -31,6 +31,20 @@ with open(file_path_med, "r") as file:
 deliver_value = 1
 add_height = 0
 
+def enviar_log(responsavel: str, descricao: str, status: str):
+    url = "http://localhost:5000/api/logs"
+    payload = {
+        "responsavel": responsavel,
+        "descricao": descricao,
+        "status": status
+    }
+    
+    try:
+        response = requests.post(url, json=payload)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"Erro na requisição: {e}")
+        
 def identidade_visual():
     print(colored("""
   _____                         _       _   
@@ -101,7 +115,6 @@ def buscar_logs_usuario(conn, nome):
         if cursor:
             cursor.close()
 
-#Login
 def login(conn):
     time.sleep(1)
     print("\n👤 LOGIN")
@@ -118,7 +131,6 @@ def login(conn):
         print("⚠️ Acesso negado, tente novamente ⚠️")
         time.sleep(1)
 
-# Menu inicial
 def menu_inicial(conn, nome):
     while True:
         time.sleep(1)
@@ -154,8 +166,6 @@ def menu_inicial(conn, nome):
             time.sleep(1)
             menu_inicial(conn,)
 
-    
-# Menu de separação --> ADICIONAR COISAS DO ROBO
 def menu_de_separacao(conn, nome):
     medicamentos = {
         '1': 'Ibuprofeno',
@@ -288,6 +298,7 @@ def request_bip(timeout: int = 10):
         return scanned_medicine
     except requests.exceptions.RequestException as e:
         print(f"⏳ Falha ao obter bipagem: {e}")
+        enviar_log("1", "15", "0")
         return None
 
 def execute_movement(
@@ -320,7 +331,24 @@ def validate(bin_n):
     
     else:
         print("⚠️ Medicamento inválido! Retornando ao home.")
+        enviar_log("1", "18", "1")
         return False
+
+def ir_sensor(timeout: int=10):
+    print("\U0001F551 Verificando coleta")
+    try:
+        response = requests.get("http://localhost:5000/api/sensores", timeout=timeout)
+        response.raise_for_status()
+        status_coleta = response.json().get("caught")
+
+        print(f"\U0001F4E1 Estado sensor IR: {status_coleta}")
+        if status_coleta == "ALTO":
+            return False
+        elif status_coleta == "BAIXO":
+            return True
+    except requests.exceptions.RequestException as e:
+        print(f"⏳ Falha ao obter leitura: {e}")
+        return None
 
 def check_suction(
     position: Annotated[Position, typer.Argument(help="Position data to check if suction should be enabled or disabled.")]
@@ -342,11 +370,17 @@ def take_medicine(
     
     first_position = positions[0]
     execute_movement(first_position)
-    
+
+    done = False
     if validate(bin_n):
-        for position in positions[1:]:
-            check_suction(position)
-            execute_movement(position)
+        while (not done):
+            for position in positions[1:]:
+                check_suction(position)
+                execute_movement(position)    
+            
+            time.sleep(1.5)
+            done = ir_sensor()
+                
         deliver()
 
 def deliver():
@@ -365,6 +399,51 @@ def deliver():
         else:
             execute_movement(position, add_height)
     deliver_value += 1
+    enviar_log("1", "3", "1")
+
+def devolution():
+    positions = data.get("devolution", [])
+    for positions in positions:
+        check_suction(positions)
+        execute_movement(positions)
+
+def validate_fita(fita):
+
+    wait_before_suction()
+    print("\U0001F551 Solicitando bipagem via HTTP...")
+    try:
+        response = requests.get("http://localhost:5000/qrcode-response")
+        response.raise_for_status()
+        scanned_medicine = response.json()
+        if scanned_medicine.get("qr_code", "").startswith("A"):
+            patch_url = f"http://localhost:5000/api/fitas/{fita}/registrarqr"
+            response = requests.patch(patch_url, json={"qr_code": scanned_medicine.get("qr_code")})
+            print({"qr_code": scanned_medicine.get("qr_code")})
+            print(f"✅ Fita {scanned_medicine.get("qr_code")} validada. Descendo para coletar...")
+            return True
+        else:
+            print("⚠️ Fita inválida! Retornando ao home.")
+
+            return False
+    except requests.exceptions.RequestException as e:
+        print(f"⏳ Falha ao obter bipagem: {e}")
+        return None
+
+def get_qrcode(fita):
+    positions = data.get("qrcode", [])    
+    first_position = positions[0]
+    execute_movement(first_position)
+    if validate_fita(fita):
+        for position in  positions[1:]:
+            check_suction(position)
+            execute_movement(position)
+        delivery_qrcode()
+    
+def delivery_qrcode():
+    positions = data.get("delivery_qrcode", [])
+    for position in positions:
+            check_suction(position)
+            execute_movement(position)
 
 @cli.command()
 def collect_bin(
@@ -378,9 +457,11 @@ def collect_bin(
     for bin_num in range(1, 6):
         for i in range(bin_counts[bin_num]):
             take_medicine(f"bin_{bin_num}")
+            
+    enviar_log("1", "4", "1")
 
 @cli.command()
-def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos bins a coletar")]):
+def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos bins a coletar")], fita: Annotated[str, typer.Argument(help="Fita referente a essa coleta")]):
     global deliver_value
     deliver_value = 1
     main()
@@ -388,7 +469,9 @@ def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos
     ordered_list = sorted(input_list)
     for bin_num in ordered_list:
         take_medicine(f'bin_{bin_num}', bin_num)
+    get_qrcode(fita)
     execute_movement(positions[0])
+    enviar_log("1", "4", "1")
 
 def main():
     available_ports = list_ports.comports()
@@ -410,4 +493,4 @@ if __name__ == "__main__":
      
     if conn:
         login(conn)
-        conn.close()  # Fecha a conexão ao final do programa
+        conn.close() 
