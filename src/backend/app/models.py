@@ -285,11 +285,7 @@ def popular_banco():
                     "Falha na Leitura de QR",
                     "Alerta de Estoque Baixo"
                 ])
-                detalhes = random.choice([
-                    "Concluído",
-                    "Em Progresso",
-                ])
-                
+                detalhes = random.choice(["Concluído", "Em Progresso"])
                 historico = Historico(
                     nome=evento,
                     descricao=f"{evento}: {detalhes}",
@@ -297,7 +293,31 @@ def popular_banco():
                 )
                 db.session.add(historico)
             db.session.flush()
-            
+
+            # ✅ Fita de teste com 3 remédios para devolução
+            fita_teste = Fita(
+                qr_code="FITA-DEV123",
+                hc=9999,
+                id_prescricao=999,
+                status="entregue",
+                paciente_id=pacientes_criados[0].id
+            )
+            db.session.add(fita_teste)
+            db.session.flush()
+
+            remedios_de_teste = [
+                Remedio(nome_do_remedio_com_gramagem="Amoxicilina 500mg", qr_code="QR-AMOX-500", validade=datetime(2026, 5, 10)),
+                Remedio(nome_do_remedio_com_gramagem="Losartana 50mg", qr_code="QR-LOS-50", validade=datetime(2026, 8, 20)),
+                Remedio(nome_do_remedio_com_gramagem="Omeprazol 20mg", qr_code="QR-OME-20", validade=datetime(2026, 7, 5))
+            ]
+            for r in remedios_de_teste:
+                db.session.add(r)
+            db.session.flush()
+
+            for r in remedios_de_teste:
+                assoc = FitaRemedio(fita_id=fita_teste.id, remedio_id=r.id)
+                db.session.add(assoc)
+
             db.session.commit()
             print(f"Usuários: {Usuario.query.count()}")
             print(f"Pacientes: {Paciente.query.count()}")
@@ -306,10 +326,11 @@ def popular_banco():
             print(f"Logs: {Log.query.count()}")
             print(f"Históricos: {Historico.query.count()}")
             print(f"Remédios (associações): {FitaRemedio.query.count()}")
-            print("Banco de dados populado com sucesso!")
+            print("✅ Banco de dados populado com sucesso!")
+
         except Exception as e:
             db.session.rollback()
-            print(f"Erro ao popular banco: {e}")
+            print(f"❌ Erro ao popular banco: {e}")
             import traceback
             traceback.print_exc()
 
