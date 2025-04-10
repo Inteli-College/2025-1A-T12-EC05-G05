@@ -58,7 +58,6 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 - **A seguir**: aguardando início de separação.
 - **Em progresso**: sendo separadas pelo robô.
 - **Prontas**: fitas já separadas.
-
 🔹 Permite selecionar uma e colocar em separação.
 🔹 Apresenta status visuais e indicadores de medicamentos pendentes.
 
@@ -109,7 +108,7 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
   - **Dropdown de medicamentos** disponíveis para separação manual.  
   - **Dropdown de enfermeiros** responsáveis pela administração.  
 
-🔹 Usado em situações de exceção onde a coleta precisa ser feita fora do fluxo automatizado.
+🔹  Coleta unitária disponível nos modos manual e automatizado.
 
 ---
 
@@ -223,7 +222,7 @@ O objetivo do protótipo é **validar a experiência completa do usuário** com 
 
 - Visualização de **filtros de fitas por status**: A seguir, Em progresso, Pronta.
 - Avanço de status para fitas colocadas em produção.
-- **Card detalhado da fita**, com QR code e informações dos medicamentos associados.
+- **Card detalhado da fita**, com informações dos medicamentos associados, além das informações como nome do paciente e leito.
 - **Tabela de histórico** com possibilidade de exportação filtrada por data.
 - **Tabela de logs do sistema**, com registros de operação e falhas ocorridas.
 - Componente de **pop-up de coleta unitária** com formulário dinâmico.

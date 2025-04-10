@@ -90,7 +90,7 @@ O **frontend** fornece uma interface intuitiva para os **farmacêuticos** intera
 
 <div align="center">
 
-  <sub>Figura 1 - Diagrama de Blocos atualizada</sub>
+  <sub>Figura 2 - Diagrama de Blocos atualizada</sub>
 
   <img src="../../img/diagrama_de_blocos.png"/>
 
@@ -102,13 +102,14 @@ O **frontend** fornece uma interface intuitiva para os **farmacêuticos** intera
  ## 📌 Interações e Tipos de Comunicação
 
  &emsp;Para garantir a coordenação eficiente entre os componentes do sistema, diferentes tipos de comunicação foram implementados de acordo com as necessidades de cada dispositivo. O **braço robótico** e o **leitor de QR** Code se comunicam com o minicomputador por meio de comunicação serial, permitindo uma troca de dados estruturada. Essa comunicação é essencial para enviar comandos específicos — como movimentar o braço para um determinado bin ou iniciar a leitura de um QR Code — e receber respostas confirmando a execução das ações.
+
  &emsp;Já o **sensor infravermelho** está conectado diretamente ao Raspberry Pi e atua como um componente de detecção simples, enviando sinais ao minicomputador para indicar se há ou não um objeto (neste caso, o medicamento) na garra do braço robótico. Ele não realiza uma comunicação estruturada como os dispositivos seriais, mas envia um sinal digital direto que é interpretado pelo Raspberry. Dessa forma, o minicomputador consegue identificar se o braço robótico conseguiu pegar corretamente o medicamento, contribuindo para o controle e a validação das ações do sistema.
 
 
 
 ## ✅ Conclusão
-O sistema automatizado de separação de medicamentos integra diversos componentes para otimizar o fluxo de trabalho da farmácia hospitalar, garantindo **precisão, segurança e agilidade** no manuseio dos medicamentos.
+&emsp;O sistema automatizado de separação de medicamentos integra diversos componentes para otimizar o fluxo de trabalho da farmácia hospitalar, garantindo **precisão, segurança e agilidade** no manuseio dos medicamentos.
 
-A presença do **Raspberry Pi**, dos sensores **infravermelhos** e do **Leitor de QR Code** aprimoram a segurança e a confiabilidade do sistema, reduzindo falhas humanas e garantindo que os medicamentos sejam corretamente identificados e entregues.
+&emsp;A presença do **Raspberry Pi**, dos sensores **infravermelhos** e do **Leitor de QR Code** aprimoram a segurança e a confiabilidade do sistema, reduzindo falhas humanas e garantindo que os medicamentos sejam corretamente identificados e entregues.
 
 

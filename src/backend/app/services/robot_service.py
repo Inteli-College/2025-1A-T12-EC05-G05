@@ -12,9 +12,9 @@ class RobotService:
             raise Exception("Erro ao mover o robô")
     
     @staticmethod
-    def collect_medicine(bin_list):
+    def collect_medicine(bin_list, fita):
         try:
-            collect_list(bin_list)
+            collect_list(bin_list, fita)
             print(f"Coletando os medicamentos dos bins: {', '.join(bin_list)}")
         except subprocess.CalledProcessError as e:
             print(f"Erro ao coletar medicamento: {e}")

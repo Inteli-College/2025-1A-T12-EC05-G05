@@ -5,18 +5,60 @@ import "../styles/Inventario.css";
 import AddBin from "../components/AddBin";
 import PopUpInventario from "../components/PopUpInventario";
 import LoadingModal from "../components/LoadingModal";
+import axios from "axios";
 
 export default function Inventario() {
   const [loading, setLoading] = useState(true);
   const [showPopUp, setShowPopUp] = useState(false);
+  const [bins, setBins] = useState([]);
+  const [currentBin, setCurrentBin] = useState(null);
 
-  const togglePopUp = () => setShowPopUp(!showPopUp);
+  const closePopUp = () => {
+    setShowPopUp(false);
+    setCurrentBin(null);
+  };
+
+  const openBinPopup = (bin) => {
+    setCurrentBin(bin);
+    setShowPopUp(true);
+  };
+
+  const openNewBinPopup = () => {
+    setCurrentBin(null);
+    setShowPopUp(true);
+  };
+
+  const saveBin = async (binData) => {
+    try {
+      setLoading(true);
+
+      if (binData.id) {
+        await axios.patch(`http://localhost:5000/api/inventory/bins/${binData.id}`, binData);
+        setBins(bins.map(bin => bin.id === binData.id ? binData : bin));
+      } 
+      else {
+        const response = await axios.post("http://localhost:5000/api/inventory/bins", binData);
+        setBins([...bins, response.data]);
+      }
+
+      closePopUp();
+    } catch (error) {
+      console.error("Error saving bin:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
-      setTimeout(() => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/inventory/bins");
+        setBins(response.data);
+      } catch (error) {
+        console.error("Error fetching bins:", error);
+      } finally {
         setLoading(false);
-      }, 2000);
+      }
     };
 
     fetchData();
@@ -25,49 +67,32 @@ export default function Inventario() {
   return (
     <div className="inventario">
       <div className="conteudo">
-        <PageHeader title="Inventário" />
-
         {loading ? (
           <LoadingModal />
         ) : (
-          <div className="inventario-content">
-            <Bin
-              medicamento="Ibuprofeno 400mg"
-              validade="2025-12-31"
-              lote="123456"
-              quantidade="10"
-            />
-            <Bin
-              medicamento="Dorflex 300mg"
-              validade="2025-12-31"
-              lote="123456"
-              quantidade="10"
-            />
-            <Bin
-              medicamento="Buscopan 10mg"
-              validade="2025-12-31"
-              lote="123456"
-              quantidade="10"
-            />
-            <Bin
-              medicamento="Dipirona 1g"
-              validade="2025-12-31"
-              lote="123456"
-              quantidade="10"
-            />
-            <Bin
-              medicamento="Paracetamol 500mg"
-              validade="2025-12-31"
-              lote="123456"
-              quantidade="10"
-            />
-            <AddBin />
-            <div>
-              <button onClick={togglePopUp}>Abrir Inventário</button>
-
-              {showPopUp && <PopUpInventario closePopUp={togglePopUp} />}
+          <>
+            <PageHeader title="Inventário" />
+            <div className="inventario-content">
+              {bins.map((bin) => (
+                <Bin
+                  key={bin.id}
+                  medicamento={bin.medicamento}
+                  validade={bin.validade}
+                  lote={bin.lote}
+                  quantidade={bin.quantidade}
+                  onClick={() => openBinPopup(bin)}
+                />
+              ))}
+              <AddBin onClick={openNewBinPopup} />
             </div>
-          </div>
+          </>
+        )}
+        {showPopUp && (
+          <PopUpInventario 
+            data={currentBin} 
+            closePopUp={closePopUp} 
+            onSave={saveBin}
+          />
         )}
       </div>
     </div>

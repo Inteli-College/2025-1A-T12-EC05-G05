@@ -12,9 +12,7 @@ export default function Historico() {
     const [fitasPorData, setFitasPorData] = useState({});
     const [loading, setLoading] = useState(true);
 
-    const formatarData = (data) => {
-        return data.toISOString().split("T")[0];
-    };
+    const formatarData = (data) => data.toISOString().split("T")[0];
 
     useEffect(() => {
         const fetchHistorico = async () => {
@@ -51,11 +49,19 @@ export default function Historico() {
         link.click();
         document.body.removeChild(link);
         httpClient.post("http://localhost:5000/api/logs", {
-            responsavel:"0",
-            descricao:"14",
-            status:"1",
+            responsavel: "0",
+            descricao: "14",
+            status: "1",
         });
     };
+
+    if (loading) {
+        return (
+            <div className="historico">
+                <LoadingModal />
+            </div>
+        );
+    }
 
     return (
         <div className="historico">
@@ -73,9 +79,7 @@ export default function Historico() {
                                 <span className="total-fitas">Total de fitas: {fitasEntregues.length}</span>
                             </div>
                             <div className="fitas-lista">
-                                {loading ? (
-                                    <LoadingModal />
-                                ) : fitasEntregues.length > 0 ? (
+                                {fitasEntregues.length > 0 ? (
                                     fitasEntregues.map((fita, index) => (
                                         <button 
                                             key={index} 

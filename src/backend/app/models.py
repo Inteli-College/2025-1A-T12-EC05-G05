@@ -1,9 +1,13 @@
 import os
 import random
+import json
 from datetime import datetime, timedelta, timezone
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+
+with open(os.path.join(os.path.dirname(__file__), 'initialConfig.json'), 'r') as f:
+    initialConfig = json.load(f)
 
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -15,6 +19,14 @@ app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(instance_path,
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+
+CONFIG_FILE_PATH = os.path.join(os.path.dirname(__file__), 'services', 'dobot', 'config.json')
+config_dir = os.path.dirname(CONFIG_FILE_PATH)
+if not os.path.exists(config_dir):
+    os.makedirs(config_dir)
+if not os.path.exists(CONFIG_FILE_PATH):
+    with open(CONFIG_FILE_PATH, 'w') as f:
+        json.dump(initialConfig, f, indent=4)
 
 class Historico(db.Model):
     __tablename__ = "historico"
@@ -47,7 +59,7 @@ class Bin(db.Model):
     __tablename__ = "bins"
     id = db.Column(db.Integer, primary_key=True)
     id_remedio = db.Column(db.Integer, db.ForeignKey("remedios.id"), nullable=False)
-    localizacao = db.Column(db.Float, nullable=False)
+    lote = db.Column(db.Integer, nullable=False)
     quantidade = db.Column(db.Integer, nullable=False)
 
 class FitaRemedio(db.Model):
@@ -86,6 +98,20 @@ class Log(db.Model):
     responsavel = db.Column(db.Boolean, nullable=False)
     paciente_id = db.Column(db.Integer, db.ForeignKey('pacientes.id'))
     status = db.Column(db.Integer, nullable=True)
+
+class ConfigManager:
+    def __init__(self):
+        if not os.path.exists(CONFIG_FILE_PATH):
+            with open(CONFIG_FILE_PATH, 'w') as f:
+                json.dump(initialConfig, f, indent=4)
+
+    def save_config(self, config):
+        with open(CONFIG_FILE_PATH, 'w') as f:
+            json.dump(config, f, indent=4)
+        return config
+
+    def reset_config(self):
+        return self.save_config(initialConfig)
 
 def popular_banco():
     with app.app_context():
@@ -181,14 +207,14 @@ def popular_banco():
             db.session.flush()
 
             for remedio in remedios_criados:
-                for i in range(1, 4):
+                for i in range(1):
                     bin = Bin(
                         id_remedio=remedio.id,
-                        localizacao=float(f"{remedio.id}.{i}"),
+                        lote=random.randint(999, 99999),
                         quantidade=random.randint(10, 100)
                     )
                     db.session.add(bin)
-            db.session.flush()
+                    db.session.flush()
 
             status_options = ["pendente", "em_progresso", "separada", "em_uso", "finalizada", "atrasada", "pausada"]
             fitas_data = [
@@ -250,7 +276,7 @@ def popular_banco():
                 "alerta de manutenção",
                 "não conseguiu ler o QRCode",
                 "usuário fez login",
-                "usuário fez logout",
+                "usuário fez logout"
             ]
             
             descricoes_criadas = []
@@ -285,19 +311,40 @@ def popular_banco():
                     "Falha na Leitura de QR",
                     "Alerta de Estoque Baixo"
                 ])
-                detalhes = random.choice([
-                    "Concluído",
-                    "Em Progresso",
-                ])
-                
+                detalhes = random.choice(["Concluído", "Em Progresso"])
                 historico = Historico(
                     nome=evento,
                     descricao=f"{evento}: {detalhes}",
                     data_registro=historico_date
                 )
                 db.session.add(historico)
+
             db.session.flush()
-            
+
+            # ✅ Fita de teste com 3 remédios para devolução
+            fita_teste = Fita(
+                qr_code="FITA-DEV123",
+                hc=9999,
+                id_prescricao=999,
+                status="entregue",
+                paciente_id=pacientes_criados[0].id
+            )
+            db.session.add(fita_teste)
+            db.session.flush()
+
+            remedios_de_teste = [
+                Remedio(nome_do_remedio_com_gramagem="Amoxicilina 500mg", qr_code="QR-AMOX-500", validade=datetime(2026, 5, 10)),
+                Remedio(nome_do_remedio_com_gramagem="Losartana 50mg", qr_code="QR-LOS-50", validade=datetime(2026, 8, 20)),
+                Remedio(nome_do_remedio_com_gramagem="Omeprazol 20mg", qr_code="QR-OME-20", validade=datetime(2026, 7, 5))
+            ]
+            for r in remedios_de_teste:
+                db.session.add(r)
+            db.session.flush()
+
+            for r in remedios_de_teste:
+                assoc = FitaRemedio(fita_id=fita_teste.id, remedio_id=r.id)
+                db.session.add(assoc)
+
             db.session.commit()
             print(f"Usuários: {Usuario.query.count()}")
             print(f"Pacientes: {Paciente.query.count()}")
@@ -306,12 +353,15 @@ def popular_banco():
             print(f"Logs: {Log.query.count()}")
             print(f"Históricos: {Historico.query.count()}")
             print(f"Remédios (associações): {FitaRemedio.query.count()}")
-            print("Banco de dados populado com sucesso!")
+            print("✅ Banco de dados populado com sucesso!")
+
         except Exception as e:
             db.session.rollback()
-            print(f"Erro ao popular banco: {e}")
+            print(f"❌ Erro ao popular banco: {e}")
             import traceback
             traceback.print_exc()
 
 if __name__ == "__main__":
+    config_manager = ConfigManager()
+    config_manager.reset_config()
     popular_banco()

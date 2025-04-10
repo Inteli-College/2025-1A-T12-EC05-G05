@@ -22,9 +22,9 @@ export default function Logs() {
                 const response = await axios.get("http://127.0.0.1:5000/api/logs");
                 setLogs(response.data.logs);
                 setFilteredLogs(response.data.logs);
-                setLoading(false);
             } catch (error) {
                 console.error("Erro ao carregar os logs:", error);
+            } finally {
                 setLoading(false);
             }
         };
@@ -54,27 +54,30 @@ export default function Logs() {
     return (
         <div className="logs">
             <div className="conteudo-logs">
-                <PageHeader title="Histórico" />
+                <PageHeader title="Logs" />
                 <Filter onFilterChange={handleFilterChange} ref={filterRef} />
-                {loading ? <LoadingModal /> : null}
-                <GridTable
-                    title="Logs"
-                    data={currentLogs}
-                    route="/logs"
-                    columns={[
-                        { title: "Nome", key: "nome" },
-                        { title: "Descrição", key: "descricao" },
-                        { title: "Tipo", key: "tipo" },
-                        { title: "Status", key: "status" },
-                        { title: "Data", key: "data" }
-                    ]}
-                />
-                <Pagination
-                    totalItems={totalLogs}
-                    itemsPerPage={logsPerPage}
-                    currentPage={currentPage}
-                    paginate={paginate}
-                />
+                {loading ? <LoadingModal /> : (
+                    <>
+                        <GridTable
+                            title="Logs"
+                            data={currentLogs}
+                            route="/logs"
+                            columns={[
+                                { title: "Nome", key: "nome" },
+                                { title: "Descrição", key: "descricao" },
+                                { title: "Tipo", key: "tipo" },
+                                { title: "Status", key: "status" },
+                                { title: "Data", key: "data" }
+                            ]}
+                        />
+                        <Pagination
+                            totalItems={totalLogs}
+                            itemsPerPage={logsPerPage}
+                            currentPage={currentPage}
+                            paginate={paginate}
+                        />
+                    </>
+                )}
             </div>
         </div>
     );
