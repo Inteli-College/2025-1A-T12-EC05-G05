@@ -108,7 +108,7 @@ export default function PopUpInventario({ data, closePopUp, onSave }) {
     <div className="popup-container">
       <div className="popup-content">
         <div className="popup-header">
-          <h1 className="popup-title">{data ? `Editar Bin ${data.id}` : "Novo Bin"}</h1>
+          <h1 className="popup-title">{data ? `Editar ${data.id}` : "Novo Bin"}</h1>
           <button className="close-btn" onClick={closePopUp}>&times;</button>
         </div>
 

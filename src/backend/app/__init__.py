@@ -13,6 +13,7 @@ import controllers.historico_controller as historico_blueprint
 import controllers.logs_controller as logs_blueprint
 import controllers.sensores_controller as sensores_blueprint
 import controllers.devolucao_controller as devolucao_blueprint
+import controllers.inventory_controller as inventory_blueprint
 
 app = Flask(__name__)
 
