@@ -407,7 +407,7 @@ def devolution():
         check_suction(positions)
         execute_movement(positions)
 
-def validate_fita():
+def validate_fita(fita):
 
     wait_before_suction()
     print("\U0001F551 Solicitando bipagem via HTTP...")
@@ -416,6 +416,9 @@ def validate_fita():
         response.raise_for_status()
         scanned_medicine = response.json()
         if scanned_medicine.get("qr_code", "").startswith("A"):
+            patch_url = f"http://localhost:5000/api/fitas/{fita}/registrarqr"
+            response = requests.patch(patch_url, json={"qr_code": scanned_medicine.get("qr_code")})
+            print({"qr_code": scanned_medicine.get("qr_code")})
             print(f"✅ Fita {scanned_medicine.get("qr_code")} validada. Descendo para coletar...")
             return True
         else:
@@ -426,13 +429,12 @@ def validate_fita():
         print(f"⏳ Falha ao obter bipagem: {e}")
         return None
 
-def get_qrcode():
+def get_qrcode(fita):
     positions = data.get("qrcode", [])    
     first_position = positions[0]
     execute_movement(first_position)
-    
-    if validate_fita():
-        for position in positions[1:]:
+    if validate_fita(fita):
+        for position in  positions[1:]:
             check_suction(position)
             execute_movement(position)
         delivery_qrcode()
@@ -459,7 +461,7 @@ def collect_bin(
     enviar_log("1", "4", "1")
 
 @cli.command()
-def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos bins a coletar")]):
+def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos bins a coletar")], fita: Annotated[str, typer.Argument(help="Fita referente a essa coleta")]):
     global deliver_value
     deliver_value = 1
     main()
@@ -467,7 +469,7 @@ def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos
     ordered_list = sorted(input_list)
     for bin_num in ordered_list:
         take_medicine(f'bin_{bin_num}', bin_num)
-    get_qrcode()
+    get_qrcode(fita)
     execute_movement(positions[0])
     enviar_log("1", "4", "1")
 

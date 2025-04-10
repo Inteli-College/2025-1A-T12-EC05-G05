@@ -42,6 +42,7 @@ class FitaService:
             "id": fita.id,
             "nome": f"Fita {fita.id}",
             "status": status_mapeamento.get(fita.status, fita.status),
+            "QrCode": fita.qr_code ,
             "paciente": paciente_info["nome"] if paciente_info else "Paciente não identificado",
             "leito": paciente_info["leito"] if paciente_info else "Leito não definido",
             "ultimaAtualizacao": datetime.now().strftime('%d/%m/%Y - %H:%M'),
@@ -60,6 +61,26 @@ class FitaService:
         except Exception as e:
             db.session.rollback()
             return jsonify({"error": str(e)}), 500
+    
+    def registrar_qrcode(self, fita_id, qr_code):
+        fita = Fita.query.get(fita_id)
+
+        if not fita:
+            return jsonify({"error": "Fita não encontrada"}), 404
+
+        fita.qr_code = qr_code
+
+        try:
+            db.session.commit()
+            return jsonify({
+                "message": "QR Code registrado com sucesso!",
+                "fita_id": fita.id,
+                "qr_code": fita.qr_code
+            }), 200
+        except Exception as e:
+            db.session.rollback()
+            return jsonify({"error": f"Erro ao registrar QR Code: {str(e)}"}), 500
+
 
     def criar_fita(self, dados):
         try:
