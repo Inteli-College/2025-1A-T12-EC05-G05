@@ -409,13 +409,14 @@ def validate_fita():
         print(f"⏳ Falha ao obter bipagem: {e}")
         return None
 
-def get_qrcode():
+def get_qrcode(fita):
     positions = data.get("qrcode", [])    
     first_position = positions[0]
+    qrcode = "A7"
     execute_movement(first_position)
-    
+    response = requests.post("http://localhost:5000/qrcode", {"fita": fita, "qr-code": qrcode})
     if validate_fita():
-        for position in positions[1:]:
+        for position in  positions[1:]:
             check_suction(position)
             execute_movement(position)
         delivery_qrcode()
@@ -440,7 +441,7 @@ def collect_bin(
             take_medicine(f"bin_{bin_num}")
 
 @cli.command()
-def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos bins a coletar")]):
+def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos bins a coletar")], fita: Annotated[str, typer.Argument(help="Fita referente a essa coleta")]):
     global deliver_value
     deliver_value = 1
     main()
@@ -448,7 +449,7 @@ def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos
     ordered_list = sorted(input_list)
     for bin_num in ordered_list:
         take_medicine(f'bin_{bin_num}', bin_num)
-    get_qrcode()
+    get_qrcode(fita)
     execute_movement(positions[0])
 
 def main():

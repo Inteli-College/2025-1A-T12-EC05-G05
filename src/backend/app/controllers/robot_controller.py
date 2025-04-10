@@ -33,7 +33,8 @@ def collect_medication():
         print(data)
         # Chama a função do CLI para coletar medicamento
         bin_list = data.get("bins", [])
-        robot_service.collect_medicine(bin_list)
+        fita = data.get("fita")
+        robot_service.collect_medicine(bin_list, fita)
         return jsonify({"message": "Coleta realizada com sucesso!"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
