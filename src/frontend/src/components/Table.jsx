@@ -91,7 +91,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
         return;
       }
 
-      const Response = { data: { bins, fita: selectedMedicamentos[0].nome } };
+      const Response = { data: { bins, fita: selectedMedicamentos[0].id } };
 
       await httpClient.post("http://localhost:5000/robot/collect", Response.data);
       for (const fita of selectedMedicamentos) {

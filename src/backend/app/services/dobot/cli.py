@@ -390,7 +390,7 @@ def devolution():
         check_suction(positions)
         execute_movement(positions)
 
-def validate_fita():
+def validate_fita(fita):
 
     wait_before_suction()
     print("\U0001F551 Solicitando bipagem via HTTP...")
@@ -399,6 +399,9 @@ def validate_fita():
         response.raise_for_status()
         scanned_medicine = response.json()
         if scanned_medicine.get("qr_code", "").startswith("A"):
+            patch_url = f"http://localhost:5000/api/fitas/{fita}/registrarqr"
+            response = requests.patch(patch_url, json={"qr_code": scanned_medicine.get("qr_code")})
+            print({"qr_code": scanned_medicine.get("qr_code")})
             print(f"✅ Fita {scanned_medicine.get("qr_code")} validada. Descendo para coletar...")
             return True
         else:
@@ -412,10 +415,8 @@ def validate_fita():
 def get_qrcode(fita):
     positions = data.get("qrcode", [])    
     first_position = positions[0]
-    qrcode = "A7"
     execute_movement(first_position)
-    response = requests.post("http://localhost:5000/qrcode", {"fita": fita, "qr-code": qrcode})
-    if validate_fita():
+    if validate_fita(fita):
         for position in  positions[1:]:
             check_suction(position)
             execute_movement(position)
