@@ -130,6 +130,22 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
   const handleCloseFairModal = () => setShowFairModal(false);
   const handleCloseSucessModal = () => setShowSucessModal(false);
 
+  const formatarDescricao = (descricao) => {
+    if (!descricao) return "";
+  
+    const medicamentos = descricao.split(",").map(m => m.trim().toLowerCase());
+    const contador = {};
+  
+    medicamentos.forEach(med => {
+      contador[med] = (contador[med] || 0) + 1;
+    });
+  
+    return Object.entries(contador)
+      .map(([med, count]) => `${count}x ${med}`)
+      .join(", ");
+  };
+  
+
   return (
     <>
       {showFairModal && (
@@ -153,16 +169,6 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
               </button>
               {!isCurrentRoute && <img src={seta} alt="seta para a direita" />}
             </div>
-            {/* {title === "A fazer" && (
-              <label className="select-all">
-                Selecionar tudo
-                <input
-                  type="checkbox"
-                  checked={selectAll}
-                  onChange={handleSelectAll}
-                />
-              </label>
-          )} */}
           </div>
 
           <div className="itens">
@@ -175,7 +181,8 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
                   >
                     <div className="item-content">
                       <h2>{item.nome}</h2>
-                      <p>{item.descricao}</p>
+                      <p>{formatarDescricao(item.descricao)}</p>
+
                     </div>
                     {item.separando && (
                       <span className="status-tag">Separando</span>
