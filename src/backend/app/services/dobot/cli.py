@@ -430,7 +430,7 @@ def validate_fita(fita):
         return None
 
 def get_qrcode(fita):
-    positions = data.get("qrcode", [])    
+    positions = data.get("qrcode", [])
     first_position = positions[0]
     execute_movement(first_position)
     if validate_fita(fita):
@@ -478,13 +478,11 @@ def main():
     print(f'available ports: {[x.device for x in available_ports]} \n')
     port_input = input("Desired port number: ")
     port = available_ports[int(port_input)].device
-    # port = available_ports[-1].device
     spinner = yaspin(text=f"Connecting with port {port}...")
     spinner.start()
     dobot.connect(port)
     dobot.set_speed(150, 150)
     spinner.stop()
-    #cli()
 
 if __name__ == "__main__":
     main()
