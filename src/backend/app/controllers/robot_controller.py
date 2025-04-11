@@ -31,6 +31,8 @@ def collect_medication():
     data = request.get_json()
     try:
         print(data)
+        if len(data) == 0:
+            return jsonify({"message": "Fita Vazia"}), 200
         # Chama a função do CLI para coletar medicamento
         bin_list = data.get("bins", [])
         fita = data.get("fita")
