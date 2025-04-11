@@ -46,28 +46,40 @@ export default function PopUpFitas({ data, closePopUp }) {
                             <h2>Medicamentos da Fita</h2>
                         </div>
                         <div className="medicamentos-lista">
-                            {medicamentosDisponiveis ? (
-                                medicamentos.map((medicamento, index) => (
-                                    <div key={index} className="medicamento-item">
-                                        <div className="medicamento-item-content">
-                                            <div className="medicamento-info">
-                                                <h3>{medicamento.nome}</h3>
-                                                <p>{medicamento.tipo}</p>
-                                                {!ocultarValidade && (
-                                                    <p className="validade">Válido até {medicamento.validade}</p>
-                                                )}
-                                            </div>
-                                            <div className="medicamento-status">
-                                                <span className={`status-badge ${medicamento.status.toLowerCase().replace(/\s+/g, '-')}`}>
-                                                    {medicamento.status}
-                                                </span>
-                                                <p>{medicamento.quantidade}x</p>
-                                            </div>
-                                        </div>
-                                        {index !== medicamentos.length - 1 && <hr />}
+                            {medicamentosDisponiveis ? Object.entries(
+                            medicamentos.reduce((acc, curr) => {
+                                const key = curr.nome;
+                                if (!acc[key]) {
+                                    acc[key] = {
+                                        ...curr,
+                                        quantidade: 1
+                                    };
+                                } else {
+                                    acc[key].quantidade += 1;
+                                }
+                                return acc;
+                            }, {})
+                        ).map(([nome, medicamento], index, arr) => (
+                            <div key={index} className="medicamento-item">
+                                <div className="medicamento-item-content">
+                                    <div className="medicamento-info">
+                                        <h3>{nome}</h3>
+                                        <p>{medicamento.tipo}</p>
+                                        {!ocultarValidade && (
+                                            <p className="validade">Válido até {medicamento.validade}</p>
+                                        )}
                                     </div>
-                                ))
-                            ) : (
+                                    <div className="medicamento-status">
+                                        <span className={`status-badge ${"em-estoque"}`}>
+                                            {"Em estoque"}
+                                        </span>
+                                        <p>{medicamento.quantidade}x</p>
+                                    </div>
+                                </div>
+                                {index !== arr.length - 1 && <hr />}
+                            </div>
+                        )) : (
+
                                 <p className="sem-medicamentos">Nenhum medicamento disponível.</p>
                             )}
                         </div>

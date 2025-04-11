@@ -186,13 +186,17 @@ def popular_banco():
                 pacientes_criados.append(pac)
             db.session.flush()
 
-            remedios_data = [
+            remedios_base = [
                 {"nome_do_remedio_com_gramagem": "Ibuprofeno 400mg", "validade": datetime(2025, 5, 15)},
                 {"nome_do_remedio_com_gramagem": "Dorflex 300mg", "validade": datetime(2025, 12, 1)},
                 {"nome_do_remedio_com_gramagem": "Buscopan 10mg", "validade": datetime(2025, 10, 1)},
                 {"nome_do_remedio_com_gramagem": "Dipirona 1g", "validade": datetime(2025, 7, 10)},
-                {"nome_do_remedio_com_gramagem": "Paracetamol 500mg", "validade": datetime(2025, 11, 21)}
             ]
+
+            num_repeticoes = 3
+
+            remedios_data = remedios_base * num_repeticoes
+
 
             remedios_criados = []
             for r_data in remedios_data:
@@ -205,6 +209,7 @@ def popular_banco():
                 db.session.add(remedio)
                 remedios_criados.append(remedio)
             db.session.flush()
+
 
             for remedio in remedios_criados:
                 for i in range(1):
