@@ -16,13 +16,17 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
   const [showFairModal, setShowFairModal] = useState(false);
   const [showSucessModal, setShowSucessModal] = useState(false);
   const [fairMessage, setFairMessage] = useState("Algo deu errado");
-  const [sucessMessage, setSucessMessage]  = useState("Deu tudo certo");
+  const [sucessMessage, setSucessMessage] = useState("Deu tudo certo");
 
   useEffect(() => {
-    const hasSelected = selectedItems.length > 0;
-    setShowButton(hasSelected);
-    // setSelectAll(selectedItems.length === visibleItems.length && selectedItems.length > 0);
-  }, [selectedItems, visibleItems.length]);
+    if (title === "Possíveis devoluções") {
+      setShowButton(true);
+    } else {
+      const hasSelected = selectedItems.some(item => item === true);
+      setShowButton(hasSelected);
+    }
+  }, [selectedItems, visibleItems.length, title]);
+
 
   // const handleSelectAll = () => {
   //   const newState = !selectAll;
@@ -43,7 +47,7 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
     }
     const newSelectedItems = [...selectedItems];
 
-    if (title === "Possíveis devoluções" | title === "A fazer") {
+    if (title === "A fazer") {
       newSelectedItems.fill(false);
       newSelectedItems[index] = true;
     } else {
@@ -87,20 +91,20 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
         return;
       }
 
-      const Response = { data: { bins } };
+      const Response = { data: { bins, fita: selectedMedicamentos[0].id } };
 
       await httpClient.post("http://localhost:5000/robot/collect", Response.data);
       for (const fita of selectedMedicamentos) {
-        await httpClient.patch(`http://localhost:5000/api/fitas/${fita.id}`, { "status":"em_progresso" });
+        await httpClient.patch(`http://localhost:5000/api/fitas/${fita.id}`, { "status": "em_progresso" });
       }
       setSucessMessage("Medicamentos colocados em produção com sucesso!");
       for (const fita of selectedMedicamentos) {
-        await httpClient.patch(`http://localhost:5000/api/fitas/${fita.id}`, { "status":"finalizada" });
+        await httpClient.patch(`http://localhost:5000/api/fitas/${fita.id}`, { "status": "finalizada" });
       }
       await httpClient.post("http://localhost:5000/api/logs", {
-          responsavel:"0",
-          descricao:"3",
-          status:"1",
+        responsavel: "0",
+        descricao: "3",
+        status: "1",
       });
       setShowSucessModal(true);
 
@@ -189,9 +193,9 @@ export default function Table({ title, data, maxItems = data.length, route, onIt
                     )}
                   </button>
 
-                  {(title === "A fazer" || title === "Possíveis devoluções") && (
+                  {title === "A fazer" && (
                     <div className="checkbox-container">
-                      {(title === "A fazer" || title === "Possíveis devoluções") ? (
+                      {title === "A fazer" ? (
                         <input
                           type="radio"
                           checked={selectedItems[index]}

@@ -22,7 +22,7 @@ sidebar_position: 8
 
   É possível verificar o funcionamento dessa funcionalidade no vídeo abaixo:
 
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/8u6nCybWm3U" title="YouTube video player"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/8u6nCybWm3U" title="YouTube video player"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups" style={{display:"block", marginLeft:"auto", marginRight:"auto"}}>
   </iframe>
 
 - 🤖 **Integração do Robô com o Back-end:**  

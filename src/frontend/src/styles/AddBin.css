@@ -1,28 +1,33 @@
 .add-bin-content {
   color: #373743;
-  border: 2px solid #CECECE; /* Adiciona o contorno */
+  border: 2px dashed #CECECE;
   border-radius: 10px;
   padding: 20px;
-  text-align: left;
-  width: 167px;
-  height: 134px;
-  background: transparent; /* Remover o fundo */
-  cursor: pointer; /* Indica que o elemento é clicável */
-  transition: all 0.3s ease; /* Animação suave para o efeito de hover */
+  text-align: center;
+  width: 170px;
+  height: 180px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .add-bin-content:hover {
-  background: #e6e6e6; /* Fundo claro ao passar o mouse */ /* Efeito de aumento ao passar o mouse */
+  background: #e6e6e6;
+  transform: scale(1.05);
 }
 
 .add-bin-body {
   display: flex;
-  justify-content: center;  /* Alinha horizontalmente */
-  align-items: center;      /* Alinha verticalmente */
-  height: 100%;          /* Alinha verticalmente */
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .add-bin-icon {
-  width: 46px;
-  height: 46px;
+  width: 80px;
+  height: 80px;
 }

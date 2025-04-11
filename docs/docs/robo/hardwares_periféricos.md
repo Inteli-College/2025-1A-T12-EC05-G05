@@ -5,7 +5,7 @@ sidebar_label: "Hardwares Periféricos"
 
 ## 🔍 O que é?
 
-&emsp; Hardware periférico é um dispositivo que se conecta ao hardware principal de um computador ou dispositivo móvel para fornecer funcionalidades adicionais. No nosso projeto, vamos utilizar o leitor de Qr code e o sensor infravermelho usando um Raspberry Pi 5 (micro processador) para fazer a integração no nosso sistema.
+&emsp; Hardware periférico é um dispositivo que se conecta ao hardware principal de um computador ou dispositivo móvel para fornecer funcionalidades adicionais. No nosso projeto, vamos utilizar o leitor de Qr code e o sensor infravermelho usando um Raspberry Pi 5 (micro computador) para fazer a integração no nosso sistema.
 
 ## 🏷️ Leitor de QR code
 
@@ -57,14 +57,44 @@ def request_bip(timeout: int = 10):
 
 - Removidos se identificada uma **leitura incorreta**.
 
-&emsp;Com essa estrutura, o sistema de leitura de QR code atende plenamente aos critérios do projeto, ao garantir a rastreabilidade dos medicamentos por meio do armazenamento em banco de dados, possibilitar operações completas de CRUD sobre os dados registrados e expor essas informações de forma clara na interface de logs, permitindo o monitoramento e a verificação das leituras em tempo real. &
+&emsp;Com essa estrutura, o sistema de leitura de QR code atende plenamente aos critérios do projeto, ao garantir a rastreabilidade dos medicamentos por meio do armazenamento em banco de dados, possibilitar operações completas de CRUD sobre os dados registrados e expor essas informações de forma clara na interface de logs, permitindo o monitoramento e a verificação das leituras em tempo real.
 
 &emsp;Dessa forma, o processo de separação automatizada se torna **seguro, validado e totalmente integrado ao fluxo da farmácia hospitalar**, contribuindo para maior precisão e confiabilidade nas operações.
 
 ## ❗ Sensor infravermelho
 
-&emsp; O sensor infravermelho ainda está em fase de desenvolvimento. Ele já foi soldado a jumpers que estão conectados às entradas do Raspberry Pi 5, mas enfrentamos dificuldades na integração, e por isso essa tarefa foi realocada para a sprint 5.
+&emsp; O sensor infravermelho utilizado é um Tcrt5000 e sua leitura pode ser tanto digital (informando se existe algo na frente dele ou não) ou analógica (informando a distância que o objeto está do sensor). Sua utilização no projeto está voltada para as leituras digitais, onde utilizamos ele para verificar se houve ou não a coleta dos medicamentos após a descida do braço robótico.
 
-&emsp; Nosso objetivo com esse sensor é identificar a presença ou ausência do medicamento no compartimento. Durante o processo de separação, o robô realizará três tentativas de detecção. Se o sensor identificar a presença do medicamento, o robô continuará sua movimentação para pegá-lo. Caso contrário, ele passará para o próximo item. No estado atual do desenvolvimento, devido à falta de integração, o robô permanece parado nessa etapa.
+<div align='center'>
+<sub>Figura 2 - Tcrt5000</sub>
+</div>
 
+<div align='center' size="10%">
+<img src="../../img/tcrt5000.jpg"/>
+</div>
 
+<div align='center'>
+<sup>Fonte: institutodigital</sup>
+</div>
+
+&emsp; Caso o sensor identifique que após a descida do dobot o medicamento não foi coletado ele repete a ação no intuito de coletar definitivamente aquele medicamento. Caso a segunda tentativa seja falha o código passa para o próximo medicamento da lista e tenta realizar sua coleta.
+
+```python
+def ir_sensor(timeout: int=10):
+    print("\U0001F551 Verificando coleta")
+    try:
+        response = requests.get("http://localhost:5000/api/sensores", timeout=timeout)
+        response.raise_for_status()
+        status_coleta = response.json().get("caught")
+
+        print(f"\U0001F4E1 Estado sensor IR: {status_coleta}")
+        if status_coleta == "ALTO":
+            return False
+        elif status_coleta == "BAIXO":
+            return True
+    except requests.exceptions.RequestException as e:
+        print(f"⏳ Falha ao obter leitura: {e}")
+        return None
+```
+
+&emsp; O código apresentado acima está presente em nossa CLI e é ele que recebe os POST's feitos pela raspberry na rota "api/sensores", sendo que o código presente no micro computador envia "ALTO" quando o valor de leitura do sensor está alto (representando que ele não coletou nada) e "BAIXO" quando a leitura está baixa (representando que houve a coleta do medicamento).

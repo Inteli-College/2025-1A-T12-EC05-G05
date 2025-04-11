@@ -31,6 +31,20 @@ with open(file_path_med, "r") as file:
 deliver_value = 1
 add_height = 0
 
+def enviar_log(responsavel: str, descricao: str, status: str):
+    url = "http://localhost:5000/api/logs"
+    payload = {
+        "responsavel": responsavel,
+        "descricao": descricao,
+        "status": status
+    }
+    
+    try:
+        response = requests.post(url, json=payload)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"Erro na requisição: {e}")
+        
 def identidade_visual():
     print(colored("""
   _____                         _       _   
@@ -284,6 +298,7 @@ def request_bip(timeout: int = 10):
         return scanned_medicine
     except requests.exceptions.RequestException as e:
         print(f"⏳ Falha ao obter bipagem: {e}")
+        enviar_log("1", "15", "0")
         return None
 
 def execute_movement(
@@ -316,6 +331,7 @@ def validate(bin_n):
     
     else:
         print("⚠️ Medicamento inválido! Retornando ao home.")
+        enviar_log("1", "18", "1")
         return False
 
 def ir_sensor(timeout: int=10):
@@ -383,6 +399,7 @@ def deliver():
         else:
             execute_movement(position, add_height)
     deliver_value += 1
+    enviar_log("1", "3", "1")
 
 def devolution():
     positions = data.get("devolution", [])
@@ -390,7 +407,7 @@ def devolution():
         check_suction(positions)
         execute_movement(positions)
 
-def validate_fita():
+def validate_fita(fita):
 
     wait_before_suction()
     print("\U0001F551 Solicitando bipagem via HTTP...")
@@ -399,6 +416,9 @@ def validate_fita():
         response.raise_for_status()
         scanned_medicine = response.json()
         if scanned_medicine.get("qr_code", "").startswith("A"):
+            patch_url = f"http://localhost:5000/api/fitas/{fita}/registrarqr"
+            response = requests.patch(patch_url, json={"qr_code": scanned_medicine.get("qr_code")})
+            print({"qr_code": scanned_medicine.get("qr_code")})
             print(f"✅ Fita {scanned_medicine.get("qr_code")} validada. Descendo para coletar...")
             return True
         else:
@@ -413,9 +433,8 @@ def get_qrcode(fita):
     positions = data.get("qrcode", [])
     first_position = positions[0]
     execute_movement(first_position)
-    
-    if validate_fita():
-        for position in positions[1:]:
+    if validate_fita(fita):
+        for position in  positions[1:]:
             check_suction(position)
             execute_movement(position)
         delivery_qrcode()
@@ -438,9 +457,11 @@ def collect_bin(
     for bin_num in range(1, 6):
         for i in range(bin_counts[bin_num]):
             take_medicine(f"bin_{bin_num}")
+            
+    enviar_log("1", "4", "1")
 
 @cli.command()
-def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos bins a coletar")]):
+def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos bins a coletar")], fita: Annotated[str, typer.Argument(help="Fita referente a essa coleta")]):
     global deliver_value
     deliver_value = 1
     main()
@@ -448,8 +469,9 @@ def collect_list(input_list: Annotated[List[str], typer.Argument(help="Lista dos
     ordered_list = sorted(input_list)
     for bin_num in ordered_list:
         take_medicine(f'bin_{bin_num}', bin_num)
-    get_qrcode()
+    get_qrcode(fita)
     execute_movement(positions[0])
+    enviar_log("1", "4", "1")
 
 def main():
     available_ports = list_ports.comports()

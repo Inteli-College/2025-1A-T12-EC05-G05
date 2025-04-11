@@ -19,13 +19,15 @@ Além disso, o <i>Wire Flow</i> permite antecipar possíveis obstáculos antes m
 
 &emsp; No contexto do **Prescript**, desenvolvido para o **Hospital de Clínicas da UNICAMP**, o *Wire Flow* facilita a construção da plataforma ao conectar as **User Stories** do farmacêutico com as telas que representam cada etapa da jornada do usuário. Menciona-se que o *Wire Flow* foi elaborado **exclusivamente para a jornada do farmacêutico**, uma vez que foi entendido, pelo grupo, que a enfermeira não terá um contato direto com a plataforma. O foco da aplicação web está assim na **separação e rastreabilidade dos medicamentos** pelo farmacêutico, garantindo um processo mais seguro e eficiente.  
 
+
+
 &emsp;Dessa forma, o *Wire Flow* se torna uma ferramenta essencial para o desenvolvimento de um sistema **intuitivo, eficiente e com menor taxa de erros**.  
 
 ---
 
 ## 🎯 Como funciona?  
 
-&emsp; O *Wire Flow* é estruturado com base nas **User Stories** do farmacêutico, que descrevem as ações necessárias para a validação e gerenciamento da separação de medicamentos. A partir dessas histórias, definimos as **telas e os caminhos possíveis** que ele pode seguir dentro da aplicação. As telas, nesse primeiro momento, são como o próprio nome do _Wire Flow_ sugere, *Wireframes*, que nada mais são do que esboços dos principais elementos a serem considerados para aquela interface em si.  
+&emsp; O *wireflow* é estruturado com base nas **User Stories** do farmacêutico, que descrevem as ações necessárias para a validação e o gerenciamento da separação de medicamentos. A partir dessas histórias, definimos as **telas e os caminhos possíveis** que ele pode seguir dentro da aplicação. As telas, nesse primeiro momento, são como o próprio nome do _Wire Flow_ sugere, *Wireframes*, que nada mais são do que esboços dos principais elementos a serem considerados para aquela interface em si. É importante ressaltar que o que foi feito nessa etapa do projeto, muito provavelmente, não será seguido à risca. 
 
 :::note
 
