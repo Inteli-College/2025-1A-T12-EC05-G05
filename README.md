@@ -169,6 +169,9 @@ npm install
 ```sh
 npm start
 ```
+
+Ou acesse: https://inteli-college.github.io/2025-1A-T12-EC05-G05/
+
 ## 🗃 Histórico de lançamentos
 
 * 0.5.0 - 11/04/2025
